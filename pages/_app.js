@@ -1,7 +1,31 @@
-import '../styles/globals.css'
+import "styles/globals.css";
+import Parse from "parse";
+import AuthContextProvider from "src/contexts/AuthContext";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  //checking if env is browser
+  if (typeof window !== "undefined") {
+    Parse.initialize(
+      process.env.NEXT_PUBLIC_APP_ID,
+      process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY
+    );
+    console.log("initialez");
+    Parse.serverURL =
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:1447/parse"
+        : "https://parseapi.back4app.com/";
+  }
+
+  const DefaultLayout = ({ children }) => <> {children} </>;
+  const Layout = Component.layout || DefaultLayout;
+
+  return (
+    <AuthContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthContextProvider>
+  );
 }
 
-export default MyApp
+export default App;
