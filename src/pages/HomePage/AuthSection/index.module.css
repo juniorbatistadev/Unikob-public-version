@@ -29,6 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 
 /* ##Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
@@ -45,7 +46,7 @@
     display: none;
   }
 
-  .ccontainer_button {
+  .container_button {
     margin: 20px auto 20px auto;
   }
 }

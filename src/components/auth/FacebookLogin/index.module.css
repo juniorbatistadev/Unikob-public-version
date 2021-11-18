@@ -1,17 +1,16 @@
-.facebook_button img{
-    margin-left:5px;
+.facebook_button img {
+  margin-left: 5px;
 }
 
-.facebook_button{
-    padding: 10px;
-    border-color:#4173B2;
-    flex:3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.facebook_button {
+  padding: 10px;
+  border-color: #4173b2;
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.facebook_logo{
-    width:20px;
+.facebook_logo {
+  width: 15px;
 }

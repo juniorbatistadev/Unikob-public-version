@@ -47,7 +47,7 @@ function SignUpForm() {
     username: Yup.string()
       .min("4", "Tu nombre de usuario debe de ser mayor de 4 caracteres")
       .max("30", "Tu nombre de usuario es demasiado largo")
-      .required("Tu nombre es re-querido"),
+      .required("Tu nombre es requerido"),
     email: Yup.string().email("Correo invalido").required("Correo requerido"),
     password: Yup.string()
       .min(6, "Codigo secreto muy corto")
@@ -95,7 +95,7 @@ function SignUpForm() {
                 typeStyle="primary"
                 type="submit"
               >
-                Vamo' alla
+                Vamos
               </Button>
             </div>
           </Form>
