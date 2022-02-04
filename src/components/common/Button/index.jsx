@@ -42,6 +42,7 @@ Button.defaultProps = {
   className: " ",
   typeStyle: "primary",
   onClick: null,
+  loading: false,
 };
 
 export default Button;
