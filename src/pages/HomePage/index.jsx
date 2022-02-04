@@ -1,12 +1,14 @@
 import styles from "./HomePage.module.css";
-import WelcomeInfo from "./WelcomeInfo";
+import InfoHero from "./InfoHero";
 import AuthSection from "./AuthSection";
 
-export default function HomePage() {
+function HomePage() {
   return (
     <div className={styles.container}>
-      <WelcomeInfo />
+      <InfoHero />
       <AuthSection />
     </div>
   );
 }
+
+export default HomePage;

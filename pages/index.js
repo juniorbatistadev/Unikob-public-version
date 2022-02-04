@@ -1,9 +1,10 @@
 import HomePage from "@pages/HomePage";
+import EmptyLayout from "src/layouts/EmptyLayout";
 
-export default function Home() {
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
+function Home() {
+  return <HomePage />;
 }
+
+Home.layout = EmptyLayout;
+
+export default Home;

@@ -43,7 +43,7 @@
   ##Screen = B/w 320px to 767px
 */
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .paragraph {
     margin: 20px 0px 20px 0px;
     text-align: center;

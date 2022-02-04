@@ -8,14 +8,17 @@ import Button from "@components/common/Button";
 import FacebookLogin from "@components/auth/FacebookLogin";
 import { AuthContext } from "src/contexts/AuthContext";
 import showAlert from "src/helpers/showAlert/showAlert";
+import { useRouter } from "next/router";
 
 function LoginForm() {
   const { setCurrentUser } = useContext(AuthContext);
+  const router = useRouter();
 
   const onSubmit = async (values) => {
     try {
       await Parse.User.logIn(values.email, values.password);
       setCurrentUser(Parse.User.current());
+      router.push("/feed");
     } catch {
       showAlert({
         text: "Contraseña o Correo Incorrecto",
@@ -43,12 +46,18 @@ function LoginForm() {
       >
         {(props) => (
           <Form className={styles.form}>
-            <TextField placeholder="Tu correo" name="email" type="email" />
+            <TextField
+              placeholder="Tu correo"
+              name="email"
+              type="email"
+              autoComplete="username"
+            />
             <ErrorMessage name="email" />
             <TextField
               placeholder="Tu codigo secreto"
               name="password"
               type="password"
+              autoComplete="current-password"
             />
             <ErrorMessage name="password" />
             <span className={styles.text}>¿Olvidaste tu contraseña?</span>

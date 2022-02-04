@@ -1,6 +1,7 @@
 import "styles/globals.css";
 import Parse from "parse";
 import AuthContextProvider from "src/contexts/AuthContext";
+import MainLayout from "src/layouts/MainLayout";
 
 function App({ Component, pageProps }) {
   //checking if env is browser
@@ -9,14 +10,14 @@ function App({ Component, pageProps }) {
       process.env.NEXT_PUBLIC_APP_ID,
       process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY
     );
-    console.log("initialez");
+
     Parse.serverURL =
       process.env.NODE_ENV !== "production"
         ? "http://localhost:1447/parse"
         : "https://parseapi.back4app.com/";
   }
 
-  const DefaultLayout = ({ children }) => <> {children} </>;
+  const DefaultLayout = MainLayout;
   const Layout = Component.layout || DefaultLayout;
 
   return (

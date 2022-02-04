@@ -2,7 +2,7 @@ import logo from "@assets/images/logo-text-white.png";
 import styles from "./index.module.css";
 import Button from "@components/common/Button";
 
-function WelcomeInfo() {
+function InfoHero() {
   return (
     <div className={styles.container}>
       <img src={logo.src} alt="Logo" className={styles.logo} />
@@ -28,4 +28,4 @@ function WelcomeInfo() {
   );
 }
 
-export default WelcomeInfo;
+export default InfoHero;
