@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import SideBar from "@components/common/SideBar";
-import menuImg from "@assets/icons/menu.svg";
+import MenuIcon from "@assets/icons/menu.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
 function MenuButton() {
@@ -9,10 +9,10 @@ function MenuButton() {
 
   return (
     <div>
-      <img
+      <MenuIcon
         width="40px"
+        height="40px"
         className={styles["menu-button"]}
-        src={menuImg.src}
         onClick={() => setMenuOpen(!isMenuOpen)}
         alt="Menu"
       />

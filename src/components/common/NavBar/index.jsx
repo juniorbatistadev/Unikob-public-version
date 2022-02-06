@@ -3,15 +3,18 @@ import { AuthContext } from "src/contexts/AuthContext";
 import styles from "./index.module.css";
 // import NotificationBell from "./NotificationBell";
 // import MessagesBell from "./MessagesBell";
-// import SearchBar from "@components/common/SearchBar";
+import SearchBar from "@components/SearchBar";
 // import Logo from "../Logo";
 import Avatar from "@components/common/Avatar";
 import MenuButton from "@components/common/MenuButton";
-// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+import useIsMounted from "src/hooks/useIsMounted";
 
 function NavBar() {
   const { currentUser } = useContext(AuthContext);
-  // const navigate = useNavigate();
+  const router = useRouter();
+
+  const { isMounted } = useIsMounted();
 
   return (
     <div className={styles.container}>
@@ -21,16 +24,16 @@ function NavBar() {
       </div>
 
       <div className={styles["search-bar-container"]}>
-        {/* <SearchBar /> */}
+        <SearchBar />
       </div>
 
       <div className={styles["right-side"]}>
-        {currentUser ? (
+        {isMounted && currentUser ? (
           <>
             {/* <NotificationBell />
             <MessagesBell /> */}
             <Avatar
-              // onClick={() => navigate("/app/me/")}
+              onClick={() => router.push("/me")}
               className={styles.avatar}
               image={
                 currentUser.get("profilePicture") &&

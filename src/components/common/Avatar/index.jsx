@@ -1,6 +1,7 @@
 import defaultImage from "@assets/images/default-avatar.jpg";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import { PROFILE_PATH } from "src/paths";
 
 function Avatar({ image, width, link, ...props }) {
   const classNames = [styles.avatar, props.className].join(" ");
@@ -8,7 +9,7 @@ function Avatar({ image, width, link, ...props }) {
 
   const handleClick = () => {
     if (link) {
-      router.push(`/app/profile/${link}/`);
+      router.push(`${PROFILE_PATH}`.replace(":userId", link));
     }
   };
 
