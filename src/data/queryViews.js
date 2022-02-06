@@ -3,13 +3,11 @@ import Parse from "parse";
 const View = Parse.Object.extend("View");
 const query = new Parse.Query(View);
 
-export const saveView = (fromUser, toUser) => {
+export const saveView = async (fromUser, toUser) => {
   const view = new View();
   view.set("fromUser", fromUser);
   view.set("toUser", toUser);
   view.save();
-
-  console.log("save");
 };
 
 export const getViewsNumberByUserId = async (userId) => {

@@ -37,25 +37,23 @@ export default function ProfilePage({ userId }) {
 
   useEffect(() => {
     const addView = (toUser) => {
-      //check is user already have seen this profile if not mark as seen
       const usersSeen = JSON.parse(localStorage.getItem("usersSeen"));
-      console.log(
-        "save 3",
 
-        !usersSeen
+      //validated the user hasn't seen this profile
+      if (Array.isArray(usersSeen) && usersSeen.includes(userId)) return;
+
+      //validate the user is not the same
+      if (currentUser && currentUser.id !== userId) return;
+
+      //save user to list locally so another request to the server is not needed
+      localStorage.setItem(
+        "usersSeen",
+        JSON.stringify(
+          Array.isArray(usersSeen) ? [...usersSeen, userId] : [userId]
+        )
       );
-      if (usersSeen && usersSeen.includes(userId)) return;
 
-      usersSeen &&
-        localStorage.setItem(
-          "usersSeen",
-          JSON.stringify([...usersSeen, userId])
-        );
-
-      if (currentUser && currentUser.id !== userId) {
-        console.log("save 2");
-        saveView(currentUser, toUser);
-      }
+      saveView(currentUser, toUser);
     };
 
     getUserById(userId).then((user) => {
@@ -63,7 +61,7 @@ export default function ProfilePage({ userId }) {
       addView(user);
       setIsLoading(false);
     });
-  }, []);
+  }, [currentUser, userId]);
 
   return (
     <>
