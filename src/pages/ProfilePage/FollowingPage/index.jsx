@@ -18,8 +18,6 @@ const FollowersPage = ({ user }) => {
     }
   );
 
-  console.log(items);
-
   return (
     <FlexColumn margin="10px" className={styles.container}>
       <FlexRow alignItems="center">

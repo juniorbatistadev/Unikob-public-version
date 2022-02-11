@@ -5,17 +5,7 @@ import Button from "../common/Button";
 
 const MessageButton = ({ toUser, pretext }) => {
   return (
-    <Button
-      // onClick={() =>
-      //   Swal({
-      //     content: <SendMessageForm toUser={toUser} pretext={pretext} />,
-      //     buttons: false,
-      //   })
-      // }
-      typeStyle="secondary"
-      padding="5px 15px"
-      margin="0px 10px 0px 0px"
-    >
+    <Button typeStyle="secondary" padding="5px 15px" margin="0px 10px 0px 0px">
       Hablar
     </Button>
   );

@@ -26,6 +26,8 @@ import styles from "./ProfilePage.module.css";
 import Spinner from "@components/common/Spinner";
 import A from "@components/common/A";
 import { saveView } from "src/data/queryViews";
+import TabsMenu from "@components/TabsMenu";
+import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
 
 export default function ProfilePage({ userId }) {
   const [user, setUser] = useState();
@@ -43,7 +45,7 @@ export default function ProfilePage({ userId }) {
       if (Array.isArray(usersSeen) && usersSeen.includes(userId)) return;
 
       //validate the user is not the same
-      if (currentUser && currentUser.id !== userId) return;
+      if (currentUser && currentUser.id == userId) return;
 
       //save user to list locally so another request to the server is not needed
       localStorage.setItem(
@@ -98,10 +100,22 @@ export default function ProfilePage({ userId }) {
             <FlexColumn>
               <FlexRow className={styles.stats}>
                 <Views user={user} />
-                <A href={`${asPath}/followers`}>
+                <A
+                  href={
+                    currentUser.id === userId
+                      ? `${CURRENT_USER_PROFILE_PATH}/followers`
+                      : `${PROFILE_PATH}/followers`.replace(":userId", userId)
+                  }
+                >
                   <Followers user={user} className={styles.pointer} />
                 </A>
-                <A href={`${asPath}/following`}>
+                <A
+                  href={
+                    currentUser.id === userId
+                      ? `${CURRENT_USER_PROFILE_PATH}/following`
+                      : `${PROFILE_PATH}/following`.replace(":userId", userId)
+                  }
+                >
                   <Following user={user} className={styles.pointer} />
                 </A>
               </FlexRow>
@@ -128,13 +142,23 @@ export default function ProfilePage({ userId }) {
             </FlexColumn>
           </FlexColumn>
 
-          {/* <TabsMenu
-    options={[
-      { link: "./", name: "Posts" },
-      { link: "./comments", name: "Comentarios" },
-      { link: "./gifts", name: "Regalos" },
-    ]}
-  /> */}
+          <TabsMenu
+            path={
+              currentUser.id === userId
+                ? `${CURRENT_USER_PROFILE_PATH}`
+                : `${PROFILE_PATH}`.replace(":userId", userId)
+            }
+            slug="section"
+            options={[
+              { name: "Posts", query: {} },
+              {
+                link: "comments",
+                name: "Comentarios",
+                query: { section: "comments" },
+              },
+              { link: "gifts", name: "Regalos", query: { section: "gifts" } },
+            ]}
+          />
           <div className={styles.contentContainer}>
             {/* <Routes>
       <Route path="/" element={<PostSection user={user} />} />
