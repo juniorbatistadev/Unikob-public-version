@@ -28,6 +28,8 @@ import A from "@components/common/A";
 import { saveView } from "src/data/queryViews";
 import TabsMenu from "@components/TabsMenu";
 import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
+import TabsContent from "@components/TabsContent";
+import PostSection from "./PostSection";
 
 export default function ProfilePage({ userId }) {
   const [user, setUser] = useState();
@@ -159,13 +161,17 @@ export default function ProfilePage({ userId }) {
               { link: "gifts", name: "Regalos", query: { section: "gifts" } },
             ]}
           />
-          <div className={styles.contentContainer}>
-            {/* <Routes>
-      <Route path="/" element={<PostSection user={user} />} />
-      <Route path="/comments" element={<CommentSection user={user} />} />
-      <Route path="/gifts" element={<GiftSection user={user} />} />/
-    </Routes> */}
-          </div>
+          <FlexColumn className={styles.contentContainer}>
+            <TabsContent
+              slug={"section"}
+              tabs={{
+                default: <PostSection />,
+                comments: <p>Comments</p>,
+                gifts: <p>gifts</p>,
+              }}
+              default={<PostSection />}
+            ></TabsContent>
+          </FlexColumn>
         </FlexColumn>
       )}
     </>

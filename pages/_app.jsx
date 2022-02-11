@@ -2,6 +2,7 @@ import "styles/globals.css";
 import Parse from "parse";
 import AuthContextProvider from "src/contexts/AuthContext";
 import MainLayout from "src/layouts/MainLayout";
+import Head from "next/head";
 
 function App({ Component, pageProps }) {
   //checking if env is browser
@@ -22,6 +23,10 @@ function App({ Component, pageProps }) {
 
   return (
     <AuthContextProvider>
+      <Head>
+        <title>GenteUni</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
