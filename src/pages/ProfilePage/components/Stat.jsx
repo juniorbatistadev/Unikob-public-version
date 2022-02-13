@@ -1,14 +1,14 @@
-import React from "react";
+import FlexColumn from "@components/common/FlexColumn";
 import styles from "./Stat.module.css";
 
 function Stat({ number, text, className, ...props }) {
   const classNames = [styles.container, className].join(" ");
 
   return (
-    <div className={classNames} {...props}>
+    <FlexColumn className={classNames} {...props}>
       <span className={styles.number}>{number}</span>
       <span className={styles.name}>{text}</span>
-    </div>
+    </FlexColumn>
   );
 }
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { useRouter } from "next/router";
 
 import { getUserById } from "src/data/queryUsers";
 import { AuthContext } from "src/contexts/AuthContext";
+import { saveView } from "src/data/queryViews";
 
 import FollowButton from "@components/FollowButton";
 import FlexColumn from "@components/common/FlexColumn";
@@ -11,10 +11,16 @@ import FlexRow from "@components/common/FlexRow";
 import Avatar from "@components/common/Avatar";
 import Title from "@components/common/Title";
 import MessageButton from "@components/MessageButton";
+import Spinner from "@components/common/Spinner";
+import A from "@components/common/A";
+import TabsMenu from "@components/TabsMenu";
+import PopupMenu from "@components/PopupMenu";
+import TabsContent from "@components/TabsContent";
 
 import BioIcon from "@assets/icons/feather.svg";
 import StudentIcon from "@assets/icons/student.svg";
 import PinIcon from "@assets/icons/pin.svg";
+import DotsIcon from "@assets/icons/dot.svg";
 
 import MenuProfile from "./components/MenuProfile";
 import Views from "./components/Views";
@@ -23,19 +29,13 @@ import Following from "./components/Following";
 import CoverImage from "./components/CoverImage";
 import ItemWithIcon from "./components/ItemWithIcon";
 import styles from "./ProfilePage.module.css";
-import Spinner from "@components/common/Spinner";
-import A from "@components/common/A";
-import { saveView } from "src/data/queryViews";
-import TabsMenu from "@components/TabsMenu";
-import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
-import TabsContent from "@components/TabsContent";
 import PostSection from "./PostSection";
+
+import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
 
 export default function ProfilePage({ userId }) {
   const [user, setUser] = useState();
   const [Isloading, setIsLoading] = useState(true);
-
-  const { asPath } = useRouter();
 
   const { currentUser } = useContext(AuthContext);
 

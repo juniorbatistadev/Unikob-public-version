@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./IteamWithIcon.module.css";
 
 function ItemWithIcon({ IconSVG, text, className = " ", ...props }) {

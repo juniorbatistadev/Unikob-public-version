@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DotsIcon from "@assets/icons/dot.svg";
 import styles from "./MenuProfile.module.css";
+import PopupMenu from "@components/PopupMenu";
+import GiftSVG from "@assets/icons/gift.svg";
+import HeartSVG from "@assets/icons/heart.svg";
 // import swal from "@sweetalert/with-react";
 // import SendGiftForm from "../GiftSection/SendGiftForm";
 // import DeclareCrushForm from "../../../components/DeclareCrushForm";
@@ -29,17 +32,14 @@ const MenuProfile = ({ user }) => {
   };
 
   return (
-    <div>
-      <DotsIcon width="20px" height="20px" onClick={handleClick} />
-      {isOpen && (
-        <div className={styles.menuContainer}>
-          <ul className={styles.menu}>
-            <li onClick={sendGift}>Enviar Regalo</li>
-            <li onClick={declareCrush}>Declarar Crush</li>
-          </ul>
-        </div>
-      )}
-    </div>
+    <PopupMenu
+      options={[
+        { label: "Enviar Regalo", icon: <GiftSVG /> },
+        { label: "Declarar Crush", icon: <HeartSVG /> },
+      ]}
+    >
+      <DotsIcon width="20px" height="20px" />
+    </PopupMenu>
   );
 };
 

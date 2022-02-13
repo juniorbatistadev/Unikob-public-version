@@ -1,5 +1,4 @@
 import FlexColumn from "@components/common/FlexColumn";
-import Title from "@components/common/Title";
 import { getPostsWithPagination } from "src/data/queryPosts";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";

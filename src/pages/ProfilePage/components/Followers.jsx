@@ -9,11 +9,7 @@ function Followers({ user, ...props }) {
     getFollowersNumber(user).then((data) => setFollowers(data));
   }, [user]);
 
-  return (
-    <>
-      <Stat text="Seguidores" number={followers} {...props}></Stat>
-    </>
-  );
+  return <Stat text="Seguidores" number={followers} {...props} />;
 }
 
 export default Followers;

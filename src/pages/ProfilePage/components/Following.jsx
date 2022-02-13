@@ -9,11 +9,7 @@ function Following({ user, ...props }) {
     getFollowingNumber(user).then((data) => setFollowing(data));
   }, [user]);
 
-  return (
-    <>
-      <Stat text="Siguiendo" number={following} {...props}></Stat>
-    </>
-  );
+  return <Stat text="Siguiendo" number={following} {...props} />;
 }
 
 export default Following;

@@ -1,0 +1,43 @@
+.menuContainer {
+  position: relative;
+}
+
+.menu {
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  max-width: 300px;
+  min-width: 100px;
+  padding-top: 0px;
+  border: solid 1px #b5b5b5;
+  list-style: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu li:hover {
+  background-color: #cacaca;
+}
+.menu li {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu li span {
+  width: max-content;
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  cursor: pointer;
+}

@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "./UserListItem.module.css";
-import FlexRow from "../../../components/common/FlexRow";
-import Avatar from "../../../components/common/Avatar";
-import Text from "../../../components/common/Text";
-import FollowButton from "../../../components/FollowButton";
+import FlexRow from "@components/common/FlexRow";
+import Avatar from "@components/common/Avatar";
+import Text from "@components/common/Text";
+import FollowButton from "@components/FollowButton";
 
 const UserListItem = ({ user }) => {
   return (
