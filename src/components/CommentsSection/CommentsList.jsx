@@ -10,7 +10,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import { getCommentsWithPagination } from "src/data/queryComments";
 
-const CommentSection = ({ user }) => {
+const CommentsList = ({ user }) => {
   const { isLoading, items, reloadData, startFrom, count, nextPage } =
     useInfiniteScrolling({
       query: getCommentsWithPagination,
@@ -18,17 +18,8 @@ const CommentSection = ({ user }) => {
       perPage: 10,
     });
 
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <>
-      <Title text={`Comentarios (${count})`} margin="10px" />
-      {currentUser ? (
-        <p>Form</p>
-      ) : (
-        // <AddProfileCommentForm toUser={user} reloadComments={reloadData} />
-        <Text text="Inicia Sesion o Registrate para poder comentar" />
-      )}
       <FlexColumn>
         {isLoading ? (
           <Text text="Cargando..." />
@@ -63,4 +54,4 @@ const CommentSection = ({ user }) => {
   );
 };
 
-export default CommentSection;
+export default CommentsList;
