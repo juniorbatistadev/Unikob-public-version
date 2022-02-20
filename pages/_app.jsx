@@ -15,13 +15,18 @@ function App({ Component, pageProps }) {
     Parse.serverURL =
       process.env.NODE_ENV !== "production"
         ? "http://localhost:1447/parse"
-        : "https://parseapi.back4app.com/";
+        : "https://parseapi.back4app.com";
   }
 
   const DefaultLayout = MainLayout;
   const Layout = Component.layout || DefaultLayout;
 
-  console.log("Lastest build JR.");
+  console.log(
+    "Lastest build JR.",
+    process.env.NEXT_PUBLIC_APP_ID,
+    process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY,
+    process.env.NODE_ENV
+  );
 
   return (
     <AuthContextProvider>
