@@ -21,6 +21,8 @@ function App({ Component, pageProps }) {
   const DefaultLayout = MainLayout;
   const Layout = Component.layout || DefaultLayout;
 
+  console.log("Lastest build JR.");
+
   return (
     <AuthContextProvider>
       <Head>
