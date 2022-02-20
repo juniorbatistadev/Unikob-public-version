@@ -5,6 +5,8 @@ import styles from "./index.module.css";
 import { AuthContext } from "@context/AuthContext";
 import { saveView } from "src/data/queryPostView";
 import PostHeader from "./components/PostHeader";
+import Head from "next/head";
+import extractTextFromPost from "src/helpers/extractTextFromPost";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -19,6 +21,14 @@ function ReadPostPage({ post }) {
 
   return (
     <FlexColumn className={styles.container}>
+      <Head>
+        <title>{`${post.title} - GenteUni`}</title>
+        <meta name="og:title" property="og:title" content={post.title} />
+        <meta
+          name="description"
+          content={extractTextFromPost(post.content.blocks)}
+        />
+      </Head>
       <PostHeader post={post} />
       <FlexColumn className={styles.content}>
         <RenderHTML json={post.content} />
