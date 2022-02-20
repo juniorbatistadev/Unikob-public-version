@@ -1,4 +1,4 @@
-export default function extractTextFromPost(blocks) {
+export default function extractTextFromPost(blocks, withoutHTML) {
   const text = [];
 
   const getText = (element) => {
@@ -12,13 +12,18 @@ export default function extractTextFromPost(blocks) {
       case "code":
         return element.data.code;
       default:
-        return " ";
+        return element?.data?.text ? element.data.text : " ";
     }
   };
 
   blocks.map((element) => {
     return text.push(getText(element));
   });
+
+  //send only text if without html
+  if (withoutHTML) {
+    return text.join(" ");
+  }
 
   const textWithHtml = text.join(" ");
 

@@ -26,7 +26,7 @@ function ReadPostPage({ post }) {
         <meta name="og:title" property="og:title" content={post.title} />
         <meta
           name="description"
-          content={extractTextFromPost(post.content.blocks)}
+          content={extractTextFromPost(post.content.blocks, true)}
         />
       </Head>
       <PostHeader post={post} />
