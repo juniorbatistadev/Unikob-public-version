@@ -24,15 +24,16 @@ function App({ Component, pageProps }) {
   console.log("Lastest build JR.");
 
   return (
-    <AuthContextProvider>
-      <Head>
-        <title>GenteUni</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AuthContextProvider>
+    <p>testing</p>
+    // <AuthContextProvider>
+    //   <Head>
+    //     <title>GenteUni</title>
+    //     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    //   </Head>
+    //   <Layout>
+    //     <Component {...pageProps} />
+    //   </Layout>
+    // </AuthContextProvider>
   );
 }
 
