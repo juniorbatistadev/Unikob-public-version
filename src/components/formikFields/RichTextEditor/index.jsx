@@ -23,6 +23,42 @@ const RichTextEditor = ({ setFieldValue, name }) => {
           onChange={(e) => setFieldValue(name, e.saver)}
           tools={editorTools}
           placeholder={`Contenido`}
+          i18n={{
+            messages: {
+              toolNames: {
+                Text: "Texto",
+                Heading: "Encabezado",
+                List: "Lista",
+                Quote: "Cita",
+                Code: "Codigo",
+                Delimiter: "Limitador",
+                Link: "Enlance",
+                Marker: "Мarcador",
+                Bold: "Negritas",
+                Italic: "Cursivas",
+                InlineCode: "Codigo Directo",
+              },
+
+              ui: {
+                blockTunes: {
+                  toggler: {
+                    "Click to tune": "Click para ajustar",
+                    "or drag to move": "o arrastra para mover",
+                  },
+                },
+                inlineToolbar: {
+                  converter: {
+                    "Convert to": "Convertir en",
+                  },
+                },
+                toolbar: {
+                  toolbox: {
+                    Add: "Añadir",
+                  },
+                },
+              },
+            },
+          }}
         />
       ) : (
         <Spinner />

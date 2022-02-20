@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Text from "../common/Text";
-import FlexRow from "../common/FlexRow";
-import { getViewsNumberByPostId } from "../../data/queryPostView";
+import { useState, useEffect } from "react";
+import Text from "@components/common/Text";
+import FlexRow from "@components/common/FlexRow";
+import { getViewsNumberByPostId } from "src/data/queryPostView";
 
 const ViewsPost = ({ post }) => {
   const [views, setViews] = useState(0);

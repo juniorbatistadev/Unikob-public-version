@@ -4,12 +4,13 @@ import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
 // import Post from "@components/Post";
 import EmptyIlustration from "@assets/icons/empty.svg";
+import Post from "@components/Post";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
     {
       query: getPostsWithPagination,
-      user,
+      user: user,
       perPage: 10,
     }
   );
@@ -24,7 +25,7 @@ const PostSection = ({ user }) => {
           loader={"Cargando"}
         >
           {items.map((item) => (
-            <div key={item.id}>{item}</div>
+            <Post key={item.id} post={item} />
           ))}
         </InfiniteScroll>
       )}

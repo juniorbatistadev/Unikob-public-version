@@ -167,7 +167,7 @@ export default function ProfilePage({ userId }) {
             <TabsContent
               slug={"section"}
               tabs={{
-                default: <PostSection />,
+                default: <PostSection user={user} />,
                 comments: <CommentsSection owner={user} />,
                 gifts: <p>gifts</p>,
               }}

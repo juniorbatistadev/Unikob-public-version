@@ -27,7 +27,7 @@ export const getPostsWithPagination = async ({ startFrom, user, perPage }) => {
   const query = new Parse.Query(Post);
   query.equalTo("byUser", user);
   query.skip(startFrom);
-  query.include("fromUser");
+  // query.include("fromUser");
   query.descending("createdAt");
   query.limit(perPage);
   query.withCount();

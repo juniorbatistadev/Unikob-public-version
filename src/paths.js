@@ -6,3 +6,4 @@ export const QUESTIONS_PATH = "/questions";
 export const CRUSHS_PATH = "/crushs";
 export const JOBS_PATH = "/jobs";
 export const SETTINGS_PATH = "/settings";
+export const READ_POST_PATH = "/post/:id";

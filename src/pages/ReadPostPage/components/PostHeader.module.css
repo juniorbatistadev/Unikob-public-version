@@ -1,0 +1,27 @@
+.header {
+  margin: 10px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #b9b9b9;
+  margin-bottom: 20px;
+  box-shadow: -5px 8px 0px 0px #308cb8;
+}
+
+.date {
+  color: grey;
+  margin-right: 10px;
+}
+
+.avatar {
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.usernameText {
+  cursor: pointer;
+}
+
+.title {
+  overflow-wrap: break-word;
+}
