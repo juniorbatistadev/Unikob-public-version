@@ -19,10 +19,21 @@ const RenderHTML = ({ json }) => {
           </P>
         );
       case "code":
-        return <Code key={index}>{element.data.code}</Code>;
+        return <Code key={index} data={element.data} />;
+      case "codeBox":
+        return <Code key={index} data={element.data} />;
       case "header":
         return <H key={index} element={element} />;
       case "simpleImage":
+        return (
+          <img
+            key={index}
+            width="100%"
+            alt={element.data.caption}
+            src={element.data.url}
+          />
+        );
+      case "image":
         return (
           <img
             key={index}
@@ -51,7 +62,7 @@ const RenderHTML = ({ json }) => {
         return <Delimiter key={index} />;
 
       default:
-        return <h1 key={index}> *** </h1>;
+        return <p key={index}> *** </p>;
     }
   };
 

@@ -7,3 +7,5 @@ export const CRUSHS_PATH = "/crushs";
 export const JOBS_PATH = "/jobs";
 export const SETTINGS_PATH = "/settings";
 export const READ_POST_PATH = "/post/:id";
+export const CREATE_POST_PATH = "/post/create";
+export const DISCOVER_PATH = "/discover";

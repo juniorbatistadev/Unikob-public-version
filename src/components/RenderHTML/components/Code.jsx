@@ -1,16 +1,16 @@
-// import SyntaxHighlighter from "react-syntax-highlighter";
-// import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import hljs from "highlight.js/lib/common";
+import "highlight.js/styles/vs2015.css";
+import { useEffect } from "react";
 
-const Code = ({ children }) => {
+const Code = ({ data }) => {
+  useEffect(() => {
+    hljs.initHighlighting();
+  }, []);
+
   return (
-    <code>{children}</code>
-    // <SyntaxHighlighter
-    //   language="javascript"
-    //   style={docco}
-    //   customStyle={{ margin: "20px" }}
-    // >
-    //   {children}
-    // </SyntaxHighlighter>
+    <pre>
+      <code>{data.code}</code>
+    </pre>
   );
 };
 

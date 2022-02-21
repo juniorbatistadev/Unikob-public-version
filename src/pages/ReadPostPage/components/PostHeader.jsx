@@ -10,7 +10,7 @@ import A from "@components/common/A";
 import ViewsPost from "@components/Post/ViewsPost";
 import LikesPost from "@components/Post/LikesPost";
 
-export default function PostHeader({ post }) {
+export default function PostHeader({ post, preview }) {
   return (
     <header>
       <FlexColumn className={styles.header}>
@@ -39,22 +39,28 @@ export default function PostHeader({ post }) {
             </FlexRow>
           </A>
         </FlexRow>
-        <FlexRow
-          justifyContent="space-around"
-          alignItems="center"
-          margin="10px"
-        >
-          <FlexRow alignItems="center">
-            <ViewsPost post={post.id} />
+        {!preview && (
+          <FlexRow
+            justifyContent="space-around"
+            alignItems="center"
+            margin="10px"
+          >
+            <FlexRow alignItems="center">
+              <ViewsPost post={post.id} />
+            </FlexRow>
+            <FlexRow alignItems="center">
+              <LikesPost post={post.id} />
+            </FlexRow>
+            <FlexRow alignItems="center">
+              {/* <CommentsStatPost post={post} /> */}
+            </FlexRow>
           </FlexRow>
-          <FlexRow alignItems="center">
-            <LikesPost post={post.id} />
-          </FlexRow>
-          <FlexRow alignItems="center">
-            {/* <CommentsStatPost post={post} /> */}
-          </FlexRow>
-        </FlexRow>
+        )}
       </FlexColumn>
     </header>
   );
 }
+
+PostHeader.defaultProps = {
+  preview: false,
+};

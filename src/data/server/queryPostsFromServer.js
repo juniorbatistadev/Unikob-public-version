@@ -3,12 +3,16 @@ const Post = Parse.Object.extend("Post");
 const query = new Parse.Query(Post);
 
 export const getPostByIdServerSide = async (id) => {
-  const query = new Parse.Query(Post);
-  query.include("byUser");
+  try {
+    const query = new Parse.Query(Post);
+    query.include("byUser");
 
-  const result = await query.get(id);
+    const result = await query.get(id);
 
-  return result;
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default query;

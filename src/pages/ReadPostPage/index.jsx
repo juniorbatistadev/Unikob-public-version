@@ -9,8 +9,6 @@ import Head from "next/head";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 
 function ReadPostPage({ post }) {
-  const { currentUser } = useContext(AuthContext);
-
   // add view to post
   // useEffect(() => {
   //   if (currentUser && currentUser.id !== post.byUser.id) {

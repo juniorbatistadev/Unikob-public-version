@@ -7,7 +7,16 @@ function ReadPost({ data }) {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const postData = await (await getPostByIdServerSide(id)).toJSON();
+
+  const post = await getPostByIdServerSide(id);
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const postData = await post.toJSON();
 
   return {
     props: { data: postData },

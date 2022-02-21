@@ -1,0 +1,63 @@
+{
+    "messages": {
+      "toolNames": {
+        "Text": "Texto",
+        "Heading": "Encabezado",
+        "List": "Lista",
+        "Quote": "Cita",
+        "Code": "Codigo",
+        "Delimiter": "Limitador",
+        "Link": "Enlance",
+        "Marker": "Мarcador",
+        "Bold": "Negritas",
+        "Italic": "Cursivas",
+        "InlineCode": "Codigo Directo",
+        "Image":"Imagenes"
+      },
+
+      "tools":{
+        "image":{
+          "Embed URL": "URL de la imagen"
+        }
+      },
+
+      "ui": {
+        "blockTunes": {
+          "toggler": {
+            "Click to tune": "Click para ajustar",
+            "or drag to move": "o arrastra para mover"
+          }
+        },
+        "inlineToolbar": {
+          "converter": {
+            "Convert to": "Convertir en"
+          }
+        },
+        "toolbar": {
+          "toolbox": {
+            "Add": "Añadir"
+          }
+        }
+      },
+
+      "blockTunes": {
+        "delete": {
+          "Delete": "Borrar"
+        },
+        "moveUp": {
+          "Move up": "Mover Hacia Arriba"
+        },
+        "moveDown": {
+          "Move down": "Mover Hacia Abajo"
+        }
+      },
+
+      "inlineToolbar": {
+        "converter": {
+          "Convert to": "Convertir en"
+        }
+      }
+    
+  }
+
+}

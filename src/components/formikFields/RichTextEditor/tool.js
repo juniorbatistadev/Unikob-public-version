@@ -4,9 +4,10 @@ import List from "@editorjs/list";
 import Code from "@editorjs/code";
 import Delimiter from "@editorjs/delimiter";
 import InlineCode from "@editorjs/inline-code";
-import SimpleImage from "@editorjs/simple-image";
 import Header from "@editorjs/header";
 import Quote from "@editorjs/quote";
+import InlineImage from "editorjs-inline-image";
+import CodeBox from "@bomdi/codebox";
 
 // import LinkTool from "@editorjs/link";
 // import Image from "@editorjs/image";
@@ -41,7 +42,20 @@ const constants = {
   quote: Quote,
   delimiter: Delimiter,
   inlineCode: InlineCode,
-  simpleImage: SimpleImage,
+
+  image: {
+    class: InlineImage,
+    inlineToolbar: true,
+    config: {
+      embed: {
+        display: true,
+      },
+      unsplash: {
+        appName: "Gente Uni",
+        clientId: process.env.NEXT_PUBLIC_APP_UNSPLASH_ACCESS_KEY,
+      },
+    },
+  },
 };
 
 export default constants;
