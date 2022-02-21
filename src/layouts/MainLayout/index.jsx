@@ -13,8 +13,8 @@ function MainLayout({ children }) {
       <div className={styles["main-container"]} id="main-scrollable-container">
         <SideBar className={styles["sidebar"]} />
 
-        <div className={styles["content"]}>{children}</div>
-        <div className={styles["right-side-bar"]}>
+        <main className={styles["content"]}>{children}</main>
+        <aside className={styles["right-side-bar"]}>
           <p style={{ marginTop: 10 }}> Ads </p>
           <img
             alt="Ad"
@@ -22,7 +22,7 @@ function MainLayout({ children }) {
             width="200"
             src="https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/google-display-ad-example.png?kRkFYA55yxVmhzZfSxNc2feg3ogYUcn9&itok=TXDi_SjK"
           />
-        </div>
+        </aside>
       </div>
     </div>
   );

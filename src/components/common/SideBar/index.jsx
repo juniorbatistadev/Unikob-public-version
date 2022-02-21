@@ -38,7 +38,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
   };
 
   return (
-    <div className={className}>
+    <nav className={className}>
       <ArrowIcon
         className={styles["close-button"]}
         alt="close"
@@ -130,7 +130,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
         </div>
         <span>Contactanos!</span>
       </div>
-    </div>
+    </nav>
   );
 }
 

@@ -29,6 +29,8 @@
 }
 
 .content {
+  max-width: 70%;
+
   flex: 3;
   min-height: calc(100vh - 60px);
 }
@@ -48,5 +50,9 @@
 
   .right-side-bar {
     display: none;
+  }
+
+  .content {
+    max-width: 100%;
   }
 }
