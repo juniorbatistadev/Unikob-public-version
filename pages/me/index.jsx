@@ -1,4 +1,4 @@
-import ProfilePage from "@pages/ProfilePage";
+import ProfilePage from "src/features/ProfilePage";
 import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";

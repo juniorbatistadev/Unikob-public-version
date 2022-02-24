@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import Button from "@components/common/Button";
 import Title from "@components/common/Title";
 import { AuthContext } from "src/contexts/AuthContext";
-import WelcomeLoggedUser from "@pages/HomePage/WelcomeLoggedUser";
+import WelcomeLoggedUser from "src/features/HomePage/WelcomeLoggedUser";
 
 function AuthSection() {
   const [isTryingToLogin, setIsTryingToLogin] = useState(true);

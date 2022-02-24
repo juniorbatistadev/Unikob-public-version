@@ -1,4 +1,4 @@
-import ReadPostPage from "@pages/ReadPostPage";
+import ReadPostPage from "@pages/PostFeature/ReadPostPage";
 import { getPostByIdServerSide } from "src/data/server/queryPostsFromServer";
 
 function ReadPost({ data }) {

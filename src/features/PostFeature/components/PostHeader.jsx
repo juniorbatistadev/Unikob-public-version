@@ -7,8 +7,8 @@ import Moment from "react-moment";
 import "moment/locale/es";
 import Avatar from "@components/common/Avatar";
 import A from "@components/common/A";
-import ViewsPost from "@components/Post/ViewsPost";
-import LikesPost from "@components/Post/LikesPost";
+import ViewsPost from "@components/PostCard/ViewsPost";
+import LikesPost from "@components/PostCard/LikesPost";
 
 export default function PostHeader({ post, preview }) {
   return (

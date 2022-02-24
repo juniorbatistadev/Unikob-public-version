@@ -1,11 +1,11 @@
 import FlexColumn from "@components/common/FlexColumn";
 import RenderHTML from "@components/RenderHTML";
 import styles from "./index.module.css";
-import PostHeader from "./components/PostHeader";
+import PostHeader from "../components/PostHeader";
 import Head from "next/head";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 import CommentsSection from "@components/CommentsSection";
-import LikePostButton from "./components/LikePostButton";
+import LikePostButton from "../components/LikePostButton";
 import { useContext } from "react";
 import { AuthContext } from "@context/AuthContext";
 import FlexRow from "@components/common/FlexRow";

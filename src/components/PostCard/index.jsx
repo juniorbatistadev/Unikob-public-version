@@ -11,7 +11,7 @@ import Moment from "react-moment";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 import { useRouter } from "next/router";
 
-const Post = ({ post }) => {
+const PostCard = ({ post }) => {
   const { push } = useRouter();
 
   const navigate = (test) => push(test);
@@ -61,4 +61,4 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post;
+export default PostCard;

@@ -4,7 +4,7 @@ import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
 // import Post from "@components/Post";
 import EmptyIlustration from "@assets/icons/empty.svg";
-import Post from "@components/Post";
+import Post from "@components/PostCard";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
