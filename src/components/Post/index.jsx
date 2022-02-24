@@ -48,7 +48,7 @@ const Post = ({ post }) => {
       </FlexRow>
       <FlexRow justifyContent="space-around" alignItems="center" margin="10px">
         <FlexRow alignItems="center">
-          <ViewsPost post={post} />
+          <ViewsPost views={post.attributes.views} />
         </FlexRow>
         <FlexRow alignItems="center">
           <LikesPost post={post} />

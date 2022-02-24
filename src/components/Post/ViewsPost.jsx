@@ -1,21 +1,13 @@
-import { useState, useEffect } from "react";
 import Text from "@components/common/Text";
 import FlexRow from "@components/common/FlexRow";
-import { getViewsNumberByPostId } from "src/data/queryPostView";
 
-const ViewsPost = ({ post }) => {
-  const [views, setViews] = useState(0);
-
-  useEffect(() => {
-    getViewsNumberByPostId(post).then((data) => setViews(data));
-  }, [post]);
-
+const ViewsPost = ({ views }) => {
   return (
-    <FlexRow>
+    <FlexRow alignItems="center">
       <span role="img" aria-label="Eyes">
         👀
       </span>
-      <Text text={`Views (${views})`} />
+      <Text text={`Views (${views ?? 0})`} />
     </FlexRow>
   );
 };

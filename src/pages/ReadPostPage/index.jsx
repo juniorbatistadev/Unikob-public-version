@@ -1,22 +1,11 @@
-import { useEffect, useContext } from "react";
 import FlexColumn from "@components/common/FlexColumn";
 import RenderHTML from "@components/RenderHTML";
 import styles from "./index.module.css";
-import { AuthContext } from "@context/AuthContext";
-import { saveView } from "src/data/queryPostView";
 import PostHeader from "./components/PostHeader";
 import Head from "next/head";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 
 function ReadPostPage({ post }) {
-  // add view to post
-  // useEffect(() => {
-  //   if (currentUser && currentUser.id !== post.byUser.id) {
-  //     console.log(currentUser, post.byUser.objectId);
-  //     saveView(currentUser, post);
-  //   }
-  // }, [post, currentUser]);
-
   return (
     <FlexColumn className={styles.container}>
       <Head>

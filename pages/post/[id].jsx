@@ -16,7 +16,13 @@ export async function getServerSideProps(context) {
     };
   }
 
+  post.fetch();
+  post.increment("views");
+  post.save();
+
+  //fix views number
   const postData = await post.toJSON();
+  postData.views = post.attributes.views;
 
   return {
     props: { data: postData },
