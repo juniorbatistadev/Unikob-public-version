@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import PostHeader from "./components/PostHeader";
 import Head from "next/head";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
+import CommentsSection from "@components/CommentsSection";
 
 function ReadPostPage({ post }) {
   return (
@@ -19,6 +20,9 @@ function ReadPostPage({ post }) {
       <PostHeader post={post} />
       <FlexColumn className={styles.content}>
         <RenderHTML json={post.content} />
+      </FlexColumn>
+      <FlexColumn>
+        <CommentsSection section={post.objectId} />
       </FlexColumn>
     </FlexColumn>
   );

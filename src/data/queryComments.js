@@ -1,36 +1,56 @@
 import Parse from "parse";
 
-const Comment = Parse.Object.extend("ProfileComment");
-const query = new Parse.Query(Comment);
+const Comment = Parse.Object.extend("Comment");
+export const query = new Parse.Query(Comment);
 
-export const saveComment = (text, toUser) => {
+export const saveComment = ({ text, createdBy, section, parentComment }) => {
   const comment = new Comment();
   comment.set("text", text);
-  comment.set("toUser", toUser);
+  comment.set("createdBy", createdBy);
+  comment.set("section", section);
+  parentComment && comment.set("parentComment", parentComment);
   return comment.save();
-};
-
-export const getProfileCommentByUser = (toUser) => {
-  const query = new Parse.Query(Comment);
-  query.equalTo("toUser", toUser);
-  return query.find();
 };
 
 export const getCommentsWithPagination = async ({
   startFrom,
-  user,
+  queryData,
   perPage,
 }) => {
   const query = new Parse.Query(Comment);
-  query.equalTo("toUser", user);
+  query.equalTo("section", queryData);
+  query.doesNotExist("parentComment");
   query.skip(startFrom);
-  query.include("fromUser");
+  query.include("createdBy");
   query.descending("createdAt");
   query.limit(perPage);
   query.withCount();
   const result = await query.find();
 
   return result;
+};
+
+export const getSubCommentsWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(Comment);
+  query.equalTo("parentComment", queryData);
+  query.skip(startFrom);
+  query.include("createdBy");
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.withCount();
+  const result = await query.find();
+
+  return result;
+};
+
+export const deleteComment = async (commentId) => {
+  const query = new Parse.Query(Comment);
+  const comment = await query.get(commentId);
+  return await comment.destroy();
 };
 
 export default query;

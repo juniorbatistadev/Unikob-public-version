@@ -32,8 +32,7 @@ import styles from "./ProfilePage.module.css";
 import PostSection from "./PostSection";
 
 import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
-import CommentSection from "./CommentSection";
-import CommentsSection from "@components/CommentsSection";
+import ProfileCommentSection from "./ProfileCommentSection";
 
 export default function ProfilePage({ userId }) {
   const [user, setUser] = useState();
@@ -168,7 +167,7 @@ export default function ProfilePage({ userId }) {
               slug={"section"}
               tabs={{
                 default: <PostSection user={user} />,
-                comments: <CommentsSection owner={user} />,
+                comments: <ProfileCommentSection user={user} />,
                 gifts: <p>gifts</p>,
               }}
               default={<PostSection />}

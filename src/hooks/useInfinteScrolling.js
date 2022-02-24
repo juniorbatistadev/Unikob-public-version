@@ -64,11 +64,6 @@ function useInfiniteScrolling({ query, perPage, user, queryData }) {
     fetchData();
   }, [perPage, query, user, queryData]);
 
-  //fetch next page
-  // const nextPage = () => {
-  //   dispatch({ type: "FETCH_NEXT_PAGE", payload: { perPage: perPage } });
-  // };
-
   //reload when startFrom change
   const nextPage = useCallback(async () => {
     const data = await query({
