@@ -49,7 +49,7 @@ export default function PostHeader({ post, preview }) {
               <ViewsPost views={post.views} />
             </FlexRow>
             <FlexRow alignItems="center">
-              <LikesPost post={post.id} />
+              <LikesPost postId={post.objectId} />
             </FlexRow>
             <FlexRow alignItems="center">
               {/* <CommentsStatPost post={post} /> */}

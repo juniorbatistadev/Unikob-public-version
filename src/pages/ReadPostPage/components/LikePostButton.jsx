@@ -2,6 +2,26 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
 import Button from "@components/common/Button";
 import { saveLike, isPostLiked, deleteLike } from "src/data/queryPostLike";
+import styles from "./LikePostButton.module.css";
+import { getPostById } from "src/data/queryPosts";
+
+const LikePostButtonContainer = ({ post: postData }) => {
+  const [post, setPost] = useState();
+
+  //load post
+  useEffect(() => {
+    const getPost = async () => {
+      const PostObject = await getPostById(postData.objectId);
+      setPost(PostObject);
+    };
+    getPost();
+  }, [postData.objectId]);
+  return (
+    <>
+      <LikePostButton post={post} />
+    </>
+  );
+};
 
 const LikePostButton = ({ post }) => {
   const { currentUser } = useContext(AuthContext);
@@ -23,17 +43,15 @@ const LikePostButton = ({ post }) => {
 
   return (
     <Button
-      padding="10px"
-      margin="10px"
       typeStyle={isLiked ? "secondary" : "primary"}
       onClick={isLiked ? onDeleteLike : onLike}
     >
-      {isLiked ? "Liked" : "Like"}
+      <span className={styles.buttonText}> {isLiked ? "Liked" : "Like"}</span>
       <span role="img" aria-label="heart">
-        💙
+        🤍
       </span>
     </Button>
   );
 };
 
-export default LikePostButton;
+export default LikePostButtonContainer;

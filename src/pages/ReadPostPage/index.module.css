@@ -27,6 +27,7 @@
 }
 
 .actionButtons {
+  margin: 10px 0px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -34,7 +35,7 @@
 @media (max-width: 767px) {
   .actionButtons {
     flex-direction: column;
-    margin: 10px;
+    margin: 10px 0px;
     align-items: unset;
   }
 

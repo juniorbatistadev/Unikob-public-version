@@ -32,7 +32,7 @@
 }
 
 .actions {
-  color: rgb(64, 64, 181);
+  color: #4173b2;
   font-size: 11px;
   display: flex;
 }
@@ -43,7 +43,7 @@
 }
 
 .loadMore {
-  color: rgb(64, 64, 181);
+  color: #4173b2;
   font-size: 12px;
   cursor: pointer;
 }

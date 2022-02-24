@@ -3,7 +3,7 @@ import FlexColumn from "@components/common/FlexColumn";
 
 function ProfileCommentSection({ user }) {
   return (
-    <FlexColumn>
+    <FlexColumn margin="15px 0px">
       <CommentSection section={user.id} />
     </FlexColumn>
   );
