@@ -7,7 +7,7 @@ import extractTextFromPost from "src/helpers/extractTextFromPost";
 
 function ReadPostPage({ post }) {
   return (
-    <FlexColumn className={styles.container}>
+    <FlexColumn>
       <Head>
         <title>{`${post.title} - GenteUni`}</title>
         <meta name="og:title" property="og:title" content={post.title} />
