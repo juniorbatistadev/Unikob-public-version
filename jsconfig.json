@@ -7,7 +7,7 @@
         "@context/*": ["src/contexts/*"],
         "@hooks/*": ["src/hooks/*"],
         "@public/*": ["public/*"],
-        "@pages/*": ["src/pages/*"]
+        "@pages/*": ["src/features/*"]
       }
       
     }

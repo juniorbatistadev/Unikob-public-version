@@ -1,4 +1,4 @@
-import FeedPage from "@pages/FeedPage";
+import FeedPage from "src/features/FeedPage";
 
 export default function Home() {
   return <FeedPage />;

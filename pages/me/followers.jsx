@@ -1,4 +1,4 @@
-import FollowersPage from "@pages/ProfilePage/FollowersPage";
+import FollowersPage from "src/features/ProfilePage/FollowersPage";
 import { useContext } from "react";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 

@@ -27,7 +27,6 @@ export const deleteLike = async (fromUser, post) => {
 
   return result.destroy();
 };
-export default query;
 
 export const getLikesNumberByPostId = async (post) => {
   const query = new Parse.Query(PostLike);
@@ -36,3 +35,5 @@ export const getLikesNumberByPostId = async (post) => {
 
   return likes;
 };
+
+export default query;

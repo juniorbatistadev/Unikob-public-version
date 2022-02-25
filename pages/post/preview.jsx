@@ -1,4 +1,4 @@
-import PreviewPostPage from "@pages/ReadPostPage/PreviewPostPage";
+import PreviewPostPage from "@pages/PostFeature/PreviewPostPage";
 
 export default function PreviewPost() {
   return <PreviewPostPage />;
