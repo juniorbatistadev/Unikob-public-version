@@ -17,8 +17,6 @@ const PostCard = ({ post }) => {
 
   const navigate = (test) => push(test);
 
-  console.log(post);
-
   return (
     <FlexColumn
       className={styles.header}

@@ -4,7 +4,7 @@ function Title({ text, fontSize, margin, typeStyle, className, ...props }) {
   const classNames = [styles[typeStyle], className].join(" ");
 
   return (
-    <h2
+    <h1
       className={classNames}
       style={{
         fontSize,
@@ -13,7 +13,7 @@ function Title({ text, fontSize, margin, typeStyle, className, ...props }) {
       {...props}
     >
       {text}
-    </h2>
+    </h1>
   );
 }
 

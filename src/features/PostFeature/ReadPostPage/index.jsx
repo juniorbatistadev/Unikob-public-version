@@ -16,6 +16,7 @@ import Alert from "@components/common/Alert";
 import { deletePost } from "src/data/queryPosts";
 import { useRouter } from "next/router";
 import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
+import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -41,15 +42,26 @@ function ReadPostPage({ post }) {
     push(EDIT_POST_PATH.replace(":id", post.objectId));
   };
 
+  const firstImageUrl = extractFirstImageFromPost(post.content.blocks);
+
   return (
     <FlexColumn>
       <Head>
         <title>{`${post.title} - GenteUni`}</title>
-        <meta name="og:title" property="og:title" content={post.title} />
         <meta
           name="description"
           content={extractTextFromPost(post.content.blocks, true)}
         />
+        <meta name="og:title" property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={extractTextFromPost(post.content.blocks, true)}
+        />
+        {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
+
+        <meta name="twitter:card" content="summary"></meta>
+        <meta name="twitter:site" content="@genteuniapp" />
+        <meta name="twitter:creator" content="@genteuniapp" />
       </Head>
       <PostHeader post={post} />
       <FlexColumn className={styles.content}>

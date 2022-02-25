@@ -4,7 +4,6 @@ import FlexRow from "@components/common/FlexRow";
 import { getCommentsNumberBySectionId } from "src/data/queryComments";
 
 const CommentsStatPost = ({ post }) => {
-  console.log(post);
   const [comments, setComments] = useState(0);
 
   useEffect(() => {
