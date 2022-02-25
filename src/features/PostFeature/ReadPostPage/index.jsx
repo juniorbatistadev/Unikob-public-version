@@ -63,7 +63,10 @@ function ReadPostPage({ post }) {
           property="og:description"
           content={extractTextFromPost(post.content.blocks, true)}
         />
-        <meta property="og:url" content={asPath} />
+        <meta
+          property="og:url"
+          content={`https://genteuni-next.vercel.app/${asPath}`}
+        />
         {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
 
         <meta name="twitter:card" content="summary"></meta>
