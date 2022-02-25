@@ -5,7 +5,7 @@ import Button from "@components/common/Button";
 import { ErrorMessage, TextArea } from "@components/formikFields";
 import { Formik, Form } from "formik";
 import { savePost } from "src/data/queryPosts";
-import showAlert from "src/helpers/showAlert/showAlert";
+import showAlert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
@@ -71,8 +71,8 @@ function WritePostPage() {
               localStorage.removeItem("editorSave");
               push(READ_POST_PATH.replace(":id", result.id));
             } catch (error) {
-              showAlert({
-                type: "error",
+              Alert.fire({
+                icon: "error",
                 text: `Hubo un error: ${error}`,
               });
             }

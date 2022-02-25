@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 import Button from "@components/common/Button";
 import FacebookLogin from "@components/auth/FacebookLogin";
 import { AuthContext } from "src/contexts/AuthContext";
-import showAlert from "src/helpers/showAlert/showAlert";
+import Alert from "@components/common/Alert";
 import { useRouter } from "next/router";
 
 function LoginForm() {
@@ -20,9 +20,9 @@ function LoginForm() {
       setCurrentUser(Parse.User.current());
       router.push("/feed");
     } catch {
-      showAlert({
+      Alert.fire({
         text: "Contraseña o Correo Incorrecto",
-        type: "error",
+        icon: "error",
       });
     }
   };

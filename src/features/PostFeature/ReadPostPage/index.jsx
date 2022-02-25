@@ -11,10 +11,14 @@ import { AuthContext } from "@context/AuthContext";
 import FlexRow from "@components/common/FlexRow";
 import ShareButtons from "@components/ShareButtons";
 import useIsMounted from "src/hooks/useIsMounted";
+import Button from "@components/common/Button";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { isMounted } = useIsMounted();
+
+  const onDelete = () => {};
+
   return (
     <FlexColumn>
       <Head>
@@ -38,6 +42,12 @@ function ReadPostPage({ post }) {
               text="Encontre esto en Gente Uni"
             />
           )}
+          {currentUser && (
+            <Button typeStyle="secondary" margin="0px 10px 0px 0px">
+              Editar
+            </Button>
+          )}
+          {currentUser && <Button typeStyle="secondary">Borrar</Button>}
         </FlexRow>
         <CommentsSection section={post.objectId} />
       </FlexColumn>
