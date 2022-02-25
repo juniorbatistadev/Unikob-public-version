@@ -65,7 +65,7 @@ function ReadPostPage({ post }) {
         />
         <meta
           property="og:url"
-          content={`https://genteuni-next.vercel.app/${asPath}`}
+          content={`https://genteuni-next.vercel.app${asPath}`}
         />
         {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
 
