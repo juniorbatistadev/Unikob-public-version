@@ -3,12 +3,21 @@ import Parse from "parse";
 const Post = Parse.Object.extend("Post");
 const query = new Parse.Query(Post);
 
-export const savePost = async ({ user, title, content, postOnSchool }) => {
+export const savePost = async ({ user, title, content }) => {
   const post = new Post();
   post.set("byUser", user);
   post.set("title", title);
   post.set("content", content);
-  post.set("postOnSchool", postOnSchool);
+  const result = await post.save();
+
+  return result;
+};
+
+export const updatePost = async ({ user, title, content, post }) => {
+  post.set("byUser", user);
+  post.set("title", title);
+  post.set("content", content);
+  post.set("edited", true);
   const result = await post.save();
 
   return result;
@@ -24,6 +33,8 @@ export const getPostById = async (id) => {
 };
 
 export const getPostsWithPagination = async ({ startFrom, user, perPage }) => {
+  console.log("pag");
+
   const query = new Parse.Query(Post);
   query.equalTo("byUser", user);
   query.skip(startFrom);
@@ -34,6 +45,13 @@ export const getPostsWithPagination = async ({ startFrom, user, perPage }) => {
   const result = await query.find();
 
   return result;
+};
+
+export const deletePost = async (postId) => {
+  const query = new Parse.Query(Post);
+  const result = await query.get(postId);
+
+  return result.destroy();
 };
 
 export default query;

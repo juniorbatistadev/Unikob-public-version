@@ -21,13 +21,6 @@ function App({ Component, pageProps }) {
   const DefaultLayout = MainLayout;
   const Layout = Component.layout || DefaultLayout;
 
-  console.log(
-    "Lastest build JR.",
-    process.env.NEXT_PUBLIC_APP_ID,
-    process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY,
-    process.env.NODE_ENV
-  );
-
   return (
     <AuthContextProvider>
       <Head>

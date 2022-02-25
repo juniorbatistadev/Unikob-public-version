@@ -9,7 +9,7 @@ const P = ({ element }) => {
         <a
           href={node.getAttribute("href")}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
         >
           {children}
         </a>

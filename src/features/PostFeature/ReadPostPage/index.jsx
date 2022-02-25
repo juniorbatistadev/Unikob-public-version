@@ -1,0 +1,101 @@
+import FlexColumn from "@components/common/FlexColumn";
+import RenderHTML from "@components/RenderHTML";
+import styles from "./index.module.css";
+import PostHeader from "../components/PostHeader";
+import Head from "next/head";
+import extractTextFromPost from "src/helpers/extractTextFromPost";
+import CommentsSection from "@components/CommentsSection";
+import LikePostButton from "../components/LikePostButton";
+import { useContext } from "react";
+import { AuthContext } from "@context/AuthContext";
+import FlexRow from "@components/common/FlexRow";
+import ShareButtons from "@components/ShareButtons";
+import useIsMounted from "src/hooks/useIsMounted";
+import Button from "@components/common/Button";
+import Alert from "@components/common/Alert";
+import { deletePost } from "src/data/queryPosts";
+import { useRouter } from "next/router";
+import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
+import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
+
+function ReadPostPage({ post }) {
+  const { currentUser } = useContext(AuthContext);
+  const { isMounted } = useIsMounted();
+  const { push } = useRouter();
+
+  const onDelete = async () => {
+    const response = await Alert.fire({
+      text: "¿Estas seguro que quieres borrar este post?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (response.isConfirmed) {
+      await push(FEED_PATH);
+      await deletePost(post.objectId);
+    }
+  };
+
+  const onEdit = () => {
+    push(EDIT_POST_PATH.replace(":id", post.objectId));
+  };
+
+  const firstImageUrl = extractFirstImageFromPost(post.content.blocks);
+
+  return (
+    <FlexColumn>
+      <Head>
+        <title>{`${post.title} - GenteUni`}</title>
+        <meta
+          name="description"
+          content={extractTextFromPost(post.content.blocks, true)}
+        />
+        <meta name="og:title" property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={extractTextFromPost(post.content.blocks, true)}
+        />
+        {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
+
+        <meta name="twitter:card" content="summary"></meta>
+        <meta name="twitter:site" content="@genteuniapp" />
+        <meta name="twitter:creator" content="@genteuniapp" />
+      </Head>
+      <PostHeader post={post} />
+      <FlexColumn className={styles.content}>
+        <RenderHTML json={post.content} />
+      </FlexColumn>
+      <FlexColumn>
+        <FlexRow className={styles.actionButtons}>
+          {currentUser && <LikePostButton post={post} />}
+          {isMounted && (
+            <ShareButtons
+              title={post.title}
+              text="Encontre esto en Gente Uni"
+            />
+          )}
+          {currentUser && currentUser.id === post.byUser.objectId && (
+            <>
+              <Button
+                typeStyle="secondary"
+                margin="0px 10px 0px 0px"
+                onClick={onEdit}
+              >
+                Editar
+              </Button>
+
+              <Button typeStyle="secondary" onClick={onDelete}>
+                Borrar
+              </Button>
+            </>
+          )}
+        </FlexRow>
+        <CommentsSection section={post.objectId} />
+      </FlexColumn>
+    </FlexColumn>
+  );
+}
+
+export default ReadPostPage;

@@ -1,4 +1,4 @@
-import ProfilePage from "@pages/ProfilePage";
+import ProfilePage from "src/features/ProfilePage";
 import { useRouter } from "next/router";
 
 function Profile() {

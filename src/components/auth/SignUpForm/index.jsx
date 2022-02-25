@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 import FacebookLogin from "@components/auth/FacebookLogin";
 import { CheckBox, TextField, ErrorMessage } from "@components/formikFields";
 import { AuthContext } from "src/contexts/AuthContext";
-import showAlert from "src/helpers/showAlert/showAlert";
+import Alert from "@components/common/Alert";
 
 function SignUpForm() {
   const { setCurrentUser } = useContext(AuthContext);
@@ -20,10 +20,10 @@ function SignUpForm() {
     try {
       await user.signUp();
       setCurrentUser(Parse.User.current());
-      showAlert({
+      Alert.fire({
         title: "Usuario Creado!",
         text: "Te enviamos un correo para verificar tu cuenta",
-        type: "success",
+        icon: "success",
       });
     } catch (error) {
       // Show the error message  and let the user try again.
