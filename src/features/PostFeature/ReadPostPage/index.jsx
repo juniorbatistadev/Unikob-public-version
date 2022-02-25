@@ -52,7 +52,13 @@ function ReadPostPage({ post }) {
           name="description"
           content={extractTextFromPost(post.content.blocks, true)}
         />
-        <meta name="og:title" property="og:title" content={post.title} />
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="es" />
+        <meta
+          property="fb:app_id"
+          content={process.env.NEXT_PUBLIC_APP_FACEBOOK_APP_ID}
+        />
+        <meta property="og:title" property="og:title" content={post.title} />
         <meta
           property="og:description"
           content={extractTextFromPost(post.content.blocks, true)}
