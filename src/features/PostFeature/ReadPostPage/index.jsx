@@ -21,7 +21,7 @@ import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { isMounted } = useIsMounted();
-  const { push } = useRouter();
+  const { push, asPath } = useRouter();
 
   const onDelete = async () => {
     const response = await Alert.fire({
@@ -52,11 +52,18 @@ function ReadPostPage({ post }) {
           name="description"
           content={extractTextFromPost(post.content.blocks, true)}
         />
-        <meta name="og:title" property="og:title" content={post.title} />
+        <meta property="og:type" content="article" />
+        <meta property="og:locale" content="es" />
+        <meta
+          property="fb:app_id"
+          content={process.env.NEXT_PUBLIC_APP_FACEBOOK_APP_ID}
+        />
+        <meta property="og:title" property="og:title" content={post.title} />
         <meta
           property="og:description"
           content={extractTextFromPost(post.content.blocks, true)}
         />
+        <meta property="og:url" content={asPath} />
         {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
 
         <meta name="twitter:card" content="summary"></meta>
