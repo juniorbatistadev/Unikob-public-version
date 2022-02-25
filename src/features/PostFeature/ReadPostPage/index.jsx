@@ -12,12 +12,34 @@ import FlexRow from "@components/common/FlexRow";
 import ShareButtons from "@components/ShareButtons";
 import useIsMounted from "src/hooks/useIsMounted";
 import Button from "@components/common/Button";
+import Alert from "@components/common/Alert";
+import { deletePost } from "src/data/queryPosts";
+import { useRouter } from "next/router";
+import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { isMounted } = useIsMounted();
+  const { push } = useRouter();
 
-  const onDelete = () => {};
+  const onDelete = async () => {
+    const response = await Alert.fire({
+      text: "¿Estas seguro que quieres borrar este post?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (response.isConfirmed) {
+      await push(FEED_PATH);
+      await deletePost(post.objectId);
+    }
+  };
+
+  const onEdit = () => {
+    push(EDIT_POST_PATH.replace(":id", post.objectId));
+  };
 
   return (
     <FlexColumn>
@@ -42,12 +64,21 @@ function ReadPostPage({ post }) {
               text="Encontre esto en Gente Uni"
             />
           )}
-          {currentUser && (
-            <Button typeStyle="secondary" margin="0px 10px 0px 0px">
-              Editar
-            </Button>
+          {currentUser && currentUser.id === post.byUser.objectId && (
+            <>
+              <Button
+                typeStyle="secondary"
+                margin="0px 10px 0px 0px"
+                onClick={onEdit}
+              >
+                Editar
+              </Button>
+
+              <Button typeStyle="secondary" onClick={onDelete}>
+                Borrar
+              </Button>
+            </>
           )}
-          {currentUser && <Button typeStyle="secondary">Borrar</Button>}
         </FlexRow>
         <CommentsSection section={post.objectId} />
       </FlexColumn>

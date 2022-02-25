@@ -6,7 +6,7 @@ const Alert = withReactContent(
   Swal.mixin({
     customClass: {
       confirmButton: styles.confirmButton,
-      cancelButton: "btn btn-danger",
+      cancelButton: styles.cancelButton,
     },
     backdrop: `rgba(65, 115, 178, 0.45)`,
     buttonsStyling: false,

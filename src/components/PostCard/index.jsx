@@ -10,11 +10,14 @@ import ViewsPost from "./ViewsPost";
 import Moment from "react-moment";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 import { useRouter } from "next/router";
+import CommentsStatPost from "./CommentsStatPost";
 
 const PostCard = ({ post }) => {
   const { push } = useRouter();
 
   const navigate = (test) => push(test);
+
+  console.log(post);
 
   return (
     <FlexColumn
@@ -51,10 +54,10 @@ const PostCard = ({ post }) => {
           <ViewsPost views={post.attributes.views} />
         </FlexRow>
         <FlexRow alignItems="center">
-          <LikesPost post={post} />
+          <LikesPost postId={post.id} />
         </FlexRow>
         <FlexRow alignItems="center">
-          {/* <CommentsStatPost post={post} /> */}
+          <CommentsStatPost post={post.id} />
         </FlexRow>
       </FlexRow>
     </FlexColumn>

@@ -9,6 +9,7 @@ import Avatar from "@components/common/Avatar";
 import A from "@components/common/A";
 import ViewsPost from "@components/PostCard/ViewsPost";
 import LikesPost from "@components/PostCard/LikesPost";
+import CommentsStatPost from "@components/PostCard/CommentsStatPost";
 
 export default function PostHeader({ post, preview }) {
   return (
@@ -20,11 +21,14 @@ export default function PostHeader({ post, preview }) {
           margin="0px 0px 15px 0px"
           className={styles.title}
         />
+
         <FlexRow alignItems="center">
           <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
             {post.createdAt}
           </Moment>
+
           <Text text="|" />
+
           <A href={`/profile/${post.byUser.objectId}`}>
             <FlexRow>
               <Avatar
@@ -39,6 +43,8 @@ export default function PostHeader({ post, preview }) {
             </FlexRow>
           </A>
         </FlexRow>
+        {post.edited && <Text text="Editado" fontSize="14px" />}
+
         {!preview && (
           <FlexRow
             justifyContent="space-around"
@@ -52,7 +58,7 @@ export default function PostHeader({ post, preview }) {
               <LikesPost postId={post.objectId} />
             </FlexRow>
             <FlexRow alignItems="center">
-              {/* <CommentsStatPost post={post} /> */}
+              <CommentsStatPost post={post.objectId} />
             </FlexRow>
           </FlexRow>
         )}

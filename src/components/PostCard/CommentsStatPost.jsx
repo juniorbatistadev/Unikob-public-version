@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Text from "@components/common/Text";
 import FlexRow from "@components/common/FlexRow";
-import { getCommentsNumberByPostId } from "src/data/queryPostComment";
+import { getCommentsNumberBySectionId } from "src/data/queryComments";
 
 const CommentsStatPost = ({ post }) => {
+  console.log(post);
   const [comments, setComments] = useState(0);
 
   useEffect(() => {
-    getCommentsNumberByPostId(post).then((data) => setComments(data));
+    getCommentsNumberBySectionId(post).then((data) => setComments(data));
   }, [post]);
 
   return (

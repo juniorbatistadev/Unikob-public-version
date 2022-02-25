@@ -53,4 +53,12 @@ export const deleteComment = async (commentId) => {
   return await comment.destroy();
 };
 
+export const getCommentsNumberBySectionId = async (sectionId) => {
+  const query = new Parse.Query(Comment);
+  query.equalTo("section", sectionId);
+  const comments = await query.count();
+
+  return comments;
+};
+
 export default query;

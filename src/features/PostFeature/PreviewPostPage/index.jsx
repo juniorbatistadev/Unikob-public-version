@@ -44,7 +44,7 @@ function PreviewPostPage() {
         <>
           <PostHeader post={post} preview={true} />
           <FlexColumn className={styles.content}>
-            <RenderHTML json={post} />
+            <RenderHTML json={post.content} />
           </FlexColumn>
         </>
       )}

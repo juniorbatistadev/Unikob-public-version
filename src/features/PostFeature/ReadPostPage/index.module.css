@@ -36,7 +36,7 @@
   .actionButtons {
     flex-direction: column;
     margin: 10px 0px;
-    align-items: unset;
+    align-items: center;
   }
 
   .content {

@@ -4,7 +4,7 @@ import Spinner from "@components/common/Spinner";
 
 const i18n = require("./i18n.json");
 
-const RichTextEditor = ({ setFieldValue, name }) => {
+const RichTextEditor = ({ setFieldValue, name, data }) => {
   const [editorTools, setEditorTools] = useState();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const RichTextEditor = ({ setFieldValue, name }) => {
     <>
       {editorTools ? (
         <ReactEditorJS
-          data={JSON.parse(localStorage.getItem("editorSave"))}
+          data={data}
           onChange={(e) => setFieldValue(name, e.saver)}
           tools={editorTools}
           placeholder={`Aqui va tu contenido`}

@@ -4,8 +4,8 @@ import FlexColumn from "@components/common/FlexColumn";
 import Button from "@components/common/Button";
 import { ErrorMessage, TextArea } from "@components/formikFields";
 import { Formik, Form } from "formik";
-import { savePost } from "src/data/queryPosts";
-import showAlert from "@components/common/Alert";
+import { getPostById, savePost, updatePost } from "src/data/queryPosts";
+import Alert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
@@ -14,7 +14,7 @@ import styles from "./index.module.css";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 import { useRouter } from "next/router";
 
-function EditPostPage() {
+function EditPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { checkingAuth } = useAuthenticatedPage();
   const [initialData, setInitialData] = useState();
@@ -26,15 +26,23 @@ function EditPostPage() {
     }
 
     const save = await props.values.content.save();
-    save.title = props.values.title;
 
-    localStorage.setItem("editorSave", JSON.stringify(save));
+    localStorage.setItem(
+      "editorSave",
+      JSON.stringify({ content: save, title: props.values.title })
+    );
 
     push("/post/preview");
   };
 
   useEffect(() => {
-    setInitialData(JSON.parse(localStorage.getItem("editorSave")));
+    setInitialData({
+      title: post.attributes.title,
+      content: post.attributes.content,
+    });
+    if (localStorage.getItem("editorSave")) {
+      setInitialData(JSON.parse(localStorage.getItem("editorSave")));
+    }
   }, []);
 
   return (
@@ -66,8 +74,9 @@ function EditPostPage() {
                 title: values.title,
                 content: await values.content.save(),
                 user: currentUser,
+                post,
               };
-              const result = await savePost(params);
+              const result = await updatePost(params);
               localStorage.removeItem("editorSave");
               push(READ_POST_PATH.replace(":id", result.id));
             } catch (error) {
@@ -95,6 +104,7 @@ function EditPostPage() {
               />
               <ErrorMessage name="title" />
               <RichTextEditor
+                data={initialData.content}
                 name="content"
                 setFieldValue={props.setFieldValue}
               />
@@ -114,7 +124,7 @@ function EditPostPage() {
                   margin="0px 0px 0px 5px"
                   loading={props.isSubmitting}
                 >
-                  Publicar
+                  Editar
                 </Button>
               </FlexRow>
             </Form>

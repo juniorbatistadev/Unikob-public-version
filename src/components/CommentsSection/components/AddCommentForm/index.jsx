@@ -8,12 +8,13 @@ import styles from "./index.module.css";
 import * as Yup from "yup";
 import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
+import Avatar from "@components/common/Avatar";
 
 const AddCommentForm = ({ section, reloadData, parentComment }) => {
   const { currentUser } = useContext(AuthContext);
 
   return (
-    <div>
+    <FlexColumn margin="0px 5px">
       <Formik
         initialValues={{
           text: "",
@@ -35,21 +36,33 @@ const AddCommentForm = ({ section, reloadData, parentComment }) => {
         <Form>
           <FlexColumn>
             <FlexColumn>
-              <TextArea
-                className={styles.textarea}
-                name="text"
-                placeholder="Tu comentario"
-              />
-              <ErrorMessage name="text" />
-            </FlexColumn>
+              <FlexRow>
+                <Avatar
+                  onClick={() => router.push("/me")}
+                  className={styles.avatar}
+                  image={
+                    currentUser.get("profilePicture") &&
+                    currentUser.get("profilePicture").url()
+                  }
+                />
+                <FlexColumn className={styles.textAreaContainer}>
+                  <TextArea
+                    className={styles.textarea}
+                    name="text"
+                    placeholder="Tu comentario"
+                  />
+                  <FlexRow justifyContent="flex-end" margin="5px 0px">
+                    <ErrorMessage name="text" className={styles.error} />
 
-            <FlexRow justifyContent="flex-end" margin="5px 0px">
-              <Button>Comentar</Button>
-            </FlexRow>
+                    <Button>Comentar</Button>
+                  </FlexRow>
+                </FlexColumn>
+              </FlexRow>
+            </FlexColumn>
           </FlexColumn>
         </Form>
       </Formik>
-    </div>
+    </FlexColumn>
   );
 };
 

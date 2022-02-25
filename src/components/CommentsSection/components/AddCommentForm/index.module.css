@@ -2,3 +2,12 @@
   width: 100%;
   max-height: 200px;
 }
+
+.textAreaContainer {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.error {
+  margin-right: auto;
+}
