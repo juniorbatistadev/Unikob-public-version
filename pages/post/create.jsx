@@ -1,5 +1,5 @@
-import WritePostPage from "@pages/PostFeature/WritePostPage";
+import CreatePostPage from "@pages/PostFeature/CreatePostPage";
 
 export default function Home() {
-  return <WritePostPage />;
+  return <CreatePostPage />;
 }

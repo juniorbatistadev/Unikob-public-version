@@ -5,7 +5,7 @@ import Button from "@components/common/Button";
 import { ErrorMessage, TextArea } from "@components/formikFields";
 import { Formik, Form } from "formik";
 import { savePost } from "src/data/queryPosts";
-import showAlert from "@components/common/Alert";
+import Alert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
@@ -14,7 +14,7 @@ import styles from "./index.module.css";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 import { useRouter } from "next/router";
 
-function EditPostPage() {
+function CreatePostPage() {
   const { currentUser } = useContext(AuthContext);
   const { checkingAuth } = useAuthenticatedPage();
   const [initialData, setInitialData] = useState();
@@ -69,7 +69,7 @@ function EditPostPage() {
               };
               const result = await savePost(params);
               localStorage.removeItem("editorSave");
-              push(READ_POST_PATH.replace(":id", result.id));
+              push(READ_POST_PATH.replace(":id", result.attributes.slug));
             } catch (error) {
               Alert.fire({
                 icon: "error",
@@ -125,4 +125,4 @@ function EditPostPage() {
   );
 }
 
-export default EditPostPage;
+export default CreatePostPage;

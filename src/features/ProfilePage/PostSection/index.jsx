@@ -2,7 +2,6 @@ import FlexColumn from "@components/common/FlexColumn";
 import { getPostsWithPagination } from "src/data/queryPosts";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
-// import Post from "@components/Post";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import PostCard from "@components/PostCard";
 

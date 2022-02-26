@@ -15,6 +15,7 @@ const LikesPostContainer = ({ postId }) => {
     };
     getPost();
   }, [postId]);
+
   return (
     <>
       <LikesPost post={post} />
