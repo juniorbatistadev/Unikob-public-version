@@ -9,7 +9,7 @@ import Alert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
-import { READ_POST_PATH } from "src/paths";
+import { PREVIEW_POST_PATH, READ_POST_PATH } from "src/paths";
 import styles from "./index.module.css";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 import { useRouter } from "next/router";
@@ -30,7 +30,7 @@ function CreatePostPage() {
 
     localStorage.setItem("editorSave", JSON.stringify(save));
 
-    push("/post/preview");
+    push(PREVIEW_POST_PATH);
   };
 
   useEffect(() => {
@@ -69,7 +69,7 @@ function CreatePostPage() {
               };
               const result = await savePost(params);
               localStorage.removeItem("editorSave");
-              push(READ_POST_PATH.replace(":id", result.attributes.slug));
+              push(READ_POST_PATH.replace(":slug", result.attributes.slug));
             } catch (error) {
               Alert.fire({
                 icon: "error",

@@ -78,8 +78,6 @@ export default function ProfilePage({ username }) {
     });
   }, [currentUser, username]);
 
-  console.log(currentUser.attributes.username === username);
-
   return (
     <>
       {Isloading ? (

@@ -50,7 +50,7 @@ function ReadPostPage({ post }) {
         <title>{`${post.title} - GenteUni`}</title>
         <meta
           name="description"
-          content={extractTextFromPost(post.content.blocks, true)}
+          content={extractTextFromPost(post.content.blocks, 60)}
         />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="es_ES" />
@@ -61,7 +61,7 @@ function ReadPostPage({ post }) {
         <meta property="og:title" property="og:title" content={post.title} />
         <meta
           property="og:description"
-          content={extractTextFromPost(post.content.blocks, true)}
+          content={extractTextFromPost(post.content.blocks, 60)}
         />
         <meta
           property="og:url"
