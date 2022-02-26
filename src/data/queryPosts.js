@@ -5,7 +5,6 @@ const query = new Parse.Query(Post);
 
 export const savePost = async ({ user, title, content }) => {
   const post = new Post();
-  post.set("byUser", user);
   post.set("title", title);
   post.set("content", content);
   const result = await post.save();
@@ -25,7 +24,7 @@ export const updatePost = async ({ user, title, content, post }) => {
 
 export const getPostById = async (id) => {
   const query = new Parse.Query(Post);
-  query.include("byUser");
+  query.include("createdBy");
 
   const result = await query.get(id);
 
@@ -33,12 +32,9 @@ export const getPostById = async (id) => {
 };
 
 export const getPostsWithPagination = async ({ startFrom, user, perPage }) => {
-  console.log("pag");
-
   const query = new Parse.Query(Post);
-  query.equalTo("byUser", user);
+  query.equalTo("createdBy", user);
   query.skip(startFrom);
-  // query.include("fromUser");
   query.descending("createdAt");
   query.limit(perPage);
   query.withCount();

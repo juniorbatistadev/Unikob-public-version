@@ -20,7 +20,7 @@ const PostCard = ({ post }) => {
   return (
     <FlexColumn
       className={styles.header}
-      onClick={() => navigate("/post/" + post.id)}
+      onClick={() => navigate("/post/" + post.attributes.slug)}
     >
       <Title
         text={post.attributes.title}
@@ -33,15 +33,15 @@ const PostCard = ({ post }) => {
         </Moment>
         <Text text="|" />
         <Avatar
-          onClick={() => navigate("/profile/" + post.attributes.byUser.id)}
+          onClick={() => navigate("/profile/" + post.attributes.createdBy.id)}
           className={styles.avatar}
           width="25px"
-          image={post.attributes.byUser.attributes.profilePicture?.url()}
+          image={post.attributes.createdBy.attributes.profilePicture?.url()}
         />
         <Text
           className={styles.usernameText}
-          text={`@${post.attributes.byUser.attributes.username}`}
-          onClick={() => navigate("/profile/" + post.attributes.byUser.id)}
+          text={`@${post.attributes.createdBy.attributes.username}`}
+          onClick={() => navigate("/profile/" + post.attributes.createdBy.id)}
         />
       </FlexRow>
       <FlexRow>
@@ -49,7 +49,7 @@ const PostCard = ({ post }) => {
       </FlexRow>
       <FlexRow justifyContent="space-around" alignItems="center" margin="10px">
         <FlexRow alignItems="center">
-          <ViewsPost views={post.attributes.views} />
+          <ViewsPost postInfoId={post.attributes.postInfo.id} />
         </FlexRow>
         <FlexRow alignItems="center">
           <LikesPost postId={post.id} />

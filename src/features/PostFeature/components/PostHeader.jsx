@@ -29,16 +29,16 @@ export default function PostHeader({ post, preview }) {
 
           <Text text="|" />
 
-          <A href={`/profile/${post.byUser.objectId}`}>
+          <A href={`/profile/${post.createdBy.objectId}`}>
             <FlexRow>
               <Avatar
                 className={styles.avatar}
                 width="25px"
-                image={post.byUser.profilePicture}
+                image={post.createdBy.profilePicture}
               />
               <Text
                 className={styles.usernameText}
-                text={`@${post.byUser.username}`}
+                text={`@${post.createdBy.username}`}
               />
             </FlexRow>
           </A>
@@ -52,7 +52,7 @@ export default function PostHeader({ post, preview }) {
             margin="10px"
           >
             <FlexRow alignItems="center">
-              <ViewsPost views={post.views} />
+              <ViewsPost postInfoId={post.postInfo.objectId} />
             </FlexRow>
             <FlexRow alignItems="center">
               <LikesPost postId={post.objectId} />
