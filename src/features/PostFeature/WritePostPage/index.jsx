@@ -5,7 +5,7 @@ import Button from "@components/common/Button";
 import { ErrorMessage, TextArea } from "@components/formikFields";
 import { Formik, Form } from "formik";
 import { savePost } from "src/data/queryPosts";
-import showAlert from "@components/common/Alert";
+import Alert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";

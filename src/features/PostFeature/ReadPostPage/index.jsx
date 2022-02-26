@@ -53,7 +53,7 @@ function ReadPostPage({ post }) {
           content={extractTextFromPost(post.content.blocks, true)}
         />
         <meta property="og:type" content="article" />
-        <meta property="og:locale" content="es" />
+        <meta property="og:locale" content="es_ES" />
         <meta
           property="fb:app_id"
           content={process.env.NEXT_PUBLIC_APP_FACEBOOK_APP_ID}
@@ -77,33 +77,34 @@ function ReadPostPage({ post }) {
       <FlexColumn className={styles.content}>
         <RenderHTML json={post.content} />
       </FlexColumn>
-      <FlexColumn>
-        <FlexRow className={styles.actionButtons}>
-          {currentUser && <LikePostButton post={post} />}
-          {isMounted && (
+      {isMounted && (
+        <FlexColumn>
+          <FlexRow className={styles.actionButtons}>
+            {currentUser && <LikePostButton post={post} />}
             <ShareButtons
               title={post.title}
               text="Encontre esto en Gente Uni"
             />
-          )}
-          {currentUser && currentUser.id === post.byUser.objectId && (
-            <>
-              <Button
-                typeStyle="secondary"
-                margin="0px 10px 0px 0px"
-                onClick={onEdit}
-              >
-                Editar
-              </Button>
 
-              <Button typeStyle="secondary" onClick={onDelete}>
-                Borrar
-              </Button>
-            </>
-          )}
-        </FlexRow>
-        <CommentsSection section={post.objectId} />
-      </FlexColumn>
+            {currentUser && currentUser.id === post.createdBy.objectId && (
+              <>
+                <Button
+                  typeStyle="secondary"
+                  margin="0px 10px 0px 0px"
+                  onClick={onEdit}
+                >
+                  Editar
+                </Button>
+
+                <Button typeStyle="secondary" onClick={onDelete}>
+                  Borrar
+                </Button>
+              </>
+            )}
+          </FlexRow>
+          <CommentsSection section={post.objectId} />
+        </FlexColumn>
+      )}
     </FlexColumn>
   );
 }

@@ -1,4 +1,5 @@
 import ReadPostPage from "@pages/PostFeature/ReadPostPage";
+import { savePostView } from "src/data/server/queryPostInfo";
 import { getPostByIdServerSide } from "src/data/server/queryPostsFromServer";
 
 function ReadPost({ data }) {
@@ -16,13 +17,11 @@ export async function getServerSideProps(context) {
     };
   }
 
-  post.fetch();
-  post.increment("views");
-  post.save();
+  //add view
+  savePostView(post);
 
   //fix views number
   const postData = await post.toJSON();
-  postData.views = post.attributes.views;
 
   return {
     props: { data: postData },

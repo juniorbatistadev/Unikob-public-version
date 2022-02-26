@@ -5,7 +5,8 @@ const query = new Parse.Query(Post);
 export const getPostByIdServerSide = async (id) => {
   try {
     const query = new Parse.Query(Post);
-    query.include("byUser");
+
+    query.include("createdBy");
 
     const result = await query.get(id);
 
