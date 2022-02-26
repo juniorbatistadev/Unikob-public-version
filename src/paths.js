@@ -10,3 +10,4 @@ export const READ_POST_PATH = "/post/:id";
 export const CREATE_POST_PATH = "/post/create";
 export const EDIT_POST_PATH = "/post/edit/:id";
 export const DISCOVER_PATH = "/discover";
+export const NO_FOUND_PATH = "/404";

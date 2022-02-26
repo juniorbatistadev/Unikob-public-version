@@ -31,12 +31,18 @@ import ItemWithIcon from "./components/ItemWithIcon";
 import styles from "./ProfilePage.module.css";
 import PostSection from "./PostSection";
 
-import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
+import {
+  CURRENT_USER_PROFILE_PATH,
+  NO_FOUND_PATH,
+  PROFILE_PATH,
+} from "src/paths";
 import ProfileCommentSection from "./ProfileCommentSection";
+import { useRouter } from "next/router";
 
 export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
   const [Isloading, setIsLoading] = useState(true);
+  const { push } = useRouter();
 
   const { currentUser } = useContext(AuthContext);
 
@@ -62,11 +68,17 @@ export default function ProfilePage({ username }) {
     };
 
     getUserByUsername(username).then((user) => {
-      setUser(user);
-      addView(user);
-      setIsLoading(false);
+      if (user) {
+        setUser(user);
+        addView(user);
+        setIsLoading(false);
+      } else {
+        push(NO_FOUND_PATH);
+      }
     });
   }, [currentUser, username]);
+
+  console.log(user);
 
   return (
     <>
