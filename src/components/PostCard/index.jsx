@@ -20,7 +20,7 @@ const PostCard = ({ post }) => {
   return (
     <FlexColumn
       className={styles.header}
-      onClick={() => navigate("/post/" + post.id)}
+      onClick={() => navigate("/post/" + post.attributes.slug)}
     >
       <Title
         text={post.attributes.title}

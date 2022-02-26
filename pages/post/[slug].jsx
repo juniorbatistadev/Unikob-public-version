@@ -1,15 +1,15 @@
 import ReadPostPage from "@pages/PostFeature/ReadPostPage";
 import { savePostView } from "src/data/server/queryPostInfo";
-import { getPostByIdServerSide } from "src/data/server/queryPostsFromServer";
+import { getPostBySlugServerSide } from "src/data/server/queryPostsFromServer";
 
 function ReadPost({ data }) {
   return <ReadPostPage post={data} />;
 }
 
 export async function getServerSideProps(context) {
-  const { id } = context.query;
+  const { slug } = context.query;
 
-  const post = await getPostByIdServerSide(id);
+  const post = await getPostBySlugServerSide(slug);
 
   if (!post) {
     return {

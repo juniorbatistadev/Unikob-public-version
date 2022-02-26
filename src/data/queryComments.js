@@ -6,7 +6,6 @@ export const query = new Parse.Query(Comment);
 export const saveComment = ({ text, createdBy, section, parentComment }) => {
   const comment = new Comment();
   comment.set("text", text);
-  comment.set("createdBy", createdBy);
   comment.set("section", section);
   parentComment && comment.set("parentComment", parentComment);
   return comment.save();

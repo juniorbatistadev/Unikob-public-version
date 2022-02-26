@@ -5,7 +5,6 @@ const query = new Parse.Query(Post);
 
 export const savePost = async ({ user, title, content }) => {
   const post = new Post();
-  post.set("createdBy", user);
   post.set("title", title);
   post.set("content", content);
   const result = await post.save();
