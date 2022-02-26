@@ -9,7 +9,7 @@ function Avatar({ image, width, link, ...props }) {
 
   const handleClick = () => {
     if (link) {
-      router.push(`${PROFILE_PATH}`.replace(":userId", link));
+      router.push(`${PROFILE_PATH}`.replace(":username", link));
     }
   };
 

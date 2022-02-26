@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 
-import { getUserById } from "src/data/queryUsers";
+import { getUserByUsername } from "src/data/queryUsers";
 import { AuthContext } from "src/contexts/AuthContext";
 import { saveView } from "src/data/queryViews";
 
@@ -34,7 +34,7 @@ import PostSection from "./PostSection";
 import { CURRENT_USER_PROFILE_PATH, PROFILE_PATH } from "src/paths";
 import ProfileCommentSection from "./ProfileCommentSection";
 
-export default function ProfilePage({ userId }) {
+export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
   const [Isloading, setIsLoading] = useState(true);
 
@@ -45,28 +45,28 @@ export default function ProfilePage({ userId }) {
       const usersSeen = JSON.parse(localStorage.getItem("usersSeen"));
 
       //validated the user hasn't seen this profile
-      if (Array.isArray(usersSeen) && usersSeen.includes(userId)) return;
+      if (Array.isArray(usersSeen) && usersSeen.includes(username)) return;
 
       //validate the user is not the same
-      if (currentUser && currentUser.id == userId) return;
+      if (currentUser && currentUser.attributes.username == username) return;
 
       //save user to list locally so another request to the server is not needed
       localStorage.setItem(
         "usersSeen",
         JSON.stringify(
-          Array.isArray(usersSeen) ? [...usersSeen, userId] : [userId]
+          Array.isArray(usersSeen) ? [...usersSeen, username] : [username]
         )
       );
 
       saveView(currentUser, toUser);
     };
 
-    getUserById(userId).then((user) => {
+    getUserByUsername(username).then((user) => {
       setUser(user);
       addView(user);
       setIsLoading(false);
     });
-  }, [currentUser, userId]);
+  }, [currentUser, username]);
 
   return (
     <>
@@ -105,18 +105,18 @@ export default function ProfilePage({ userId }) {
                 <Views user={user} />
                 <A
                   href={
-                    currentUser.id === userId
+                    currentUser.id === username
                       ? `${CURRENT_USER_PROFILE_PATH}/followers`
-                      : `${PROFILE_PATH}/followers`.replace(":userId", userId)
+                      : `${PROFILE_PATH}/followers`.replace(":user", username)
                   }
                 >
                   <Followers user={user} className={styles.pointer} />
                 </A>
                 <A
                   href={
-                    currentUser.id === userId
+                    currentUser.id === username
                       ? `${CURRENT_USER_PROFILE_PATH}/following`
-                      : `${PROFILE_PATH}/following`.replace(":userId", userId)
+                      : `${PROFILE_PATH}/following`.replace(":user", username)
                   }
                 >
                   <Following user={user} className={styles.pointer} />
@@ -147,9 +147,9 @@ export default function ProfilePage({ userId }) {
 
           <TabsMenu
             path={
-              currentUser.id === userId
+              currentUser.id === username
                 ? `${CURRENT_USER_PROFILE_PATH}`
-                : `${PROFILE_PATH}`.replace(":userId", userId)
+                : `${PROFILE_PATH}`.replace(":user", username)
             }
             slug="section"
             options={[

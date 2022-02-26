@@ -21,7 +21,7 @@ const CommentSection = ({ section }) => {
 
   return (
     <div>
-      <Title text={`Comentarios (${count})`} margin="0px 0px 10px 0px" />
+      <Title text={`Comentarios`} margin="0px 0px 10px 0px" />
       {currentUser ? (
         <AddCommentForm section={section} reloadData={reloadData} />
       ) : (
