@@ -78,7 +78,7 @@ export default function ProfilePage({ username }) {
     });
   }, [currentUser, username]);
 
-  console.log(user);
+  console.log(currentUser.attributes.username === username);
 
   return (
     <>
@@ -117,7 +117,7 @@ export default function ProfilePage({ username }) {
                 <Views user={user} />
                 <A
                   href={
-                    currentUser.id === username
+                    currentUser.attributes.username === username
                       ? `${CURRENT_USER_PROFILE_PATH}/followers`
                       : `${PROFILE_PATH}/followers`.replace(":user", username)
                   }
@@ -126,7 +126,7 @@ export default function ProfilePage({ username }) {
                 </A>
                 <A
                   href={
-                    currentUser.id === username
+                    currentUser.attributes.username === username
                       ? `${CURRENT_USER_PROFILE_PATH}/following`
                       : `${PROFILE_PATH}/following`.replace(":user", username)
                   }
@@ -159,7 +159,7 @@ export default function ProfilePage({ username }) {
 
           <TabsMenu
             path={
-              currentUser.id === username
+              currentUser.attributes.username === username
                 ? `${CURRENT_USER_PROFILE_PATH}`
                 : `${PROFILE_PATH}`.replace(":user", username)
             }
