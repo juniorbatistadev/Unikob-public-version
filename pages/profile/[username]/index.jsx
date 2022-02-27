@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 function Profile() {
   const router = useRouter();
-  const { id } = router.query;
+  const { username } = router.query;
 
-  return <>{id && <ProfilePage userId={id} />}</>;
+  return <>{username && <ProfilePage username={username} />}</>;
 }
 
 export default Profile;

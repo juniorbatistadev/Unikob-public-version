@@ -10,4 +10,13 @@ export const getUserById = async (userId) => {
   return user;
 };
 
+export const getUserByUsername = async (username) => {
+  query.equalTo("username", username);
+  query.include("country");
+  query.include("school");
+
+  const user = query.first({ caseInsensitive: true });
+  return user;
+};
+
 export default query;
