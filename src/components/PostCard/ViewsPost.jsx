@@ -14,7 +14,7 @@ const ViewsPost = ({ postInfoId }) => {
     };
 
     getData();
-  }, []);
+  }, [postInfoId]);
 
   return (
     <FlexRow alignItems="center">

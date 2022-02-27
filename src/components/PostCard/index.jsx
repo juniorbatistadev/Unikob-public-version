@@ -21,7 +21,12 @@ const PostCard = ({ post }) => {
     <FlexColumn className={styles.header}>
       <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
         {coverImage && (
-          <img src={coverImage} height="150px" className={styles.cover} />
+          <img
+            src={coverImage}
+            alt={post.attributes.title}
+            height="150px"
+            className={styles.cover}
+          />
         )}
         <FlexColumn margin="15px">
           <Title

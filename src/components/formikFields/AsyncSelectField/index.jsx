@@ -10,7 +10,7 @@ export default function AsyncSelectField({ getData, placeholder, ...props }) {
       setData(data);
       setIsLoading(false);
     });
-  }, []);
+  }, [getData]);
 
   return (
     <>
