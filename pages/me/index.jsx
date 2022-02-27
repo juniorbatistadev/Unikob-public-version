@@ -8,7 +8,13 @@ function Profile() {
 
   const { checkingAuth } = useAuthenticatedPage();
 
-  return <>{!checkingAuth && <ProfilePage userId={currentUser?.id} />}</>;
+  return (
+    <>
+      {!checkingAuth && (
+        <ProfilePage username={currentUser?.attributes.username} />
+      )}
+    </>
+  );
 }
 
 export default Profile;

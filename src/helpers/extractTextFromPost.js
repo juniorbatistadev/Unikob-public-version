@@ -1,4 +1,6 @@
-export default function extractTextFromPost(blocks, withoutHTML) {
+import { convert } from "html-to-text";
+
+export default function extractTextFromPost(blocks, limit) {
   const text = [];
 
   const getText = (element) => {
@@ -20,23 +22,11 @@ export default function extractTextFromPost(blocks, withoutHTML) {
     return text.push(getText(element));
   });
 
-  //send only text if without html
-  if (withoutHTML) {
-    return text.join(" ");
-  }
-
   const textWithHtml = text.join(" ");
 
-  var tmp = document.createElement("div");
-  tmp.innerHTML = textWithHtml;
+  const textExtracted = convert(textWithHtml, {
+    limits: { maxInputLength: limit },
+  });
 
-  const textWithOutHtml = tmp.textContent || tmp.innerText;
-
-  if (textWithOutHtml.length > 259) {
-    return textWithOutHtml.slice(0, 260).concat("...");
-  }
-
-  return textWithOutHtml.slice(0, 260);
-
-  // .replace(/<[^>]*>?/gm, "");
+  return textExtracted;
 }

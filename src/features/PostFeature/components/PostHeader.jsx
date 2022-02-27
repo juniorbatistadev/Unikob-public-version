@@ -10,6 +10,7 @@ import A from "@components/common/A";
 import ViewsPost from "@components/PostCard/ViewsPost";
 import LikesPost from "@components/PostCard/LikesPost";
 import CommentsStatPost from "@components/PostCard/CommentsStatPost";
+import { PROFILE_PATH } from "src/paths";
 
 export default function PostHeader({ post, preview }) {
   return (
@@ -29,7 +30,7 @@ export default function PostHeader({ post, preview }) {
 
           <Text text="|" />
 
-          <A href={`/profile/${post.createdBy.objectId}`}>
+          <A href={`${PROFILE_PATH}`.replace(":user", post.createdBy.username)}>
             <FlexRow>
               <Avatar
                 className={styles.avatar}
