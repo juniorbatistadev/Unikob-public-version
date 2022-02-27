@@ -1,5 +1,4 @@
 import { useEffect, useContext, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import Parse from "parse";
 import FaceBookLogo from "@assets/icons/facebook-circular-logo.svg";
 import styles from "./index.module.css";
@@ -8,11 +7,11 @@ import initFacebook from "src/helpers/initFacebook";
 import { AuthContext } from "src/contexts/AuthContext";
 import { useRouter } from "next/router";
 import { FEED_PATH } from "src/paths";
+import Alert from "@components/common/Alert";
 
 function FacebookLogin({ className }) {
   const [isLoading, setLoading] = useState(false);
   const { setCurrentUser } = useContext(AuthContext);
-  // const navigate = useNavigate();
   const { push } = useRouter();
 
   useEffect(() => {
@@ -50,7 +49,7 @@ function FacebookLogin({ className }) {
       }
     } catch (err) {
       setLoading(false);
-      alert(err);
+      Alert.fire({ text: err, icon: "error" });
     }
   };
 
@@ -74,7 +73,7 @@ function FacebookLogin({ className }) {
       typeStyle="secondary"
       onClick={login}
     >
-      <span>Entrar con Facebook </span>
+      <span>Iniciar con Facebook </span>
       <FaceBookLogo alt="Facebook Login" className={styles.facebook_logo} />
     </Button>
   );

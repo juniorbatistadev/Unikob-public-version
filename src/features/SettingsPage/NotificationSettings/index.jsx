@@ -20,6 +20,8 @@ function NotificationSettings() {
         Alert.fire({
           icon: "success",
           text: "Dipostivio Registrado",
+          timer: 2000,
+          showConfirmButton: false,
         });
       })
       .catch((error) => {

@@ -63,7 +63,7 @@ function CoverSettings() {
           validate={(values) => {
             if (!values.image) {
               return {
-                image: "Debes selecionar una Imagen!",
+                image: "Debes selecionar una Imagen",
               };
             }
           }}
@@ -73,6 +73,8 @@ function CoverSettings() {
               Alert.fire({
                 icon: "success",
                 title: "Portada Actualizada",
+                timer: 2000,
+                showConfirmButton: false,
               });
             });
           }}

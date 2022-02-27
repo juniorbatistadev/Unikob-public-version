@@ -20,7 +20,7 @@ function PasswordSettings() {
         Alert.fire({
           icon: "success",
           title: "Visita tu Correo",
-          text: "Haz click en link del correo que te enviamos",
+          text: "Haz click en link en el correo que te enviamos",
         });
       })
       .catch((error) => {

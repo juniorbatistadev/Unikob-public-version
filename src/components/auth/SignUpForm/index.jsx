@@ -21,7 +21,7 @@ function SignUpForm() {
       await user.signUp();
       setCurrentUser(Parse.User.current());
       Alert.fire({
-        title: "Usuario Creado!",
+        title: "Bienvenido",
         text: "Te enviamos un correo para verificar tu cuenta",
         icon: "success",
       });

@@ -28,6 +28,8 @@ function FacebookSettings() {
         Alert.fire({
           icon: "success",
           text: "Tu cuenta ha sido disvinculada de Facebook",
+          timer: 2000,
+          showConfirmButton: false,
         });
       })
       .catch((err) =>
@@ -50,6 +52,8 @@ function FacebookSettings() {
         Alert.fire({
           icon: "success",
           text: "Tu cuenta ha sido vinculada con Facebook",
+          timer: 2000,
+          showConfirmButton: false,
         });
       })
       .catch((err) =>

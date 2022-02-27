@@ -76,7 +76,9 @@ function ProfileForm() {
               await currentUser.save().then(() => {
                 Alert.fire({
                   icon: "success",
-                  title: "Perfil Actualizado!",
+                  title: "Perfil Actualizado",
+                  timer: 2000,
+                  showConfirmButton: false,
                 });
               });
             } catch (error) {

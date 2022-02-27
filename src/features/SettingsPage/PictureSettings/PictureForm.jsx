@@ -55,6 +55,8 @@ function PictureForm() {
             Alert.fire({
               icon: "success",
               title: "Foto Actualizada",
+              timer: 2000,
+              showConfirmButton: false,
             }).then(() => {
               window.location.reload();
             });
