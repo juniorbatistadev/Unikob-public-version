@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.submitButton {
+  margin-top: 20px;
+}
+
+.settingField {
+  margin-bottom: 15px;
+}

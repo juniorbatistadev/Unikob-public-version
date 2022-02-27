@@ -16,7 +16,7 @@ function Avatar({ image, width, linkToUser, ...props }) {
             height: width,
             cursor: linkToUser ? "pointer" : "auto",
           }}
-          src={image ? image.src : defaultImage.src}
+          src={image ? (image?.src ? image.src : image) : defaultImage.src}
           className={classNames}
           alt="Profile Avatar"
         />

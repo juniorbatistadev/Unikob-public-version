@@ -6,11 +6,14 @@ import styles from "./index.module.css";
 import Button from "@components/common/Button";
 import initFacebook from "src/helpers/initFacebook";
 import { AuthContext } from "src/contexts/AuthContext";
+import { useRouter } from "next/router";
+import { FEED_PATH } from "src/paths";
 
 function FacebookLogin({ className }) {
   const [isLoading, setLoading] = useState(false);
   const { setCurrentUser } = useContext(AuthContext);
   // const navigate = useNavigate();
+  const { push } = useRouter();
 
   useEffect(() => {
     initFacebook();
@@ -30,15 +33,14 @@ function FacebookLogin({ className }) {
               response.picture.data.url,
               user
             );
-
-            user.set("username", response.id);
+            // user.set("username", response.id);
             user.set("email", response.email);
             user.set("gender", response.gender);
             user.set("profilePicture", facebookImage);
             user.save().then(() => {
               setCurrentUser(Parse.User.current());
               setLoading(false);
-              navigate("/app");
+              push(FEED_PATH);
             });
           }
         );
@@ -72,12 +74,8 @@ function FacebookLogin({ className }) {
       typeStyle="secondary"
       onClick={login}
     >
-      <span>Entrar con FaceBook </span>
-      <img
-        src={FaceBookLogo.src}
-        alt="Facebook Login"
-        className={styles.facebook_logo}
-      />
+      <span>Entrar con Facebook </span>
+      <FaceBookLogo alt="Facebook Login" className={styles.facebook_logo} />
     </Button>
   );
 }
