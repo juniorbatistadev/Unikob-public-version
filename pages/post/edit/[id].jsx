@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { getPostById } from "src/data/queryPosts";
 import { FEED_PATH } from "src/paths";
+import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
 export default function EditPost() {
   const [post, setPost] = useState();
@@ -12,6 +13,8 @@ export default function EditPost() {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
+
+  useAuthenticatedPage();
 
   useEffect(() => {
     const getData = async () => {
