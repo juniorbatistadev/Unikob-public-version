@@ -19,7 +19,7 @@ export default function EditPost() {
         const postObject = await getPostById(id);
         setPost(postObject);
 
-        if (postObject.attributes.byUser.id !== currentUser.id) {
+        if (postObject.attributes.byUser.id !== currentUser?.id) {
           throw "No puedes editar este post.";
         }
 
@@ -32,7 +32,7 @@ export default function EditPost() {
     if (id) {
       getData();
     }
-  }, [id]);
+  }, [id, currentUser?.id, router]);
 
   return isLoading ? <Spinner /> : <EditPostPage post={post} />;
 }
