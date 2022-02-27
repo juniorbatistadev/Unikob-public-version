@@ -39,7 +39,7 @@ function SignUpForm() {
         default:
           message = `Hubo un error, ${error.message} contactanos para ayudarte!`;
       }
-      showAlert({ title: "Oh no!", text: `${message}`, type: "error" });
+      Alert.fire({ title: "Oh no!", text: `${message}`, icon: "error" });
     }
   };
 

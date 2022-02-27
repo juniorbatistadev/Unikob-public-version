@@ -22,7 +22,7 @@ function TextArea({ width, padding, className, minRows, ...props }) {
 }
 
 TextArea.defaultProps = {
-  padding: "15px",
+  padding: "10px",
   className: " ",
   minRows: 1,
 };
