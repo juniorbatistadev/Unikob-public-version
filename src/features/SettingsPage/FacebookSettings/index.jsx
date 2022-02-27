@@ -13,11 +13,9 @@ import Alert from "@components/common/Alert";
 function FacebookSettings() {
   const { currentUser } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState();
-  const [isUserLinked, setIsUserLink] = useState();
-
-  if (currentUser) {
-    Parse.FacebookUtils.isLinked(currentUser);
-  }
+  const [isUserLinked, setIsUserLink] = useState(
+    Parse.FacebookUtils.isLinked(currentUser)
+  );
 
   useEffect(() => {
     initFacebook();
@@ -82,7 +80,7 @@ function FacebookSettings() {
         text={
           isUserLinked
             ? "Puedes desvincular tu cuenta de Facebook"
-            : "Puedes vincular tu cuenta para iniciar sesion con facebook"
+            : "Puedes vincular tu cuenta para iniciar sesion con Facebook"
         }
         typeStyle="secondary"
       />
