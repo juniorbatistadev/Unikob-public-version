@@ -9,6 +9,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
 import Comment from "./components/Comment";
+import Spinner from "@components/common/Spinner";
 
 const CommentSection = ({ section }) => {
   const { currentUser } = useContext(AuthContext);
@@ -29,12 +30,12 @@ const CommentSection = ({ section }) => {
       )}
       <FlexColumn>
         {isLoading ? (
-          "Cargando"
+          <Spinner />
         ) : (
           <InfiniteScroll
             hasMore={startFrom + 10 < count}
             loadMore={nextPage}
-            loader={"Cargando..."}
+            loader={<Spinner />}
           >
             {items.map((item) => (
               <Comment

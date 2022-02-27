@@ -17,8 +17,6 @@ const PostCard = ({ post }) => {
   const summary = extractTextFromPost(post.attributes.content.blocks, 160);
   const coverImage = extractFirstImageFromPost(post.attributes.content.blocks);
 
-  console.log(coverImage);
-
   return (
     <FlexColumn className={styles.header}>
       <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>

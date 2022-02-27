@@ -1,4 +1,4 @@
-.facebook_button img {
+.facebook_button {
   margin-left: 5px;
 }
 
@@ -13,4 +13,5 @@
 
 .facebook_logo {
   width: 15px;
+  margin-left: 5px;
 }

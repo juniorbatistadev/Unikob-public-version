@@ -89,6 +89,9 @@ function CreatePostPage() {
                   fontSize: "27px",
                   padding: "10px",
                   width: "100%",
+                  borderTop: 0,
+                  borderLeft: 0,
+                  borderRight: 0,
                   borderBottom: "1px solid #bcb2b2",
                   borderRadius: 0,
                 }}
