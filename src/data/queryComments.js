@@ -3,11 +3,12 @@ import Parse from "parse";
 const Comment = Parse.Object.extend("Comment");
 export const query = new Parse.Query(Comment);
 
-export const saveComment = ({ text, createdBy, section, parentComment }) => {
+export const saveComment = ({ text, type, section, parentComment }) => {
   const comment = new Comment();
   comment.set("text", text);
   comment.set("section", section);
   parentComment && comment.set("parentComment", parentComment);
+  comment.set("type", type);
   return comment.save();
 };
 
@@ -34,8 +35,12 @@ export const getSubCommentsWithPagination = async ({
   queryData,
   perPage,
 }) => {
+  const Comment = Parse.Object.extend("Comment");
+  let parentCommentObj = new Comment();
+  parentCommentObj.id = queryData;
+
   const query = new Parse.Query(Comment);
-  query.equalTo("parentComment", queryData);
+  query.equalTo("parentComment", parentCommentObj);
   query.skip(startFrom);
   query.include("createdBy");
   query.descending("createdAt");

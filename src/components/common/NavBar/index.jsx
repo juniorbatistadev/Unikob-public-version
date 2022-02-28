@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
 import styles from "./index.module.css";
-// import NotificationBell from "./NotificationBell";
+import NotificationBell from "./NotificationBell";
 // import MessagesBell from "./MessagesBell";
 import SearchBar from "@components/SearchBar";
 // import Logo from "../Logo";
@@ -30,8 +30,8 @@ function NavBar() {
       <div className={styles["right-side"]}>
         {isMounted && currentUser ? (
           <>
-            {/* <NotificationBell />
-            <MessagesBell /> */}
+            <NotificationBell />
+            {/* <MessagesBell /> */}
             <Avatar
               onClick={() => router.push("/me")}
               className={styles.avatar}

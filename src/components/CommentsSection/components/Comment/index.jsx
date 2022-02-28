@@ -16,6 +16,7 @@ import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import { AuthContext } from "@context/AuthContext";
 import A from "@components/common/A";
 import { PROFILE_PATH } from "src/paths";
+import { RESPONSE_COMMENT } from "@components/CommentsSection/commentsType";
 
 const Comment = ({
   text,
@@ -84,6 +85,7 @@ const Comment = ({
       <FlexColumn>
         {isRespondFormOpen && (
           <AddCommentForm
+            type={RESPONSE_COMMENT}
             parentComment={commentId}
             section={section}
             reloadData={() => {

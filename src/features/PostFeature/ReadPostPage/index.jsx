@@ -17,6 +17,7 @@ import { deletePost } from "src/data/queryPosts";
 import { useRouter } from "next/router";
 import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
 import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
+import { POST_COMMENT } from "@components/CommentsSection/commentsType";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -102,7 +103,7 @@ function ReadPostPage({ post }) {
               </>
             )}
           </FlexRow>
-          <CommentsSection section={post.objectId} />
+          <CommentsSection section={post.objectId} type={POST_COMMENT} />
         </FlexColumn>
       )}
     </FlexColumn>

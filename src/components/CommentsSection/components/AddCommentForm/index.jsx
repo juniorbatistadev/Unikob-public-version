@@ -9,8 +9,10 @@ import * as Yup from "yup";
 import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
 import Avatar from "@components/common/Avatar";
+import { POST_COMMENT } from "@components/CommentsSection/commentsType";
+import Parse from "parse";
 
-const AddCommentForm = ({ section, reloadData, parentComment }) => {
+const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -23,11 +25,20 @@ const AddCommentForm = ({ section, reloadData, parentComment }) => {
           text: Yup.string().max(260, "Demasido Largo").required("Requerido"),
         })}
         onSubmit={async (values, actions) => {
+          let parentCommentObj;
+          if (parentComment) {
+            const Comment = Parse.Object.extend("Comment");
+            parentCommentObj = new Comment();
+            parentCommentObj.id = parentComment;
+          }
+
+          console.log(parentCommentObj, parentComment);
           await saveComment({
             text: values.text,
             createdBy: currentUser,
             section,
-            parentComment,
+            parentComment: parentCommentObj,
+            type,
           });
           reloadData();
           actions.resetForm();
@@ -64,6 +75,10 @@ const AddCommentForm = ({ section, reloadData, parentComment }) => {
       </Formik>
     </FlexColumn>
   );
+};
+
+AddCommentForm.defaultProps = {
+  type: null,
 };
 
 export default AddCommentForm;

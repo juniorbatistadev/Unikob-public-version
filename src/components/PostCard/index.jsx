@@ -19,66 +19,71 @@ const PostCard = ({ post }) => {
 
   return (
     <FlexColumn className={styles.header}>
-      <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
-        {coverImage && (
+      {coverImage && (
+        <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
           <img
             src={coverImage}
             alt={post.attributes.title}
             height="150px"
             className={styles.cover}
           />
-        )}
-        <FlexColumn margin="15px">
+        </A>
+      )}
+
+      <FlexColumn margin="15px">
+        <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
           <Title
             text={post.attributes.title}
             fontSize="25px"
             className={styles.title}
           />
-          <FlexRow alignItems="center" className={styles.bar}>
-            <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
-              {post.attributes.createdAt}
-            </Moment>
-            <Text text="|" />
+        </A>
+
+        <FlexRow alignItems="center" className={styles.bar}>
+          <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
+            {post.attributes.createdAt}
+          </Moment>
+          <Text text="|" />
+
+          <FlexRow>
+            <Avatar
+              linkToUser={post.attributes.createdBy.attributes.username}
+              className={styles.avatar}
+              width="25px"
+              image={post.attributes.createdBy.attributes.profilePicture?.url()}
+            />
             <A
               href={PROFILE_PATH.replace(
                 ":user",
                 post.attributes.createdBy.attributes.username
               )}
             >
-              <FlexRow>
-                <Avatar
-                  linkToUser={post.attributes.createdBy.attributes.username}
-                  className={styles.avatar}
-                  width="25px"
-                  image={post.attributes.createdBy.attributes.profilePicture?.url()}
-                />
-                <Text
-                  className={styles.usernameText}
-                  text={`@${post.attributes.createdBy.attributes.username}`}
-                />
-              </FlexRow>
+              <Text
+                className={styles.usernameText}
+                text={`@${post.attributes.createdBy.attributes.username}`}
+              />
             </A>
           </FlexRow>
-          <FlexRow>
-            <Text text={summary.length > 159 ? summary + " ... " : summary} />
+        </FlexRow>
+        <FlexRow>
+          <Text text={summary.length > 159 ? summary + " ... " : summary} />
+        </FlexRow>
+        <FlexRow
+          justifyContent="space-around"
+          alignItems="center"
+          margin="10px"
+        >
+          <FlexRow alignItems="center">
+            <ViewsPost postInfoId={post.attributes.postInfo.id} />
           </FlexRow>
-          <FlexRow
-            justifyContent="space-around"
-            alignItems="center"
-            margin="10px"
-          >
-            <FlexRow alignItems="center">
-              <ViewsPost postInfoId={post.attributes.postInfo.id} />
-            </FlexRow>
-            <FlexRow alignItems="center">
-              <LikesPost postId={post.id} />
-            </FlexRow>
-            <FlexRow alignItems="center">
-              <CommentsStatPost post={post.id} />
-            </FlexRow>
+          <FlexRow alignItems="center">
+            <LikesPost postId={post.id} />
           </FlexRow>
-        </FlexColumn>
-      </A>
+          <FlexRow alignItems="center">
+            <CommentsStatPost post={post.id} />
+          </FlexRow>
+        </FlexRow>
+      </FlexColumn>
     </FlexColumn>
   );
 };

@@ -1,0 +1,8 @@
+.container {
+  height: 100%;
+  min-height: 80vh;
+}
+
+.nothingFound {
+  margin: auto;
+}
