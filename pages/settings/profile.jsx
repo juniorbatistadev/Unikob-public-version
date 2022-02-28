@@ -1,4 +1,4 @@
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 import ProfileSettingsPage from "@pages/SettingsPage/ProfileSettings";
 
 function ProfileSettings() {

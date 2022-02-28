@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { getPostById } from "src/data/queryPosts";
 import { FEED_PATH } from "src/paths";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 
 function EditPost() {
   const [post, setPost] = useState();

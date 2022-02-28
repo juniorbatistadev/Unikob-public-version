@@ -1,4 +1,4 @@
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 import NotificationPage from "@pages/NotificationPage";
 
 function Notifications() {

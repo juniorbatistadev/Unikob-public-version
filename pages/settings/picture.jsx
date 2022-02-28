@@ -1,4 +1,4 @@
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 import PictureSettingsPage from "@pages/SettingsPage/PictureSettings";
 
 export default function PictureSettings() {

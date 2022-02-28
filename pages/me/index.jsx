@@ -1,7 +1,7 @@
 import ProfilePage from "src/features/ProfilePage";
 import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 
 function Profile() {
   const { currentUser } = useContext(AuthContext);
