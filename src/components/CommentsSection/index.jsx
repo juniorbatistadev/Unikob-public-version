@@ -11,7 +11,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import Comment from "./components/Comment";
 import Spinner from "@components/common/Spinner";
 
-const CommentSection = ({ section }) => {
+const CommentSection = ({ section, type }) => {
   const { currentUser } = useContext(AuthContext);
   const { count, items, isLoading, startFrom, nextPage, reloadData } =
     useInfiniteScrolling({
@@ -24,7 +24,7 @@ const CommentSection = ({ section }) => {
     <div>
       <Title text={`Comentarios`} margin="0px 0px 10px 0px" />
       {currentUser ? (
-        <AddCommentForm section={section} reloadData={reloadData} />
+        <AddCommentForm section={section} reloadData={reloadData} type={type} />
       ) : (
         <Text text="Inicia Sesion o Registrate para poder comentar" />
       )}

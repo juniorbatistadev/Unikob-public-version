@@ -4,6 +4,7 @@ export const CRUSHS_PATH = "/crushs";
 export const JOBS_PATH = "/jobs";
 export const DISCOVER_PATH = "/discover";
 export const NO_FOUND_PATH = "/404";
+export const NOTIFICATIONS_PATH = "/notifications";
 
 export const READ_POST_PATH = "/post/:slug";
 export const CREATE_POST_PATH = "/post/create";

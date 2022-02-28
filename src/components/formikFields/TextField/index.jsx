@@ -1,7 +1,7 @@
 import { useField } from "formik";
 import styles from "./index.module.css";
 
-function TextField({ width, padding, border, className, ...props }) {
+function TextField({ width, padding, className, ...props }) {
   const [field] = useField(props);
 
   const classNames = [styles.input, className].join(" ");
@@ -23,7 +23,6 @@ function TextField({ width, padding, border, className, ...props }) {
 TextField.defaultProps = {
   padding: "12px",
   className: " ",
-  border: "none",
 };
 
 export default TextField;
