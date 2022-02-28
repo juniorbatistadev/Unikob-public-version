@@ -1,20 +1,12 @@
 import ProfilePage from "src/features/ProfilePage";
 import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
+import withAuth from "@context/withAuth";
 
 function Profile() {
   const { currentUser } = useContext(AuthContext);
 
-  const { checkingAuth } = useAuthenticatedPage();
-
-  return (
-    <>
-      {!checkingAuth && (
-        <ProfilePage username={currentUser?.attributes.username} />
-      )}
-    </>
-  );
+  return <ProfilePage username={currentUser?.attributes.username} />;
 }
 
-export default Profile;
+export default withAuth(Profile);

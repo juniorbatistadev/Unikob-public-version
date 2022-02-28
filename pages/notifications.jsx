@@ -1,5 +1,8 @@
+import withAuth from "@context/withAuth";
 import NotificationPage from "src/features/NotificationPage";
 
-export default function Notifications() {
+function Notifications() {
   return <NotificationPage />;
 }
+
+export default withAuth(Notifications);

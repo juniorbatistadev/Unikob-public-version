@@ -1,7 +1,8 @@
+import withAuth from "@context/withAuth";
 import SettingsPage from "@pages/SettingsPage";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function Home() {
-  useAuthenticatedPage();
+function Settings() {
   return <SettingsPage />;
 }
+
+export default withAuth(Settings);

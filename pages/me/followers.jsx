@@ -1,13 +1,12 @@
 import FollowersPage from "src/features/ProfilePage/FollowersPage";
 import { useContext } from "react";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
 import { AuthContext } from "src/contexts/AuthContext";
+import withAuth from "@context/withAuth";
 function MyFollowersPage() {
   const { currentUser } = useContext(AuthContext);
-  useAuthenticatedPage();
 
-  return <>{currentUser && <FollowersPage user={currentUser} />}</>;
+  return <FollowersPage user={currentUser} />;
 }
 
-export default MyFollowersPage;
+export default withAuth(MyFollowersPage);

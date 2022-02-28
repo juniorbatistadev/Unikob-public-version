@@ -6,15 +6,14 @@ import { useContext, useEffect, useState } from "react";
 import { getPostById } from "src/data/queryPosts";
 import { FEED_PATH } from "src/paths";
 import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
+import withAuth from "@context/withAuth";
 
-export default function EditPost() {
+function EditPost() {
   const [post, setPost] = useState();
   const { currentUser } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
-
-  useAuthenticatedPage();
 
   useEffect(() => {
     const getData = async () => {
@@ -40,3 +39,5 @@ export default function EditPost() {
 
   return isLoading ? <Spinner /> : <EditPostPage post={post} />;
 }
+
+export default withAuth(EditPost);

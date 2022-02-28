@@ -1,7 +1,8 @@
+import withAuth from "@context/withAuth";
 import NotificationSettingsPage from "@pages/SettingsPage/NotificationSettings";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function NotificationSettings() {
-  useAuthenticatedPage();
+function NotificationSettings() {
   return <NotificationSettingsPage />;
 }
+
+export default withAuth(NotificationSettings);
