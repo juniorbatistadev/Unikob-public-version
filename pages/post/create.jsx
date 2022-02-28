@@ -1,8 +1,7 @@
+import withAuth from "@context/withAuth";
 import CreatePostPage from "@pages/PostFeature/CreatePostPage";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function CreatePost() {
-  useAuthenticatedPage();
-
+function CreatePost() {
   return <CreatePostPage />;
 }
+export default withAuth(CreatePost);

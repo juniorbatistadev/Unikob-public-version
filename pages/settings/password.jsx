@@ -1,7 +1,8 @@
+import withAuth from "@context/withAuth";
 import PasswordSettingsPage from "@pages/SettingsPage/PasswordSettings";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function PasswordSettings() {
-  useAuthenticatedPage();
+function PasswordSettings() {
   return <PasswordSettingsPage />;
 }
+
+export default withAuth(PasswordSettings);

@@ -1,8 +1,8 @@
 import PreviewPostPage from "@pages/PostFeature/PreviewPostPage";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
+import withAuth from "@context/withAuth";
 
-export default function PreviewPost() {
-  useAuthenticatedPage();
-
+function PreviewPost() {
   return <PreviewPostPage />;
 }
+
+export default withAuth(PreviewPost);

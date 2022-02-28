@@ -1,8 +1,8 @@
+import withAuth from "@context/withAuth";
 import CoverSettingsPage from "@pages/SettingsPage/CoverSettings";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function CoverSettings() {
-  useAuthenticatedPage();
-
+function CoverSettings() {
   return <CoverSettingsPage />;
 }
+
+export default withAuth(CoverSettings);

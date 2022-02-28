@@ -1,7 +1,8 @@
+import withAuth from "@context/withAuth";
 import ProfileSettingsPage from "@pages/SettingsPage/ProfileSettings";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 
-export default function ProfileSettings() {
-  useAuthenticatedPage();
+function ProfileSettings() {
   return <ProfileSettingsPage />;
 }
+
+export default withAuth(ProfileSettings);

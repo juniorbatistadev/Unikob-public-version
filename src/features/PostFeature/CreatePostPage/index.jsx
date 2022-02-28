@@ -11,12 +11,10 @@ import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
 import { PREVIEW_POST_PATH, READ_POST_PATH } from "src/paths";
 import styles from "./index.module.css";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 import { useRouter } from "next/router";
 
 function CreatePostPage() {
   const { currentUser } = useContext(AuthContext);
-  const { checkingAuth } = useAuthenticatedPage();
   const [initialData, setInitialData] = useState();
   const { push } = useRouter();
 
@@ -40,7 +38,7 @@ function CreatePostPage() {
 
   return (
     <FlexColumn margin="10px">
-      {!checkingAuth && (
+      {currentUser && (
         <Formik
           initialValues={{
             title: initialData?.title ?? "",
