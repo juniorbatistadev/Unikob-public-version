@@ -7,7 +7,7 @@ export const getUnreadNumberOfNotifications = async (user) => {
   const serverUrl =
     process.env.NODE_ENV !== "production"
       ? "ws://localhost:1447"
-      : "wss://unigente.back4app.io";
+      : "wss://genteuninextjs.b4a.io";
 
   const client = new Parse.LiveQueryClient({
     applicationId: process.env.NEXT_PUBLIC_APP_ID,
