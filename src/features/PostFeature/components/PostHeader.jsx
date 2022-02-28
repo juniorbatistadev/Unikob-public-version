@@ -35,7 +35,7 @@ export default function PostHeader({ post, preview }) {
               <Avatar
                 className={styles.avatar}
                 width="25px"
-                image={post.createdBy.profilePicture}
+                image={post.createdBy.profilePicture?.url}
               />
               <Text
                 className={styles.usernameText}

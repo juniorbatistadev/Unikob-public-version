@@ -19,15 +19,6 @@ import FlexColumn from "@components/common/FlexColumn";
 function ProfileForm() {
   const { currentUser } = useContext(AuthContext);
 
-  console.log(
-    currentUser && {
-      username: currentUser.attributes.username,
-      bio: currentUser.attributes.bio,
-      country: currentUser.attributes.country?.id,
-      gender: currentUser.attributes.gender,
-    }
-  );
-
   return (
     <div className={styles.container}>
       {currentUser && (

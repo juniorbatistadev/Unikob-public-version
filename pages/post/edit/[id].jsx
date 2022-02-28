@@ -20,9 +20,10 @@ export default function EditPost() {
     const getData = async () => {
       try {
         const postObject = await getPostById(id);
+
         setPost(postObject);
 
-        if (postObject.attributes.byUser.id !== currentUser?.id) {
+        if (postObject.attributes.createdBy.id !== currentUser?.id) {
           throw "No puedes editar este post.";
         }
 

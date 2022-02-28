@@ -13,7 +13,6 @@ import { useRouter } from "next/router";
 
 function PreviewPostPage() {
   const [post, setPost] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const { isMounted } = useIsMounted();
   const { currentUser } = useContext(AuthContext);
   const router = useRouter();
@@ -27,10 +26,9 @@ function PreviewPostPage() {
         return;
       }
 
-      data.byUser = currentUser.attributes;
+      data.createdBy = currentUser.attributes;
 
       setPost(data);
-      setIsLoading(false);
     }
   }, [isMounted]);
 

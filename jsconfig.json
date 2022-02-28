@@ -1,4 +1,5 @@
 {
+ 
     "compilerOptions": {
       "baseUrl": "./",
       "paths": {
@@ -10,5 +11,11 @@
         "@pages/*": ["src/features/*"]
       }
       
-    }
+    },
+
+    "json.schemas": [
+      { 
+        "$schema": "https://json.schemastore.org/jsconfig" 
+      }
+    ]
 }

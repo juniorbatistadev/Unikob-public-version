@@ -14,6 +14,8 @@ import {
 } from "src/data/queryComments";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import { AuthContext } from "@context/AuthContext";
+import A from "@components/common/A";
+import { PROFILE_PATH } from "src/paths";
 
 const Comment = ({
   text,
@@ -50,9 +52,14 @@ const Comment = ({
         className={styles.container}
         style={{ ...style, margin }}
       >
-        <Avatar image={user.attributes.profilePicture?.url()} link={user.id} />
+        <Avatar
+          image={user.attributes.profilePicture?.url()}
+          linkToUser={user.attributes.username}
+        />
         <div className={styles.dataContainer}>
-          <Title text={user.attributes.username} fontSize="16px" />
+          <A href={PROFILE_PATH.replace(":user", user.attributes.username)}>
+            <Title text={user.attributes.username} fontSize="16px" />
+          </A>
           <div className={styles.text}>{text.trim()}</div>
           <FlexRow margin="10px 0px 0px 0px ">
             <FlexRow className={styles.actions}>
