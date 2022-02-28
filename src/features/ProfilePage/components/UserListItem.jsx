@@ -7,7 +7,10 @@ import FollowButton from "@components/FollowButton";
 const UserListItem = ({ user }) => {
   return (
     <FlexRow alignItems="center" className={styles.container}>
-      <Avatar image={user.attributes.profilePicture?.url()} link={user.id} />
+      <Avatar
+        image={user.attributes.profilePicture?.url()}
+        link={user.username}
+      />
       <Text text={user.attributes.username} />
       <FlexRow>
         <FollowButton userToFollow={user} />
