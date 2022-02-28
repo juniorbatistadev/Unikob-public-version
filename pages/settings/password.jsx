@@ -1,4 +1,4 @@
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 import PasswordSettingsPage from "@pages/SettingsPage/PasswordSettings";
 
 function PasswordSettings() {

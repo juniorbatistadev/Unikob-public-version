@@ -1,4 +1,4 @@
-import withAuth from "@context/withAuth";
+import withAuth from "src/helpers/withAuth";
 import FacebookSettingsPage from "@pages/SettingsPage/FacebookSettings";
 
 function FacebookSettings() {
