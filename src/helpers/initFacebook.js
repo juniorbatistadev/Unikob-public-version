@@ -1,8 +1,6 @@
 import Parse from "parse";
 
 function initFacebook() {
-  console.log("init fb");
-
   window.fbAsyncInit = function () {
     Parse.FacebookUtils.init({
       appId: "954266884973298", // Facebook App ID

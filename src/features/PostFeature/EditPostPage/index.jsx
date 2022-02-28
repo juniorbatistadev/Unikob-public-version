@@ -78,7 +78,7 @@ function EditPostPage({ post }) {
               };
               const result = await updatePost(params);
               localStorage.removeItem("editorSave");
-              push(READ_POST_PATH.replace(":id", result.id));
+              push(READ_POST_PATH.replace(":slug", result.attributes.slug));
             } catch (error) {
               Alert.fire({
                 icon: "error",

@@ -37,7 +37,7 @@ function SignUpForm() {
           break;
 
         default:
-          message = `Hubo un error, ${error.message} contactanos para ayudarte!`;
+          message = `Hubo un error, ${error.message} contactanos para ayudarte`;
       }
       Alert.fire({ title: "Oh no!", text: `${message}`, icon: "error" });
     }

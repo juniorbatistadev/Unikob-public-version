@@ -25,10 +25,11 @@ function CreatePostPage() {
       return;
     }
 
-    const save = await props.values.content.save();
-    save.title = props.values.title;
+    const content = await props.values.content.save();
 
-    localStorage.setItem("editorSave", JSON.stringify(save));
+    const postData = { title: props.values.title, content };
+
+    localStorage.setItem("editorSave", JSON.stringify(postData));
 
     push(PREVIEW_POST_PATH);
   };
@@ -99,6 +100,7 @@ function CreatePostPage() {
               <ErrorMessage name="title" />
               <RichTextEditor
                 name="content"
+                data={initialData?.content}
                 setFieldValue={props.setFieldValue}
               />
               <ErrorMessage name="content" />

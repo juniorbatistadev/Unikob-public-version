@@ -4,7 +4,7 @@ import { RadioField } from "../../../components/formikFields";
 import Button from "../../../components/common/Button";
 import styles from "./SendGiftForm.module.css";
 import queryGiftOptions, {
-  getGiftsWithPagination
+  getGiftsWithPagination,
 } from "../../../data/queryGiftOptions";
 import { saveGift } from "../../../data/queryGifts";
 import Text from "../../../components/common/Text";
@@ -25,7 +25,7 @@ const SendGiftForm = ({ user }) => {
     const getGifts = async () => {
       const results = await getGiftsWithPagination({
         startFrom,
-        perPage
+        perPage,
       });
       setIsLoading(false);
       setGifts(results.results);
@@ -37,13 +37,13 @@ const SendGiftForm = ({ user }) => {
 
   const nextPage = () => {
     if (startFrom + perPage < count) {
-      setStartFrom(prev => prev + perPage);
+      setStartFrom((prev) => prev + perPage);
     }
   };
 
   const lastPage = () => {
     if (startFrom - perPage > -1) {
-      setStartFrom(prev => prev - perPage);
+      setStartFrom((prev) => prev - perPage);
     }
   };
 
@@ -58,21 +58,20 @@ const SendGiftForm = ({ user }) => {
       ) : (
         <Formik
           initialValues={{
-            gift: ""
+            gift: "",
           }}
           onSubmit={async (values, { setErrors }) => {
-            console.log(setErrors);
             const giftOption = await queryGiftOptions.get(values.gift);
             saveGift(user, giftOption)
               .then(() => setWasSent(true))
-              .catch(err => {
+              .catch((err) => {
                 setErrors({ gift: err.message });
               });
           }}
-          validate={values => {
+          validate={(values) => {
             if (values.gift === "") {
               return {
-                gift: "Debes selecionar un regalo!"
+                gift: "Debes selecionar un regalo!",
               };
             }
           }}
