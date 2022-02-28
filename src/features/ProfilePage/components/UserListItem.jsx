@@ -9,7 +9,7 @@ const UserListItem = ({ user }) => {
     <FlexRow alignItems="center" className={styles.container}>
       <Avatar
         image={user.attributes.profilePicture?.url()}
-        link={user.username}
+        link={user.attributes.username}
       />
       <Text text={user.attributes.username} />
       <FlexRow>
