@@ -16,7 +16,6 @@ import { useRouter } from "next/router";
 
 function EditPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
-  const { checkingAuth } = useAuthenticatedPage();
   const [initialData, setInitialData] = useState();
   const { push } = useRouter();
 
