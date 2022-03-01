@@ -7,6 +7,9 @@ import GoBackButton from "@components/common/GoBackButton";
 import Text from "@components/common/Text";
 import FlexColumn from "@components/common/FlexColumn";
 import Alert from "@components/common/Alert";
+
+import ManageNotificationsForm from "./ManageNotificationsForm";
+
 // import usePushNotifications from "@hooks/usePushNotification";
 
 function NotificationSettings() {
@@ -44,10 +47,23 @@ function NotificationSettings() {
       </FlexRow>
 
       <FlexColumn margin="10px">
-        <Text text="Las notificaciones se activan en el ultimo dispostivos que hizo login." />
+        <Title
+          typeStyle="secondary"
+          text="Notificar cuando:"
+          margin="0px 0px 10px 0px"
+        />
+        <ManageNotificationsForm />
+
+        <Title
+          typeStyle="secondary"
+          text="Dispositivos"
+          margin="10px 0px 10px 0px"
+        />
+
+        {/* <Text text="Las notificaciones se activan en el ultimo dispostivos que hizo login." />
         <Text text="Para activarlas en este dispositivo presiona 'Activar en este dispositivo'  " />
 
-        <Button onClick={handleClick}>Activar en este dispositivo</Button>
+        <Button onClick={handleClick}>Activar en este dispositivo</Button> */}
       </FlexColumn>
     </motion.div>
   );

@@ -66,7 +66,9 @@ const PostCard = ({ post }) => {
           </FlexRow>
         </FlexRow>
         <FlexRow>
-          <Text text={summary.length > 159 ? summary + " ... " : summary} />
+          <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
+            <Text text={summary.length > 159 ? summary + " ... " : summary} />
+          </A>
         </FlexRow>
         <FlexRow
           justifyContent="space-around"
