@@ -4,14 +4,13 @@ import FlexColumn from "@components/common/FlexColumn";
 import Button from "@components/common/Button";
 import { ErrorMessage, TextArea } from "@components/formikFields";
 import { Formik, Form } from "formik";
-import { getPostById, savePost, updatePost } from "src/data/queryPosts";
+import { updatePost } from "src/data/queryPosts";
 import Alert from "@components/common/Alert";
 import * as yup from "yup";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import FlexRow from "@components/common/FlexRow";
 import { READ_POST_PATH } from "src/paths";
 import styles from "./index.module.css";
-import useAuthenticatedPage from "@hooks/useAuthenticatedPage";
 import { useRouter } from "next/router";
 
 function EditPostPage({ post }) {
