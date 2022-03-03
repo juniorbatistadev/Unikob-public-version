@@ -32,7 +32,6 @@ const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
             parentCommentObj.id = parentComment;
           }
 
-          console.log(parentCommentObj, parentComment);
           await saveComment({
             text: values.text,
             createdBy: currentUser,
@@ -44,34 +43,41 @@ const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
           actions.resetForm();
         }}
       >
-        <Form>
-          <FlexColumn>
+        {(props) => (
+          <Form>
             <FlexColumn>
-              <FlexRow>
-                <Avatar
-                  onClick={() => router.push("/me")}
-                  className={styles.avatar}
-                  image={
-                    currentUser.get("profilePicture") &&
-                    currentUser.get("profilePicture").url()
-                  }
-                />
-                <FlexColumn className={styles.textAreaContainer}>
-                  <TextArea
-                    className={styles.textarea}
-                    name="text"
-                    placeholder="Tu comentario"
+              <FlexColumn>
+                <FlexRow>
+                  <Avatar
+                    onClick={() => router.push("/me")}
+                    className={styles.avatar}
+                    image={
+                      currentUser.get("profilePicture") &&
+                      currentUser.get("profilePicture").url()
+                    }
                   />
-                  <FlexRow justifyContent="flex-end" margin="5px 0px">
-                    <ErrorMessage name="text" className={styles.error} />
+                  <FlexColumn className={styles.textAreaContainer}>
+                    <TextArea
+                      className={styles.textarea}
+                      name="text"
+                      placeholder="Tu comentario"
+                    />
+                    <FlexRow justifyContent="flex-end" margin="5px 0px">
+                      <ErrorMessage name="text" className={styles.error} />
 
-                    <Button>Comentar</Button>
-                  </FlexRow>
-                </FlexColumn>
-              </FlexRow>
+                      <Button
+                        loading={props.isSubmitting}
+                        disabled={props.isSubmitting}
+                      >
+                        Comentar
+                      </Button>
+                    </FlexRow>
+                  </FlexColumn>
+                </FlexRow>
+              </FlexColumn>
             </FlexColumn>
-          </FlexColumn>
-        </Form>
+          </Form>
+        )}
       </Formik>
     </FlexColumn>
   );

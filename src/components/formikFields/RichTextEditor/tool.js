@@ -7,7 +7,6 @@ import InlineCode from "@editorjs/inline-code";
 import Header from "@editorjs/header";
 import Quote from "@editorjs/quote";
 import InlineImage from "editorjs-inline-image";
-import CodeBox from "@bomdi/codebox";
 
 // import LinkTool from "@editorjs/link";
 // import Image from "@editorjs/image";

@@ -40,7 +40,7 @@ function ReadPostPage({ post }) {
   };
 
   const onEdit = () => {
-    push(EDIT_POST_PATH.replace(":id", post.slug));
+    push(EDIT_POST_PATH.replace(":slug", post.slug));
   };
 
   const firstImageUrl = extractFirstImageFromPost(post.content.blocks);
