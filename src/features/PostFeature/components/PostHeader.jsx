@@ -17,6 +17,7 @@ export default function PostHeader({ post, preview }) {
     <header>
       <FlexColumn className={styles.header}>
         <Title
+          level={1}
           text={post.title}
           fontSize="35px"
           margin="0px 0px 15px 0px"

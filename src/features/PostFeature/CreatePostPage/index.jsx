@@ -12,6 +12,7 @@ import FlexRow from "@components/common/FlexRow";
 import { PREVIEW_POST_PATH, READ_POST_PATH } from "src/paths";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
+import Spinner from "@components/common/Spinner";
 
 function CreatePostPage() {
   const { currentUser } = useContext(AuthContext);
@@ -33,15 +34,20 @@ function CreatePostPage() {
   };
 
   useEffect(() => {
-    setInitialData(JSON.parse(localStorage.getItem("editorSave")));
+    setInitialData(
+      JSON.parse(localStorage.getItem("editorSave")) ?? {
+        title: "",
+        content: "",
+      }
+    );
   }, []);
 
   return (
     <FlexColumn margin="10px">
-      {currentUser && (
+      {initialData && (
         <Formik
           initialValues={{
-            title: initialData?.title ?? "",
+            title: initialData?.title ? initialData.title : "",
             content: [],
           }}
           validationSchema={yup.object({
