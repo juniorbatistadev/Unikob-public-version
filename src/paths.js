@@ -9,7 +9,7 @@ export const FEED_PATH = "/feed";
 
 export const READ_POST_PATH = "/post/:slug";
 export const CREATE_POST_PATH = "/post/create";
-export const EDIT_POST_PATH = "/post/edit/:id";
+export const EDIT_POST_PATH = "/post/edit/:slug";
 export const PREVIEW_POST_PATH = "/post/preview";
 
 export const PROFILE_PATH = "/profile/:user";
