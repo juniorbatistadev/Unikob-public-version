@@ -26,7 +26,7 @@ function PreviewPostPage() {
         return;
       }
 
-      data.createdBy = currentUser.attributes;
+      data.createdBy = currentUser.toJSON();
 
       setPost(data);
     }
