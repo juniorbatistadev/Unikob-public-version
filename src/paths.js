@@ -5,13 +5,13 @@ export const JOBS_PATH = "/jobs";
 export const DISCOVER_PATH = "/discover";
 export const NO_FOUND_PATH = "/404";
 export const NOTIFICATIONS_PATH = "/notifications";
+export const FEED_PATH = "/feed";
 
 export const READ_POST_PATH = "/post/:slug";
 export const CREATE_POST_PATH = "/post/create";
 export const EDIT_POST_PATH = "/post/edit/:id";
 export const PREVIEW_POST_PATH = "/post/preview";
 
-export const FEED_PATH = "/feed";
 export const PROFILE_PATH = "/profile/:user";
 export const CURRENT_USER_PROFILE_PATH = "/me";
 

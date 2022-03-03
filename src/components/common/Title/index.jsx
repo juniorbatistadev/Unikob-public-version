@@ -1,10 +1,20 @@
 import styles from "./index.module.css";
 
-function Title({ text, fontSize, margin, typeStyle, className, ...props }) {
+function Title({
+  text,
+  fontSize,
+  margin,
+  typeStyle,
+  className,
+  level,
+  ...props
+}) {
   const classNames = [styles[typeStyle], className].join(" ");
 
+  const CustomTag = `h${level}`;
+
   return (
-    <h1
+    <CustomTag
       className={classNames}
       style={{
         fontSize,
@@ -13,7 +23,7 @@ function Title({ text, fontSize, margin, typeStyle, className, ...props }) {
       {...props}
     >
       {text}
-    </h1>
+    </CustomTag>
   );
 }
 
@@ -22,6 +32,7 @@ Title.defaultProps = {
   text: " ",
   fontSize: null,
   typeStyle: "primary",
+  level: 2,
 };
 
 //can be primary or secondary

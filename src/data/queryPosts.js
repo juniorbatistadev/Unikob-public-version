@@ -50,4 +50,20 @@ export const deletePost = async (postId) => {
   return result.destroy();
 };
 
+export const getPostBySlug = async (slug) => {
+  try {
+    const query = new Parse.Query(Post);
+
+    query.equalTo("slug", slug);
+
+    query.include("createdBy");
+
+    const result = await query.first();
+
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export default query;
