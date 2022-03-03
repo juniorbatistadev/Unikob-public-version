@@ -27,7 +27,7 @@
 }
 
 .title {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   margin-bottom: 5px;
 }
 
