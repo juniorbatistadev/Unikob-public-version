@@ -23,5 +23,5 @@
 }
 
 .title {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
