@@ -3,6 +3,7 @@ import styles from "./Gift.module.css";
 import Avatar from "../../../components/common/Avatar";
 import { motion } from "framer-motion";
 import Text from "@components/common/Text";
+import DisplayUsername from "@components/common/DisplayUsername";
 
 const Gift = ({ image, fromUser, message, name }) => {
   return (
@@ -12,12 +13,14 @@ const Gift = ({ image, fromUser, message, name }) => {
       className={styles.container}
     >
       <img src={image} alt="Gift" className={styles.image} />
+      <Text text={name} fontSize="14px" />
+
       <Avatar
         image={fromUser.attributes.profilePicture?.url()}
         className={styles.avatar}
         linkToUser={fromUser.attributes.username}
       />
-      <Text text={name} />
+      <DisplayUsername username={fromUser.attributes.username} />
       {message && (
         <>
           <span className={styles.arrow} />
