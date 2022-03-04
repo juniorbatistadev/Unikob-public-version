@@ -29,4 +29,5 @@
 
 .link {
   font-weight: bold;
+  overflow-wrap: anywhere;
 }

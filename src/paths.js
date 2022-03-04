@@ -15,6 +15,7 @@ export const PREVIEW_POST_PATH = "/post/preview";
 export const PROFILE_PATH = "/profile/:user";
 export const CURRENT_USER_PROFILE_PATH = "/me";
 export const CURRENT_USER_PROFILE_COMMENTS_PATH = "/me?section=comments";
+export const CURRENT_USER_PROFILE_GIFTS_PATH = "/me?section=gifts";
 export const PROFILE_COMMENTS_PATH = "/profile/:user?section=comments";
 
 export const SETTINGS_PATH = "/settings";

@@ -35,7 +35,6 @@ const ProfileCommentNotification = ({ notification }) => {
               </>
             }
           />
-          <A href=""></A>
         </FlexRow>
         <Moment className={styles.date} fromNow locale="es">
           {notification.attributes.createdAt}

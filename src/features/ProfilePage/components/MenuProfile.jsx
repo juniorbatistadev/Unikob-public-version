@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import DotsIcon from "@assets/icons/dot.svg";
 import styles from "./MenuProfile.module.css";
 import PopupMenu from "@components/PopupMenu";
 import GiftSVG from "@assets/icons/gift.svg";
 import HeartSVG from "@assets/icons/heart.svg";
 // import swal from "@sweetalert/with-react";
-// import SendGiftForm from "../GiftSection/SendGiftForm";
+import SendGiftForm from "./SendGiftForm";
+import Alert from "@components/common/Alert";
 // import DeclareCrushForm from "../../../components/DeclareCrushForm";
 
 const MenuProfile = ({ user }) => {
@@ -17,6 +18,10 @@ const MenuProfile = ({ user }) => {
 
   const sendGift = () => {
     setIsOpen(false);
+    Alert.fire({
+      html: <SendGiftForm user={user} />,
+      showConfirmButton: false,
+    });
     // swal({
     //   buttons: false,
     //   content: <SendGiftForm user={user} />,
@@ -34,7 +39,7 @@ const MenuProfile = ({ user }) => {
   return (
     <PopupMenu
       options={[
-        { label: "Enviar Regalo", icon: <GiftSVG /> },
+        { label: "Enviar Regalo", icon: <GiftSVG />, onClick: sendGift },
         { label: "Declarar Crush", icon: <HeartSVG /> },
       ]}
     >

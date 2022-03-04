@@ -8,12 +8,15 @@ import PostCommentNotification from "./components/PostCommentNotification";
 import ProfileCommentNotification from "./components/ProfileCommentNotification";
 import ResponseCommentNotification from "./components/ResponseCommentNotification";
 import {
+  FOLLOW_NOTIFICATION,
+  GIFT_NOTIFICATION,
   POST_COMMENT_NOTIFICATION,
   POST_LIKE_NOTIFICATION,
   PROFILE_COMMENT_NOTIFICATION,
   RESPONSE_COMMENT_NOTIFICATION,
 } from "./notificationsType";
 import PostLikeNotification from "./components/PostLikeNotification";
+import GiftNotification from "./components/GiftNotification";
 
 const Notification = ({ notification }) => {
   const renderNotification = (notification) => {
@@ -27,26 +30,23 @@ const Notification = ({ notification }) => {
         return <ResponseCommentNotification notification={notification} />;
       case POST_COMMENT_NOTIFICATION:
         return <PostCommentNotification notification={notification} />;
-      case "GIFT":
-        text = `${notification.attributes.triggeredBy.attributes.username} te envio un regalo`;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
+      case GIFT_NOTIFICATION:
+        // text = `${notification.attributes.triggeredBy.attributes.username} te envio un regalo`;
+        return <GiftNotification notification={notification} />;
       case POST_LIKE_NOTIFICATION:
-        // text = `${notification.attributes.triggeredBy.attributes.username} le gusto tu post “ ${notification.attributes.data} ”`;
         return <PostLikeNotification notification={notification} c />;
-      case "FOLLOW":
+      case FOLLOW_NOTIFICATION:
         return <FollowNotification notification={notification} />;
-      case "QUESTION_ANSWER":
-        text = `${notification.attributes.triggeredBy.attributes.username} respondio tu pregunta   `;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
-      case "JOB_APPLICATION_RECEIVED":
-        text = `${notification.attributes.triggeredBy.attributes.username} aplico para un trabajo que publicaste  `;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
+      // case "QUESTION_ANSWER":
+      //   text = `${notification.attributes.triggeredBy.attributes.username} respondio tu pregunta   `;
+      //   return (
+      //     <DisplayNotification notification={notification} content={text} />
+      //   );
+      // case "JOB_APPLICATION_RECEIVED":
+      //   text = `${notification.attributes.triggeredBy.attributes.username} aplico para un trabajo que publicaste  `;
+      //   return (
+      //     <DisplayNotification notification={notification} content={text} />
+      //   );
 
       default:
         return <DefaultNotification notification={notification} />;

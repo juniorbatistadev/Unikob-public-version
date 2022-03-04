@@ -38,7 +38,7 @@ const PostLikeNotification = ({ notification }) => {
                     {" "}
                     post: {`${notification.attributes.data}`}
                   </span>
-                </A>{" "}
+                </A>
               </>
             }
           />

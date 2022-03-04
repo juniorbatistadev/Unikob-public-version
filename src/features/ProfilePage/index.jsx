@@ -38,6 +38,7 @@ import {
 } from "src/paths";
 import ProfileCommentSection from "./ProfileCommentSection";
 import { useRouter } from "next/router";
+import GiftSection from "./GiftSection";
 
 export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
@@ -178,7 +179,7 @@ export default function ProfilePage({ username }) {
               tabs={{
                 default: <PostSection user={user} />,
                 comments: <ProfileCommentSection user={user} />,
-                gifts: <p>gifts</p>,
+                gifts: <GiftSection user={user} />,
               }}
               default={<PostSection />}
             ></TabsContent>

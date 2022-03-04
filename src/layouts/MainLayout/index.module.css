@@ -18,6 +18,7 @@
   width: 100%;
   position: sticky;
   top: 60px;
+  user-select: none;
 }
 
 /* Side Bar Menu for desktop*/

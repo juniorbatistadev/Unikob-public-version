@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./Gift.module.css";
 import Avatar from "../../../components/common/Avatar";
 import { motion } from "framer-motion";
+import Text from "@components/common/Text";
 
-const Gift = ({ image, fromUser, text }) => {
+const Gift = ({ image, fromUser, message, name }) => {
   return (
     <motion.div
       animate={{ y: 0 }}
@@ -14,10 +15,15 @@ const Gift = ({ image, fromUser, text }) => {
       <Avatar
         image={fromUser.attributes.profilePicture?.url()}
         className={styles.avatar}
-        link={fromUser.id}
+        linkToUser={fromUser.attributes.username}
       />
-      <span className={styles.arrow} />
-      <p className={styles.text}>{text}</p>
+      <Text text={name} />
+      {message && (
+        <>
+          <span className={styles.arrow} />
+          <span className={styles.message}>{message}</span>
+        </>
+      )}
     </motion.div>
   );
 };
