@@ -3,8 +3,7 @@ import Parse from "parse";
 const query = new Parse.Query(Parse.User);
 
 export const getUserById = async (userId) => {
-  query.include("country");
-  query.include("school");
+  query.includeAll();
 
   const user = query.get(userId);
   return user;
@@ -12,10 +11,10 @@ export const getUserById = async (userId) => {
 
 export const getUserByUsername = async (username) => {
   query.equalTo("username", username);
-  query.include("country");
-  query.include("school");
+  query.includeAll();
 
-  const user = query.first({ caseInsensitive: true });
+  const user = await query.first();
+
   return user;
 };
 

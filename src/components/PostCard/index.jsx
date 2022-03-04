@@ -10,8 +10,9 @@ import Moment from "react-moment";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 import CommentsStatPost from "./CommentsStatPost";
 import A from "@components/common/A";
-import { PROFILE_PATH, READ_POST_PATH } from "src/paths";
+import { READ_POST_PATH } from "src/paths";
 import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
+import DisplayUsername from "@components/common/DisplayUsername";
 
 const PostCard = ({ post }) => {
   const summary = extractTextFromPost(post.attributes.content.blocks, 160);
@@ -52,17 +53,9 @@ const PostCard = ({ post }) => {
               width="25px"
               image={post.attributes.createdBy.attributes.profilePicture?.url()}
             />
-            <A
-              href={PROFILE_PATH.replace(
-                ":user",
-                post.attributes.createdBy.attributes.username
-              )}
-            >
-              <Text
-                className={styles.usernameText}
-                text={`@${post.attributes.createdBy.attributes.username}`}
-              />
-            </A>
+            <DisplayUsername
+              username={post.attributes.createdBy.attributes.username}
+            />
           </FlexRow>
         </FlexRow>
         <FlexRow>

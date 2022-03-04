@@ -65,4 +65,12 @@ export const getCommentsNumberBySectionId = async (sectionId) => {
   return comments;
 };
 
+export const getFirstCommentBySection = async (sectionId) => {
+  const query = new Parse.Query(Comment);
+  query.equalTo("section", sectionId);
+  const comments = await query.first();
+
+  return comments;
+};
+
 export default query;

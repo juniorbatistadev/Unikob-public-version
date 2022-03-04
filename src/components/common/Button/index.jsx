@@ -71,7 +71,6 @@ function Button({
   disabled,
   ...rest
 }) {
-  console.log(disabled);
   const classNames = [styles.btn, styles[typeStyle], className].join(" ");
 
   return (

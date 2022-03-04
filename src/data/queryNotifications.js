@@ -48,9 +48,9 @@ export const getUserNotificationsWithPagination = async ({
 
   query.equalTo("forUser", user);
   query.skip(startFrom);
-  query.include("triggeredBy");
   query.descending("createdAt");
   query.limit(perPage);
+  query.includeAll();
   query.withCount();
 
   const result = await query.find();
