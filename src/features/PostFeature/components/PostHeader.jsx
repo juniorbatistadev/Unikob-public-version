@@ -11,6 +11,7 @@ import ViewsPost from "@components/PostCard/ViewsPost";
 import LikesPost from "@components/PostCard/LikesPost";
 import CommentsStatPost from "@components/PostCard/CommentsStatPost";
 import { PROFILE_PATH } from "src/paths";
+import DisplayUsername from "@components/common/DisplayUsername";
 
 export default function PostHeader({ post, preview }) {
   return (
@@ -31,19 +32,14 @@ export default function PostHeader({ post, preview }) {
 
           <Text text="|" />
 
-          <A href={`${PROFILE_PATH}`.replace(":user", post.createdBy.username)}>
-            <FlexRow>
-              <Avatar
-                className={styles.avatar}
-                width="25px"
-                image={post.createdBy.profilePicture?.url}
-              />
-              <Text
-                className={styles.usernameText}
-                text={`@${post.createdBy.username}`}
-              />
-            </FlexRow>
-          </A>
+          <FlexRow>
+            <Avatar
+              className={styles.avatar}
+              width="25px"
+              image={post.createdBy.profilePicture?.url}
+            />
+            <DisplayUsername username={post.createdBy.username} />
+          </FlexRow>
         </FlexRow>
         {post.edited && <Text text="Editado" fontSize="14px" />}
 

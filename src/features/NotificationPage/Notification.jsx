@@ -1,75 +1,42 @@
-import FlexRow from "@components/common/FlexRow";
-import Avatar from "@components/common/Avatar";
-import Text from "@components/common/Text";
 import styles from "./Notification.module.css";
-import FlexColumn from "@components/common/FlexColumn";
-import Moment from "react-moment";
 import "moment/locale/es";
 import { motion } from "framer-motion";
-
-const DisplayNotification = ({ notification, content }) => {
-  return (
-    <FlexRow alignItems="center" className={styles.notification}>
-      <Avatar
-        image={notification.attributes.triggeredBy.attributes.profilePicture?.url()}
-        link={notification.attributes.triggeredBy.id}
-      />
-      <FlexColumn className={styles.content}>
-        <Text text={content} />
-        <Moment className={styles.date} fromNow locale="es">
-          {notification.attributes.createdAt}
-        </Moment>
-      </FlexColumn>
-    </FlexRow>
-  );
-};
-
-const DefaultNotification = ({ notification }) => {
-  return (
-    <FlexRow className={styles.notification}>
-      <Text text={notification.attributes?.data} />
-      <Moment className={styles.date} fromNow locale="es">
-        {notification.attributes.createdAt}
-      </Moment>
-    </FlexRow>
-  );
-};
+import DefaultNotification from "./components/DefaultNotification";
+import DisplayNotification from "./components/DisplayNotification";
+import FollowNotification from "./components/FollowNotification";
+import PostCommentNotification from "./components/PostCommentNotification";
+import ProfileCommentNotification from "./components/ProfileCommentNotification";
+import ResponseCommentNotification from "./components/ResponseCommentNotification";
+import {
+  POST_COMMENT_NOTIFICATION,
+  POST_LIKE_NOTIFICATION,
+  PROFILE_COMMENT_NOTIFICATION,
+  RESPONSE_COMMENT_NOTIFICATION,
+} from "./notificationsType";
+import PostLikeNotification from "./components/PostLikeNotification";
 
 const Notification = ({ notification }) => {
   const renderNotification = (notification) => {
     let text;
 
     switch (notification.attributes.type) {
-      case "PROFILE_COMMENT":
-        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu perfil: “${notification.attributes.data} ”`;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
-      case "RESPONSE_COMMENT":
+      case PROFILE_COMMENT_NOTIFICATION:
+        return <ProfileCommentNotification notification={notification} />;
+      case RESPONSE_COMMENT_NOTIFICATION:
         text = `${notification.attributes.triggeredBy.attributes.username} respondio tu comentario: “${notification.attributes.data} ”`;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
-      case "POST_COMMENT":
-        text = `${notification.attributes.triggeredBy.attributes.username} dejo un comentario en tu post: “${notification.attributes.data} ”`;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
+        return <ResponseCommentNotification notification={notification} />;
+      case POST_COMMENT_NOTIFICATION:
+        return <PostCommentNotification notification={notification} />;
       case "GIFT":
         text = `${notification.attributes.triggeredBy.attributes.username} te envio un regalo`;
         return (
           <DisplayNotification notification={notification} content={text} />
         );
-      case "POST_LIKE":
-        text = `${notification.attributes.triggeredBy.attributes.username} le gusto tu post “ ${notification.attributes.data} ”`;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
+      case POST_LIKE_NOTIFICATION:
+        // text = `${notification.attributes.triggeredBy.attributes.username} le gusto tu post “ ${notification.attributes.data} ”`;
+        return <PostLikeNotification notification={notification} c />;
       case "FOLLOW":
-        text = `${notification.attributes.triggeredBy.attributes.username} te empezo a seguir   `;
-        return (
-          <DisplayNotification notification={notification} content={text} />
-        );
+        return <FollowNotification notification={notification} />;
       case "QUESTION_ANSWER":
         text = `${notification.attributes.triggeredBy.attributes.username} respondio tu pregunta   `;
         return (
@@ -98,6 +65,5 @@ const Notification = ({ notification }) => {
 };
 
 Notification.defaultProps = {};
-// #endregion
 
 export default Notification;

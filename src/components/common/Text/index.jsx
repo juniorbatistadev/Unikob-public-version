@@ -22,8 +22,6 @@ function Text({ text, fontSize, margin, padding, className, color, ...props }) {
 Text.defaultProps = {
   className: " ",
   text: " ",
-  color: "#696969",
-  fontSize: "16px",
 };
 
 export default Text;

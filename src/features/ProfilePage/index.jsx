@@ -64,7 +64,7 @@ export default function ProfilePage({ username }) {
         )
       );
 
-      saveView(currentUser, toUser);
+      saveView(currentUser, toUser).catch((err) => console.log(err));
     };
 
     getUserByUsername(username).then((user) => {
