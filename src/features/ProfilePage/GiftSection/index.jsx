@@ -18,8 +18,6 @@ function GiftSection({ user }) {
     }
   );
 
-  console.log(items);
-
   return (
     <>
       <Title text={`Regalos (${count})`} margin="10px"></Title>
