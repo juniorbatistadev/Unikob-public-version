@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import {
   FOLLOW_NOTIFICATION,
+  GIFT_NOTIFICATION,
   POST_COMMENT_NOTIFICATION,
   POST_LIKE_NOTIFICATION,
   PROFILE_COMMENT_NOTIFICATION,
@@ -39,8 +40,6 @@ export default function ManageNotificationsForm() {
     }
   }, [currentUser]);
 
-  console.log(initialData);
-
   return (
     <>
       {isLoading ? (
@@ -55,6 +54,7 @@ export default function ManageNotificationsForm() {
             [RESPONSE_COMMENT_NOTIFICATION]:
               initialData[RESPONSE_COMMENT_NOTIFICATION],
             [POST_LIKE_NOTIFICATION]: initialData[POST_LIKE_NOTIFICATION],
+            [GIFT_NOTIFICATION]: initialData[GIFT_NOTIFICATION] ?? false,
           }}
           onSubmit={async (values) => {
             await saveNotificationSetting({
@@ -125,6 +125,16 @@ export default function ManageNotificationsForm() {
                   />
                 </FlexRow>
                 <ErrorMessage name={POST_LIKE_NOTIFICATION} />
+              </FlexColumn>
+              <FlexColumn className={styles.typeContainer}>
+                <FlexRow>
+                  <CheckBox name={GIFT_NOTIFICATION} />
+                  <Text
+                    text="Recibiste un regalo"
+                    className={styles.typeContainerText}
+                  />
+                </FlexRow>
+                <ErrorMessage name={GIFT_NOTIFICATION} />
               </FlexColumn>
 
               <Button

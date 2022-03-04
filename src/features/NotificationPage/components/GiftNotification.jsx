@@ -6,10 +6,10 @@ import FlexColumn from "@components/common/FlexColumn";
 import Moment from "react-moment";
 import "moment/locale/es";
 import DisplayUsername from "@components/common/DisplayUsername";
+import { CURRENT_USER_PROFILE_GIFTS_PATH } from "src/paths";
 import A from "@components/common/A";
-import { READ_POST_PATH } from "src/paths";
 
-const PostCommentNotification = ({ notification }) => {
+const GiftNotification = ({ notification }) => {
   return (
     <FlexRow alignItems="center" className={styles.notification}>
       <Avatar
@@ -18,25 +18,18 @@ const PostCommentNotification = ({ notification }) => {
       />
       <FlexColumn className={styles.content}>
         <FlexRow>
+          <DisplayUsername
+            className={styles.username}
+            username={notification.attributes.triggeredBy.attributes.username}
+          />
+
           <Text
             text={
               <>
-                <DisplayUsername
-                  className={styles.username}
-                  username={
-                    notification.attributes.triggeredBy.attributes.username
-                  }
-                />
-                dejo un comentario en tu{" "}
-                <A
-                  href={READ_POST_PATH.replace(
-                    ":slug",
-                    notification.attributes.post.attributes.slug
-                  )}
-                >
-                  <span className={styles.link}> post:</span>
-                </A>{" "}
-                {`${notification.attributes.data}`}
+                te envio un{" "}
+                <A href={CURRENT_USER_PROFILE_GIFTS_PATH}>
+                  <span className={styles.link}> regalo.</span>
+                </A>
               </>
             }
           />
@@ -49,4 +42,4 @@ const PostCommentNotification = ({ notification }) => {
   );
 };
 
-export default PostCommentNotification;
+export default GiftNotification;

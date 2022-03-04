@@ -34,9 +34,7 @@
 
 @media (max-width: 767px) {
   .actionButtons {
-    flex-direction: column;
-    margin: 10px 0px;
-    align-items: center;
+    justify-content: center;
   }
 
   .content {

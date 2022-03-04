@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, ErrorMessage } from "formik";
-import { RadioField } from "../../../components/formikFields";
-import Button from "../../../components/common/Button";
+import { useState, useEffect } from "react";
+import { Formik, Form } from "formik";
+import { RadioField, TextField, ErrorMessage } from "@components/formikFields";
+import Button from "@components/common/Button";
 import styles from "./SendGiftForm.module.css";
 import queryGiftOptions, {
   getGiftsWithPagination,
-} from "../../../data/queryGiftOptions";
-import { saveGift } from "../../../data/queryGifts";
-import Text from "../../../components/common/Text";
-import Spinner from "../../../components/common/Spinner";
-import Title from "../../../components/common/Title";
+} from "src/data/queryGiftOptions";
+import { saveGift } from "src/data/queryGifts";
+import Text from "@components/common/Text";
+import Spinner from "@components/common/Spinner";
+import Title from "@components/common/Title";
+import FlexRow from "@components/common/FlexRow";
+import FlexColumn from "@components/common/FlexColumn";
 
 const SendGiftForm = ({ user }) => {
   const [gifts, setGifts] = useState([]);
@@ -59,31 +61,36 @@ const SendGiftForm = ({ user }) => {
         <Formik
           initialValues={{
             gift: "",
+            message: "",
           }}
           onSubmit={async (values, { setErrors }) => {
             const giftOption = await queryGiftOptions.get(values.gift);
-            saveGift(user, giftOption)
+            saveGift(user, giftOption, values.message)
               .then(() => setWasSent(true))
               .catch((err) => {
                 setErrors({ gift: err.message });
               });
           }}
           validate={(values) => {
-            if (values.gift === "") {
+            if (values.gift === "")
               return {
-                gift: "Debes selecionar un regalo!",
+                gift: "Debes selecionar un regalo",
               };
-            }
+
+            if (values.message.length > 80)
+              return {
+                message: "Debe de ser menos de 80 caracteres",
+              };
           }}
         >
           <Form className={styles.form}>
             <Title text="Elige el regalo" />
             <Title
-              text="Solo puedes enviar 10 regalos por dia"
+              text="Solo puedes enviar 3 regalos por dia"
               typeStyle="secondary"
               fontSize="14px"
             />
-            <div className={styles.gifts}>
+            <FlexRow justifyContent="center" className={styles.gifts}>
               {isLoading ? (
                 <Spinner />
               ) : (
@@ -105,17 +112,21 @@ const SendGiftForm = ({ user }) => {
                   </RadioField>
                 ))
               )}
-            </div>
+            </FlexRow>
             <ErrorMessage name="gift" />
-            {!isLoading && (
-              <Text
-                text={`${calculateCurrentPage()} de ${Math.ceil(
-                  count / perPage
-                )} paginas`}
+            <FlexColumn
+              justifyContent="center"
+              alignItems="center"
+              margin="15px 0px"
+            >
+              <TextField
+                name="message"
+                placeholder="Deja una notita con tu regalo"
               />
-            )}
+              <ErrorMessage name="message" />
+            </FlexColumn>
 
-            <div className={styles.buttons}>
+            <FlexRow justifyContent="space-around">
               <Button
                 onClick={lastPage}
                 disabled={startFrom - perPage < -1}
@@ -123,6 +134,13 @@ const SendGiftForm = ({ user }) => {
               >
                 Anterior
               </Button>
+              {!isLoading && (
+                <Text
+                  text={`${calculateCurrentPage()} de ${Math.ceil(
+                    count / perPage
+                  )} paginas`}
+                />
+              )}
               <Button
                 onClick={nextPage}
                 disabled={startFrom + perPage > count}
@@ -130,7 +148,7 @@ const SendGiftForm = ({ user }) => {
               >
                 Siguiente
               </Button>
-            </div>
+            </FlexRow>
             <Button type="submit" className={styles.submitButton}>
               Enviar
             </Button>

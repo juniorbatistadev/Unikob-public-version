@@ -1,9 +1,7 @@
 .gifts {
   width: 100%;
-  display: flex;
   flex-wrap: wrap;
   padding: 10px;
-  justify-content: center;
 }
 .form {
   display: flex;
@@ -20,11 +18,6 @@
 }
 .giftPreview img {
   width: 50px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-around;
 }
 
 .submitButton {
