@@ -10,17 +10,15 @@ import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
 import Avatar from "@components/common/Avatar";
 import Title from "@components/common/Title";
-import MessageButton from "@components/MessageButton";
+import MessageButton from "@pages/ProfilePage/components/MessageButton";
 import Spinner from "@components/common/Spinner";
 import A from "@components/common/A";
 import TabsMenu from "@components/TabsMenu";
-import PopupMenu from "@components/PopupMenu";
 import TabsContent from "@components/TabsContent";
 
 import BioIcon from "@assets/icons/feather.svg";
 import StudentIcon from "@assets/icons/student.svg";
 import PinIcon from "@assets/icons/pin.svg";
-import DotsIcon from "@assets/icons/dot.svg";
 
 import MenuProfile from "./components/MenuProfile";
 import Views from "./components/Views";

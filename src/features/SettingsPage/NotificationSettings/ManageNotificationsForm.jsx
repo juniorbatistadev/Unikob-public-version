@@ -8,7 +8,7 @@ import {
   POST_LIKE_NOTIFICATION,
   PROFILE_COMMENT_NOTIFICATION,
   RESPONSE_COMMENT_NOTIFICATION,
-} from "@pages/NotificationPage/notificationsType";
+} from "src/notificationsTypes";
 import {
   getUserSettingByUser,
   saveNotificationSetting,

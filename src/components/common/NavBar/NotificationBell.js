@@ -7,12 +7,12 @@ import { getUnreadNumberOfNotifications } from "src/data/queryNotifications";
 import Toast from "@components/common/Toast";
 import { useRouter } from "next/router";
 import { NOTIFICATIONS_PATH } from "src/paths";
-import FlexColumn from "../FlexColumn";
+import FlexColumn from "@components/common/FlexColumn";
+import getQuickToastText from "./getQuickToastText";
 
 function NotificationBell() {
   const { currentUser } = useContext(AuthContext);
   const [notificationNumber, setNotificationNumber] = useState(0);
-  const navigate = () => {};
   const { push } = useRouter();
 
   useEffect(() => {
@@ -26,7 +26,14 @@ function NotificationBell() {
       //receive new notifications
       subscrition.on("create", (notification) => {
         Toast.fire({
-          title: notification.get("data"),
+          title: getQuickToastText(notification.get("type")),
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Toast.stopTimer);
+            toast.addEventListener("mouseleave", Toast.resumeTimer);
+            toast.addEventListener("click", () => {
+              push(NOTIFICATIONS_PATH);
+            });
+          },
         });
 
         setNotificationNumber((prev) => prev + 1);

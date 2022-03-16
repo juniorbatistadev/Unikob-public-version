@@ -14,7 +14,7 @@ import {
   POST_LIKE_NOTIFICATION,
   PROFILE_COMMENT_NOTIFICATION,
   RESPONSE_COMMENT_NOTIFICATION,
-} from "./notificationsType";
+} from "../../notificationsTypes";
 import PostLikeNotification from "./components/PostLikeNotification";
 import GiftNotification from "./components/GiftNotification";
 
