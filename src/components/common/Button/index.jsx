@@ -77,11 +77,9 @@ function Button({
     <ElementHTML
       className={classNames}
       onClick={onClick}
-      style={{
-        width,
-        padding,
-        margin,
-      }}
+      width={width}
+      padding={padding}
+      margin={margin}
       disabled={loading || disabled}
       {...rest}
       as={as}

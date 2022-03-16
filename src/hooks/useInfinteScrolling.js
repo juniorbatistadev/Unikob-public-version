@@ -10,6 +10,11 @@ function reducer(state, action) {
         isLoading: false,
         startFrom: 0 + action.payload.perPage,
       };
+    case "FETCH_DATA_INITIAL_FAILURE":
+      return {
+        ...state,
+        isLoading: false,
+      };
 
     case "FETCH_DATA_SUCCESS":
       return {
@@ -49,17 +54,21 @@ function useInfiniteScrolling({ query, perPage, user, queryData }) {
   //fetch more data when startfrom change data
   useEffect(() => {
     const fetchData = async () => {
-      const data = await query({
-        startFrom: 0,
-        perPage,
-        user,
-        queryData,
-      });
+      try {
+        const data = await query({
+          startFrom: 0,
+          perPage,
+          user,
+          queryData,
+        });
 
-      dispatch({
-        type: "FETCH_DATA_INITIAL_SUCCESS",
-        payload: { items: data.results, count: data.count, perPage },
-      });
+        dispatch({
+          type: "FETCH_DATA_INITIAL_SUCCESS",
+          payload: { items: data.results, count: data.count, perPage },
+        });
+      } catch (err) {
+        dispatch({ type: "FETCH_DATA_INITIAL_FAILURE" });
+      }
     };
     fetchData();
   }, [perPage, query, user, queryData]);

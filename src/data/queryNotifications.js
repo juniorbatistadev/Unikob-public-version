@@ -1,4 +1,5 @@
 import Parse from "parse";
+import { LOCAL_WS_ADDRESS } from "src/config";
 
 const Notification = Parse.Object.extend("Notification");
 const query = new Parse.Query(Notification);
@@ -6,14 +7,15 @@ const query = new Parse.Query(Notification);
 export const getUnreadNumberOfNotifications = async (user) => {
   const serverUrl =
     process.env.NODE_ENV !== "production"
-      ? "ws://localhost:1447"
-      : "wss://genteuninextjs.b4a.io";
+      ? LOCAL_WS_ADDRESS
+      : process.env.NEXT_PUBLIC_APP_PARSE_WS_ADDRESS;
 
   const client = new Parse.LiveQueryClient({
     applicationId: process.env.NEXT_PUBLIC_APP_ID,
     serverURL: serverUrl,
     javascriptKey: process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY,
   });
+
   client.open();
   const query = new Parse.Query("Notification");
 
