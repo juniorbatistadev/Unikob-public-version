@@ -12,10 +12,8 @@ function App({ Component, pageProps }) {
       process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY
     );
 
-    Parse.serverURL =
-      process.env.NODE_ENV !== "production"
-        ? "http://localhost:1447/parse"
-        : "https://parseapi.back4app.com";
+    Parse.serverURL = process.env.NEXT_PUBLIC_APP_PARSE_URL;
+    Parse.liveQueryServerURL = process.env.NEXT_PUBLIC_APP_PARSE_WS_URL;
   }
 
   const DefaultLayout = MainLayout;
