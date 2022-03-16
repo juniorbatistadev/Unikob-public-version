@@ -26,4 +26,5 @@ export const SETTINGS_PASSWORD_PATH = "/settings/password";
 export const SETTINGS_NOTIFICATION_PATH = "/settings/notification";
 export const SETTINGS_FACEBOOK_PATH = "/settings/facebook";
 
+export const MESSAGES_PATH = "/messages";
 export const CONVERSATION_PATH = "/messages/:conversation";
