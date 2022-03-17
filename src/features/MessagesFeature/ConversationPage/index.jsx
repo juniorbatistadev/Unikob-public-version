@@ -26,7 +26,7 @@ const ConversationPage = ({ conversation }) => {
   const navigate = () => {};
 
   //get Messages
-  const { items, nextPage, startFrom, count, reloadData } =
+  const { items, nextPage, startFrom, count, addItemToStart } =
     useInfiniteScrolling({
       query: getMessagesWithPagination,
       queryData: conversation,
@@ -38,7 +38,7 @@ const ConversationPage = ({ conversation }) => {
     const handleNewMessages = async () => {
       const sub = await subscribeToNewMessages({ queryData: conversation });
 
-      sub.on("create", () => reloadData());
+      sub.on("create", (message) => addItemToStart(message));
     };
 
     handleNewMessages();

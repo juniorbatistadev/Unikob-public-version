@@ -36,6 +36,12 @@ function reducer(state, action) {
         isLoading: false,
       };
 
+    case "ADD_NEW_ITEM_TO_START":
+      return {
+        ...state,
+        items: [action.payload.item, ...state.items],
+      };
+
     default:
       break;
   }
@@ -102,6 +108,14 @@ function useInfiniteScrolling({ query, perPage, user, queryData }) {
     });
   };
 
+  //reload data (normally after new data is avalaible)
+  const addItemToStart = async (item) => {
+    dispatch({
+      type: "ADD_NEW_ITEM_TO_START",
+      payload: { item },
+    });
+  };
+
   return {
     startFrom: state.startFrom,
     count: state.count,
@@ -109,6 +123,7 @@ function useInfiniteScrolling({ query, perPage, user, queryData }) {
     isLoading: state.isLoading,
     nextPage,
     reloadData,
+    addItemToStart,
   };
 }
 

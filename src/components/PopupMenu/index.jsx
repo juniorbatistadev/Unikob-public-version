@@ -11,8 +11,14 @@ function PopupMenu({ children, options }) {
     setIsOpen(false);
   });
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleOptionClick = (e, callback) => {
+    setIsOpen(false);
+    callback(e);
   };
 
   return (
@@ -24,7 +30,10 @@ function PopupMenu({ children, options }) {
         <div className={styles.menuContainer}>
           <ul className={styles.menu}>
             {options.map((option, index) => (
-              <li key={index} onClick={option.onClick}>
+              <li
+                key={index}
+                onClick={(e) => handleOptionClick(e, option.onClick)}
+              >
                 <span>{option.label}</span>
                 <div className={styles.icon}>{option.icon && option.icon}</div>
               </li>

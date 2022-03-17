@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import { TextArea } from "@components/formikFields";
+import { ErrorMessage, TextArea } from "@components/formikFields";
 import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
@@ -14,6 +14,11 @@ const SendMessageForm = ({ conversation }) => {
           message: "",
           conversation,
         }}
+        validate={(values) => {
+          if (values.message.length > 1000) {
+            return { message: "Demasiado Largo " };
+          }
+        }}
         onSubmit={(values, actions) => {
           saveMessage(values);
           actions.resetForm();
@@ -21,12 +26,17 @@ const SendMessageForm = ({ conversation }) => {
       >
         <Form>
           <FlexRow margin="5px">
-            <TextArea
-              name="message"
-              className={styles.textarea}
-              required
-              placeholder="Mensaje"
-            />
+            <FlexColumn className={styles.textareaContainer}>
+              <ErrorMessage name="message" />
+
+              <TextArea
+                name="message"
+                className={styles.textarea}
+                required
+                placeholder="Mensaje"
+              />
+            </FlexColumn>
+
             <Button type="submit" margin="auto 0px 0px 5px">
               Enviar
             </Button>
