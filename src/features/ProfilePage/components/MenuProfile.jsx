@@ -22,10 +22,6 @@ const MenuProfile = ({ user }) => {
       html: <SendGiftForm user={user} />,
       showConfirmButton: false,
     });
-    // swal({
-    //   buttons: false,
-    //   content: <SendGiftForm user={user} />,
-    // });
   };
 
   const declareCrush = () => {

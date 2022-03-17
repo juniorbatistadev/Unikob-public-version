@@ -12,6 +12,8 @@
 
 .sidebar {
   flex: 2;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
 }
 
 .content {
@@ -20,7 +22,7 @@
   flex-wrap: wrap;
   flex: 4;
   min-height: calc(100vh - 60px);
-  border: 1px solid #cfcfcf;
+  outline: 1px solid #cfcfcf;
 }
 
 .right-side-bar {

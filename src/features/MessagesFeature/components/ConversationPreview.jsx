@@ -8,6 +8,9 @@ import { getLastUnreadMessage } from "src/data/queryMessages";
 import FlexColumn from "@components/common/FlexColumn";
 import { useRouter } from "next/router";
 import { CONVERSATION_PATH } from "src/paths";
+// import DotsIcon from "@assets/icons/dot.svg";
+// import TrashIcon from "@assets/icons/trash.svg";
+// import PopupMenu from "@components/PopupMenu";
 
 const ConversationPreview = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -61,12 +64,34 @@ const ConversationPreview = ({ conversation }) => {
                 fontWeight: messagesAmount > 0 ? "bold" : 600,
               }}
             />
-            <Text fontSize="12px" text={conversation.attributes.lastMessage} />
+            <Text
+              text={conversation.attributes.lastMessage
+                .slice(0, 30)
+                .concat(
+                  conversation.attributes.lastMessage.length > 30 ? "..." : ""
+                )}
+              style={{
+                fontSize: 12,
+                fontWeight: messagesAmount > 0 ? "bold" : 0,
+              }}
+            />
           </FlexColumn>
-
-          {messagesAmount > 0 && (
-            <p className={styles.circle}>{messagesAmount}</p>
-          )}
+          <FlexRow className={styles.icons}>
+            {messagesAmount > 0 && (
+              <p className={styles.circle}>{messagesAmount}</p>
+            )}
+            {/* <PopupMenu
+              options={[
+                {
+                  label: "Borrar",
+                  icon: <TrashIcon />,
+                  onClick: handleDelete,
+                },
+              ]}
+            >
+              <DotsIcon width={25} height={25} />
+            </PopupMenu> */}
+          </FlexRow>
         </>
       )}
     </FlexRow>

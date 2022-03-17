@@ -9,6 +9,7 @@
   padding: 10px;
   background-color: white;
   border-radius: 10px;
+  overflow-wrap: anywhere;
 }
 
 .blue {
