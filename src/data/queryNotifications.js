@@ -5,20 +5,13 @@ const Notification = Parse.Object.extend("Notification");
 const query = new Parse.Query(Notification);
 
 export const getUnreadNumberOfNotifications = async (user) => {
-  const client = new Parse.LiveQueryClient({
-    applicationId: process.env.NEXT_PUBLIC_APP_ID,
-    serverURL: process.env.NEXT_PUBLIC_APP_PARSE_WS_URL,
-    javascriptKey: process.env.NEXT_PUBLIC_APP_JAVASCRIPT_KEY,
-  });
-
-  client.open();
   const query = new Parse.Query("Notification");
 
   query.equalTo("forUser", user);
   query.equalTo("wasSeen", false);
 
   const amount = await query.count();
-  const subscrition = await client.subscribe(query);
+  const subscrition = await query.subscribe();
 
   return { amount, subscrition };
 };
