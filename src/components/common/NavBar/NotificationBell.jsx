@@ -46,7 +46,7 @@ function NotificationBell() {
     };
 
     getData();
-  }, [currentUser]);
+  }, [currentUser, push]);
 
   return (
     <FlexColumn

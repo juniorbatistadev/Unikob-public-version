@@ -49,6 +49,7 @@ const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
               <FlexColumn>
                 <FlexRow>
                   <Avatar
+                    width="38px"
                     onClick={() => router.push("/me")}
                     className={styles.avatar}
                     image={

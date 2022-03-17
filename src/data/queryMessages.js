@@ -64,4 +64,21 @@ export const getLastUnreadMessage = async (conversation, user) => {
   return await query.count();
 };
 
+export const getUnreadNumberOfMessages = async ({ user }) => {
+  const query = new Parse.Query("Message");
+  const queryConversation = new Parse.Query("Conversation");
+
+  queryConversation.equalTo("members", user);
+  const conversations = await queryConversation.find();
+
+  query.containedIn("conversation", conversations);
+  query.doesNotExist("wasSeen");
+  query.notEqualTo("createdBy", user);
+
+  const amount = await query.count();
+  const subscrition = await query.subscribe();
+
+  return { amount, subscrition };
+};
+
 export default query;
