@@ -1,5 +1,8 @@
 import ChatPage from "@pages/MessagesFeature/ChatPage";
+import withAuth from "src/helpers/withAuth";
 
-export default function Home() {
+function Chat() {
   return <ChatPage />;
 }
+
+export default withAuth(Chat);

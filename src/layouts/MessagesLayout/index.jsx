@@ -4,8 +4,9 @@ import FlexColumn from "@components/common/FlexColumn";
 import ConversationList from "@pages/MessagesFeature/components/ConversationList";
 import ConversationPage from "@pages/MessagesFeature/ConversationPage";
 import Text from "@components/common/Text";
+import withAuth from "src/helpers/withAuth";
 
-function MessagesLayout({ children, conversation }) {
+function MessagesLayout({ conversation }) {
   return (
     <div className={styles.container}>
       <FlexColumn
@@ -52,4 +53,4 @@ function MessagesLayout({ children, conversation }) {
   );
 }
 
-export default MessagesLayout;
+export default withAuth(MessagesLayout);

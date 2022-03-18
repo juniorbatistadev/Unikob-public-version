@@ -25,7 +25,6 @@ const ConversationPage = ({ conversation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [fromUser, setFromUser] = useState();
   const [currentConversation, setCurrentConversation] = useState();
-  const navigate = () => {};
   const { push } = useRouter();
 
   //get Messages
@@ -118,7 +117,9 @@ const ConversationPage = ({ conversation }) => {
             ))}
           </InfiniteScroll>
         </div>
-        {!isLoading && <SendMessageForm conversation={currentConversation} />}
+        <FlexColumn className={styles.chatFormContainer}>
+          {!isLoading && <SendMessageForm conversation={currentConversation} />}
+        </FlexColumn>
       </>
     </FlexColumn>
   );

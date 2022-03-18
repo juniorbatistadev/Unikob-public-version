@@ -10,6 +10,7 @@ import SendMessageForm from "../components/SendMessageForm";
 
 import styles from "./index.module.css";
 import FlexColumn from "@components/common/FlexColumn";
+import { useRef } from "react";
 
 export default function ChatPage() {
   //get Messages
@@ -24,10 +25,7 @@ export default function ChatPage() {
     const handleNewMessages = async () => {
       const sub = await subscribeToNewChatMessages();
 
-      console.log(sub);
-
       sub.on("create", (message) => {
-        console.log(message);
         addItemToStart(message);
       });
     };
@@ -50,7 +48,9 @@ export default function ChatPage() {
           ))}
         </InfiniteScroll>
       </div>
-      <SendMessageForm />
+      <FlexColumn className={styles.chatFormContainer}>
+        <SendMessageForm />
+      </FlexColumn>
     </FlexColumn>
   );
 }

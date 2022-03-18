@@ -15,7 +15,7 @@
 .messagesContainer {
   height: 100%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   overflow-y: scroll;
 }
 
@@ -27,5 +27,15 @@
 @media (max-width: 767px) {
   .container {
     height: 100vh;
+  }
+
+  .chatFormContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .messagesContainer {
+    padding-bottom: 50px;
   }
 }
