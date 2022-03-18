@@ -1,0 +1,17 @@
+.messagesContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
+}
+
+.scroller {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.container {
+  height: calc(100vh - 60px);
+  background-color: #fff;
+  width: 100%;
+}

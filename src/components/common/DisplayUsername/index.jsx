@@ -13,7 +13,7 @@ export default function DisplayUsername({ username, className, link }) {
 
   return (
     <Wrapper>
-      <span className={classNames}>{`@${username}`}</span>
+      <span className={classNames}>{`${username}`}</span>
     </Wrapper>
   );
 }

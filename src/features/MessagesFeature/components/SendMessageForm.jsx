@@ -5,6 +5,7 @@ import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
 import styles from "./SendMessageForm.module.css";
 import { saveMessage } from "src/data/queryMessages";
+import { saveChatMessage } from "src/data/queryChatMessage";
 
 const SendMessageForm = ({ conversation }) => {
   return (
@@ -20,7 +21,11 @@ const SendMessageForm = ({ conversation }) => {
           }
         }}
         onSubmit={(values, actions) => {
-          saveMessage(values);
+          if (conversation) {
+            saveMessage(values);
+          } else {
+            saveChatMessage(values);
+          }
           actions.resetForm();
         }}
       >

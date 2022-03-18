@@ -17,6 +17,7 @@ import SettingsIcon from "@assets/icons/settings.svg";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
 import {
+  CHAT_PATH,
   CRUSHS_PATH,
   FEED_PATH,
   JOBS_PATH,
@@ -77,7 +78,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
           <RocketIcon alt="option" className={styles["menu-icon"]} />
           <span>Descubre</span>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            goTo(CHAT_PATH);
+          }}
+        >
           <ChatIcon alt="option" className={styles["menu-icon"]} />
           <span>Chat Global</span>
         </li>
