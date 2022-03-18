@@ -1,8 +1,9 @@
 .messagesContainer {
   height: 100%;
   display: flex;
-  flex-direction: column-reverse;
-  overflow-y: scroll;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-anchor: none;
 }
 
 .scroller {
@@ -14,4 +15,15 @@
   height: calc(100vh - 60px);
   background-color: #fff;
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .chatFormContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .messagesContainer {
+    padding-bottom: 50px;
+  }
 }
