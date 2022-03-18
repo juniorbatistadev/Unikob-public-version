@@ -18,7 +18,7 @@ export default function ChatPage() {
   const { items, nextPage, startFrom, count, addItemToStart } =
     useInfiniteScrolling({
       query: getChatMessagesWithPagination,
-      perPage: 10,
+      perPage: 5,
     });
 
   //show new messages
@@ -42,13 +42,13 @@ export default function ChatPage() {
     <FlexColumn className={styles.container}>
       <div className={styles.messagesContainer} ref={scroller}>
         <InfiniteScroll
-          // className={styles.scroller}
+          className={styles.scroller}
           hasMore={startFrom < count}
           loadMore={nextPage}
           useWindow={false}
           isReverse={true}
         >
-          {[...items].reverse().map((item, index) => (
+          {items.map((item, index) => (
             <Message message={item} key={index} withUsername={true} />
           ))}
         </InfiniteScroll>
