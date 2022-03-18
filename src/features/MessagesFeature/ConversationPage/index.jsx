@@ -10,13 +10,15 @@ import { AuthContext } from "src/contexts/AuthContext";
 import GoBackButton from "@components/common/GoBackButton";
 import Title from "@components/common/Title";
 import styles from "./index.module.css";
-import SendMessageForm from "./components/SendMessageForm";
+import SendMessageForm from "../components/SendMessageForm";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroller";
-import Message from "./components/Message";
+import Message from "../components/Message";
 import Parse from "parse";
 import Avatar from "@components/common/Avatar";
 import Text from "@components/common/Text";
+import { useRouter } from "next/router";
+import { PROFILE_PATH } from "src/paths";
 
 const ConversationPage = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -24,6 +26,7 @@ const ConversationPage = ({ conversation }) => {
   const [fromUser, setFromUser] = useState();
   const [currentConversation, setCurrentConversation] = useState();
   const navigate = () => {};
+  const { push } = useRouter();
 
   //get Messages
   const { items, nextPage, startFrom, count, addItemToStart } =
@@ -93,7 +96,11 @@ const ConversationPage = ({ conversation }) => {
               <Title
                 margin="0px 0px 0px 10px"
                 text={fromUser.attributes.username}
-                onClick={() => navigate("/app/profile/" + fromUser.id)}
+                onClick={() =>
+                  push(
+                    PROFILE_PATH.replace(":user", fromUser.attributes.username)
+                  )
+                }
               />
             </>
           )}
@@ -113,8 +120,6 @@ const ConversationPage = ({ conversation }) => {
         </div>
         {!isLoading && <SendMessageForm conversation={currentConversation} />}
       </>
-
-      <div />
     </FlexColumn>
   );
 };

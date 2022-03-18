@@ -1,20 +1,17 @@
 import styles from "./index.module.css";
-// import usePushNotifications from "../../hooks/usePushNotification";
-// import { useNavigate } from "react-router-dom";
-
 import Text from "@components/common/Text";
+import Button from "@components/common/Button";
+import { CREATE_POST_PATH } from "src/paths";
+import { useRouter } from "next/router";
 
 function HomePage() {
-  // const askForPermissioToReceiveNotifications = usePushNotifications();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   askForPermissioToReceiveNotifications();
-  // }, [askForPermissioToReceiveNotifications]);
+  const { push } = useRouter();
 
   return (
     <div className={styles.container}>
       <Text text="Welcome" />
+
+      <Button onClick={() => push(CREATE_POST_PATH)}>Crear Post</Button>
     </div>
   );
 }

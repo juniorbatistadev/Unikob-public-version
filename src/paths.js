@@ -28,3 +28,5 @@ export const SETTINGS_FACEBOOK_PATH = "/settings/facebook";
 
 export const MESSAGES_PATH = "/messages";
 export const CONVERSATION_PATH = "/messages/:conversation";
+
+export const CHAT_PATH = "/chat";
