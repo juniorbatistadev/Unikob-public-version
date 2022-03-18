@@ -33,7 +33,7 @@ const ConversationPage = ({ conversation }) => {
     useInfiniteScrolling({
       query: getMessagesWithPagination,
       queryData: conversation,
-      perPage: 10,
+      perPage: 5,
     });
 
   //show new messages
@@ -106,12 +106,13 @@ const ConversationPage = ({ conversation }) => {
       </FlexRow>
       <div className={styles.messagesContainer}>
         <InfiniteScroll
+          className={styles.scroller}
           hasMore={startFrom < count}
           loadMore={nextPage}
           useWindow={false}
           isReverse={true}
         >
-          {[...items].reverse().map((item, index) => (
+          {items.map((item, index) => (
             <Message message={item} key={index} />
           ))}
         </InfiniteScroll>
