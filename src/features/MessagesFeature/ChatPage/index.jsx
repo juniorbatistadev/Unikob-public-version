@@ -13,6 +13,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import { useRef } from "react";
 
 export default function ChatPage() {
+  const scroller = useRef(null);
   //get Messages
   const { items, nextPage, startFrom, count, addItemToStart } =
     useInfiniteScrolling({
@@ -26,6 +27,10 @@ export default function ChatPage() {
       const sub = await subscribeToNewChatMessages();
 
       sub.on("create", (message) => {
+        if (scroller?.current) {
+          scroller.current.scrollTop = scroller.current.scrollHeight + 200;
+        }
+        if (scroller) scroller.current.scrollTop = 10000;
         addItemToStart(message);
       });
     };
@@ -35,15 +40,15 @@ export default function ChatPage() {
 
   return (
     <FlexColumn className={styles.container}>
-      <div className={styles.messagesContainer}>
+      <div className={styles.messagesContainer} ref={scroller}>
         <InfiniteScroll
-          className={styles.scroller}
+          // className={styles.scroller}
           hasMore={startFrom < count}
           loadMore={nextPage}
           useWindow={false}
           isReverse={true}
         >
-          {items.map((item, index) => (
+          {[...items].reverse().map((item, index) => (
             <Message message={item} key={index} withUsername={true} />
           ))}
         </InfiniteScroll>

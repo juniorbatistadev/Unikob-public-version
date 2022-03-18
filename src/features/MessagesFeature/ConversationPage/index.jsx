@@ -19,6 +19,7 @@ import Avatar from "@components/common/Avatar";
 import Text from "@components/common/Text";
 import { useRouter } from "next/router";
 import { PROFILE_PATH } from "src/paths";
+import { useRef } from "react";
 
 const ConversationPage = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -83,44 +84,42 @@ const ConversationPage = ({ conversation }) => {
 
   return (
     <FlexColumn className={styles.container}>
-      <>
-        <FlexRow alignItems="center" className={styles.header}>
-          <GoBackButton width="25px" />
-          {!isLoading && (
-            <>
-              <Avatar
-                image={fromUser.attributes.profilePicture?.url()}
-                linkToUser={fromUser.attributes.username}
-              />
-              <Title
-                margin="0px 0px 0px 10px"
-                text={fromUser.attributes.username}
-                onClick={() =>
-                  push(
-                    PROFILE_PATH.replace(":user", fromUser.attributes.username)
-                  )
-                }
-              />
-            </>
-          )}
-        </FlexRow>
-        <div className={styles.messagesContainer}>
-          <InfiniteScroll
-            className={styles.scroller}
-            hasMore={startFrom < count}
-            loadMore={nextPage}
-            useWindow={false}
-            isReverse={true}
-          >
-            {items.map((item, index) => (
-              <Message message={item} key={index} />
-            ))}
-          </InfiniteScroll>
-        </div>
-        <FlexColumn className={styles.chatFormContainer}>
-          {!isLoading && <SendMessageForm conversation={currentConversation} />}
-        </FlexColumn>
-      </>
+      <FlexRow alignItems="center" className={styles.header}>
+        <GoBackButton width="25px" />
+        {!isLoading && (
+          <>
+            <Avatar
+              image={fromUser.attributes.profilePicture?.url()}
+              linkToUser={fromUser.attributes.username}
+            />
+            <Title
+              margin="0px 0px 0px 10px"
+              text={fromUser.attributes.username}
+              onClick={() =>
+                push(
+                  PROFILE_PATH.replace(":user", fromUser.attributes.username)
+                )
+              }
+            />
+          </>
+        )}
+      </FlexRow>
+      <div className={styles.messagesContainer}>
+        <InfiniteScroll
+          hasMore={startFrom < count}
+          loadMore={nextPage}
+          useWindow={false}
+          isReverse={true}
+        >
+          {[...items].reverse().map((item, index) => (
+            <Message message={item} key={index} />
+          ))}
+        </InfiniteScroll>
+      </div>
+
+      <FlexColumn className={styles.chatFormContainer}>
+        {!isLoading && <SendMessageForm conversation={currentConversation} />}
+      </FlexColumn>
     </FlexColumn>
   );
 };
