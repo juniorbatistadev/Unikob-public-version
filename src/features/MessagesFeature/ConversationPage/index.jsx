@@ -37,12 +37,26 @@ const ConversationPage = ({ conversation }) => {
       perPage: 10,
     });
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: "smooth",
+      alignToTop: false,
+    });
+  };
+
   //show new messages
   useEffect(() => {
     const handleNewMessages = async () => {
       const sub = await subscribeToNewMessages({ queryData: conversation });
 
-      sub.on("create", (message) => addItemToStart(message));
+      sub.on("create", (message) => {
+        addItemToStart(message);
+        scrollToBottom();
+      });
     };
 
     handleNewMessages();
@@ -113,7 +127,10 @@ const ConversationPage = ({ conversation }) => {
           next={nextPage}
           inverse={true}
           scrollableTarget="scrollableDiv"
+          loader={<Spinner width={40} />}
         >
+          <div ref={messagesEndRef} />
+
           {items.map((item, index) => (
             <Message message={item} key={index} />
           ))}

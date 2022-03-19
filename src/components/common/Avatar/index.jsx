@@ -8,7 +8,11 @@ function Avatar({ image, width, linkToUser, ...props }) {
   const classNames = [styles.avatar, props.className].join(" ");
 
   return (
-    <FlexColumn className={styles.container} {...props}>
+    <div
+      className={styles.container}
+      style={{ width, height: width }}
+      {...props}
+    >
       <A href={linkToUser && PROFILE_PATH.replace(":user", linkToUser)}>
         <img
           style={{
@@ -21,7 +25,7 @@ function Avatar({ image, width, linkToUser, ...props }) {
           alt="Profile Avatar"
         />
       </A>
-    </FlexColumn>
+    </div>
   );
 }
 

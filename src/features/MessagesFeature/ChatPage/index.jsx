@@ -1,5 +1,5 @@
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   getChatMessagesWithPagination,
   subscribeToNewChatMessages,
@@ -10,6 +10,8 @@ import SendMessageForm from "../components/SendMessageForm";
 
 import styles from "./index.module.css";
 import FlexColumn from "@components/common/FlexColumn";
+import Spinner from "@components/common/Spinner";
+import Text from "@components/common/Text";
 
 export default function ChatPage() {
   //get Messages
@@ -19,6 +21,17 @@ export default function ChatPage() {
       perPage: 10,
     });
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      block: "nearest",
+      inline: "center",
+      behavior: "smooth",
+      alignToTop: false,
+    });
+  };
+
   //show new messages
   useEffect(() => {
     const handleNewMessages = async () => {
@@ -26,6 +39,7 @@ export default function ChatPage() {
 
       sub.on("create", (message) => {
         addItemToStart(message);
+        scrollToBottom();
       });
     };
 
@@ -34,7 +48,12 @@ export default function ChatPage() {
 
   return (
     <FlexColumn className={styles.container}>
-      {!isLoading && (
+      {isLoading ? (
+        <FlexColumn className={styles.loader} alignItems="center">
+          <Text text="Cargando chat..." />
+          <Spinner width={30} />
+        </FlexColumn>
+      ) : (
         <>
           <div className={styles.messagesContainer} id="scrollableDiv">
             <InfiniteScroll
@@ -44,18 +63,20 @@ export default function ChatPage() {
               next={nextPage}
               inverse={true}
               scrollableTarget="scrollableDiv"
+              loader={<Spinner width={30} />}
             >
+              <div ref={messagesEndRef} />
+
               {items.map((item, index) => (
                 <Message message={item} key={index} withUsername={true} />
               ))}
             </InfiniteScroll>
           </div>
+          <FlexColumn className={styles.chatFormContainer}>
+            <SendMessageForm />
+          </FlexColumn>
         </>
       )}
-
-      <FlexColumn className={styles.chatFormContainer}>
-        <SendMessageForm />
-      </FlexColumn>
     </FlexColumn>
   );
 }

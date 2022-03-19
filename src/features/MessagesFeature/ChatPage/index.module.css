@@ -10,6 +10,10 @@
   flex-direction: column-reverse;
 }
 
+.loader {
+  margin: auto;
+}
+
 .container {
   height: calc(100vh - 60px);
   background-color: #fff;
