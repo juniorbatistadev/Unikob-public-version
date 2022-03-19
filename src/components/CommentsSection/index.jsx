@@ -7,7 +7,7 @@ import { getCommentsWithPagination } from "src/data/queryComments";
 import Title from "@components/common/Title";
 import FlexColumn from "@components/common/FlexColumn";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "./components/Comment";
 import Spinner from "@components/common/Spinner";
 
@@ -33,8 +33,9 @@ const CommentSection = ({ section, type }) => {
           <Spinner />
         ) : (
           <InfiniteScroll
+            dataLength={items.length}
             hasMore={startFrom + 10 < count}
-            loadMore={nextPage}
+            next={nextPage}
             loader={<Spinner />}
           >
             {items.map((item) => (

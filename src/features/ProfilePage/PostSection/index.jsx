@@ -1,7 +1,7 @@
 import FlexColumn from "@components/common/FlexColumn";
 import { getPostsWithPagination } from "src/data/queryPosts";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import PostCard from "@components/PostCard";
 
@@ -18,8 +18,9 @@ const PostSection = ({ user }) => {
     <>
       {!isLoading && (
         <InfiniteScroll
+          dataLength={items.length}
           start={0}
-          loadMore={nextPage}
+          next={nextPage}
           hasMore={startFrom < count}
           loader={"Cargando"}
         >

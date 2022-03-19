@@ -12,7 +12,7 @@ import Title from "@components/common/Title";
 import styles from "./index.module.css";
 import SendMessageForm from "../components/SendMessageForm";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Message from "../components/Message";
 import Parse from "parse";
 import Avatar from "@components/common/Avatar";
@@ -20,6 +20,7 @@ import Text from "@components/common/Text";
 import { useRouter } from "next/router";
 import { PROFILE_PATH } from "src/paths";
 import { useRef } from "react";
+import Spinner from "@components/common/Spinner";
 
 const ConversationPage = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -33,7 +34,7 @@ const ConversationPage = ({ conversation }) => {
     useInfiniteScrolling({
       query: getMessagesWithPagination,
       queryData: conversation,
-      perPage: 5,
+      perPage: 10,
     });
 
   //show new messages
@@ -104,13 +105,14 @@ const ConversationPage = ({ conversation }) => {
           </>
         )}
       </FlexRow>
-      <div className={styles.messagesContainer}>
+      <div className={styles.messagesContainer} id="scrollableDiv">
         <InfiniteScroll
           className={styles.scroller}
+          dataLength={items.length}
           hasMore={startFrom < count}
-          loadMore={nextPage}
-          useWindow={false}
-          isReverse={true}
+          next={nextPage}
+          inverse={true}
+          scrollableTarget="scrollableDiv"
         >
           {items.map((item, index) => (
             <Message message={item} key={index} />
