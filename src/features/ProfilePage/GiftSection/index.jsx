@@ -1,5 +1,5 @@
 import Title from "@components/common/Title";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Gift from "./Gift";
 import Text from "@components/common/Text";
 import styles from "./index.module.css";
@@ -25,8 +25,9 @@ function GiftSection({ user }) {
         <Text text="Cargando..." />
       ) : (
         <InfiniteScroll
+          dataLength={items.length}
           hasMore={startFrom < count}
-          loadMore={nextPage}
+          next={nextPage}
           loader={<Spinner />}
         >
           <div className={styles.giftsContainer}>

@@ -4,7 +4,7 @@ import { AuthContext } from "src/contexts/AuthContext";
 import FlexColumn from "@components/common/FlexColumn";
 import { getUserNotificationsWithPagination } from "src/data/queryNotifications";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Notification from "./Notification";
 import Text from "@components/common/Text";
 import Parse from "parse";
@@ -31,7 +31,11 @@ function NotificationPage() {
       {isLoading ? (
         <Text text="Cargando.." />
       ) : (
-        <InfiniteScroll loadMore={nextPage} hasMore={startFrom < count}>
+        <InfiniteScroll
+          dataLength={items.length}
+          next={nextPage}
+          hasMore={startFrom < count}
+        >
           {items.map((item) => (
             <Notification key={item.id} notification={item} />
           ))}

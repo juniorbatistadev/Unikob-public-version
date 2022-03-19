@@ -3,7 +3,7 @@ import Title from "@components/common/Title";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import { getUserConversationsWithPagination } from "src/data/queryConversations";
 import { AuthContext } from "src/contexts/AuthContext";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import ConversationPreview from "../ConversationPreview";
 import styles from "./index.module.css";
@@ -24,7 +24,11 @@ const ConversationList = () => {
   return (
     <FlexColumn className={styles.container}>
       <Title text="Conversaciones" margin="10px 10px" />
-      <InfiniteScroll hasMore={startFrom < count} loadMore={nextPage}>
+      <InfiniteScroll
+        hasMore={startFrom < count}
+        next={nextPage}
+        dataLength={items.length}
+      >
         {items.map((item) => {
           return <ConversationPreview key={item.id} conversation={item} />;
         })}

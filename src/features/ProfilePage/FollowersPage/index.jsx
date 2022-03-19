@@ -4,7 +4,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import { getUserFollowersWithPagination } from "src/data/queryFollows";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroll-component";
 import UserListItem from "../components/UserListItem";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import styles from "./index.module.css";
@@ -29,8 +29,9 @@ const FollowingPage = ({ user }) => {
         "Cargando"
       ) : (
         <InfiniteScroll
+          dataLength={items.length}
           hasMore={startFrom + 10 < count}
-          loadMore={nextPage}
+          lnext={nextPage}
           loader={"Cargando..."}
         >
           {items.map((item, index) => (
