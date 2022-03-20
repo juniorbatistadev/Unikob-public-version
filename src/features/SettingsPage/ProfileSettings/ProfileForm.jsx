@@ -15,6 +15,7 @@ import styles from "./ProfileForm.module.css";
 import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
 import FlexColumn from "@components/common/FlexColumn";
+import errorMessages from "src/parseErrorMessages";
 
 function ProfileForm() {
   const { currentUser } = useContext(AuthContext);
@@ -51,41 +52,29 @@ function ProfileForm() {
             gender: Yup.string(),
           })}
           onSubmit={async (values) => {
-            try {
-              let country;
-              if (values.country) {
-                const Country = Parse.Object.extend("Country");
-                country = new Country();
-                country.id = values.country;
-              }
-
-              currentUser.set("email", values.email);
-              currentUser.set("bio", values.bio);
-              currentUser.set("country", country);
-              currentUser.set("username", values.username);
-              currentUser.set("gender", values.gender);
-              await currentUser.save().then(() => {
+            Parse.Cloud.run("updateUserProfile", values)
+              .then(() => {
+                currentUser.fetch();
                 Alert.fire({
                   icon: "success",
                   title: "Perfil Actualizado",
                   timer: 2000,
                   showConfirmButton: false,
                 });
-              });
-            } catch (error) {
-              const message =
-                error.code === 202
-                  ? "Este nombre de usuario ya esta en uso."
+              })
+              .catch((error) => {
+                const message = errorMessages[error.code]
+                  ? errorMessages[error.code]
                   : error.message
                   ? error.message
                   : error;
 
-              Alert.fire({
-                icon: "error",
-                title: "Opps",
-                text: message,
+                Alert.fire({
+                  icon: "error",
+                  title: "Opps",
+                  text: message,
+                });
               });
-            }
           }}
         >
           {(props) => (

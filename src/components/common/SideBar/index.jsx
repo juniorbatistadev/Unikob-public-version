@@ -95,14 +95,14 @@ function SideBar({ setMenuOpen, className, ...props }) {
           <SchoolIcon alt="option" className={styles["menu-icon"]} />
           <span>Escuelas</span>
         </li>
-        <li
+        {/* <li
           onClick={() => {
             goTo(QUESTIONS_PATH);
           }}
         >
           <QuestionIcon alt="option" className={styles["menu-icon"]} />
           <span>Pregunta</span>
-        </li>
+        </li> */}
         <li
           onClick={() => {
             goTo(CRUSHS_PATH);
