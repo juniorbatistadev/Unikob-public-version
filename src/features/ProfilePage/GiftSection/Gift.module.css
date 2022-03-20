@@ -27,6 +27,7 @@
   border-radius: 20px;
   min-width: 100px;
   height: -webkit-fill-available;
+  word-break: break-all;
 }
 
 .arrow {

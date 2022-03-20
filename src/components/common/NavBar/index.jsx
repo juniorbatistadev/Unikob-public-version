@@ -9,6 +9,7 @@ import Avatar from "@components/common/Avatar";
 import MenuButton from "@components/common/MenuButton";
 import { useRouter } from "next/router";
 import useIsMounted from "src/hooks/useIsMounted";
+import { CURRENT_USER_PROFILE_PATH } from "src/paths";
 
 function NavBar() {
   const { currentUser } = useContext(AuthContext);
@@ -26,26 +27,27 @@ function NavBar() {
       <div className={styles["search-bar-container"]}>
         <SearchBar />
       </div>
+      {isMounted && (
+        <div className={styles["right-side"]}>
+          {currentUser ? (
+            <>
+              <NotificationBell />
+              <MessagesBell />
 
-      <div className={styles["right-side"]}>
-        {isMounted && currentUser ? (
-          <>
-            <NotificationBell />
-            <MessagesBell />
-
-            <Avatar
-              onClick={() => router.push("/me")}
-              className={styles.avatar}
-              image={
-                currentUser.get("profilePicture") &&
-                currentUser.get("profilePicture").url()
-              }
-            />
-          </>
-        ) : (
-          <span>Inicia Sesion!</span>
-        )}
-      </div>
+              <Avatar
+                onClick={() => router.push(CURRENT_USER_PROFILE_PATH)}
+                className={styles.avatar}
+                image={
+                  currentUser.get("profilePicture") &&
+                  currentUser.get("profilePicture").url()
+                }
+              />
+            </>
+          ) : (
+            <span>Inicia Sesion!</span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

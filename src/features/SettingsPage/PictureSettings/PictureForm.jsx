@@ -48,7 +48,7 @@ function PictureForm() {
         initialValues={{
           file: "",
         }}
-        onSubmit={(values) => {
+        onSubmit={async (values) => {
           const parseFile = new Parse.File("profile.jpg", values.file);
           currentUser.set("profilePicture", parseFile);
           currentUser.save().then(() => {
@@ -58,7 +58,7 @@ function PictureForm() {
               timer: 2000,
               showConfirmButton: false,
             }).then(() => {
-              window.location.reload();
+              currentUser.fetch();
             });
           });
         }}
