@@ -4,6 +4,7 @@ import {
   ErrorMessage,
   RadioField,
   SelectCountry,
+  TextArea,
 } from "@components/formikFields";
 import Title from "@components/common/Title";
 import styles from "./CreateSchoolForm.module.css";
@@ -60,6 +61,11 @@ const CreateSchoolForm = () => {
           .min(3, "El nombre es demasiado corto")
           .max(100, "El nombre demasiado largo")
           .required("Nombre es requerido"),
+        description: yup
+          .string()
+          .min(10, "Muy corta")
+          .max(500, "Muy largo")
+          .required("Requerido"),
         website: yup.string().trim().url(),
         country: yup.string().required("Elige un pais"),
         type: yup.string().required(),
@@ -76,6 +82,16 @@ const CreateSchoolForm = () => {
               className={styles.input}
             />
             <ErrorMessage name="name" />
+          </FlexColumn>
+          <FlexColumn margin="0px 0px 5px 0px">
+            <Title typeStyle="secondary" text="Descripcion" />
+            <TextArea
+              minRows="5"
+              name="description"
+              placeholder="Historia, especialiades, informacion, etc."
+              className={styles.input}
+            />
+            <ErrorMessage name="description" />
           </FlexColumn>
           <FlexColumn margin="0px 0px 5px 0px">
             <Title typeStyle="secondary" text="Enlace URL" />
