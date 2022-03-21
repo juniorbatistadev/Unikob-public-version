@@ -1,0 +1,21 @@
+.title {
+  margin: 20px 5px;
+}
+
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 10px;
+}
+
+.radios label {
+  margin-right: 20px;
+}
+.radios {
+  display: flex;
+  margin: 5px 0px;
+}

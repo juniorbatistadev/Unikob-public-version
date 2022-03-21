@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 function RadioField({ className, typeStyle, children, ...props }) {
   const [field] = useField({
     ...props,
-    type: "radio"
+    type: "radio",
   });
 
   const classes = [
@@ -13,12 +13,12 @@ function RadioField({ className, typeStyle, children, ...props }) {
     styles[typeStyle],
     field.checked && typeStyle === "borderLines"
       ? styles.borderLinesSelected
-      : " "
+      : " ",
   ].join(" ");
 
   return (
     <div className={classes}>
-      <label>
+      <label className={styles.label}>
         <input type="radio" {...field} {...props} />
         {children}
       </label>
@@ -28,7 +28,7 @@ function RadioField({ className, typeStyle, children, ...props }) {
 
 RadioField.defaultProps = {
   className: "",
-  typeStyle: ""
+  typeStyle: "",
 };
 
 export default RadioField;

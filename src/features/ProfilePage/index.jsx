@@ -179,8 +179,7 @@ export default function ProfilePage({ username }) {
                 comments: <ProfileCommentSection user={user} />,
                 gifts: <GiftSection user={user} />,
               }}
-              default={<PostSection />}
-            ></TabsContent>
+            />
           </FlexColumn>
         </FlexColumn>
       )}

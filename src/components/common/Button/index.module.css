@@ -15,8 +15,8 @@
 
 /* Primary Button Styles */
 .primary {
-  border: solid #ffffff 1px;
-  color: white;
+  border: solid #305689 1px;
+  color: rgb(255, 255, 255);
   background: #4173b2;
 }
 
