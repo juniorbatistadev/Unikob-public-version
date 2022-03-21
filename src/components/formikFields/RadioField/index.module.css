@@ -17,3 +17,7 @@
 .borderSelected label input:checked {
   background-color: black;
 }
+
+.label {
+  color: #696969;
+}

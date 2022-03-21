@@ -1,4 +1,4 @@
-import styles from "./UserListItem.module.css";
+import styles from "./index.module.css";
 import FlexRow from "@components/common/FlexRow";
 import Avatar from "@components/common/Avatar";
 import Text from "@components/common/Text";

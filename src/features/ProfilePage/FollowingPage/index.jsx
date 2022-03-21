@@ -5,7 +5,7 @@ import FlexRow from "@components/common/FlexRow";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import { getUserFollowingsWithPagination } from "src/data/queryFollows";
 import InfiniteScroll from "react-infinite-scroll-component";
-import UserListItem from "../components/UserListItem";
+import UserListItem from "@components/UserListItem";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import styles from "./index.module.css";
 
