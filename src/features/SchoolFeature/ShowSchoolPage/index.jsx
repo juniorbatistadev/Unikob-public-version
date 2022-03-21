@@ -34,16 +34,7 @@ const SchoolPage = ({ school }) => {
               <PlusIcon width={20} height={20} className={styles.plus} />
             </Button>
 
-            <Text
-              text="INTEC, es una institución dominicana de educación superior privada
-              de servicio público, sin fines de lucro, fundada en 1972 por un
-              grupo de académicos comprometidos con la transformación social del
-              país y la promoción continua de la calidad de la vida de sus
-              habitantes. Se caracteriza por la innovación y la
-              complementariedad de su oferta académica en las áreas de
-              Ingenierías, Negocios, Ciencias de la Salud, Ciencias Básicas y
-              Ambientales y Ciencias Sociales y Humanidades."
-            />
+            <Text text={school.attributes.description} />
             <ul className={styles.infoList}>
               <li>
                 <FlexRow alignItems="center">
@@ -77,13 +68,14 @@ const SchoolPage = ({ school }) => {
                   </a>
                 </li>
               )}
-
-              <li>
-                <FlexRow alignItems="center">
-                  <PinIcon className={styles.icon} />
-                  <Text text={school.attributes.country.attributes.name} />
-                </FlexRow>
-              </li>
+              {school.attributes.country && (
+                <li>
+                  <FlexRow alignItems="center">
+                    <PinIcon className={styles.icon} />
+                    <Text text={school.attributes.country.attributes.name} />
+                  </FlexRow>
+                </li>
+              )}
             </ul>
           </FlexColumn>
 
