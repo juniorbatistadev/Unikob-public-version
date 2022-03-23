@@ -1,0 +1,29 @@
+.info,
+.success,
+.warning,
+.error {
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  border-style: solid;
+  border-width: 1px;
+}
+.info {
+  color: #059;
+  background-color: #bef;
+  border-color: rgba(126, 182, 193, 1);
+}
+.success {
+  color: #270;
+  background-color: #dff2bf;
+  border-color: rgba(38, 179, 3, 1);
+}
+.warning {
+  color: #9f6000;
+  background-color: #feefb3;
+  border-color: rgba(177, 161, 129, 1);
+}
+.error {
+  color: #d8000c;
+  background-color: #ffbaba;
+  border-color: rgba(220, 53, 69, 1);
+}

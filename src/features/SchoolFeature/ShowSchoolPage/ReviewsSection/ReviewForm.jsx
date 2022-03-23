@@ -13,14 +13,12 @@ import Title from "@components/common/Title";
 import { useState, useEffect, useContext } from "react";
 import Spinner from "@components/common/Spinner";
 import { AuthContext } from "@context/AuthContext";
-import useIsMounted from "@hooks/useIsMounted";
 import Text from "@components/common/Text";
 
 const ReviewForm = ({ school, reloadData }) => {
   const { currentUser } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [alredyReviewed, setAlredyReviewed] = useState();
-  const { isMounted } = useIsMounted();
 
   useEffect(() => {
     const getData = async () => {
@@ -35,9 +33,10 @@ const ReviewForm = ({ school, reloadData }) => {
     getData().finally(() => setIsLoading(false));
   }, []);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, actions) => {
     try {
       await saveSchoolRating(values);
+      actions.resetForm();
       if (reloadData) reloadData();
     } catch (err) {
       Alert.fire({ icon: "error", text: `${err.message}` });

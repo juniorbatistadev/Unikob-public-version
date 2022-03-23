@@ -30,13 +30,14 @@ const Message = ({ message, withUsername }) => {
     <FlexColumn className={classnamesContainer}>
       <FlexRow>
         {message.attributes.createdBy.id !== currentUser.id && (
-          <Avatar
-            linkToUser={message.attributes.createdBy.attributes.username}
-            width="36px"
-            height="36px"
-            margin="0px 5px 0px 0px"
-            image={message.attributes.createdBy.attributes.profilePicture?.url()}
-          />
+          <FlexRow margin="0px 5px 0px 0px">
+            <Avatar
+              linkToUser={message.attributes.createdBy.attributes.username}
+              width="36px"
+              height="36px"
+              image={message.attributes.createdBy.attributes.profilePicture?.url()}
+            />
+          </FlexRow>
         )}
         <div className={classnamesBox}>
           <p>{message.attributes.message}</p>

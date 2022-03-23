@@ -23,7 +23,7 @@ const CreateSchoolForm = () => {
   const handleSubmit = (values, actions) => {
     saveSchool({
       name: values.name,
-      description: vaule.description,
+      description: values.description,
       website: values.website,
       country: values.country,
       type: values.type,
