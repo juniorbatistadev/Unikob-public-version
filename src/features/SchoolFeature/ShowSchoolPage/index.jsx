@@ -17,104 +17,102 @@ import MemebersSection from "./MembersSection";
 import TeachersSection from "./TeachersSection";
 import CrushesSection from "./CrushesSection";
 import PlusIcon from "@assets/icons/plus.svg";
+import Parse from "parse";
 
-const SchoolPage = ({ school }) => {
+const SchoolPage = ({ data }) => {
+  const School = Parse.Object.extend("School");
+
+  const schoolObject = new School();
+  schoolObject.id = data.objectId;
+
   return (
-    <FlexColumn>
-      <FlexColumn>
-        <FlexColumn className={styles.headerContainer}>
-          <HeaderSchool
-            text={school.attributes.name}
-            image={school.attributes.image}
-          />
+    <FlexColumn className={styles.container}>
+      <FlexColumn className={styles.headerContainer}>
+        <HeaderSchool text={data.name} image={data.image} />
 
-          <FlexColumn padding="15px">
-            <Button className={styles.joinButton}>
-              Agregar a tu perfil{" "}
-              <PlusIcon width={20} height={20} className={styles.plus} />
-            </Button>
+        <FlexColumn padding="15px">
+          <Button className={styles.joinButton}>
+            Agregar a tu perfil
+            <PlusIcon width={20} height={20} className={styles.plus} />
+          </Button>
 
-            <Text text={school.attributes.description} />
-            <ul className={styles.infoList}>
+          <Text text={data.description} />
+          <ul className={styles.infoList}>
+            <li>
+              <FlexRow alignItems="center">
+                <StudentIcon className={styles.icon} />
+                <Text
+                  text={
+                    data.type === "highSchool" ? "Secundaria" : "Universidad"
+                  }
+                />
+              </FlexRow>
+            </li>
+            {data.website && (
+              <li>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={data.website}
+                  style={{ textDecoration: "none" }}
+                >
+                  <FlexRow alignItems="center">
+                    <ChainIcon className={styles.icon} />
+                    <Text
+                      text={data.website.replace(/(http:\/\/|https:\/\/)/i, "")}
+                    />
+                  </FlexRow>
+                </a>
+              </li>
+            )}
+            {data.country && (
               <li>
                 <FlexRow alignItems="center">
-                  <StudentIcon className={styles.icon} />
-                  <Text
-                    text={
-                      school.attributes.type === "highSchool"
-                        ? "Secundaria"
-                        : "Universidad"
-                    }
-                  />
+                  <PinIcon className={styles.icon} />
+                  <Text text={data.country.name} />
                 </FlexRow>
               </li>
-              {school.attributes.website && (
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={school.attributes.website}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FlexRow alignItems="center">
-                      <ChainIcon className={styles.icon} />
-                      <Text
-                        text={school.attributes.website.replace(
-                          /(http:\/\/|https:\/\/)/i,
-                          ""
-                        )}
-                      />
-                    </FlexRow>
-                  </a>
-                </li>
-              )}
-              {school.attributes.country && (
-                <li>
-                  <FlexRow alignItems="center">
-                    <PinIcon className={styles.icon} />
-                    <Text text={school.attributes.country.attributes.name} />
-                  </FlexRow>
-                </li>
-              )}
-            </ul>
-          </FlexColumn>
-
-          <TabsMenu
-            path={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}
-            slug="section"
-            options={[
-              { name: "Inicio", query: {} },
-              {
-                link: "reviews",
-                name: "Reviews",
-                query: { section: "reviews" },
-              },
-              {
-                link: "teachers",
-                name: "Profesores",
-                query: { section: "teachers" },
-              },
-              {
-                link: "crushes",
-                name: "UniCrush",
-                query: { section: "crushes" },
-              },
-              {
-                link: "members",
-                name: "Miembros",
-                query: { section: "members" },
-              },
-            ]}
-          />
+            )}
+          </ul>
         </FlexColumn>
+
+        <TabsMenu
+          path={SCHOOL_READ_PATH.replace(":school", data.slug)}
+          slug="section"
+          options={[
+            { name: "Inicio", query: {} },
+            {
+              link: "reviews",
+              name: "Reviews",
+              query: { section: "reviews" },
+            },
+            {
+              link: "teachers",
+              name: "Profesores",
+              query: { section: "teachers" },
+            },
+            {
+              link: "crushes",
+              name: "UniCrush",
+              query: { section: "crushes" },
+            },
+            {
+              link: "members",
+              name: "Miembros",
+              query: { section: "members" },
+            },
+          ]}
+        />
+      </FlexColumn>
+      <FlexColumn>
         <TabsContent
           slug={"section"}
           tabs={{
             default: <p>Feed</p>,
-            reviews: <ReviewsSection school={school} />,
-            members: <MemebersSection school={school} />,
-            teachers: <TeachersSection school={school} />,
-            crushes: <CrushesSection school={school} />,
+            reviews: <ReviewsSection school={schoolObject} />,
+            members: <MemebersSection school={data.id} />,
+            teachers: <TeachersSection school={data.id} />,
+            crushes: <CrushesSection school={data.id} />,
           }}
         />
       </FlexColumn>

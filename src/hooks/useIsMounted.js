@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useScrollToTop() {
+export default function useIsMounted() {
   const [isMounted, setIsMounted] = useState();
 
   useEffect(() => {

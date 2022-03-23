@@ -4,7 +4,13 @@ import queryCountries from "./queryCountries";
 const School = Parse.Object.extend("School");
 const query = new Parse.Query(School);
 
-export const saveSchool = async ({ name, country, type, website }) => {
+export const saveSchool = async ({
+  name,
+  country,
+  description,
+  type,
+  website,
+}) => {
   try {
     const school = new School();
     const countryData = await queryCountries.get(country);
@@ -13,6 +19,7 @@ export const saveSchool = async ({ name, country, type, website }) => {
     school.set("country", countryData);
     school.set("type", type);
     school.set("website", website);
+    school.set("description", description);
 
     await school.save();
 

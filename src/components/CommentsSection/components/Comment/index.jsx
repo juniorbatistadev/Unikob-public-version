@@ -17,6 +17,7 @@ import { AuthContext } from "@context/AuthContext";
 import A from "@components/common/A";
 import { PROFILE_PATH } from "src/paths";
 import { RESPONSE_COMMENT } from "@components/CommentsSection/commentsType";
+import DisplayUsername from "@components/common/DisplayUsername";
 
 const Comment = ({
   text,
@@ -58,9 +59,8 @@ const Comment = ({
           linkToUser={user.attributes.username}
         />
         <div className={styles.dataContainer}>
-          <A href={PROFILE_PATH.replace(":user", user.attributes.username)}>
-            <Title text={user.attributes.username} fontSize="16px" />
-          </A>
+          <DisplayUsername username={user.attributes.username} type="primary" />
+
           <div className={styles.text}>{text.trim()}</div>
           <FlexRow margin="10px 0px 0px 0px ">
             <FlexRow className={styles.actions}>

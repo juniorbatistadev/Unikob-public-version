@@ -5,6 +5,7 @@
   min-height: 150px;
   flex-direction: column;
   color: #fff;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .text {
@@ -18,5 +19,9 @@
 @media (max-width: 768px) {
   .text {
     font-size: 28px;
+  }
+
+  .container {
+    border-radius: 0px;
   }
 }

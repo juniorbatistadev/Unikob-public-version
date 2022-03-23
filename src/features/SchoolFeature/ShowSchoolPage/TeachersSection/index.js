@@ -27,7 +27,7 @@ const TeachersSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <Title text="Profesores" margin="10px" />
+      <Title text="Profesores" />
       {/* {currentUser ? (
         <Button
           onClick={() =>
