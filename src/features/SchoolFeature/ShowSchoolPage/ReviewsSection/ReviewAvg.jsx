@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import FlexColumn from "../../../components/common/FlexColumn";
+import { useEffect, useState } from "react";
+import FlexColumn from "@components/common/FlexColumn";
 import Parse from "parse";
 import styles from "./ReviewAvg.module.css";
-import Rater from "../../../components/formikFields/Rater";
+import Rater from "@components/formikFields/Rater";
 
 const ReviewAvg = ({ school }) => {
   const [avg, setAvg] = useState(0);
@@ -25,7 +25,7 @@ const ReviewAvg = ({ school }) => {
     <FlexColumn className={styles.container}>
       <FlexColumn className={styles.box}>
         <p className={styles.avg}>{avg}</p>
-        <Rater interactive={false} value={avg} />
+        <Rater disabled={true} value={avg} />
         <p className={styles.text}>{reviews} reviews </p>
       </FlexColumn>
     </FlexColumn>

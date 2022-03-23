@@ -12,7 +12,7 @@ const HeaderSchool = ({ text, image }) => {
         backgroundSize: "cover",
       }}
     >
-      <p className={styles.text}>{text}</p>
+      <h1 className={styles.text}>{text}</h1>
       <p>🧑🏻‍🤝‍🧑🏻201 ⭐4.3 (12)</p>
     </div>
   );

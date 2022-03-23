@@ -1,10 +1,13 @@
+.container {
+  padding: 10px;
+}
+
 .headerContainer {
-  margin: 10px;
   background-color: #fff;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .infoList {
-  /* margin: 10px; */
   margin-top: 10px;
   list-style: none;
 }
@@ -27,8 +30,14 @@
 /* Device = Most of the Smartphones Mobiles
 (Portrait) and Low Resolution tablets */
 @media (max-width: 768px) {
+  .container {
+    padding: 0px;
+    border-radius: 0px;
+  }
+
   .headerContainer {
     margin: 0px;
+    border-radius: 0px;
   }
 
   .joinButton {

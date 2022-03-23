@@ -1,4 +1,9 @@
-.usernameText {
+.secondary {
   color: #696969;
+  font-size: 16px;
+}
+
+.primary {
+  color: #4173b2;
   font-size: 16px;
 }
