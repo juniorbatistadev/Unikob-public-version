@@ -31,13 +31,15 @@ const ReviewsSection = ({ school }) => {
       <FlexColumn margin="20px 0px">
         <ReviewAvg school={school} />
       </FlexColumn>
-      {isMounted && currentUser ? (
-        <ReviewForm school={school} reloadData={reloadData} />
-      ) : (
-        <FlexRow>
-          <Button>Inicia Sesion para dejar tu opinion</Button>
-        </FlexRow>
-      )}
+      <FlexColumn margin={10}>
+        {isMounted && currentUser ? (
+          <ReviewForm school={school} reloadData={reloadData} />
+        ) : (
+          <FlexRow>
+            <Button>Inicia Sesion para dejar tu opinion</Button>
+          </FlexRow>
+        )}
+      </FlexColumn>
 
       {!isLoading && (
         <InfiniteScroll
@@ -61,10 +63,6 @@ const ReviewsSection = ({ school }) => {
 
       {count < 1 && !isLoading && (
         <FlexColumn alignItems="center" margin="auto">
-          <Title
-            text="Nadie ha dado su opinion aun. Se el primero !"
-            fontSize="16px"
-          />
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}
