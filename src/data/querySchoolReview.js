@@ -36,9 +36,16 @@ export const checkIfUserAlreadyReviewedThisSchool = async ({
   const query = new Parse.Query(SchoolReview);
   query.equalTo("createdBy", user);
   query.equalTo("school", school);
-  const result = await query.count();
+  const result = await query.find();
 
-  return result > 0;
+  return result;
+};
+
+export const deleteSchoolReview = async (schoolReviewId) => {
+  const query = new Parse.Query(SchoolReview);
+  const result = await query.get(schoolReviewId);
+
+  return result.destroy();
 };
 
 export default query;

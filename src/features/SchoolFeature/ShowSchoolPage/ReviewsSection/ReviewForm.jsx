@@ -14,6 +14,7 @@ import { useState, useEffect, useContext } from "react";
 import Spinner from "@components/common/Spinner";
 import { AuthContext } from "@context/AuthContext";
 import Text from "@components/common/Text";
+import { deleteSchoolReview } from "src/data/querySchoolReview";
 
 const ReviewForm = ({ school, reloadData }) => {
   const { currentUser } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const ReviewForm = ({ school, reloadData }) => {
         school,
       });
 
-      setAlredyReviewed(result);
+      setAlredyReviewed(result[0]);
     };
 
     getData().finally(() => setIsLoading(false));
@@ -35,11 +36,28 @@ const ReviewForm = ({ school, reloadData }) => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await saveSchoolRating(values);
+      const response = await saveSchoolRating(values);
+      setAlredyReviewed(response);
       actions.resetForm();
       if (reloadData) reloadData();
     } catch (err) {
       Alert.fire({ icon: "error", text: `${err.message}` });
+    }
+  };
+
+  const onDelete = async () => {
+    const response = await Alert.fire({
+      text: "¿Estas seguro que quieres borrar este post?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (response.isConfirmed) {
+      await deleteSchoolReview(alredyReviewed.id);
+      setAlredyReviewed(null);
+      if (reloadData) reloadData();
     }
   };
 
@@ -50,7 +68,7 @@ const ReviewForm = ({ school, reloadData }) => {
       ) : alredyReviewed ? (
         <FlexColumn margin={10}>
           <Text text="Ya enviaste un review de esta escuela." />
-          <Button width="fit-content" typeStyle="secondary">
+          <Button width="fit-content" typeStyle="secondary" onClick={onDelete}>
             Borrar tu review
           </Button>
         </FlexColumn>
