@@ -12,6 +12,7 @@ import Review from "src/components/Review";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import { AuthContext } from "src/contexts/AuthContext";
 import useIsMounted from "@hooks/useIsMounted";
+import styles from "./index.module.css";
 
 const ReviewsSection = ({ school }) => {
   const { startFrom, isLoading, items, count, nextPage, reloadData } =
@@ -28,18 +29,20 @@ const ReviewsSection = ({ school }) => {
   return (
     <div>
       <Title text="Reviews" margin={10} />
-      <FlexColumn margin="20px 0px">
-        <ReviewAvg school={school} />
-      </FlexColumn>
-      <FlexColumn margin={10}>
-        {isMounted && currentUser ? (
-          <ReviewForm school={school} reloadData={reloadData} />
-        ) : (
-          <FlexRow>
-            <Button>Inicia Sesion para dejar tu opinion</Button>
-          </FlexRow>
-        )}
-      </FlexColumn>
+      <FlexRow className={styles.topHeader}>
+        <FlexColumn className={styles.avgContainer}>
+          <ReviewAvg school={school} />
+        </FlexColumn>
+        <FlexColumn margin={10} className={styles.formContainer}>
+          {isMounted && currentUser ? (
+            <ReviewForm school={school} reloadData={reloadData} />
+          ) : (
+            <FlexRow>
+              <Button>Inicia Sesion para dejar tu opinion</Button>
+            </FlexRow>
+          )}
+        </FlexColumn>
+      </FlexRow>
 
       {!isLoading && (
         <InfiniteScroll
