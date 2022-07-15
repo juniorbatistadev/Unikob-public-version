@@ -52,6 +52,7 @@ const ReviewForm = ({ school, reloadData }) => {
       showCancelButton: true,
       confirmButtonText: "Borrar",
       cancelButtonText: "Cancelar",
+      reverseButtons: true,
     });
 
     if (response.isConfirmed) {
