@@ -1,0 +1,25 @@
+.topHeader{
+    margin: 20px 0px;
+    flex-direction: row;
+}
+
+.avgContainer{
+    flex:1;
+    justify-content: center;
+}
+
+.formContainer{
+    flex : 2;
+}
+
+.reviewsContainer{
+    padding: 10px;
+}
+
+  @media (max-width: 767px) {
+    
+    .topHeader{
+        flex-direction: column;
+    }
+  }
+  

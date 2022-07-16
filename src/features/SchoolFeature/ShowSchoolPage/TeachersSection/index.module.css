@@ -1,0 +1,12 @@
+.titleContainer{
+    padding:20px 5px;
+}
+
+.addTeacherButton{
+    margin-left:auto;
+}
+
+.selectSubject{
+    min-width: 200px;
+    margin-left: 10px;
+}

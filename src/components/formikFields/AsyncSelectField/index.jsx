@@ -16,10 +16,10 @@ export default function AsyncSelectField({ getData, placeholder, ...props }) {
     <>
       {
         <SelectField
-          {...props}
           options={data}
           disabled={isLoading}
           placeholder={isLoading ? "Cargando opciones" : placeholder}
+          {...props}
         />
       }
     </>

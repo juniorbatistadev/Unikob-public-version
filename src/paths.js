@@ -33,3 +33,5 @@ export const CHAT_PATH = "/chat";
 
 export const SCHOOL_CREATE_PATH = "/school/create";
 export const SCHOOL_READ_PATH = "/school/:school";
+
+export const TEACHER_READ_PATH = "/teacher/:teacher";

@@ -7,6 +7,7 @@ const Alert = withReactContent(
     customClass: {
       confirmButton: styles.confirmButton,
       cancelButton: styles.cancelButton,
+      htmlContainer: styles.htmlContainer,
     },
     backdrop: `rgba(65, 115, 178, 0.45)`,
     buttonsStyling: false,
