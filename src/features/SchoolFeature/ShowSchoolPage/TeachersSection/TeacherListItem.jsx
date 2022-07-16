@@ -39,7 +39,7 @@ const TeacherListItem = ({ name, subjects, id }) => {
           <Rater disable={true} value={avg} size={15} />
           <Text text={`(${reviews})`} />
         </FlexRow>
-        <FlexRow>
+        <FlexRow margin="10px 0px 0px 0px">
           {subjectsTags.map((subject) => (
             <FlexRow margin="0px 5px 0px 0px">
               <Tag key={subject.id} text={subject.attributes.name} />

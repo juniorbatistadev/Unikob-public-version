@@ -40,10 +40,9 @@ export const getSchoolMembersWithPagination = async ({
   queryData,
   perPage,
 }) => {
-  const query = new Parse.Query(Parse.User);
-  query.equalTo("school", queryData);
+  const query = queryData.relation("members").query();
+
   query.skip(startFrom);
-  query.include("createdBy");
   query.descending("createdAt");
   query.limit(perPage);
   query.withCount();
@@ -61,6 +60,20 @@ export const getSchoolBySlug = async (slug) => {
     query.include("createdBy");
 
     const result = await query.first();
+
+    return result;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const getSchoolsByMember = async (user) => {
+  try {
+    const query = new Parse.Query(School);
+
+    query.equalTo("members", user);
+
+    const result = await query.find();
 
     return result;
   } catch (err) {

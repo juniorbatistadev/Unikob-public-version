@@ -17,7 +17,6 @@ import TabsMenu from "@components/TabsMenu";
 import TabsContent from "@components/TabsContent";
 
 import BioIcon from "@assets/icons/feather.svg";
-import StudentIcon from "@assets/icons/student.svg";
 import PinIcon from "@assets/icons/pin.svg";
 
 import MenuProfile from "./components/MenuProfile";
@@ -37,6 +36,7 @@ import {
 import ProfileCommentSection from "./ProfileCommentSection";
 import { useRouter } from "next/router";
 import GiftSection from "./GiftSection";
+import DisplaySchoolList from "./components/DisplaySchoolList";
 
 export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
@@ -134,16 +134,18 @@ export default function ProfilePage({ username }) {
               {user.attributes.bio && (
                 <ItemWithIcon IconSVG={BioIcon} text={user.attributes.bio} />
               )}
-              {user.attributes.school && (
+
+              <DisplaySchoolList user={user} />
+              {/* {user.attributes.school && (
                 <ItemWithIcon
-                  className={styles.pointer}
-                  //   onClick={() =>
-                  //     navigate("/app/school/" + user.attributes.school.id + "/")
-                  //   }
+                  className={styles.pointer} 
+                    onClick={() =>
+                      navigate("/app/school/" + user.attributes.school.id + "/")
+                    }
                   IconSVG={StudentIcon}
                   text={user.attributes.school.attributes.name}
                 />
-              )}
+              )} */}
 
               {user.attributes.country && (
                 <ItemWithIcon
