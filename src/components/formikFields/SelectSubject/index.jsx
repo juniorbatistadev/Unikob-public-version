@@ -6,13 +6,15 @@ export default function SelectSubject(props) {
     const list = [];
     const querySubjects = new Parse.Query(Parse.Object.extend("Subject"));
     const data = await querySubjects.find();
+
+    if (props.firstOption) {
+      list[0] = {
+        name: props.firstOption.name,
+        id: props.firstOption.id,
+      };
+    }
+
     await data.forEach((subject) => {
-      if (props.firstOption) {
-        list[0] = {
-          name: props.firstOption.name,
-          id: props.firstOption.id,
-        };
-      }
       list.push({
         name: subject.attributes.name,
         id: subject.id,
