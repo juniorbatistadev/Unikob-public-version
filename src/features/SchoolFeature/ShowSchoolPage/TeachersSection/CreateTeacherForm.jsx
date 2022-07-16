@@ -11,6 +11,7 @@ import Title from "@components/common/Title";
 import Text from "@components/common/Text";
 import { saveTeacher } from "src/data/queryTeachers";
 import * as yup from "yup";
+import AlertBox from "@components/common/AlertBox";
 
 const CreateTeacherForm = ({ school, reloadData }) => {
   const [isCompleted, setIsCompleted] = useState(false);
@@ -46,6 +47,10 @@ const CreateTeacherForm = ({ school, reloadData }) => {
           <Form>
             <FlexColumn>
               <Title text="Creando Nuevo Profesor" />
+              <AlertBox
+                text="ATENCION: no podras modificar los datos luego que esten guardados. Debes asegurate que esten correctos."
+                type="warning"
+              />
               <Text text="Nombre" />
               <TextField
                 name="name"

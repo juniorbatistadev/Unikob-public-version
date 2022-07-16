@@ -6,6 +6,7 @@ import ItemWithIcon from "./ItemWithIcon";
 import Text from "@components/common/Text";
 import Link from "next/link";
 import { SCHOOL_READ_PATH } from "src/paths";
+import A from "@components/common/A";
 
 function DisplaySchoolList({ user, ...props }) {
   const [schools, setSchools] = useState([]);
@@ -29,18 +30,9 @@ function DisplaySchoolList({ user, ...props }) {
   return (
     <FlexColumn {...props}>
       {schools.map((school) => (
-        <Link
-          href={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}
-        >
-          <ItemWithIcon
-            //   className={styles.pointer}
-            // onClick={() =>
-            //   navigate("/app/school/" + user.attributes.school.id + "/")
-            // }
-            IconSVG={StudentIcon}
-            text={school.attributes.name}
-          />
-        </Link>
+        <A href={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}>
+          <ItemWithIcon IconSVG={StudentIcon} text={school.attributes.name} />
+        </A>
       ))}
       {schoolsOverLimit > 0 && (
         <Text

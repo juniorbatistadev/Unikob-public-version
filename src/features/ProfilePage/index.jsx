@@ -136,16 +136,6 @@ export default function ProfilePage({ username }) {
               )}
 
               <DisplaySchoolList user={user} />
-              {/* {user.attributes.school && (
-                <ItemWithIcon
-                  className={styles.pointer} 
-                    onClick={() =>
-                      navigate("/app/school/" + user.attributes.school.id + "/")
-                    }
-                  IconSVG={StudentIcon}
-                  text={user.attributes.school.attributes.name}
-                />
-              )} */}
 
               {user.attributes.country && (
                 <ItemWithIcon
