@@ -6,10 +6,13 @@ export default function AsyncSelectField({ getData, placeholder, ...props }) {
   const [data, setData] = useState();
 
   useEffect(() => {
-    getData().then((data) => {
-      setData(data);
-      setIsLoading(false);
-    });
+    getData()
+      .then((data) => {
+        console.log(getData);
+
+        setData(data);
+      })
+      .finally(() => setIsLoading(false));
   }, [getData]);
 
   return (
