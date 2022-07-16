@@ -61,7 +61,7 @@ const TeachersSection = ({ school }) => {
             <SelectSubject
               className={styles.selectSubject}
               onChange={(value) => {
-                setSubject(value[0].id);
+                if (value.length > 0) setSubject(value[0].id);
               }}
               name="subject"
               placeholder="Mostrar todas"
