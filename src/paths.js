@@ -20,6 +20,7 @@ export const PROFILE_COMMENTS_PATH = "/profile/:user?section=comments";
 
 export const SETTINGS_PATH = "/settings";
 export const SETTINGS_PROFILE_PATH = "/settings/profile";
+export const SETTINGS_SCHOOL_PATH = "/settings/school";
 export const SETTINGS_PICTURE_PATH = "/settings/picture";
 export const SETTINGS_COVER_PATH = "/settings/cover";
 export const SETTINGS_PASSWORD_PATH = "/settings/password";

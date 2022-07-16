@@ -20,6 +20,7 @@ import {
   SETTINGS_PASSWORD_PATH,
   SETTINGS_PICTURE_PATH,
   SETTINGS_PROFILE_PATH,
+  SETTINGS_SCHOOL_PATH,
 } from "src/paths";
 
 function SettingsMenu() {
@@ -67,10 +68,10 @@ function SettingsMenu() {
         }}
       />
       <SettingOption
-        title="Escuela"
-        description="Agrega tu escuela"
+        title="Escuelas"
+        description="Maneja tus escuelas"
         Icon={SchoolIcon}
-        onClick={() => push("school")}
+        onClick={() => push(SETTINGS_SCHOOL_PATH)}
       />
 
       <Title

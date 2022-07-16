@@ -7,15 +7,14 @@ import PinIcon from "@assets/icons/pin.svg";
 import FlexRow from "@components/common/FlexRow";
 import StudentIcon from "@assets/icons/student.svg";
 import ChainIcon from "@assets/icons/chain.svg";
-import Button from "@components/common/Button";
 import { SCHOOL_READ_PATH } from "src/paths";
 import TabsContent from "@components/TabsContent";
 import ReviewsSection from "./ReviewsSection";
-import MemebersSection from "./MembersSection";
+import MembersSection from "./MembersSection";
 import TeachersSection from "./TeachersSection";
 import CrushesSection from "./CrushesSection";
-import PlusIcon from "@assets/icons/plus.svg";
 import Parse from "parse";
+import AddSchoolToProfileButton from "@pages/SchoolFeature/components/AddSchoolToProfileButton";
 
 const SchoolPage = ({ data }) => {
   const School = Parse.Object.extend("School");
@@ -29,10 +28,7 @@ const SchoolPage = ({ data }) => {
         <HeaderSchool text={data.name} image={data.image} />
 
         <FlexColumn padding="15px">
-          <Button className={styles.joinButton}>
-            Agregar a tu perfil
-            <PlusIcon width={20} height={20} className={styles.plus} />
-          </Button>
+          <AddSchoolToProfileButton school={schoolObject} />
 
           <Text text={data.description} />
           <ul className={styles.infoList}>
@@ -108,7 +104,7 @@ const SchoolPage = ({ data }) => {
           tabs={{
             default: <p>Feed</p>,
             reviews: <ReviewsSection school={schoolObject} />,
-            members: <MemebersSection school={data.id} />,
+            members: <MembersSection school={schoolObject} />,
             teachers: <TeachersSection school={schoolObject} />,
             crushes: <CrushesSection school={data.id} />,
           }}
