@@ -12,6 +12,7 @@ export default function AsyncSelectField({ getData, placeholder, ...props }) {
 
         setData(data);
       })
+      .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [getData]);
 
