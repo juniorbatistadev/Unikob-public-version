@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
 import Title from "@components/common/Title";
@@ -14,10 +14,11 @@ import { getTeacherReviewsWithPagination } from "src/data/queryTeachersReviews";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Review from "@components/Review";
 import { useRouter } from "next/router";
-import Text from "@components/common/Text";
 import styles from "./index.module.css";
 import useIsMounted from "@hooks/useIsMounted";
 import Tag from "@components/common/Tag";
+import A from "@components/common/A";
+import { SCHOOL_READ_PATH } from "src/paths";
 
 const ShowTeacher = () => {
   const router = useRouter();
@@ -61,16 +62,18 @@ const ShowTeacher = () => {
           <FlexColumn>
             <FlexRow>
               <SchoolIcon width="25px" height="25px" />
-              {/* <Link
-                to={`/app/school/${teacher.attributes.school.id}/`}
-                style={{ textDecoration: "none" }}
-              > */}
-              <Title
-                margin="0px 0px 0px 10px"
-                text={teacher.attributes.school.attributes.name}
-                typeStyle="secondary"
-              />
-              {/* </Link> */}
+              <A
+                href={SCHOOL_READ_PATH.replace(
+                  ":school",
+                  teacher.attributes.school.attributes.slug
+                )}
+              >
+                <Title
+                  margin="0px 0px 0px 10px"
+                  text={teacher.attributes.school.attributes.name}
+                  typeStyle="secondary"
+                />
+              </A>
             </FlexRow>
             <FlexRow margin={"15px 0px 0px 0px"}>
               {subjectsTags.map((subject) => (

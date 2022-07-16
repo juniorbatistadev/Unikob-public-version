@@ -50,6 +50,24 @@ export const getSchoolMembersWithPagination = async ({
 
   return result;
 };
+export const searchSchoolWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(School);
+
+  query.fullText("name", queryData);
+  query.limit(perPage);
+  query.include("country");
+  query.skip(startFrom);
+  query.withCount();
+  query.find();
+
+  const result = await query.find();
+
+  return result;
+};
 
 export const getSchoolBySlug = async (slug) => {
   try {

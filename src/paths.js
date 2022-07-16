@@ -36,3 +36,5 @@ export const SCHOOL_CREATE_PATH = "/school/create";
 export const SCHOOL_READ_PATH = "/school/:school";
 
 export const TEACHER_READ_PATH = "/teacher/:teacher";
+
+export const SEARCH_SCHOOL_PATH = "/search/school";
