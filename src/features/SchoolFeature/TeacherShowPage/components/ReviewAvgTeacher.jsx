@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import Parse from "parse";
+import styles from "./ReviewAvgTeacher.module.css";
 import ReviewAverageBox from "@components/ReviewsAverageBox";
 
-const ReviewAvg = ({ school }) => {
+const ReviewAvgTeacher = ({ teacher }) => {
   const [avg, setAvg] = useState(0);
   const [reviews, setReviews] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
-      const result = await Parse.Cloud.run("getSchoolAverageRating", {
-        schoolId: school.id,
+      const result = await Parse.Cloud.run("getTeacherAverageRating", {
+        teacherId: teacher.id,
       });
 
       setReviews(result[0].total);
@@ -17,9 +18,9 @@ const ReviewAvg = ({ school }) => {
     };
 
     getData().catch((e) => console.log(e, "error"));
-  }, [school.id]);
+  }, [teacher.id]);
 
   return <ReviewAverageBox avg={avg} reviews={reviews} />;
 };
 
-export default ReviewAvg;
+export default ReviewAvgTeacher;

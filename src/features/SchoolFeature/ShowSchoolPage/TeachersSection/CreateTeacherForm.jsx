@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Formik, Form } from "formik";
 import {
   TextField,
-  SelectArea,
+  SelectSubject,
   ErrorMessage,
-} from "../../../components/formikFields";
-import FlexColumn from "../../../components/common/FlexColumn";
-import Button from "../../../components/common/Button";
-import Title from "../../../components/common/Title";
-import Text from "../../../components/common/Text";
-import { saveTeacher } from "../../../data/queryTeachers";
+} from "@components/formikFields";
+import FlexColumn from "@components/common/FlexColumn";
+import Button from "@components/common/Button";
+import Title from "@components/common/Title";
+import Text from "@components/common/Text";
+import { saveTeacher } from "src/data/queryTeachers";
 import * as yup from "yup";
 
 const CreateTeacherForm = ({ school, reloadData }) => {
@@ -17,12 +17,12 @@ const CreateTeacherForm = ({ school, reloadData }) => {
   return (
     <div>
       {isCompleted ? (
-        <Text text="Profesor Enviado" />
+        <Text text="Profesor Agregado" />
       ) : (
         <Formik
           initialValues={{
             name: "",
-            area: "",
+            subjects: "",
             school: school,
           }}
           validationSchema={yup.object({
@@ -30,12 +30,10 @@ const CreateTeacherForm = ({ school, reloadData }) => {
               .string()
               .min(3, "Muy Corto")
               .max(32, "Muy Largo")
-              .required("Falto El Nombre"),
-            area: yup.mixed().required("Elige el area"),
+              .required("Falta un nombre"),
+            subjects: yup.mixed().required("Elige las asignaturas"),
           })}
           onSubmit={async (values) => {
-            console.log(values);
-
             try {
               await saveTeacher(values);
               setIsCompleted(true);
@@ -55,13 +53,14 @@ const CreateTeacherForm = ({ school, reloadData }) => {
                 border="1px solid grey"
               />
               <ErrorMessage name="name" />
-              <Text text="Area" />
-              <SelectArea
+              <Text text="Asignaciones" />
+              <SelectSubject
                 border="1px solid grey"
-                name="area"
-                placeholder="Seleciona el area"
+                name="subjects"
+                placeholder="Selecciona la asignaciones"
+                multi={true}
               />
-              <ErrorMessage name="area" />
+              <ErrorMessage name="subjects" />
               <Button margin="10px 0px 0px 0px" type="submit">
                 Guardar
               </Button>

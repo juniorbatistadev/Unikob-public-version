@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import FlexColumn from "@components/common/FlexColumn";
-import Spinner from "@components/common/Spinner";
 import HeaderSchool from "./components/HeaderSchool";
 import TabsMenu from "@components/TabsMenu";
 import styles from "./index.module.css";
@@ -111,7 +109,7 @@ const SchoolPage = ({ data }) => {
             default: <p>Feed</p>,
             reviews: <ReviewsSection school={schoolObject} />,
             members: <MemebersSection school={data.id} />,
-            teachers: <TeachersSection school={data.id} />,
+            teachers: <TeachersSection school={schoolObject} />,
             crushes: <CrushesSection school={data.id} />,
           }}
         />

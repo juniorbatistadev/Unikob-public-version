@@ -39,3 +39,8 @@
   box-shadow: 0px 0px 5px 3px #b8b8b852;
   cursor: pointer;
 }
+
+
+.htmlContainer{
+  overflow: visible !important; ;
+}

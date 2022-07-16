@@ -13,7 +13,11 @@ function SelectFieldFormik({ options, className, multi, name, ...props }) {
   const handleChange = (values) => {
     if (!multi) {
       setValue(values[0]?.id);
+    } else {
+      setValue(values);
     }
+
+    if (props.onChange) props.onChange();
   };
 
   const valueOptions = Array.isArray(value) ? value : [value];
@@ -32,6 +36,7 @@ function SelectFieldFormik({ options, className, multi, name, ...props }) {
       valueField="id"
       className={classNames}
       name={name}
+      multi={multi}
       {...props}
     />
   );
@@ -41,6 +46,7 @@ SelectFieldFormik.defaultProps = {
   className: " ",
   options: [],
   name: "",
+  multi: false,
 };
 
 export default SelectFieldFormik;
