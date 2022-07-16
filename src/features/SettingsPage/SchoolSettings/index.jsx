@@ -12,10 +12,16 @@ import { getSchoolsByMember } from "src/data/querySchools";
 import FlexColumn from "@components/common/FlexColumn";
 import Text from "@components/common/Text";
 import AddSchoolToProfileButton from "@pages/SchoolFeature/components/AddSchoolToProfileButton";
+import EmptyIlustration from "@assets/icons/empty.svg";
+import Spinner from "@components/common/Spinner";
+import { useRouter } from "next/router";
+import { SEARCH_SCHOOL_PATH } from "src/paths";
 
 function PasswordSettings() {
   const { currentUser } = useContext(AuthContext);
   const [schools, setSchools] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +30,7 @@ function PasswordSettings() {
       setSchools(result);
     };
 
-    getData();
+    getData().finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -33,18 +39,33 @@ function PasswordSettings() {
       animate={{ x: 0 }}
       className={styles.container}
     >
-      <FlexRow>
+      <FlexRow alignItems={"center"}>
         <GoBackButton />
         <Title text="Escuelas" className={styles.title} />
+        <Button
+          margin={"10px 10px 0px auto"}
+          onClick={() => router.push(SEARCH_SCHOOL_PATH)}
+        >
+          Buscar Escuela
+        </Button>
       </FlexRow>
-      <FlexColumn>
-        {schools.map((school) => (
-          <FlexRow key={school.id} className={styles.schoolRow}>
-            <Text text={school.attributes.name} />
-            <AddSchoolToProfileButton school={school} />
-          </FlexRow>
-        ))}
-      </FlexColumn>
+      {isLoading ? (
+        <Spinner />
+      ) : schools.length > 0 ? (
+        <FlexColumn>
+          {schools.map((school) => (
+            <FlexRow key={school.id} className={styles.schoolRow}>
+              <Text text={school.attributes.name} />
+              <AddSchoolToProfileButton school={school} />
+            </FlexRow>
+          ))}
+        </FlexColumn>
+      ) : (
+        <FlexColumn alignItems={"center"}>
+          <EmptyIlustration width={200} height={200} />
+          <Text text="No tienes escuelas asignadas" />
+        </FlexColumn>
+      )}
     </motion.div>
   );
 }
