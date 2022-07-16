@@ -6,7 +6,7 @@ function ItemWithIcon({ IconSVG, text, className = " ", ...props }) {
   return (
     <div className={classNames} {...props}>
       <IconSVG className={styles.icon} />
-      <span>{text}</span>
+      <span style={{ wordBreak: "break-word" }}>{text}</span>
     </div>
   );
 }

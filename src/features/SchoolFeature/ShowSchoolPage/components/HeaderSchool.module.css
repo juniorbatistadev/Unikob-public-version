@@ -1,16 +1,15 @@
 .container {
-  display: flex;
   justify-content: center;
   align-items: center;
   min-height: 150px;
-  flex-direction: column;
   color: #fff;
   border-radius: 12px 12px 0px 0px;
+  background-color: rgb(91 136 186);
 }
 
 .text {
   color: #fff;
-  font-size: 38px;
+  font-size: 31px;
   text-align: center;
 }
 
