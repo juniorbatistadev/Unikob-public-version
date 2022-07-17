@@ -10,7 +10,7 @@ import * as Yup from "yup";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import { searchSchoolWithPagination } from "src/data/querySchools";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SchoolResultItem from "./components/SchoolResultItem";
 import { AuthContext } from "@context/AuthContext";
 import Text from "@components/common/Text";
@@ -22,14 +22,19 @@ import MoonIlustration from "@assets/icons/moon.svg";
 function SearchSchoolPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const { currentUser } = useContext(AuthContext);
-  const router = useRouter();
+  const { query } = useRouter();
 
-  const { items, startFrom, count, reloadData, nextPage } =
-    useInfiniteScrolling({
+  const { items, startFrom, count, nextPage, isLoading } = useInfiniteScrolling(
+    {
       query: searchSchoolWithPagination,
       queryData: searchQuery,
       perPage: 10,
-    });
+    }
+  );
+
+  useEffect(() => {
+    setSearchQuery(query.search);
+  }, [query]);
 
   const onSearch = ({ search }) => {
     setSearchQuery(search);
@@ -44,7 +49,7 @@ function SearchSchoolPage() {
 
       <Formik
         initialValues={{
-          search: "",
+          search: query.search ? query.search : "",
         }}
         onSubmit={onSearch}
         validationSchema={Yup.object({
@@ -70,56 +75,60 @@ function SearchSchoolPage() {
         </Form>
       </Formik>
 
-      <InfiniteScroll
-        dataLength={items.length}
-        loader={"Cargando"}
-        hasMore={startFrom < count}
-        next={nextPage}
-        className={styles.reviewsContainer}
-      >
-        {items.map((item) => (
-          <FlexColumn margin="15px 0px 0px 0px">
-            <SchoolResultItem school={item} />
-          </FlexColumn>
-        ))}
-      </InfiniteScroll>
-      {count !== 0 && startFrom + 10 > count && (
-        <FlexColumn margin={"20px 0px 0px 0px"}>
-          <Text text="¿No encontraste tu escuela? ¡Agregala!" />
-          {currentUser ? (
-            <Button onClick={() => router.push(SCHOOL_CREATE_PATH)}>
-              Agregar Escuela
-            </Button>
-          ) : (
-            <Button>Inicia sesion para agregar tu escuela</Button>
+      {!isLoading && (
+        <>
+          <InfiniteScroll
+            dataLength={items.length}
+            loader={"Cargando"}
+            hasMore={startFrom < count}
+            next={nextPage}
+            className={styles.reviewsContainer}
+          >
+            {items.map((item) => (
+              <FlexColumn margin="15px 0px 0px 0px">
+                <SchoolResultItem school={item} />
+              </FlexColumn>
+            ))}
+          </InfiniteScroll>
+          {count !== 0 && startFrom + 10 > count && (
+            <FlexColumn margin={"20px 0px 0px 0px"}>
+              <Text text="¿No encontraste tu escuela? ¡Agregala!" />
+              {currentUser ? (
+                <Button onClick={() => router.push(SCHOOL_CREATE_PATH)}>
+                  Agregar Escuela
+                </Button>
+              ) : (
+                <Button>Inicia sesion para agregar tu escuela</Button>
+              )}
+            </FlexColumn>
           )}
-        </FlexColumn>
-      )}
 
-      {count === 0 && searchQuery && (
-        <FlexColumn alignItems={"center"}>
-          <EmptyIlustration width="200px" height="200px" />
-          <Title text="No pudimos encontrar nada." fontSize="16px" />
-          <Title
-            text="Intenta con otras palabras o agrega la escuela."
-            fontSize="16px"
-          />
-          {currentUser ? (
-            <Button
-              margin={"10px 0px 0px 0px"}
-              onClick={() => router.push(SCHOOL_CREATE_PATH)}
-            >
-              Agregar Escuela
-            </Button>
-          ) : (
-            <Button>Inicia sesion para agregar tu escuela</Button>
+          {count === 0 && searchQuery && (
+            <FlexColumn alignItems={"center"}>
+              <EmptyIlustration width="200px" height="200px" />
+              <Title text="No pudimos encontrar nada." fontSize="16px" />
+              <Title
+                text="Intenta con otras palabras o agrega la escuela."
+                fontSize="16px"
+              />
+              {currentUser ? (
+                <Button
+                  margin={"10px 0px 0px 0px"}
+                  onClick={() => router.push(SCHOOL_CREATE_PATH)}
+                >
+                  Agregar Escuela
+                </Button>
+              ) : (
+                <Button>Inicia sesion para agregar tu escuela</Button>
+              )}
+            </FlexColumn>
           )}
-        </FlexColumn>
-      )}
-      {!searchQuery && (
-        <FlexColumn alignItems={"center"} margin="60px 0px 0px 0px">
-          <MoonIlustration width={200} height={200} />
-        </FlexColumn>
+          {!searchQuery && (
+            <FlexColumn alignItems={"center"} margin="60px 0px 0px 0px">
+              <MoonIlustration width={200} height={200} />
+            </FlexColumn>
+          )}
+        </>
       )}
     </FlexColumn>
   );

@@ -6,6 +6,12 @@ export default function SelectCountry(props) {
     const list = [];
     const queryCountries = new Parse.Query(Parse.Object.extend("Country"));
     const data = await queryCountries.find();
+    if (props.firstOption) {
+      list[0] = {
+        name: props.firstOption.name,
+        id: props.firstOption.id,
+      };
+    }
     await data.forEach((country) => {
       list.push({
         name: country.attributes.name,

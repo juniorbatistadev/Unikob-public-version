@@ -1,4 +1,4 @@
-export const SCHOOLS_PATH = "/schools";
+export const SCHOOLS_PATH = "/school";
 export const QUESTIONS_PATH = "/questions";
 export const CRUSHS_PATH = "/crushs";
 export const JOBS_PATH = "/jobs";
