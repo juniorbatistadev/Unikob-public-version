@@ -15,6 +15,7 @@ import EmptyIlustration from "@assets/icons/empty.svg";
 import { AuthContext } from "src/contexts/AuthContext";
 import styles from "./index.module.css";
 import Alert from "@components/common/Alert";
+import LoginToAccess from "@components/LoginToAccess";
 
 const TeachersSection = ({ school }) => {
   const [subject, setSubject] = useState("");
@@ -29,29 +30,29 @@ const TeachersSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <FlexRow className={styles.titleContainer}>
+      <FlexRow>
         <Title text="Profesores" />
-        {currentUser ? (
-          <Button
-            className={styles.addTeacherButton}
-            onClick={() =>
-              Alert.fire({
-                html: (
-                  <CreateTeacherForm school={school} reloadData={reloadData} />
-                ),
-                showConfirmButton: false,
-              })
-            }
-          >
-            Agregar Profesor
-          </Button>
-        ) : (
-          <FlexRow>
-            <Button onClick={() => navigate("/")}>
-              Inicia sesion para agregar profesores
+        <FlexRow className={styles.addTeacherButton}>
+          {currentUser ? (
+            <Button
+              onClick={() =>
+                Alert.fire({
+                  html: (
+                    <CreateTeacherForm
+                      school={school}
+                      reloadData={reloadData}
+                    />
+                  ),
+                  showConfirmButton: false,
+                })
+              }
+            >
+              Agregar Profesor
             </Button>
-          </FlexRow>
-        )}
+          ) : (
+            <LoginToAccess text="Inicia sesion para agregar profesores" />
+          )}
+        </FlexRow>
       </FlexRow>
 
       <Formik initialValues={{ subject: "" }}>
