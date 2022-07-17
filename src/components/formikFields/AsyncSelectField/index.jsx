@@ -8,8 +8,6 @@ export default function AsyncSelectField({ getData, placeholder, ...props }) {
   useEffect(() => {
     getData()
       .then((data) => {
-        console.log(getData);
-
         setData(data);
       })
       .catch((error) => console.log(error))

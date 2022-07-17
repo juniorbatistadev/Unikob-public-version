@@ -1,4 +1,6 @@
-.menu {
+
+/* default style */
+.default {
   background-color: #fff;
   position: sticky;
   top: 60px;
@@ -6,13 +8,13 @@
   box-shadow: 0px 5px 6px 0px #bfbfbf69;
 }
 
-.menu ul {
+.default ul {
   list-style: none;
   display: flex;
   flex-direction: row;
 }
 
-.menuOption {
+.default .menuOption {
   padding: 15px;
   font-size: 17px;
   color: grey;
@@ -20,12 +22,44 @@
   cursor: pointer;
 }
 
-.menuOptionActive {
+.default .menuOptionActive {
   border-bottom: 2px solid #4173b2;
 }
 
+/* type clear styles */
+
+.clear{
+
+}
+
+.clear ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.clear .menuOption {
+  padding: 15px;
+  font-size: 17px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clear .menuOptionActive {
+  color:  #4173b2;
+}
+
+
+
+
+
 @media (max-width: 767px) {
-  .menu ul {
+  .default ul {
+    overflow-x: scroll;
+  }
+
+  .clear ul{
     overflow-x: scroll;
   }
 }

@@ -3,11 +3,11 @@ import { withRouter } from "next/router";
 import A from "@components/common/A";
 import FlexRow from "@components/common/FlexRow";
 
-const TabsMenu = ({ options, router, slug, path }) => {
+const TabsMenu = ({ options, router, slug, path, typeStyle }) => {
   const { query } = router;
 
   return (
-    <FlexRow className={styles.menu}>
+    <FlexRow className={styles[typeStyle]}>
       <ul>
         {options.map((option, index) => (
           <A key={index} href={{ pathname: path, query: option.query }}>
@@ -24,6 +24,10 @@ const TabsMenu = ({ options, router, slug, path }) => {
       </ul>
     </FlexRow>
   );
+};
+
+TabsMenu.defaultProps = {
+  typeStyle: "default",
 };
 
 export default withRouter(TabsMenu);

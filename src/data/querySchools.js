@@ -1,6 +1,7 @@
 import Parse from "parse";
 import queryCountries from "./queryCountries";
 
+const Country = Parse.Object.extend("Country");
 const School = Parse.Object.extend("School");
 const query = new Parse.Query(School);
 
@@ -74,7 +75,6 @@ export const getSchoolBySlug = async (slug) => {
     const query = new Parse.Query(School);
 
     query.equalTo("slug", slug);
-
     query.include("createdBy");
 
     const result = await query.first();
@@ -97,6 +97,33 @@ export const getSchoolsByMember = async (user) => {
   } catch (err) {
     throw err;
   }
+};
+
+export const getRecentSchoolsWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(School);
+
+  if (queryData) {
+    const country = new Country();
+    country.id = queryData;
+
+    console.log(country);
+    query.equalTo("country", country);
+  }
+
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.include("country");
+  query.skip(startFrom);
+  query.withCount();
+  query.find();
+
+  const result = await query.find();
+
+  return result;
 };
 
 export default query;
