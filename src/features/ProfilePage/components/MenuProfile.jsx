@@ -7,17 +7,11 @@ import HeartSVG from "@assets/icons/heart.svg";
 // import swal from "@sweetalert/with-react";
 import SendGiftForm from "./SendGiftForm";
 import Alert from "@components/common/Alert";
+import DeclareCrushForm from "./SendCrushForm";
 // import DeclareCrushForm from "../../../components/DeclareCrushForm";
 
 const MenuProfile = ({ user }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen((prevState) => !prevState);
-  };
-
   const sendGift = () => {
-    setIsOpen(false);
     Alert.fire({
       html: <SendGiftForm user={user} />,
       showConfirmButton: false,
@@ -25,18 +19,17 @@ const MenuProfile = ({ user }) => {
   };
 
   const declareCrush = () => {
-    setIsOpen(false);
-    // swal({
-    //   buttons: false,
-    //   content: <DeclareCrushForm toUser={user} />,
-    // });
+    Alert.fire({
+      html: <DeclareCrushForm toUser={user} />,
+      showConfirmButton: false,
+    });
   };
 
   return (
     <PopupMenu
       options={[
         { label: "Enviar Regalo", icon: <GiftSVG />, onClick: sendGift },
-        { label: "Declarar Crush", icon: <HeartSVG /> },
+        { label: "Declarar Crush", icon: <HeartSVG />, onClick: declareCrush },
       ]}
     >
       <DotsIcon width="20px" height="20px" />

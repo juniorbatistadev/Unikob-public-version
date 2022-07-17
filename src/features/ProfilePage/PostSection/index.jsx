@@ -3,7 +3,7 @@ import { getPostsWithPagination } from "src/data/queryPosts";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
-import PostCard from "@components/PostCard";
+import PostFeedItem from "@pages/FeedPage/components/PostFeedItem";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
@@ -25,7 +25,7 @@ const PostSection = ({ user }) => {
           loader={"Cargando"}
         >
           {items.map((item) => (
-            <PostCard key={item.id} post={item} />
+            <PostFeedItem key={item.id} post={item} />
           ))}
         </InfiniteScroll>
       )}
