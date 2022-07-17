@@ -98,7 +98,7 @@ const SchoolPage = ({ data }) => {
           ]}
         />
       </FlexColumn>
-      <FlexColumn>
+      <FlexColumn className={styles.contentContainer}>
         <TabsContent
           slug={"section"}
           tabs={{
@@ -106,7 +106,7 @@ const SchoolPage = ({ data }) => {
             reviews: <ReviewsSection school={schoolObject} />,
             members: <MembersSection school={schoolObject} />,
             teachers: <TeachersSection school={schoolObject} />,
-            crushes: <CrushesSection school={data.id} />,
+            crushes: <CrushesSection school={schoolObject} />,
           }}
         />
       </FlexColumn>
