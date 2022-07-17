@@ -13,6 +13,7 @@ import EmptyIlustration from "@assets/icons/empty.svg";
 import { AuthContext } from "src/contexts/AuthContext";
 import useIsMounted from "@hooks/useIsMounted";
 import styles from "./index.module.css";
+import LoginToAccess from "@components/LoginToAccess";
 
 const ReviewsSection = ({ school }) => {
   const { startFrom, isLoading, items, count, nextPage, reloadData } =
@@ -38,7 +39,7 @@ const ReviewsSection = ({ school }) => {
             <ReviewForm school={school} reloadData={reloadData} />
           ) : (
             <FlexRow>
-              <Button>Inicia Sesion para dejar tu opinion</Button>
+              <LoginToAccess text={"Inicia sesion para dejar un review"} />
             </FlexRow>
           )}
         </FlexColumn>

@@ -1,13 +1,15 @@
+import FlexRow from "@components/common/FlexRow";
+import Text from "@components/common/Text";
 import styles from "./IteamWithIcon.module.css";
 
 function ItemWithIcon({ IconSVG, text, className = " ", ...props }) {
   const classNames = [styles.infoBox, className].join(" ");
 
   return (
-    <div className={classNames} {...props}>
+    <FlexRow className={classNames} {...props} alignItems="center">
       <IconSVG className={styles.icon} />
-      <span style={{ wordBreak: "break-word" }}>{text}</span>
-    </div>
+      <Text text={text} />
+    </FlexRow>
   );
 }
 

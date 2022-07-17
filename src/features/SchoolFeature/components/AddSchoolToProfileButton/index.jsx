@@ -21,7 +21,7 @@ function AddSchoolToProfileButton({ school }) {
       setAlreadyAdded(result ? true : false);
     };
 
-    getData().finally(() => setIsLoading(false));
+    if (currentUser) getData().finally(() => setIsLoading(false));
   }, [currentUser]);
 
   const handleClick = async () => {
@@ -37,22 +37,26 @@ function AddSchoolToProfileButton({ school }) {
   };
 
   return (
-    <Button
-      className={styles.joinButton}
-      onClick={handleClick}
-      typeStyle={alreadyAdded ? "secondary" : "primary"}
-    >
-      {isLoading ? (
-        <Spinner width={20} />
-      ) : alreadyAdded ? (
-        "Eliminar escuela de tu perfil"
-      ) : (
-        <>
-          {"Agregar a tu perfil"}
-          <PlusIcon width={15} height={15} className={styles.plus} />
-        </>
+    <>
+      {currentUser && (
+        <Button
+          className={styles.joinButton}
+          onClick={handleClick}
+          typeStyle={alreadyAdded ? "secondary" : "primary"}
+        >
+          {isLoading ? (
+            <Spinner width={20} />
+          ) : alreadyAdded ? (
+            "Eliminar escuela de tu perfil"
+          ) : (
+            <>
+              {"Agregar a tu perfil"}
+              <PlusIcon width={15} height={15} className={styles.plus} />
+            </>
+          )}
+        </Button>
       )}
-    </Button>
+    </>
   );
 }
 
