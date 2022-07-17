@@ -6,11 +6,9 @@ import styles from "./PostHeader.module.css";
 import Moment from "react-moment";
 import "moment/locale/es";
 import Avatar from "@components/common/Avatar";
-import A from "@components/common/A";
-import ViewsPost from "@components/PostCard/ViewsPost";
-import LikesPost from "@components/PostCard/LikesPost";
-import CommentsStatPost from "@components/PostCard/CommentsStatPost";
-import { PROFILE_PATH } from "src/paths";
+import ViewsPost from "@pages/FeedPage/components/PostFeedItem/ViewsPost";
+import LikesPost from "@pages/FeedPage/components/PostFeedItem/LikesPost";
+import CommentsStatPost from "@pages/FeedPage/components/PostFeedItem/CommentsStatPost";
 import DisplayUsername from "@components/common/DisplayUsername";
 
 export default function PostHeader({ post, preview }) {

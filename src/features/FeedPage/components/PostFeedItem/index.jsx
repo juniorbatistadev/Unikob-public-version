@@ -13,13 +13,14 @@ import A from "@components/common/A";
 import { READ_POST_PATH } from "src/paths";
 import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
 import DisplayUsername from "@components/common/DisplayUsername";
+import FeedBox from "../FeedBox";
 
 const PostCard = ({ post }) => {
   const summary = extractTextFromPost(post.attributes.content.blocks, 160);
   const coverImage = extractFirstImageFromPost(post.attributes.content.blocks);
 
   return (
-    <FlexColumn className={styles.header}>
+    <FeedBox color={"#308cb8"}>
       {coverImage && (
         <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
           <img
@@ -79,7 +80,7 @@ const PostCard = ({ post }) => {
           </FlexRow>
         </FlexRow>
       </FlexColumn>
-    </FlexColumn>
+    </FeedBox>
   );
 };
 
