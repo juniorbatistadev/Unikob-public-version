@@ -56,7 +56,7 @@ const TeachersSection = ({ school }) => {
 
       <Formik initialValues={{ subject: "" }}>
         <Form>
-          <FlexRow alignItems="center" margin="10px 10px">
+          <FlexRow alignItems="center" margin="10px 0px">
             <Text text="Mostrar por asignatura:" />
             <SelectSubject
               className={styles.selectSubject}
@@ -88,7 +88,7 @@ const TeachersSection = ({ school }) => {
       </InfiniteScroll>
 
       {count < 1 && !isLoading && (
-        <FlexColumn alignItems="center" margin="auto">
+        <FlexColumn alignItems="center" margin="40px auto auto auto">
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}

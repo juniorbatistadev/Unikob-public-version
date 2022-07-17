@@ -27,13 +27,13 @@ const ReviewsSection = ({ school }) => {
   const { isMounted } = useIsMounted();
 
   return (
-    <div>
-      <Title text="Reviews" margin={10} />
+    <FlexColumn>
+      <Title text="Reviews" />
       <FlexRow className={styles.topHeader}>
         <FlexColumn className={styles.avgContainer}>
           <ReviewAvg school={school} />
         </FlexColumn>
-        <FlexColumn margin={10} className={styles.formContainer}>
+        <FlexColumn className={styles.formContainer}>
           {isMounted && currentUser ? (
             <ReviewForm school={school} reloadData={reloadData} />
           ) : (
@@ -69,7 +69,7 @@ const ReviewsSection = ({ school }) => {
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}
-    </div>
+    </FlexColumn>
   );
 };
 

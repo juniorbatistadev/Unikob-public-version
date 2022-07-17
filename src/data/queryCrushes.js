@@ -11,26 +11,14 @@ export const saveCrush = ({ text, toUser, isSecret }) => {
   return crush.save();
 };
 
-export const getCrushesWithPagination = async ({
+export const getSchoolCrushesWithPagination = async ({
   startFrom,
   queryData,
   perPage,
-  user,
 }) => {
   const query = new Parse.Query(Crush);
-  const queryCountry = new Parse.Query("Country");
-  const querySchool = new Parse.Query("School");
 
-  //if with country
-  if (queryData) {
-    const countryResult = await queryCountry.get(queryData);
-    query.equalTo("country", countryResult);
-  }
-  //if with school
-  if (user) {
-    query.equalTo("school", user);
-  }
-
+  query.equalTo("schools", queryData);
   query.skip(startFrom);
   query.includeAll();
   query.descending("createdAt");

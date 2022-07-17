@@ -6,12 +6,8 @@ import Avatar from "@components/common/Avatar";
 import Moment from "react-moment";
 import FeedBox from "../FeedBox";
 import DisplayUsername from "@components/common/DisplayUsername";
-// import { ReactComponent as CorrectIcon } from "../../assets/icons/correct.svg";
-// import { useNavigate, Link } from "react-router-dom";
 
 function CrushFeedItem({ crush }) {
-  //   const navigate = useNavigate();
-
   return (
     <FeedBox color={"rgb(210 143 143)"}>
       <FlexColumn padding={15}>
@@ -66,7 +62,6 @@ function CrushFeedItem({ crush }) {
         <FlexRow alignItems="center">
           <Moment
             className={styles.date}
-            //   format="MMMM DD, YYYY"
             fromNow
             locale="es"
             style={{ fontSize: "14px" }}

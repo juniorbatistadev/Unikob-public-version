@@ -1,25 +1,23 @@
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
-import { getCrushesWithPagination } from "src/data/queryCrushes";
+import { getSchoolCrushesWithPagination } from "src/data/queryCrushes";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Spinner from "@components/common/Spinner";
 import CrushFeedItem from "@pages/FeedPage/components/CrushFeedItem";
-// import CrushHeader from "@components/CrushHeader";
+import EmptyIlustration from "@assets/icons/empty.svg";
 
 const CrushesSection = ({ school }) => {
   const { items, isLoading, nextPage, count, startFrom } = useInfiniteScrolling(
     {
-      query: getCrushesWithPagination,
+      query: getSchoolCrushesWithPagination,
       perPage: 10,
-      user: school,
+      queryData: school,
     }
   );
 
   return (
     <FlexColumn>
-      <Title text="UniCrush" margin="10px" />
-
+      <Title text="UniCrush" />
       <InfiniteScroll
         dataLength={items.length}
         loader={"Cargando"}
@@ -30,8 +28,11 @@ const CrushesSection = ({ school }) => {
           <CrushFeedItem crush={item} />
         ))}
       </InfiniteScroll>
-
-      {!isLoading && count < 1 && <p>No hay ningun crush</p>}
+      {count < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="40px auto">
+          <EmptyIlustration width="200px" height="200px" />
+        </FlexColumn>
+      )}
     </FlexColumn>
   );
 };
