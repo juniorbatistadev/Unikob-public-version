@@ -6,8 +6,19 @@ import Avatar from "@components/common/Avatar";
 import Moment from "react-moment";
 import FeedBox from "../FeedBox";
 import DisplayUsername from "@components/common/DisplayUsername";
+import A from "@components/common/A";
+import { CRUSH_READ_PATH } from "src/paths";
+import { getCommentsNumberBySectionId } from "src/data/queryComments";
+import { useEffect, useState } from "react";
 
-function CrushFeedItem({ crush }) {
+function CrushFeedItem({ crush, displayComments }) {
+  const [comments, setComments] = useState(0);
+
+  useEffect(() => {
+    if (displayComments)
+      getCommentsNumberBySectionId(crush.id).then((data) => setComments(data));
+  }, [crush]);
+
   return (
     <FeedBox color={"rgb(210 143 143)"}>
       <FlexColumn padding={15}>
@@ -21,6 +32,7 @@ function CrushFeedItem({ crush }) {
                 image={crush.attributes.toUser?.attributes.profilePicture?.url()}
               />
               <DisplayUsername
+                type={"primary"}
                 username={crush.attributes.toUser.attributes.username}
               />
               <Text
@@ -39,6 +51,7 @@ function CrushFeedItem({ crush }) {
                 image={crush.attributes.createdBy?.attributes.profilePicture?.url()}
               />
               <DisplayUsername
+                type={"primary"}
                 className={styles.usernameText}
                 username={crush.attributes.createdBy.attributes.username}
               />
@@ -53,28 +66,47 @@ function CrushFeedItem({ crush }) {
                 image={crush.attributes.toUser?.attributes.profilePicture?.url()}
               />
               <DisplayUsername
+                type={"primary"}
                 className={styles.usernameText}
                 username={crush.attributes.toUser.attributes.username}
               />
             </FlexRow>
           </FlexRow>
         )}
-        <FlexRow alignItems="center">
-          <Moment
-            className={styles.date}
-            fromNow
-            locale="es"
-            style={{ fontSize: "14px" }}
-          >
-            {crush.attributes.createdAt}
-          </Moment>
-        </FlexRow>
-        <FlexRow>
-          <Text text={crush.attributes.text} />
-        </FlexRow>
+        <A href={CRUSH_READ_PATH.replace(":crush", crush.id)}>
+          <FlexRow alignItems="center">
+            <Moment
+              className={styles.date}
+              fromNow
+              locale="es"
+              style={{ fontSize: "14px" }}
+            >
+              {crush.attributes.createdAt}
+            </Moment>
+          </FlexRow>
+          <FlexRow>
+            <Text text={crush.attributes.text} />
+          </FlexRow>
+          {displayComments && (
+            <FlexRow>
+              <span role="img" aria-label="comment">
+                {/* 📣 */}
+              </span>
+              <Text
+                margin={"10px 0px 0px 0px"}
+                text={` ${comments} comentarios`}
+                fontSize={14}
+              />
+            </FlexRow>
+          )}
+        </A>
       </FlexColumn>
     </FeedBox>
   );
 }
+
+CrushFeedItem.defaultProps = {
+  displayComments: true,
+};
 
 export default CrushFeedItem;
