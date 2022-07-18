@@ -1,6 +1,6 @@
 export const SCHOOLS_PATH = "/school";
 export const QUESTIONS_PATH = "/questions";
-export const CRUSHS_PATH = "/crushs";
+export const UNICRUSH_PATH = "/unicrush";
 export const JOBS_PATH = "/jobs";
 export const DISCOVER_PATH = "/discover";
 export const NO_FOUND_PATH = "/404";
@@ -39,3 +39,5 @@ export const SCHOOL_READ_PATH = "/school/:school";
 export const TEACHER_READ_PATH = "/teacher/:teacher";
 
 export const SEARCH_SCHOOL_PATH = "/search/school";
+
+export const CRUSH_READ_PATH = "/unicrush/:crush";

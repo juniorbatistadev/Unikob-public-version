@@ -1,5 +1,4 @@
 import Parse from "parse";
-import { LOCAL_WS_ADDRESS } from "src/config";
 
 const Notification = Parse.Object.extend("Notification");
 const query = new Parse.Query(Notification);

@@ -1,23 +1,21 @@
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
-import { getSchoolCrushesWithPagination } from "src/data/queryCrushes";
+import { getRecentCrushesWithPagination } from "src/data/queryCrushes";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CrushFeedItem from "@pages/FeedPage/components/CrushFeedItem";
 import EmptyIlustration from "@assets/icons/empty.svg";
 
-const CrushesSection = ({ school }) => {
+const RecentCrushes = () => {
   const { items, isLoading, nextPage, count, startFrom } = useInfiniteScrolling(
     {
-      query: getSchoolCrushesWithPagination,
+      query: getRecentCrushesWithPagination,
       perPage: 10,
-      queryData: school,
     }
   );
 
   return (
     <FlexColumn>
-      <Title text="UniCrush" />
       <InfiniteScroll
         dataLength={items.length}
         loader={"Cargando"}
@@ -39,4 +37,4 @@ const CrushesSection = ({ school }) => {
   );
 };
 
-export default CrushesSection;
+export default RecentCrushes;

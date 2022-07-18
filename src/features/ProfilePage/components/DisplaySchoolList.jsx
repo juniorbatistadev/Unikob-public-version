@@ -20,8 +20,6 @@ function DisplaySchoolList({ user, ...props }) {
       setSchools(result.slice(0, limit));
 
       if (result.length > limit) setSchoolsOverLimit(result.length - limit);
-
-      console.log(result);
     };
 
     getData();

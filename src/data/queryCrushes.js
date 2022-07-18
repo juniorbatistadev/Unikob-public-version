@@ -29,4 +29,29 @@ export const getSchoolCrushesWithPagination = async ({
   return result;
 };
 
+export const getRecentCrushesWithPagination = async ({
+  startFrom,
+  perPage,
+}) => {
+  const query = new Parse.Query(Crush);
+
+  query.skip(startFrom);
+  query.includeAll();
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.withCount();
+  const result = await query.find();
+
+  return result;
+};
+
+export const getCrushById = async (id) => {
+  const query = new Parse.Query(Crush);
+
+  query.includeAll();
+  const result = await query.get(id);
+
+  return result;
+};
+
 export default query;

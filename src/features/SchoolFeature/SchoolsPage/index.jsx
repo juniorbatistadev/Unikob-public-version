@@ -1,5 +1,4 @@
 import styles from "./index.module.css";
-import { useRouter } from "next/router";
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
 import FlexRow from "@components/common/FlexRow";
@@ -11,16 +10,14 @@ import { SCHOOLS_PATH } from "src/paths";
 import { Form, Formik } from "formik";
 import { SelectCountry } from "@components/formikFields";
 import { useState } from "react";
-import Text from "@components/common/Text";
 import SchoolsRanking from "./components/SchoolsRanking";
 import RecentSchools from "./components/RecentSchools";
 
 function SchoolPage() {
-  const { push } = useRouter();
   const [country, setCountry] = useState("");
 
   return (
-    <FlexColumn className={styles.container} margin="10px">
+    <FlexColumn margin="10px">
       <FlexRow alignItems={"center"}>
         <GoBackButton />
         <Title text="Escuelas" />
