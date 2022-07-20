@@ -81,4 +81,16 @@ export const getUserFollowingsWithPagination = async ({
   return result;
 };
 
+export const getUsersFollowing = async (user) => {
+  const query = new Parse.Query(Follow);
+
+  query.equalTo("fromUser", user);
+  query.include("toUser");
+  query.descending("createdAt");
+
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

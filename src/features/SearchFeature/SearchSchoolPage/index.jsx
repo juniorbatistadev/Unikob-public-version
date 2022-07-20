@@ -22,7 +22,7 @@ import MoonIlustration from "@assets/icons/moon.svg";
 function SearchSchoolPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const { currentUser } = useContext(AuthContext);
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
   const { items, startFrom, count, nextPage, isLoading } = useInfiniteScrolling(
     {
@@ -94,7 +94,7 @@ function SearchSchoolPage() {
             <FlexColumn margin={"20px 0px 0px 0px"}>
               <Text text="¿No encontraste tu escuela? ¡Agregala!" />
               {currentUser ? (
-                <Button onClick={() => router.push(SCHOOL_CREATE_PATH)}>
+                <Button onClick={() => push(SCHOOL_CREATE_PATH)}>
                   Agregar Escuela
                 </Button>
               ) : (
@@ -114,7 +114,7 @@ function SearchSchoolPage() {
               {currentUser ? (
                 <Button
                   margin={"10px 0px 0px 0px"}
-                  onClick={() => router.push(SCHOOL_CREATE_PATH)}
+                  onClick={() => push(SCHOOL_CREATE_PATH)}
                 >
                   Agregar Escuela
                 </Button>
