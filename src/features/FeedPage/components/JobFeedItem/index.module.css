@@ -1,0 +1,25 @@
+
+  
+  .date {
+    color: grey;
+    margin-right: 10px;
+  }
+  
+  .header {
+    padding: 15px;
+  }
+  
+  .avatar {
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  .usernameText {
+    margin-right: 5px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: normal;
+  }
