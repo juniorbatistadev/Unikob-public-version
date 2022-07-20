@@ -5,11 +5,10 @@ import { AuthContext } from "@context/AuthContext";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import React, { useContext } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {
-  getFeedItemsWithPagination,
-  getFollowingFeedItemsWithPagination,
-} from "src/data/queryFeed";
+import { getFollowingFeedItemsWithPagination } from "src/data/queryFeed";
 import FeedItem from "./FeedItem";
+import Title from "@components/common/Title";
+import EmptyIlustration from "@assets/icons/empty.svg";
 
 function FollowingFeed() {
   const { currentUser } = useContext(AuthContext);
@@ -36,6 +35,13 @@ function FollowingFeed() {
             <FeedItem key={item.id} feedItem={item} />
           ))}
         </InfiniteScroll>
+      )}
+      {count < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="auto">
+          <EmptyIlustration width="200px" height="200px" />
+          <Title text="Nada que mostrar aqui" fontSize="16px" />
+          <Title text="Empieza a seguir otros usuarios" fontSize="16px" />
+        </FlexColumn>
       )}
     </FlexColumn>
   );

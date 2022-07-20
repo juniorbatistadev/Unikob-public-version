@@ -15,7 +15,7 @@ const PostSection = ({ user }) => {
   );
 
   return (
-    <>
+    <FlexColumn margin={"15px 0px 0px 0px"}>
       {!isLoading && (
         <InfiniteScroll
           dataLength={items.length}
@@ -25,7 +25,9 @@ const PostSection = ({ user }) => {
           loader={"Cargando"}
         >
           {items.map((item) => (
-            <PostFeedItem key={item.id} post={item} />
+            <FlexColumn margin={"0px 0px 5px 0px"}>
+              <PostFeedItem key={item.id} post={item} />
+            </FlexColumn>
           ))}
         </InfiniteScroll>
       )}
@@ -35,7 +37,7 @@ const PostSection = ({ user }) => {
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}
-    </>
+    </FlexColumn>
   );
 };
 

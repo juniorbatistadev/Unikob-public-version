@@ -1,4 +1,5 @@
 import FlexColumn from "@components/common/FlexColumn";
+import Title from "@components/common/Title";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import { getRecentCrushesWithPagination } from "src/data/queryCrushes";
 import InfiniteScroll from "react-infinite-scroll-component";
