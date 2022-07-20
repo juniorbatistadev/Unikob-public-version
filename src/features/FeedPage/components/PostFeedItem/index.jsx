@@ -14,73 +14,106 @@ import { READ_POST_PATH } from "src/paths";
 import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
 import DisplayUsername from "@components/common/DisplayUsername";
 import FeedBox from "../FeedBox";
+import { useEffect, useState } from "react";
 
 const PostCard = ({ post }) => {
-  const summary = extractTextFromPost(post.attributes.content.blocks, 160);
-  const coverImage = extractFirstImageFromPost(post.attributes.content.blocks);
+  const summary = extractTextFromPost(post.attributes.content?.blocks, 160);
+  const coverImage = extractFirstImageFromPost(post.attributes.content?.blocks);
+  const [createdBy, setCreatedBy] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getData = async () => {
+      const createdBy = await post.attributes.createdBy.fetch();
+      setCreatedBy(createdBy);
+    };
+
+    getData().finally(() => setIsLoading(false));
+  }, [post]);
 
   return (
-    <FeedBox color={"#308cb8"}>
-      {coverImage && (
-        <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
-          <img
-            src={coverImage}
-            alt={post.attributes.title}
-            height="150px"
-            className={styles.cover}
-          />
-        </A>
+    <>
+      {!isLoading && (
+        <FeedBox color={"#308cb8"}>
+          {coverImage && (
+            <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
+              <img
+                src={coverImage}
+                alt={post.attributes.title}
+                height="150px"
+                className={styles.cover}
+              />
+            </A>
+          )}
+
+          <FlexColumn margin="15px">
+            <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
+              <Title
+                text={post.attributes.title}
+                fontSize="25px"
+                className={styles.title}
+              />
+            </A>
+
+            <FlexRow alignItems="center" className={styles.bar}>
+              <Moment
+                className={styles.date}
+                format="MMMM DD, YYYY"
+                locale="es"
+              >
+                {post.attributes.createdAt}
+              </Moment>
+              <Text text="|" />
+
+              <FlexRow>
+                <Avatar
+                  linkToUser={
+                    createdBy?.attributes.username ??
+                    post.attributes.createdBy.attributes.username
+                  }
+                  className={styles.avatar}
+                  width="25px"
+                  image={
+                    createdBy?.attributes.profilePicture?.url() ??
+                    post.attributes.createdBy.attributes.profilePicture?.url()
+                  }
+                />
+                <DisplayUsername
+                  className={styles.usernameText}
+                  type={"primary"}
+                  username={
+                    createdBy?.attributes.username ??
+                    post.attributes.createdBy.attributes.username
+                  }
+                />
+              </FlexRow>
+            </FlexRow>
+            <FlexRow>
+              <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
+                <Text
+                  text={summary.length > 159 ? summary + " ... " : summary}
+                />
+              </A>
+            </FlexRow>
+            <FlexRow
+              justifyContent="space-around"
+              alignItems="center"
+              margin="10px"
+            >
+              <FlexRow alignItems="center">
+                <ViewsPost postInfoId={post.attributes.postInfo.id} />
+              </FlexRow>
+              <FlexRow alignItems="center">
+                <LikesPost postId={post.id} />
+              </FlexRow>
+              <FlexRow alignItems="center">
+                <CommentsStatPost post={post.id} />
+              </FlexRow>
+            </FlexRow>
+          </FlexColumn>
+        </FeedBox>
       )}
-
-      <FlexColumn margin="15px">
-        <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
-          <Title
-            text={post.attributes.title}
-            fontSize="25px"
-            className={styles.title}
-          />
-        </A>
-
-        <FlexRow alignItems="center" className={styles.bar}>
-          <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
-            {post.attributes.createdAt}
-          </Moment>
-          <Text text="|" />
-
-          <FlexRow>
-            <Avatar
-              linkToUser={post.attributes.createdBy.attributes.username}
-              className={styles.avatar}
-              width="25px"
-              image={post.attributes.createdBy.attributes.profilePicture?.url()}
-            />
-            <DisplayUsername
-              username={post.attributes.createdBy.attributes.username}
-            />
-          </FlexRow>
-        </FlexRow>
-        <FlexRow>
-          <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
-            <Text text={summary.length > 159 ? summary + " ... " : summary} />
-          </A>
-        </FlexRow>
-        <FlexRow
-          justifyContent="space-around"
-          alignItems="center"
-          margin="10px"
-        >
-          <FlexRow alignItems="center">
-            <ViewsPost postInfoId={post.attributes.postInfo.id} />
-          </FlexRow>
-          <FlexRow alignItems="center">
-            <LikesPost postId={post.id} />
-          </FlexRow>
-          <FlexRow alignItems="center">
-            <CommentsStatPost post={post.id} />
-          </FlexRow>
-        </FlexRow>
-      </FlexColumn>
-    </FeedBox>
+    </>
   );
 };
 

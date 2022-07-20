@@ -36,7 +36,11 @@ export default function PostHeader({ post, preview }) {
               width="25px"
               image={post.createdBy.profilePicture?.url}
             />
-            <DisplayUsername username={post.createdBy.username} />
+            <DisplayUsername
+              className={styles.usernameText}
+              username={post.createdBy.username}
+              type="primary"
+            />
           </FlexRow>
         </FlexRow>
         {post.edited && <Text text="Editado" fontSize="14px" />}

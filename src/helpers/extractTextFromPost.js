@@ -18,7 +18,7 @@ export default function extractTextFromPost(blocks, limit) {
     }
   };
 
-  blocks.map((element) => {
+  blocks?.map((element) => {
     return text.push(getText(element));
   });
 
