@@ -22,6 +22,7 @@ const PostCommentNotification = ({ notification }) => {
             text={
               <>
                 <DisplayUsername
+                  type={"primary"}
                   className={styles.username}
                   username={
                     notification.attributes.triggeredBy.attributes.username

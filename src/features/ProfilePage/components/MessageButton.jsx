@@ -7,7 +7,7 @@ import { CONVERSATION_PATH } from "src/paths";
 import Button from "@components/common/Button";
 import SendMessageForm from "./SendFirstMessageForm";
 
-const MessageButton = ({ toUser }) => {
+const MessageButton = ({ toUser, padding, text }) => {
   const { currentUser } = useContext(AuthContext);
   const { push } = useRouter();
 
@@ -27,17 +27,18 @@ const MessageButton = ({ toUser }) => {
   return (
     <Button
       typeStyle="secondary"
-      padding="5px 15px"
+      padding={padding}
       margin="0px 10px 0px 0px"
       onClick={handleClick}
     >
-      Hablar
+      {text}
     </Button>
   );
 };
 
 MessageButton.defaultProps = {
-  pretext: "",
+  text: "Hablar",
+  padding: "5px 15px",
 };
 
 export default MessageButton;

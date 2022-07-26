@@ -15,6 +15,7 @@ import BellIcon from "@assets/icons/bell.svg";
 import { useRouter } from "next/router";
 import {
   SETTINGS_COVER_PATH,
+  SETTINGS_CURRICULUM_PATH,
   SETTINGS_FACEBOOK_PATH,
   SETTINGS_NOTIFICATION_PATH,
   SETTINGS_PASSWORD_PATH,
@@ -72,6 +73,12 @@ function SettingsMenu() {
         description="Maneja tus escuelas"
         Icon={SchoolIcon}
         onClick={() => push(SETTINGS_SCHOOL_PATH)}
+      />
+      <SettingOption
+        title="Curriculum Vitae"
+        description="Maneja tu CV"
+        Icon={SchoolIcon}
+        onClick={() => push(SETTINGS_CURRICULUM_PATH)}
       />
 
       <Title

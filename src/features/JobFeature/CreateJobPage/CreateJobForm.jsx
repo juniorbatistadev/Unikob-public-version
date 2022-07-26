@@ -8,12 +8,12 @@ import {
 import styles from "./CreateJobForm.module.css";
 import * as yup from "yup";
 import Button from "@components/common/Button";
-import FlexRow from "@components/common/FlexRow";
 import Alert from "@components/common/Alert";
 import { useRouter } from "next/router";
 import FlexColumn from "@components/common/FlexColumn";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import { saveJob } from "src/data/queryJobs";
+import { JOB_READ_PATH } from "src/paths";
 
 const CreateSchoolForm = () => {
   const { push } = useRouter();
@@ -27,7 +27,7 @@ const CreateSchoolForm = () => {
 
       const result = await saveJob(params);
 
-      console.log(result);
+      push(JOB_READ_PATH.replace(":job", result.attributes.slug));
     } catch (error) {
       Alert.fire({
         icon: "error",

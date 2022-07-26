@@ -18,16 +18,21 @@ import { JOB_READ_PATH } from "src/paths";
 
 function JobFeedItem({ job }) {
   const [subjectsTags, setSubjectsTags] = useState([]);
+  const [country, setCountry] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const tags = await job.attributes.subjects.query().find();
+      const country = await job.attributes.country.fetch();
 
       setSubjectsTags(tags);
+      setCountry(country);
     };
 
     getData().catch((e) => console.log(e, "error"));
   }, [job.attributes.subjects]);
+
+  console.log(country);
 
   return (
     <FeedBox color={"rgb(210 187 143)"}>
@@ -56,14 +61,11 @@ function JobFeedItem({ job }) {
         </FlexRow>
         <FlexRow alignItems="center">
           <PinIcon width="12px" height="12px" />
-          <Text
-            text={job.attributes.country.attributes.name}
-            margin={"0px 0px 0px 5px"}
-          />
+          <Text text={country?.attributes.name} margin={"0px 0px 0px 5px"} />
         </FlexRow>
         <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
-          {subjectsTags.map((subject) => (
-            <FlexRow margin="0px 5px 0px 0px">
+          {subjectsTags.map((subject, index) => (
+            <FlexRow margin="0px 5px 0px 0px" key={index}>
               <Tag key={subject.id} text={subject.attributes.name} />
             </FlexRow>
           ))}

@@ -57,8 +57,6 @@ export async function getServerSideProps(context) {
   const tags = await job.attributes.subjects.query().find();
   jobData.tags = tags.map((tag) => tag.attributes.name);
 
-  console.log(tags);
-
   return {
     props: { data: jobData },
   };

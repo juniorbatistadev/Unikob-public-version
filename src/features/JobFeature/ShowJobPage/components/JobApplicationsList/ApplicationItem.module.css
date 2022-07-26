@@ -1,0 +1,20 @@
+.container {
+    min-height: 50px;
+    background-color: var(--color-white);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .content{
+    margin-left: 10px;
+  }
+
+  .buttons{
+    margin-top: 10px;
+    gap: 10px;
+  }

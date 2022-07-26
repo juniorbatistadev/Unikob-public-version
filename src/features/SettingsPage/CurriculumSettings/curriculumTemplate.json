@@ -1,0 +1,110 @@
+{
+    "time": 1658361279585,
+    "blocks": [
+      {
+        "id": "jY3ud6ZvAh",
+        "type": "paragraph",
+        "data": {
+          "text": "<b>Perfil</b>"
+        }
+      },
+      {
+        "id": "nCFb9x5gag",
+        "type": "paragraph",
+        "data": {
+          "text": "Describe tu perfil aquí..."
+        }
+      },
+      {
+        "id": "onsv9gpPjT",
+        "type": "paragraph",
+        "data": {
+          "text": "<b>Experiencia</b>"
+        }
+      },
+      {
+        "id": "bhDCycwpOL",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Titulo de Trabajo - 2020-2025 : Describe tu responsabilidades"
+          ]
+        }
+      },
+      {
+        "id": "FnYA1M7Dmw",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Titulo de Trabajo - 2025-2035 : Describe tu responsabilidades"
+          ]
+        }
+      },
+      {
+        "id": "TG3Yhs1a3b",
+        "type": "paragraph",
+        "data": {
+          "text": "<b>Educacion</b>"
+        }
+      },
+      {
+        "id": "SLGxDK_hPt",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Titulo / Universidad 2020-2025&nbsp;"
+          ]
+        }
+      },
+      {
+        "id": "Dle42iJ1YW",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Titulo / Escuela 2020-2025&nbsp;"
+          ]
+        }
+      },
+      {
+        "id": "clFtrejbto",
+        "type": "paragraph",
+        "data": {
+          "text": "<b>Habilidades</b>"
+        }
+      },
+      {
+        "id": "D260oS139o",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Office 360",
+            "Describe tus habilidades"
+          ]
+        }
+      },
+      {
+        "id": "hBww-fni6K",
+        "type": "paragraph",
+        "data": {
+          "text": "<b>Idiomas</b>"
+        }
+      },
+      {
+        "id": "uXddBYq-M5",
+        "type": "list",
+        "data": {
+          "style": "unordered",
+          "items": [
+            "Ingles",
+            "Español"
+          ]
+        }
+      }
+    ],
+    "version": "2.23.2"
+  }

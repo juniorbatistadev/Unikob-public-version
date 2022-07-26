@@ -11,8 +11,14 @@ import DisplayUsername from "@components/common/DisplayUsername";
 import Tag from "@components/common/Tag";
 import PinIcon from "@assets/icons/pin.svg";
 import RenderHTML from "@components/RenderHTML";
+import { useContext } from "react";
+import { AuthContext } from "@context/AuthContext";
+import ApplyToJobSection from "./components/ApplyToJobSection";
+import JobApplicationList from "./components/JobApplicationsList";
 
 function ShowJobPage({ data }) {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <FlexColumn>
       <FeedBox color={"rgb(210 187 143)"}>
@@ -28,7 +34,7 @@ function ShowJobPage({ data }) {
               linkToUser={data.createdBy.username}
               className={styles.avatar}
               width="25px"
-              image={data.createdBy?.profilePicture.url}
+              image={data.createdBy?.profilePicture?.url}
             />
             <FlexColumn margin={"0px 0px 0px 5px"}>
               <DisplayUsername
@@ -44,8 +50,8 @@ function ShowJobPage({ data }) {
           </FlexRow>
           <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
             {data.tags.map((subject, index) => (
-              <FlexRow margin="0px 5px 0px 0px">
-                <Tag key={index} text={subject} />
+              <FlexRow margin="0px 5px 0px 0px" key={index}>
+                <Tag text={subject} />
               </FlexRow>
             ))}
           </FlexRow>
@@ -53,6 +59,13 @@ function ShowJobPage({ data }) {
       </FeedBox>
       <FlexColumn className={styles.content}>
         <RenderHTML json={data.content} />
+      </FlexColumn>
+      <FlexColumn margin={"10px 0px 0px 0px"}>
+        {currentUser?.id === data.createdBy.objectId ? (
+          <JobApplicationList jobId={data.objectId} />
+        ) : (
+          currentUser && <ApplyToJobSection job={data} />
+        )}
       </FlexColumn>
     </FlexColumn>
   );

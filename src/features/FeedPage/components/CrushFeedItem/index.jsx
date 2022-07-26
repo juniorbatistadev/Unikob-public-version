@@ -19,6 +19,9 @@ function CrushFeedItem({ crush, displayComments }) {
 
   useEffect(() => {
     const getData = async () => {
+      if (!crush) {
+        return;
+      }
       const createdBy = await crush.attributes.createdBy.fetch();
       const toUser = await crush.attributes.toUser.fetch();
       setCreatedBy(createdBy);
@@ -28,12 +31,12 @@ function CrushFeedItem({ crush, displayComments }) {
     getData().finally(() => setIsLoading(false));
 
     if (displayComments)
-      getCommentsNumberBySectionId(crush.id).then((data) => setComments(data));
+      getCommentsNumberBySectionId(crush?.id).then((data) => setComments(data));
   }, [crush]);
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && crush && (
         <FeedBox color={"rgb(210 143 143)"}>
           <FlexColumn padding={15}>
             {crush.attributes.isSecret ? (
