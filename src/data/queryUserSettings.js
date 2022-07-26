@@ -20,4 +20,12 @@ export const saveNotificationSetting = async ({ notificationTypes, user }) => {
   return userSetting.save();
 };
 
+export const saveUserCurriculumSetting = async ({ content, user }) => {
+  let userSetting = await getUserSettingByUser(user);
+
+  userSetting.set("curriculum", content);
+
+  return userSetting.save();
+};
+
 export default query;

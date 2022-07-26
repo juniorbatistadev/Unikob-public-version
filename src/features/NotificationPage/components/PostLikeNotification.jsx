@@ -22,6 +22,7 @@ const PostLikeNotification = ({ notification }) => {
             text={
               <>
                 <DisplayUsername
+                  type={"primary"}
                   className={styles.username}
                   username={
                     notification.attributes.triggeredBy.attributes.username
@@ -35,7 +36,6 @@ const PostLikeNotification = ({ notification }) => {
                   )}
                 >
                   <span className={styles.link}>
-                    {" "}
                     post: {`${notification.attributes.data}`}
                   </span>
                 </A>

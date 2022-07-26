@@ -1,0 +1,14 @@
+.title {
+  margin: 20px 5px;
+}
+
+.container{
+  background-color: #fff;
+  padding: 10px;
+}
+
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}

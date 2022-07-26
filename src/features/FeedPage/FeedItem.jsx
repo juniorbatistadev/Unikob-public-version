@@ -1,8 +1,13 @@
 import FlexColumn from "@components/common/FlexColumn";
 import { useEffect, useState } from "react";
 import CrushFeedItem from "./components/CrushFeedItem";
+import JobFeedItem from "./components/JobFeedItem";
 import PostFeedItem from "./components/PostFeedItem";
-import { CRUSH_FEED_ITEM, POST_FEED_ITEM } from "./FeedItemTypes";
+import {
+  CRUSH_FEED_ITEM,
+  JOB_FEED_ITEM,
+  POST_FEED_ITEM,
+} from "./FeedItemTypes";
 
 const FetchItemData = ({ feedItem, Component, typeProp, itemsToFetch }) => {
   const [data, setData] = useState(null);
@@ -23,8 +28,6 @@ const FetchItemData = ({ feedItem, Component, typeProp, itemsToFetch }) => {
     [typeProp]: data,
   };
 
-  // console.log(data?.attributes?.createdBy);
-
   return <>{data && <Component {...props} />}</>;
 };
 
@@ -35,6 +38,8 @@ const FeedItem = ({ feedItem }) => {
         return <CrushFeedItem crush={feedItem.attributes.crush} />;
       case POST_FEED_ITEM:
         return <PostFeedItem post={feedItem.attributes.post} />;
+      case JOB_FEED_ITEM:
+        return <JobFeedItem job={feedItem.attributes.job} />;
 
       default:
         return <> </>;

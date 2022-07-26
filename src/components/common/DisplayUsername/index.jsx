@@ -19,13 +19,7 @@ export default function DisplayUsername({ username, className, link, type }) {
   );
 }
 
-//SCHEMA
-// {
-//   link: boolean,
-//   type: secondary, primary
-// }
-
 DisplayUsername.defaultProps = {
   link: true,
-  type: "secondary",
+  type: "primary",
 };

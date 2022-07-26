@@ -24,7 +24,6 @@ export const readNotifications = async (user) => {
   query.each(function (obj) {
     obj.set("wasSeen", true);
     obj.save();
-    console.log(obj);
   }, {});
 };
 
