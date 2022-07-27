@@ -1,8 +1,6 @@
 .header {
     background: white;
     border: 1px solid #b9b9b9;
-    margin-top: 20px;
-    margin: 10px;
     display: flex;
     flex-direction: column;
   }

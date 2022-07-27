@@ -66,4 +66,23 @@ export const getPostBySlug = async (slug) => {
   }
 };
 
+export const searchPostsWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(Post);
+
+  query.fullText("title", queryData);
+  query.limit(perPage);
+  query.includeAll();
+  query.skip(startFrom);
+  query.withCount();
+  query.find();
+
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

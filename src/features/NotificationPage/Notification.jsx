@@ -23,8 +23,6 @@ import CrushReceivedNotification from "./components/CrushReceivedNotification";
 
 const Notification = ({ notification }) => {
   const renderNotification = (notification) => {
-    let text;
-
     switch (notification.attributes.type) {
       case PROFILE_COMMENT_NOTIFICATION:
         return <ProfileCommentNotification notification={notification} />;
