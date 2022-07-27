@@ -3,56 +3,12 @@ import loadingCircle from "@assets/images/loading-circle.gif";
 import A from "@components/common/A";
 import { FEED_PATH } from "src/paths";
 
-const ElementHTML = ({
-  children,
-  typeStyle,
-  className,
-  onClick,
-  width,
-  padding,
-  margin,
-  loading,
-  as,
-  href,
-  disabled,
-  ...rest
-}) => {
-  const classNames = [styles.btn, styles[typeStyle], className].join(" ");
-
+const ElementHTML = ({ children, as, ...rest }) => {
   return (
     <>
-      {as === "a" && (
-        <A
-          href={href}
-          className={classNames}
-          onClick={onClick}
-          style={{
-            width,
-            padding,
-            margin,
-          }}
-          disabled={loading}
-          {...rest}
-        >
-          {children}
-        </A>
-      )}
+      {as === "a" && <A {...rest}>{children}</A>}
 
-      {as === "button" && (
-        <button
-          className={classNames}
-          onClick={onClick}
-          style={{
-            width,
-            padding,
-            margin,
-          }}
-          disabled={loading || disabled}
-          {...rest}
-        >
-          {children}
-        </button>
-      )}
+      {as === "button" && <button {...rest}>{children}</button>}
     </>
   );
 };
@@ -77,13 +33,15 @@ function Button({
     <ElementHTML
       className={classNames}
       onClick={onClick}
-      width={width}
-      padding={padding}
-      margin={margin}
+      style={{
+        width,
+        padding,
+        margin,
+      }}
       disabled={loading || disabled}
-      {...rest}
       as={as}
       href={href}
+      {...rest}
     >
       {loading ? (
         <>

@@ -7,6 +7,7 @@ export const NO_FOUND_PATH = "/404";
 export const NOTIFICATIONS_PATH = "/notifications";
 export const FEED_PATH = "/feed";
 export const HOME_PATH = "/";
+export const SEARCH_PATH = "/search";
 
 export const READ_POST_PATH = "/post/:slug";
 export const CREATE_POST_PATH = "/post/create";

@@ -68,4 +68,23 @@ export const getJobsWithPagination = async ({
   return result;
 };
 
+export const searchJobsWithPagination = async ({
+  startFrom,
+  queryData,
+  perPage,
+}) => {
+  const query = new Parse.Query(Job);
+
+  query.fullText("title", queryData);
+  query.limit(perPage);
+  query.includeAll();
+  query.skip(startFrom);
+  query.withCount();
+  query.find();
+
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

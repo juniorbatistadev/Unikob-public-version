@@ -11,7 +11,7 @@ import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import { searchSchoolWithPagination } from "src/data/querySchools";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useContext, useEffect, useState } from "react";
-import SchoolResultItem from "./components/SchoolResultItem";
+import SchoolResultItem from "../components/SchoolResultItem";
 import { AuthContext } from "@context/AuthContext";
 import Text from "@components/common/Text";
 import { useRouter } from "next/router";

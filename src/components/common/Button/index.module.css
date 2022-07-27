@@ -14,36 +14,12 @@
   cursor: pointer;
 }
 
-/* Primary Button Styles */
-.primary {
-  border: solid #305689 1px;
-  color: rgb(255, 255, 255);
-  background: #4173b2;
-}
-
-.primary:hover {
-  border: solid 1px #4173b2;
-  color: #ffffff;
-  box-shadow: var(--shadow);
-  background: #4173b2;
-  cursor: pointer;
-}
-
-/* Secondary Button */
-.secondary {
-  border: solid #4173b2 1px;
-  color: #4173b2;
-  background: #ffffff;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.secondary:disabled {
+.btn:disabled {
   border: 1px solid grey;
   color: grey;
   background-color: #f8f8f8;
 }
-.secondary:disabled:hover {
+.btn:disabled:hover {
   text-decoration: line-through;
   border: 1px solid grey;
   color: grey;
@@ -52,13 +28,50 @@
   cursor: default;
 }
 
-.secondary:hover {
-  border: solid 1px #4173b2;
+/* .btn:hover {
   color: #ffffff;
   box-shadow: var(--shadow);
   background: rgb(0, 32, 73);
   cursor: pointer;
+} */
+
+/* Primary Button Styles */
+.primary {
+  color: var(--color-white);
+  background: var(--primary);
 }
+
+.primary:hover {
+  color: var(--color-white);
+  box-shadow: var(--shadow);
+  background: var(--primary);
+  cursor: pointer;
+}
+
+/* Secondary Button */
+.secondary {
+  border: solid var(--primary) 1px;
+  color: var(--primary);
+  background: var(--color-white);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Tertiary Button */
+.tertiary{
+  border: none;
+  background: none;
+  color: var(--primary);
+  text-decoration: underline;
+  box-shadow: none;
+  font-weight: bold;
+}
+
+.tertiary:hover{
+  background: none;
+  box-shadow: none;
+}
+
 
 /* Transparent Button Styles */
 .transparent {
@@ -72,4 +85,5 @@
   border: solid 1px #4173b2;
   color: #245592;
   background: white;
+
 }
