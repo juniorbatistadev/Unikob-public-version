@@ -13,6 +13,7 @@ function PreviewSearch({
   fieldToSearch,
   title,
   singleResultTitle,
+  onResultFound,
 }) {
   const [results, setResults] = useState([]);
   const [count, setCount] = useState(0);
@@ -27,7 +28,10 @@ function PreviewSearch({
       const query = new Parse.Query(obj);
 
       if (collectionName === "User") {
-        query.startsWith(fieldToSearch, String(queryString));
+        query.startsWith(
+          fieldToSearch,
+          String(queryString).toLocaleLowerCase()
+        );
       } else {
         query.fullText(fieldToSearch, String(queryString));
       }
@@ -42,6 +46,10 @@ function PreviewSearch({
 
       setResults(result.results);
       setCount(result.count);
+
+      if (result.count > 0) {
+        onResultFound();
+      }
     };
 
     getData();

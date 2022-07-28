@@ -40,8 +40,6 @@ export const SCHOOL_READ_PATH = "/school/:school";
 
 export const TEACHER_READ_PATH = "/teacher/:teacher";
 
-export const SEARCH_SCHOOL_PATH = "/search/school";
-
 export const CRUSH_READ_PATH = "/unicrush/:crush";
 
 export const JOB_CREATE_PATH = "/job/create";

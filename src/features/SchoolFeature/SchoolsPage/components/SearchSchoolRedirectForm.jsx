@@ -3,15 +3,15 @@ import { TextField } from "@components/formikFields";
 import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import { useRouter } from "next/router";
-import { SEARCH_SCHOOL_PATH } from "src/paths";
+import { SEARCH_PATH } from "src/paths";
 
 const SearchSchoolRedirectForm = () => {
   const router = useRouter();
 
   const onSubmit = (values) => {
     router.push({
-      pathname: SEARCH_SCHOOL_PATH,
-      query: { search: values.text },
+      pathname: SEARCH_PATH,
+      query: { s: values.text, c: "School" },
     });
   };
 
