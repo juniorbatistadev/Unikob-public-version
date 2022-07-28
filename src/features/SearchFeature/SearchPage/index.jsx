@@ -72,7 +72,12 @@ function SearchPage() {
         <Form className={styles.form}>
           <FlexRow>
             <FlexColumn>
-              <TextField name="search" width="200px" placeholder="Busqueda" />
+              <TextField
+                name="search"
+                width="200px"
+                placeholder="Busqueda"
+                type="search"
+              />
               <ErrorMessage name="search" />
             </FlexColumn>
             <Button type="submit" margin="0px 0px 0px 10px">
