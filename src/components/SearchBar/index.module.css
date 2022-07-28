@@ -4,17 +4,26 @@
 
 .input{
     border-radius: 7px 0px 0px 7px;
-    background-color: #fff;
+    background-color: var(--color-white);
+    border: none;
 }
 
-.button img{
+.icon{
     width:15px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
+
+
 
 .button{
-    background-color: #fff;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
     border: none;
     border-radius: 0px 7px 7px 0px;
     padding: 5px;
+}
+
+.button:hover{
+    cursor: pointer;
 }

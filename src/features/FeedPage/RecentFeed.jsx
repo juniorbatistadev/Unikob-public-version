@@ -27,7 +27,9 @@ function RecentFeed() {
           loader={<Spinner />}
         >
           {items.map((item) => (
-            <FeedItem key={item.id} feedItem={item} />
+            <FlexColumn margin={"20px 0px"}>
+              <FeedItem key={item.id} feedItem={item} />
+            </FlexColumn>
           ))}
         </InfiniteScroll>
       )}

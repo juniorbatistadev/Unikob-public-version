@@ -9,7 +9,6 @@ import HomeIcon from "@assets/icons/home-run.svg";
 import ChatIcon from "@assets/icons/comment.svg";
 import RocketIcon from "@assets/icons/start-button.svg";
 import SchoolIcon from "@assets/icons/school.svg";
-import QuestionIcon from "@assets/icons/question.svg";
 import LoveIcon from "@assets/icons/love.svg";
 import WorkIcon from "@assets/icons/work.svg";
 import SettingsIcon from "@assets/icons/settings.svg";
@@ -18,7 +17,6 @@ import styles from "./index.module.css";
 import { useRouter } from "next/router";
 import {
   CHAT_PATH,
-  CRUSHS_PATH,
   FEED_PATH,
   JOBS_PATH,
   SCHOOLS_PATH,
@@ -64,7 +62,10 @@ function SideBar({ setMenuOpen, className, ...props }) {
           </span>
         </>
       )}
-      <SearchBar className={styles.searchbar} />
+      <SearchBar
+        className={styles.searchbar}
+        callBack={() => setMenuOpen(false)}
+      />
 
       <ul className={styles.menu}>
         <li
