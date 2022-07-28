@@ -78,7 +78,6 @@ function SearchPage() {
                 placeholder="Busqueda"
                 type="search"
               />
-              <ErrorMessage name="search" />
             </FlexColumn>
             <Button type="submit" margin="0px 0px 0px 10px">
               Buscar
