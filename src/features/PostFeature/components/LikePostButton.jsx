@@ -47,7 +47,6 @@ const LikePostButton = ({ post }) => {
       onClick={isLiked ? onDeleteLike : onLike}
     >
       <span className={styles.buttonText}>
-        {" "}
         {isLiked ? "Te gusto " : "Me gusta "}
       </span>
       <span role="img" aria-label="heart">

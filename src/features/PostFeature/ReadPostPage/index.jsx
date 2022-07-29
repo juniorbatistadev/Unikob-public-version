@@ -15,6 +15,7 @@ import { deletePost } from "src/data/queryPosts";
 import { useRouter } from "next/router";
 import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
 import { POST_COMMENT } from "@components/CommentsSection/commentsType";
+import SaveButton from "@components/SaveButton";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -49,7 +50,17 @@ function ReadPostPage({ post }) {
       {isMounted && (
         <FlexColumn>
           <FlexRow className={styles.actionButtons}>
-            {currentUser && <LikePostButton post={post} />}
+            {currentUser && (
+              <>
+                <LikePostButton post={post} />
+                <SaveButton
+                  title={post.title}
+                  type="post"
+                  itemId={post.objectId}
+                  typeClass="Post"
+                />
+              </>
+            )}
             <ShareButtons
               title={post.title}
               text="Encontre esto en Gente Uni"
@@ -57,11 +68,7 @@ function ReadPostPage({ post }) {
 
             {currentUser && currentUser.id === post.createdBy.objectId && (
               <>
-                <Button
-                  typeStyle="secondary"
-                  margin="0px 10px 0px 0px"
-                  onClick={onEdit}
-                >
+                <Button typeStyle="secondary" onClick={onEdit}>
                   Editar
                 </Button>
 
