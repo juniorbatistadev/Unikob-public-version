@@ -19,6 +19,7 @@ import Alert from "@components/common/Alert";
 import { JOBS_PATH } from "src/paths";
 import { deleteJob } from "src/data/queryJobs";
 import { useRouter } from "next/router";
+import SaveButton from "@components/SaveButton";
 
 function ShowJobPage({ data }) {
   const { currentUser } = useContext(AuthContext);
@@ -86,14 +87,23 @@ function ShowJobPage({ data }) {
       <FlexColumn className={styles.content}>
         <RenderHTML json={data.content} />
       </FlexColumn>
+      <FlexRow margin={"10px 0px 0px 0px"} gap={10}>
+        {currentUser && (
+          <SaveButton
+            title={data.title}
+            type="job"
+            itemId={data.objectId}
+            typeClass="Job"
+          />
+        )}
 
-      {currentUser && currentUser.id === data.createdBy.objectId && (
-        <FlexRow margin={"10px"}>
+        {currentUser && currentUser.id === data.createdBy.objectId && (
           <Button typeStyle="secondary" onClick={onDelete}>
             Borrar
           </Button>
-        </FlexRow>
-      )}
+        )}
+      </FlexRow>
+
       <FlexColumn margin={"10px 0px 0px 0px"}>
         {currentUser?.id === data.createdBy.objectId ? (
           <JobApplicationList jobId={data.objectId} />

@@ -22,6 +22,7 @@ import {
   SCHOOLS_PATH,
   SETTINGS_PATH,
   CRUSHES_PATH,
+  SAVED_PATH,
 } from "src/paths";
 
 function SideBar({ setMenuOpen, className, ...props }) {
@@ -96,6 +97,14 @@ function SideBar({ setMenuOpen, className, ...props }) {
         >
           <SchoolIcon alt="option" className={styles["menu-icon"]} />
           <span>Escuelas</span>
+        </li>
+        <li
+          onClick={() => {
+            goTo(SAVED_PATH);
+          }}
+        >
+          📌
+          <span>Guardados</span>
         </li>
         {/* <li
           onClick={() => {
