@@ -5,6 +5,7 @@ export default function SelectCountry(props) {
   const getData = async () => {
     const list = [];
     const queryCountries = new Parse.Query(Parse.Object.extend("Country"));
+    queryCountries.limit(500);
     const data = await queryCountries.find();
     if (props.firstOption) {
       list[0] = {

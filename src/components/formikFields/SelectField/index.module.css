@@ -3,4 +3,6 @@
   border: none;
   border-radius: 7px;
   background-color: #ffff;
+  font-size: small;
+  min-width: 100px;
 }

@@ -3,7 +3,6 @@ import styles from "./index.module.css";
 import Text from "@components/common/Text";
 import Moment from "react-moment";
 import "moment/locale/es";
-import Title from "@components/common/Title";
 import { motion } from "framer-motion";
 import Rater from "@components/formikFields/Rater";
 import DisplayUsername from "@components/common/DisplayUsername";

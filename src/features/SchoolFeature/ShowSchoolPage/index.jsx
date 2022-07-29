@@ -15,6 +15,7 @@ import TeachersSection from "./TeachersSection";
 import CrushesSection from "./CrushesSection";
 import Parse from "parse";
 import AddSchoolToProfileButton from "@pages/SchoolFeature/components/AddSchoolToProfileButton";
+import FeedSection from "./FeedSection";
 
 const SchoolPage = ({ data }) => {
   const School = Parse.Object.extend("School");
@@ -101,7 +102,7 @@ const SchoolPage = ({ data }) => {
         <TabsContent
           slug={"section"}
           tabs={{
-            default: <p>Feed</p>,
+            default: <FeedSection school={schoolObject} />,
             reviews: <ReviewsSection school={schoolObject} />,
             members: <MembersSection school={schoolObject} />,
             teachers: <TeachersSection school={schoolObject} />,

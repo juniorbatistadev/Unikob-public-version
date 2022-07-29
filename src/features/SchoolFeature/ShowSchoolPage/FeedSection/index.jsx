@@ -1,38 +1,33 @@
 import FlexColumn from "@components/common/FlexColumn";
-import Title from "@components/common/Title";
-import useInfiniteScrolling from "@hooks/useInfinteScrolling";
-import React from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { getApplicationsWithPagination } from "src/data/queryJobApplication";
 import Spinner from "@components/common/Spinner";
+import useInfiniteScrolling from "@hooks/useInfinteScrolling";
+import FeedItem from "@pages/FeedPage/FeedItem";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { getSchoolFeedItemsWithPagination } from "src/data/queryFeed";
 import EmptyIlustration from "@assets/icons/empty.svg";
-import ApplicationItem from "./ApplicationItem";
 
-function JobApplicationList({ jobId }) {
+function FeedSection({ school }) {
   const { items, count, isLoading, nextPage, startFrom } = useInfiniteScrolling(
     {
-      query: getApplicationsWithPagination,
-      queryData: jobId,
-      perPage: 10,
+      query: getSchoolFeedItemsWithPagination,
+      perPage: 15,
+      queryData: school,
     }
   );
 
   return (
     <FlexColumn>
-      <Title text="Aplicaciones recibidas" margin={"10px 0px 10px 5px"} />
       {isLoading ? (
         <Spinner />
       ) : (
         <InfiniteScroll
           dataLength={items.length}
-          loader={"Cargando"}
-          hasMore={startFrom < count}
           next={nextPage}
+          hasMore={startFrom < count}
+          loader={<Spinner />}
         >
           {items.map((item) => (
-            <FlexColumn margin={"0px 5px 10px 5px"}>
-              <ApplicationItem application={item} />
-            </FlexColumn>
+            <FeedItem key={item.id} feedItem={item} />
           ))}
         </InfiniteScroll>
       )}
@@ -46,4 +41,4 @@ function JobApplicationList({ jobId }) {
   );
 }
 
-export default JobApplicationList;
+export default FeedSection;

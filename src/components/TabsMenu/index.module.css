@@ -1,11 +1,11 @@
-
 /* default style */
 .default {
   background-color: #fff;
   position: sticky;
   top: 60px;
   justify-content: center;
-  box-shadow: 0px 5px 6px 0px #bfbfbf69;
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
 }
 
 .default ul {
@@ -28,11 +28,10 @@
 
 /* type clear styles */
 
-.clear{
-
+.clear {
 }
 
-.clear ul{
+.clear ul {
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -47,19 +46,15 @@
 }
 
 .clear .menuOptionActive {
-  color:  #4173b2;
+  color: #4173b2;
 }
-
-
-
-
 
 @media (max-width: 767px) {
   .default ul {
     overflow-x: scroll;
   }
 
-  .clear ul{
+  .clear ul {
     overflow-x: scroll;
   }
 }

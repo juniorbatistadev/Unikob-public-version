@@ -1,3 +1,6 @@
 export const POST_FEED_ITEM = "POST";
 export const CRUSH_FEED_ITEM = "CRUSH";
 export const JOB_FEED_ITEM = "JOB";
+export const NEW_TEACHER_FEED_ITEM = "NEW_TEACHER";
+export const SCHOOL_REVIEW_FEED_ITEM = "SCHOOL_REVIEW";
+export const TEACHER_REVIEW_FEED_ITEM = "TEACHER_REVIEW";

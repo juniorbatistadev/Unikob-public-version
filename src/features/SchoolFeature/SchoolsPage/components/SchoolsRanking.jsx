@@ -3,6 +3,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import Spinner from "@components/common/Spinner";
 import SchoolRating from "./SchoolRating";
 import { useEffect, useState } from "react";
+import EmptyIlustration from "@assets/icons/empty.svg";
 
 const SchoolsRanking = ({ country }) => {
   const [schools, setSchools] = useState([]);
@@ -31,6 +32,12 @@ const SchoolsRanking = ({ country }) => {
             number={index + 1}
           />
         ))
+      )}
+
+      {schools.length < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="40px auto">
+          <EmptyIlustration width="200px" height="200px" />
+        </FlexColumn>
       )}
     </FlexColumn>
   );
