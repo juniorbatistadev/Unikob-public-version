@@ -9,7 +9,7 @@
   background-color: cornflowerblue;
   justify-content: space-between;
   box-shadow: -3px -2px 5px 0px #33333308;
-  z-index: 2;
+  z-index: 10;
 }
 
 .left-side {

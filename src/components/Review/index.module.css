@@ -5,7 +5,7 @@
   margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: -3px 6px 5px 1px #cecece;
+  box-shadow: var(--shadow-md);
 }
 
 .dataContainer {

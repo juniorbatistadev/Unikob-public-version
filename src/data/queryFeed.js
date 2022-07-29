@@ -1,3 +1,8 @@
+import {
+  CRUSH_FEED_ITEM,
+  JOB_FEED_ITEM,
+  POST_FEED_ITEM,
+} from "@pages/FeedPage/FeedItemTypes";
 import Parse from "parse";
 import { getUsersFollowing } from "./queryFollows";
 
@@ -7,6 +12,7 @@ const query = new Parse.Query(Feed);
 export const getFeedItemsWithPagination = async ({ startFrom, perPage }) => {
   const query = new Parse.Query(Feed);
 
+  query.containedIn("type", [POST_FEED_ITEM, JOB_FEED_ITEM, CRUSH_FEED_ITEM]);
   query.skip(startFrom);
   query.descending("createdAt");
   query.limit(perPage);
@@ -30,6 +36,25 @@ export const getFollowingFeedItemsWithPagination = async ({
 
   query.containedIn("createdBy", followingUsers);
 
+  query.skip(startFrom);
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.includeAll();
+  query.withCount();
+
+  const result = await query.find();
+
+  return result;
+};
+
+export const getSchoolFeedItemsWithPagination = async ({
+  startFrom,
+  perPage,
+  queryData,
+}) => {
+  const query = new Parse.Query(Feed);
+
+  query.equalTo("schools", queryData);
   query.skip(startFrom);
   query.descending("createdAt");
   query.limit(perPage);

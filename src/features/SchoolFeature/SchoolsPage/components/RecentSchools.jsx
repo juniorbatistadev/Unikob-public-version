@@ -4,6 +4,7 @@ import SchoolRating from "./SchoolRating";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getRecentSchoolsWithPagination } from "src/data/querySchools";
+import EmptyIlustration from "@assets/icons/empty.svg";
 
 const RecentSchools = ({ country }) => {
   const { startFrom, isLoading, items, count, nextPage, reloadData } =
@@ -28,6 +29,12 @@ const RecentSchools = ({ country }) => {
             <SchoolRating school={item} key={item.objectId} />
           ))}
         </InfiniteScroll>
+      )}
+
+      {count < 1 && !isLoading && (
+        <FlexColumn alignItems="center" margin="40px auto">
+          <EmptyIlustration width="200px" height="200px" />
+        </FlexColumn>
       )}
     </FlexColumn>
   );

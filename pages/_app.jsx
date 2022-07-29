@@ -22,7 +22,7 @@ function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <Head>
-        <title>GenteUni</title>
+        <title>Unikob</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Layout>
