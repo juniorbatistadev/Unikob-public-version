@@ -25,7 +25,7 @@ const SchoolPage = ({ data }) => {
   return (
     <FlexColumn className={styles.container}>
       <FlexColumn className={styles.headerContainer}>
-        <HeaderSchool text={data.name} image={data.image} />
+        <HeaderSchool text={data.name} schoolId={data.id} />
 
         <FlexColumn padding="15px">
           <AddSchoolToProfileButton school={schoolObject} />
@@ -69,35 +69,34 @@ const SchoolPage = ({ data }) => {
             )}
           </ul>
         </FlexColumn>
-
-        <TabsMenu
-          path={SCHOOL_READ_PATH.replace(":school", data.slug)}
-          slug="section"
-          options={[
-            { name: "Inicio", query: {} },
-            {
-              link: "reviews",
-              name: "Reviews",
-              query: { section: "reviews" },
-            },
-            {
-              link: "teachers",
-              name: "Profesores",
-              query: { section: "teachers" },
-            },
-            {
-              link: "crushes",
-              name: "UniCrush",
-              query: { section: "crushes" },
-            },
-            {
-              link: "members",
-              name: "Miembros",
-              query: { section: "members" },
-            },
-          ]}
-        />
       </FlexColumn>
+      <TabsMenu
+        path={SCHOOL_READ_PATH.replace(":school", data.slug)}
+        slug="section"
+        options={[
+          { name: "Inicio", query: {} },
+          {
+            link: "reviews",
+            name: "Reviews",
+            query: { section: "reviews" },
+          },
+          {
+            link: "teachers",
+            name: "Profesores",
+            query: { section: "teachers" },
+          },
+          {
+            link: "crushes",
+            name: "Crushes",
+            query: { section: "crushes" },
+          },
+          {
+            link: "members",
+            name: "Miembros",
+            query: { section: "members" },
+          },
+        ]}
+      />
       <FlexColumn className={styles.contentContainer}>
         <TabsContent
           slug={"section"}

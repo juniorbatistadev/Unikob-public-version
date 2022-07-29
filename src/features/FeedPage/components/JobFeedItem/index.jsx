@@ -32,8 +32,6 @@ function JobFeedItem({ job }) {
     getData().catch((e) => console.log(e, "error"));
   }, [job.attributes.subjects]);
 
-  console.log(country);
-
   return (
     <FeedBox color={"rgb(210 187 143)"}>
       <FlexColumn className={styles.header}>

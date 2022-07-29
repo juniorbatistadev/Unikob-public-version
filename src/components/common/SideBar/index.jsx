@@ -21,7 +21,7 @@ import {
   JOBS_PATH,
   SCHOOLS_PATH,
   SETTINGS_PATH,
-  UNICRUSH_PATH,
+  CRUSHES_PATH,
 } from "src/paths";
 
 function SideBar({ setMenuOpen, className, ...props }) {
@@ -107,12 +107,12 @@ function SideBar({ setMenuOpen, className, ...props }) {
         </li> */}
         <li
           onClick={() => {
-            goTo(UNICRUSH_PATH);
+            goTo(CRUSHES_PATH);
           }}
         >
           <LoveIcon alt="option" className={styles["menu-icon"]} />
 
-          <span>UniCrush</span>
+          <span>Crushes</span>
         </li>
         <li
           onClick={() => {

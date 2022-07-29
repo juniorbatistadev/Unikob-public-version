@@ -1,4 +1,4 @@
-import ShowCrushPage from "@pages/UniCrush/ShowCrushPage";
+import ShowCrushPage from "@pages/CrushFeature/ShowCrushPage";
 
 function ShowCrush() {
   return <ShowCrushPage />;
