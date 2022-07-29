@@ -29,7 +29,7 @@ const TopCrushes = () => {
         <Spinner />
       ) : (
         crushes.map((user, index) => (
-          <FlexColumn margin={"0px 0px 20px 0px"}>
+          <FlexColumn margin={"0px 0px 20px 0px"} key={index}>
             <FlexRow>
               <Avatar
                 image={user.data.attributes.profilePicture?.url()}

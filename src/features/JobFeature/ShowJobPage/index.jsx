@@ -1,7 +1,6 @@
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
 import FeedBox from "@pages/FeedPage/components/FeedBox";
-import JobFeedItem from "@pages/FeedPage/components/JobFeedItem";
 import styles from "./index.module.css";
 import FlexRow from "@components/common/FlexRow";
 import Text from "@components/common/Text";
@@ -15,9 +14,30 @@ import { useContext } from "react";
 import { AuthContext } from "@context/AuthContext";
 import ApplyToJobSection from "./components/ApplyToJobSection";
 import JobApplicationList from "./components/JobApplicationsList";
+import Button from "@components/common/Button";
+import Alert from "@components/common/Alert";
+import { JOBS_PATH } from "src/paths";
+import { deleteJob } from "src/data/queryJobs";
+import { useRouter } from "next/router";
 
 function ShowJobPage({ data }) {
   const { currentUser } = useContext(AuthContext);
+  const { replace } = useRouter();
+
+  const onDelete = async () => {
+    const response = await Alert.fire({
+      text: "¿Estas seguro que quieres borrar este trabajo?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (response.isConfirmed) {
+      await replace(JOBS_PATH);
+      await deleteJob(data.objectId);
+    }
+  };
 
   return (
     <FlexColumn>
@@ -66,6 +86,14 @@ function ShowJobPage({ data }) {
       <FlexColumn className={styles.content}>
         <RenderHTML json={data.content} />
       </FlexColumn>
+
+      {currentUser && currentUser.id === data.createdBy.objectId && (
+        <FlexRow margin={"10px"}>
+          <Button typeStyle="secondary" onClick={onDelete}>
+            Borrar
+          </Button>
+        </FlexRow>
+      )}
       <FlexColumn margin={"10px 0px 0px 0px"}>
         {currentUser?.id === data.createdBy.objectId ? (
           <JobApplicationList jobId={data.objectId} />

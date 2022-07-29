@@ -54,4 +54,10 @@ export const getCrushById = async (id) => {
   return result;
 };
 
+export const deleteCrush = async (crushId) => {
+  const query = new Parse.Query(Crush);
+  const result = await query.get(crushId);
+
+  return result.destroy();
+};
 export default query;

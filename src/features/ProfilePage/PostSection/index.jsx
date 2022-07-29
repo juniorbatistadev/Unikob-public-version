@@ -25,7 +25,7 @@ const PostSection = ({ user }) => {
           loader={"Cargando"}
         >
           {items.map((item) => (
-            <FlexColumn margin={"0px 0px 5px 0px"}>
+            <FlexColumn margin={"0px 0px 15px 0px"}>
               <PostFeedItem key={item.id} post={item} />
             </FlexColumn>
           ))}

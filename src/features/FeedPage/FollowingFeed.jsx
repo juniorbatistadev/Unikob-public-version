@@ -32,9 +32,7 @@ function FollowingFeed() {
           loader={<Spinner />}
         >
           {items.map((item) => (
-            <FlexColumn margin={"20px 0px"}>
-              <FeedItem key={item.id} feedItem={item} />
-            </FlexColumn>
+            <FeedItem key={item.id} feedItem={item} />
           ))}
         </InfiniteScroll>
       )}
