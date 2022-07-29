@@ -80,7 +80,7 @@ function JobPage() {
           next={nextPage}
         >
           {items.map((item) => (
-            <FlexColumn margin={"0px 0px 10px 0px"}>
+            <FlexColumn margin={"0px 0px 20px 0px"}>
               <JobFeedItem job={item} />
             </FlexColumn>
           ))}

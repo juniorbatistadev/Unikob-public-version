@@ -12,6 +12,7 @@ import KeyIcon from "@assets/icons/key.svg";
 import FacebookIcon from "@assets/icons/facebook-out-line.svg";
 import LogoutIcon from "@assets/icons/logout.svg";
 import BellIcon from "@assets/icons/bell.svg";
+import CvIcon from "@assets/icons/cv.svg";
 import { useRouter } from "next/router";
 import {
   SETTINGS_COVER_PATH,
@@ -77,7 +78,7 @@ function SettingsMenu() {
       <SettingOption
         title="Curriculum Vitae"
         description="Maneja tu CV"
-        Icon={SchoolIcon}
+        Icon={CvIcon}
         onClick={() => push(SETTINGS_CURRICULUM_PATH)}
       />
 

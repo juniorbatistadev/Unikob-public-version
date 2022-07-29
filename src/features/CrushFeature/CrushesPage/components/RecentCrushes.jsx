@@ -22,7 +22,7 @@ const RecentCrushes = () => {
         next={nextPage}
       >
         {items.map((item) => (
-          <FlexColumn margin={"10px"}>
+          <FlexColumn margin={"0px 0px 15px 0px"}>
             <CrushFeedItem crush={item} />
           </FlexColumn>
         ))}

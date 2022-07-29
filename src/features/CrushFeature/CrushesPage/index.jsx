@@ -4,7 +4,7 @@ import GoBackButton from "@components/common/GoBackButton";
 import Title from "@components/common/Title";
 import TabsContent from "@components/TabsContent";
 import TabsMenu from "@components/TabsMenu";
-import { UNICRUSH_PATH } from "src/paths";
+import { CRUSHES_PATH } from "src/paths";
 import RecentCrushes from "./components/RecentCrushes";
 import TopCrushes from "./components/TopCrushes";
 
@@ -13,11 +13,11 @@ function UniCrushPage() {
     <FlexColumn margin="10px">
       <FlexRow alignItems={"center"}>
         <GoBackButton />
-        <Title text="UniCrush" />
+        <Title text="Crushes" />
       </FlexRow>
       <TabsMenu
         typeStyle="clear"
-        path={UNICRUSH_PATH}
+        path={CRUSHES_PATH}
         slug="section"
         options={[
           { name: "Recientes", query: {} },

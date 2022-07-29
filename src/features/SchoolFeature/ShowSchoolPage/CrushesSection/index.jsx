@@ -17,7 +17,7 @@ const CrushesSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <Title text="UniCrush" />
+      <Title text="Crushes" />
       <InfiniteScroll
         dataLength={items.length}
         loader={"Cargando"}

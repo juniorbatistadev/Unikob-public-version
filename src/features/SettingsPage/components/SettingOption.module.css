@@ -14,7 +14,7 @@
   height: 24px;
   margin-left: 20px;
   margin-right: 20px;
-  fill: #4173b2;
+  fill: var(--primary)
 }
 
 .texts {

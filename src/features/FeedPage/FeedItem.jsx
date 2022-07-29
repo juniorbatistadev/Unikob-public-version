@@ -1,4 +1,5 @@
 import FlexColumn from "@components/common/FlexColumn";
+import Text from "@components/common/Text";
 import { useEffect, useState } from "react";
 import CrushFeedItem from "./components/CrushFeedItem";
 import JobFeedItem from "./components/JobFeedItem";
@@ -8,28 +9,7 @@ import {
   JOB_FEED_ITEM,
   POST_FEED_ITEM,
 } from "./FeedItemTypes";
-
-const FetchItemData = ({ feedItem, Component, typeProp, itemsToFetch }) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await feedItem.fetch();
-      await itemsToFetch.forEach(async (item) => {
-        await feedItem.get(item).fetch();
-      });
-      setData(data);
-    };
-
-    getData();
-  }, []);
-
-  const props = {
-    [typeProp]: data,
-  };
-
-  return <>{data && <Component {...props} />}</>;
-};
+import styles from "./index.module.css";
 
 const FeedItem = ({ feedItem }) => {
   const renderFeedItem = (feedItem) => {

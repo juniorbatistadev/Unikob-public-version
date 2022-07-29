@@ -21,42 +21,48 @@ function ShowJobPage({ data }) {
 
   return (
     <FlexColumn>
-      <FeedBox color={"rgb(210 187 143)"}>
-        <FlexColumn className={styles.header} padding={15}>
-          <Title text={data.title} className={styles.title} />
+      <FlexColumn margin={"15px 0px 0px 0px"}>
+        <FeedBox color={"rgb(210 187 143)"}>
+          <FlexColumn className={styles.header} padding={15}>
+            <Title text={data.title} className={styles.title} />
 
-          <FlexRow alignItems="center">
-            <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
-              {data.createdAt}
-            </Moment>
-            <Text text="|" />
-            <Avatar
-              linkToUser={data.createdBy.username}
-              className={styles.avatar}
-              width="25px"
-              image={data.createdBy?.profilePicture?.url}
-            />
-            <FlexColumn margin={"0px 0px 0px 5px"}>
-              <DisplayUsername
-                link={true}
-                type={"primary"}
-                username={data.createdBy.username}
+            <FlexRow alignItems="center">
+              <Moment
+                className={styles.date}
+                format="MMMM DD, YYYY"
+                locale="es"
+              >
+                {data.createdAt}
+              </Moment>
+              <Text text="|" />
+              <Avatar
+                linkToUser={data.createdBy.username}
+                className={styles.avatar}
+                width="25px"
+                image={data.createdBy?.profilePicture?.url}
               />
-            </FlexColumn>
-          </FlexRow>
-          <FlexRow alignItems="center">
-            <PinIcon width="12px" height="12px" />
-            <Text text={data.country.name} margin={"0px 0px 0px 5px"} />
-          </FlexRow>
-          <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
-            {data.tags.map((subject, index) => (
-              <FlexRow margin="0px 5px 0px 0px" key={index}>
-                <Tag text={subject} />
-              </FlexRow>
-            ))}
-          </FlexRow>
-        </FlexColumn>
-      </FeedBox>
+              <FlexColumn margin={"0px 0px 0px 5px"}>
+                <DisplayUsername
+                  link={true}
+                  type={"primary"}
+                  username={data.createdBy.username}
+                />
+              </FlexColumn>
+            </FlexRow>
+            <FlexRow alignItems="center">
+              <PinIcon width="12px" height="12px" />
+              <Text text={data.country.name} margin={"0px 0px 0px 5px"} />
+            </FlexRow>
+            <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
+              {data.tags.map((subject, index) => (
+                <FlexRow margin="0px 5px 0px 0px" key={index}>
+                  <Tag text={subject} />
+                </FlexRow>
+              ))}
+            </FlexRow>
+          </FlexColumn>
+        </FeedBox>
+      </FlexColumn>
       <FlexColumn className={styles.content}>
         <RenderHTML json={data.content} />
       </FlexColumn>

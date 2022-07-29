@@ -7,10 +7,10 @@ module.exports = withReactSvg({
     return config;
   },
 
-  i18n: {
-    locales: ["es", "en"],
-    defaultLocale: "es",
-  },
+  // i18n: {
+  //   locales: ["es", "en"],
+  //   defaultLocale: "es",
+  // },
 
   reactStrictMode: true,
 });
