@@ -19,7 +19,7 @@ import { POST_COMMENT } from "@components/CommentsSection/commentsType";
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { isMounted } = useIsMounted();
-  const { push, asPath } = useRouter();
+  const { push } = useRouter();
 
   const onDelete = async () => {
     const response = await Alert.fire({

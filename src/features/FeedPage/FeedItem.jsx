@@ -15,18 +15,36 @@ const FeedItem = ({ feedItem }) => {
   const renderFeedItem = (feedItem) => {
     switch (feedItem.attributes.type) {
       case CRUSH_FEED_ITEM:
-        return <CrushFeedItem crush={feedItem.attributes.crush} />;
+        return feedItem.attributes.crush ? (
+          <FlexColumn margin={"0px 0px 15px 0px"}>
+            <CrushFeedItem crush={feedItem.attributes.crush} />
+          </FlexColumn>
+        ) : (
+          <></>
+        );
       case POST_FEED_ITEM:
-        return <PostFeedItem post={feedItem.attributes.post} />;
+        return feedItem.attributes.post ? (
+          <FlexColumn margin={"0px 0px 15px 0px"}>
+            <PostFeedItem post={feedItem.attributes.post} />
+          </FlexColumn>
+        ) : (
+          <></>
+        );
       case JOB_FEED_ITEM:
-        return <JobFeedItem job={feedItem.attributes.job} />;
+        return feedItem.attributes.job ? (
+          <FlexColumn margin={"0px 0px 15px 0px"}>
+            <JobFeedItem job={feedItem.attributes.job} />
+          </FlexColumn>
+        ) : (
+          <></>
+        );
 
       default:
         return <> </>;
     }
   };
 
-  return <FlexColumn>{renderFeedItem(feedItem)}</FlexColumn>;
+  return <>{renderFeedItem(feedItem)}</>;
 };
 
 export default FeedItem;

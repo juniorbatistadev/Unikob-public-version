@@ -55,7 +55,7 @@ const CommentSection = ({ section, type }) => {
         {count < 1 && !isLoading && (
           <FlexColumn margin="auto" alignItems="center">
             <EmptyIlustration width="200px" height="200px" />
-            <Title text="No hay Comentarios" fontSize="16px" />
+            <Title text="No hay comentarios" fontSize="16px" />
           </FlexColumn>
         )}
       </FlexColumn>

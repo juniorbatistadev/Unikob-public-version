@@ -87,4 +87,11 @@ export const searchJobsWithPagination = async ({
   return result;
 };
 
+export const deleteJob = async (jobId) => {
+  const query = new Parse.Query(Job);
+  const result = await query.get(jobId);
+
+  return result.destroy();
+};
+
 export default query;

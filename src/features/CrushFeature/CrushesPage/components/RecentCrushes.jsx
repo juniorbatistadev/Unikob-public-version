@@ -21,8 +21,8 @@ const RecentCrushes = () => {
         hasMore={startFrom < count}
         next={nextPage}
       >
-        {items.map((item) => (
-          <FlexColumn margin={"0px 0px 15px 0px"}>
+        {items.map((item, index) => (
+          <FlexColumn margin={"0px 0px 15px 0px"} key={index}>
             <CrushFeedItem crush={item} />
           </FlexColumn>
         ))}

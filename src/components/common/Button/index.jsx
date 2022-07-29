@@ -61,7 +61,6 @@ Button.defaultProps = {
   onClick: null,
   loading: false,
   as: "button",
-  href: FEED_PATH,
   disabled: false,
 };
 

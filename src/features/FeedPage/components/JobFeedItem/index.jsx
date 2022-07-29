@@ -30,53 +30,64 @@ function JobFeedItem({ job }) {
     };
 
     getData().catch((e) => console.log(e, "error"));
-  }, [job.attributes.subjects]);
+  }, [job?.attributes.subjects]);
 
   return (
-    <FeedBox color={"rgb(210 187 143)"}>
-      <FlexColumn className={styles.header}>
-        <A href={JOB_READ_PATH.replace(":job", job.attributes.slug)}>
-          <Title text={job.attributes.title} className={styles.title} />
-        </A>
-        <FlexRow alignItems="center">
-          <Moment className={styles.date} format="MMMM DD, YYYY" locale="es">
-            {job.attributes.createdAt}
-          </Moment>
-          <Text text="|" />
-          <Avatar
-            linkToUser={job.attributes.createdBy.attributes.username}
-            className={styles.avatar}
-            width="25px"
-            image={job.attributes.createdBy?.attributes.profilePicture?.url()}
-          />
-          <FlexColumn margin={"0px 0px 0px 5px"}>
-            <DisplayUsername
-              link={true}
-              type={"primary"}
-              username={job.attributes.createdBy.attributes.username}
-            />
-          </FlexColumn>
-        </FlexRow>
-        <FlexRow alignItems="center">
-          <PinIcon width="12px" height="12px" />
-          <Text text={country?.attributes.name} margin={"0px 0px 0px 5px"} />
-        </FlexRow>
-        <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
-          {subjectsTags.map((subject, index) => (
-            <FlexRow margin="0px 5px 0px 0px" key={index}>
-              <Tag key={subject.id} text={subject.attributes.name} />
+    <>
+      {job && (
+        <FeedBox color={"rgb(210 187 143)"}>
+          <FlexColumn className={styles.header}>
+            <A href={JOB_READ_PATH.replace(":job", job.attributes.slug)}>
+              <Title text={job.attributes.title} className={styles.title} />
+            </A>
+            <FlexRow alignItems="center">
+              <Moment
+                className={styles.date}
+                format="MMMM DD, YYYY"
+                locale="es"
+              >
+                {job.attributes.createdAt}
+              </Moment>
+              <Text text="|" />
+              <Avatar
+                linkToUser={job.attributes.createdBy.attributes.username}
+                className={styles.avatar}
+                width="25px"
+                image={job.attributes.createdBy?.attributes.profilePicture?.url()}
+              />
+              <FlexColumn margin={"0px 0px 0px 5px"}>
+                <DisplayUsername
+                  link={true}
+                  type={"primary"}
+                  username={job.attributes.createdBy.attributes.username}
+                />
+              </FlexColumn>
             </FlexRow>
-          ))}
-        </FlexRow>
-        <A href={JOB_READ_PATH.replace(":job", job.attributes.slug)}>
-          <FlexRow>
-            <Text
-              text={extractTextFromPost(job.attributes.content.blocks, 160)}
-            />
-          </FlexRow>
-        </A>
-      </FlexColumn>
-    </FeedBox>
+            <FlexRow alignItems="center">
+              <PinIcon width="12px" height="12px" />
+              <Text
+                text={country?.attributes.name}
+                margin={"0px 0px 0px 5px"}
+              />
+            </FlexRow>
+            <FlexRow alignItems="center" margin={"5px 0px 5px 0px"}>
+              {subjectsTags.map((subject, index) => (
+                <FlexRow margin="0px 5px 0px 0px" key={index}>
+                  <Tag key={subject.id} text={subject.attributes.name} />
+                </FlexRow>
+              ))}
+            </FlexRow>
+            <A href={JOB_READ_PATH.replace(":job", job.attributes.slug)}>
+              <FlexRow>
+                <Text
+                  text={extractTextFromPost(job.attributes.content.blocks, 160)}
+                />
+              </FlexRow>
+            </A>
+          </FlexColumn>
+        </FeedBox>
+      )}
+    </>
   );
 }
 
