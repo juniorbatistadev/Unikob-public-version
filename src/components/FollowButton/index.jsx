@@ -28,16 +28,11 @@ const FollowButton = ({ userToFollow }) => {
       {currentUser &&
         currentUser.id !== userToFollow.id &&
         (isUserFollowed ? (
-          <Button
-            onClick={unFollow}
-            padding="5px 15px"
-            margin="0px 10px"
-            typeStyle="secondary"
-          >
+          <Button onClick={unFollow} padding="5px 15px" typeStyle="secondary">
             Siguiendo
           </Button>
         ) : (
-          <Button onClick={follow} padding="5px 15px" margin="0px 10px">
+          <Button onClick={follow} padding="5px 15px">
             Seguir
           </Button>
         ))}

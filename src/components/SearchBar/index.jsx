@@ -38,7 +38,6 @@ function SearchBar({ className, callBack }) {
             name="search"
             type="search"
           />
-          <ErrorMessage name="search" />
           <button className={styles.button} type="submit">
             <SearchIcon alt="Search" width={15} className={styles.icon} />
           </button>
