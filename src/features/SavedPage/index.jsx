@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
 import GoBackButton from "@components/common/GoBackButton";

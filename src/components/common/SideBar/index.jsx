@@ -23,6 +23,7 @@ import {
   SETTINGS_PATH,
   CRUSHES_PATH,
   SAVED_PATH,
+  DISCOVER_PATH,
 } from "src/paths";
 
 function SideBar({ setMenuOpen, className, ...props }) {
@@ -77,7 +78,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
           <HomeIcon alt="option" className={styles["menu-icon"]} />
           <span>Feed</span>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            goTo(DISCOVER_PATH);
+          }}
+        >
           <RocketIcon alt="option" className={styles["menu-icon"]} />
           <span>Descubre</span>
         </li>

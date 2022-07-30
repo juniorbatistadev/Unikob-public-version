@@ -25,8 +25,6 @@ export const searchUsersWithPagination = async ({
 }) => {
   const query = new Parse.Query(Parse.User);
 
-  console.log(queryData, startFrom, perPage);
-
   query.startsWith("username", String(queryData).toLocaleLowerCase());
   query.limit(perPage);
   query.includeAll();
@@ -36,8 +34,20 @@ export const searchUsersWithPagination = async ({
 
   const result = await query.find();
 
-  console.log(result);
+  return result;
+};
+
+export const getNewUsers = async ({ amount }) => {
+  const query = new Parse.Query(Parse.User);
+
+  query.descending("createdAt");
+  query.skip(0);
+  query.limit(amount);
+  query.includeAll();
+
+  const result = await query.find();
 
   return result;
 };
+
 export default query;
