@@ -30,7 +30,7 @@ function CreatePostPage() {
   };
 
   return (
-    <FlexColumn margin="10px">
+    <FlexColumn margin="10px 0px 0px 0px">
       <PostEditor action="create" handleSubmit={handleSubmit} />
     </FlexColumn>
   );

@@ -1,7 +1,12 @@
 .input {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: var(--text-sm);
   resize: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-gray-400);
+  color: var(--color-gray-700);
+}
+
+.input:focus {
+  outline: 1px solid var(--color-blue-600);
 }

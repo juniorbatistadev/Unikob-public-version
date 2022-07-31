@@ -102,14 +102,13 @@
     background-color: var(--color-white);
     display: flex;
     width: 80%;
-    align-items: center;
     box-shadow: var(--shadow-xl);
     border-right: 1px solid #d8d8d8;
   }
 
   .searchbar {
     display: flex;
-    margin: 15px 0px;
+    margin: 15px 25px;
   }
 
   .close-button {
@@ -121,7 +120,7 @@
   }
 
   .menu {
-    margin: auto;
+    margin: 0px 0px 0px 20px;
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -129,6 +128,7 @@
   }
 
   .avatar {
-    margin: 50px 0px 10px 0px;
+    margin: 20px 0px 10px 0px;
+    justify-content: center;
   }
 }

@@ -4,6 +4,7 @@ import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import PostFeedItem from "@pages/FeedPage/components/PostFeedItem";
+import Spinner from "@components/common/Spinner";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
@@ -16,7 +17,9 @@ const PostSection = ({ user }) => {
 
   return (
     <FlexColumn margin={"15px 0px 0px 0px"}>
-      {!isLoading && (
+      {isLoading ? (
+        <Spinner />
+      ) : (
         <InfiniteScroll
           dataLength={items.length}
           start={0}

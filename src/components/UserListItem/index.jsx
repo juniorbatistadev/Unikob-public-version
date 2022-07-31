@@ -4,6 +4,7 @@ import Avatar from "@components/common/Avatar";
 import Text from "@components/common/Text";
 import FollowButton from "@components/FollowButton";
 import SendGiftButton from "@components/SendGiftButton";
+import DisplayUsername from "@components/common/DisplayUsername";
 
 const UserListItem = ({ user, withGiftButton, typeStyle, text }) => {
   return (
@@ -12,7 +13,7 @@ const UserListItem = ({ user, withGiftButton, typeStyle, text }) => {
         image={user.attributes.profilePicture?.url()}
         linkToUser={user.attributes.username}
       />
-      <Text text={user.attributes.username} />
+      <DisplayUsername user={user} />
       {text && <Text text={text} />}
       <div className={styles.buttons}>
         <FollowButton userToFollow={user} />

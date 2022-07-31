@@ -22,7 +22,7 @@ function GiftSection({ user }) {
     <>
       <Title text={`Regalos (${count})`} margin="10px"></Title>
       {isLoading ? (
-        <Text text="Cargando..." />
+        <Spinner />
       ) : (
         <InfiniteScroll
           dataLength={items.length}
