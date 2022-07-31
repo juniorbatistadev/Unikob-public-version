@@ -3,8 +3,16 @@ import { PROFILE_PATH } from "src/paths";
 import styles from "./index.module.css";
 import VerifiedIcon from "@assets/icons/verified.svg";
 
-export default function DisplayUsername({ className, link, type, user }) {
+export default function DisplayUsername({
+  className,
+  link,
+  type,
+  user,
+  fontSize,
+}) {
   const classNames = [styles[type], className].join(" ");
+
+  console.log(fontSize);
 
   return (
     <A
@@ -12,7 +20,7 @@ export default function DisplayUsername({ className, link, type, user }) {
         link ? PROFILE_PATH.replace(":user", user.attributes.username) : null
       }
     >
-      <span className={classNames}>
+      <span className={classNames} style={{ fontSize }}>
         {`${user.attributes.username}`}
         {user.attributes.isVerified && (
           <VerifiedIcon
@@ -30,4 +38,5 @@ export default function DisplayUsername({ className, link, type, user }) {
 DisplayUsername.defaultProps = {
   link: true,
   type: "primary",
+  fontSize: "var(--text-base)",
 };

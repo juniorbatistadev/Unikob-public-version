@@ -23,15 +23,15 @@
 
 /* Side Bar Menu for desktop*/
 
-.sidebar ul {
+/* .sidebar ul {
   margin-top: 50px;
   margin-bottom: 50px;
-}
+} */
 
 .content {
   max-width: 70%;
   flex-wrap: wrap;
-  flex: 4;
+  flex: 3;
   min-height: calc(100vh - 60px);
 }
 

@@ -1,7 +1,6 @@
 import styles from "./index.module.css";
 import loadingCircle from "@assets/images/loading-circle.gif";
 import A from "@components/common/A";
-import { FEED_PATH } from "src/paths";
 
 const ElementHTML = ({ children, as, ...rest }) => {
   return (

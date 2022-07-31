@@ -18,7 +18,7 @@ function MainLayout({ children }) {
           {/* <p style={{ marginTop: 10 }}> Ads </p> */}
           <img
             alt="Ad"
-            style={{ marginTop: 20 }}
+            style={{ marginTop: 20, marginLeft: 10 }}
             width="200"
             src="https://i.pinimg.com/236x/6a/34/49/6a344987abc2e298780b4afed3df0795--google-banner-banners.jpg"
           />

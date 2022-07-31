@@ -1,6 +1,6 @@
 /* default style */
 .default {
-  background-color: #fff;
+  background-color: var(--color-white);
   position: sticky;
   top: 60px;
   justify-content: center;
@@ -16,8 +16,8 @@
 
 .default .menuOption {
   padding: 15px;
-  font-size: 17px;
-  color: grey;
+  font-size: var(--text-lg);
+  color: var(--color-gray-700);
   text-decoration: none;
   cursor: pointer;
 }
@@ -39,14 +39,15 @@
 
 .clear .menuOption {
   padding: 15px;
-  font-size: 17px;
-  color: grey;
+  font-size: var(--text-lg);
+  color: var(--color-gray-600);
   text-decoration: none;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .clear .menuOptionActive {
-  color: #4173b2;
+  color: var(--primary);
 }
 
 @media (max-width: 767px) {
