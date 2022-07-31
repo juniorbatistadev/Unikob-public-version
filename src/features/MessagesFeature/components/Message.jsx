@@ -44,9 +44,7 @@ const Message = ({ message, withUsername }) => {
         </div>
       </FlexRow>
       {withUsername && message.attributes.createdBy.id !== currentUser.id && (
-        <DisplayUsername
-          username={message.attributes.createdBy.attributes.username}
-        />
+        <DisplayUsername user={message.attributes.createdBy} />
       )}
       <Text
         fontSize="12px"

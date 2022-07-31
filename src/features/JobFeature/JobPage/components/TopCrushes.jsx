@@ -37,10 +37,7 @@ const TopCrushes = () => {
               />
 
               <FlexColumn margin={"0px 0px 0px 10px"}>
-                <DisplayUsername
-                  username={user.data.attributes.username}
-                  type="primary"
-                />
+                <DisplayUsername username={user} />
                 <Text text={`${user.total} crushes recibidos`} />
               </FlexColumn>
             </FlexRow>

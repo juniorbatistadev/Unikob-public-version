@@ -54,13 +54,7 @@ function CrushFeedItem({ crush, displayComments }) {
                       crush.attributes.toUser?.attributes.profilePicture?.url()
                     }
                   />
-                  <DisplayUsername
-                    type={"primary"}
-                    username={
-                      toUser?.attributes.username ??
-                      crush.attributes.toUser.attributes.username
-                    }
-                  />
+                  <DisplayUsername user={toUser ?? crush.attributes.toUser} />
                   <Text
                     text={" recibio un Crush secreto "}
                     margin="0px 0px 0px 5px"
@@ -83,12 +77,8 @@ function CrushFeedItem({ crush, displayComments }) {
                     }
                   />
                   <DisplayUsername
-                    type={"primary"}
                     className={styles.usernameText}
-                    username={
-                      createdBy?.attributes.username ??
-                      crush.attributes.createdBy?.attributes.username
-                    }
+                    user={createdBy ?? crush.attributes.createdBy}
                   />
                 </FlexRow>
 

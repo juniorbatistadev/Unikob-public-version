@@ -56,11 +56,7 @@ function JobFeedItem({ job }) {
                 image={job.attributes.createdBy?.attributes.profilePicture?.url()}
               />
               <FlexColumn margin={"0px 0px 0px 5px"}>
-                <DisplayUsername
-                  link={true}
-                  type={"primary"}
-                  username={job.attributes.createdBy.attributes.username}
-                />
+                <DisplayUsername user={job.attributes.createdBy} />
               </FlexColumn>
             </FlexRow>
             <FlexRow alignItems="center">

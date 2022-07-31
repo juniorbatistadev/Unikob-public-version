@@ -79,11 +79,7 @@ function ShowJobPage({ data }) {
                 image={data.createdBy?.profilePicture?.url}
               />
               <FlexColumn margin={"0px 0px 0px 5px"}>
-                <DisplayUsername
-                  link={true}
-                  type={"primary"}
-                  username={data.createdBy.username}
-                />
+                <DisplayUsername user={{ attributes: data.createdBy }} />
               </FlexColumn>
             </FlexRow>
             <FlexRow alignItems="center">

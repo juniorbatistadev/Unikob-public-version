@@ -38,8 +38,7 @@ export default function PostHeader({ post, preview }) {
             />
             <DisplayUsername
               className={styles.usernameText}
-              username={post.createdBy.username}
-              type="primary"
+              user={{ attributes: post.createdBy }}
             />
           </FlexRow>
         </FlexRow>

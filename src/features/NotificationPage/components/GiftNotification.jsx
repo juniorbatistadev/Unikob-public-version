@@ -20,7 +20,7 @@ const GiftNotification = ({ notification }) => {
         <FlexRow>
           <DisplayUsername
             className={styles.username}
-            username={notification.attributes.triggeredBy.attributes.username}
+            user={notification.attributes.triggeredBy}
           />
 
           <Text

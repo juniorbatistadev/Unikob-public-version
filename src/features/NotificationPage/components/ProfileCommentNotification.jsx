@@ -24,9 +24,7 @@ const ProfileCommentNotification = ({ notification }) => {
                 <DisplayUsername
                   type={"primary"}
                   className={styles.username}
-                  username={
-                    notification.attributes.triggeredBy.attributes.username
-                  }
+                  user={notification.attributes.triggeredBy}
                 />
                 dejo un comentario en tu
                 <A href={CURRENT_USER_PROFILE_COMMENTS_PATH}>
