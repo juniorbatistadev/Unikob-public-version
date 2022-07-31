@@ -1,12 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  background: #fff;
   position: absolute;
-  min-height: 100vh;
+  height: 100vh;
   top: 0;
-  width: 200px;
-  box-shadow: var(--shadow-xl);
+  /* width: 200px; */
+  overflow: auto;
+}
+
+.content {
+  /* background: #fff; */
 }
 
 .close-button {
@@ -85,11 +88,19 @@
 
 @media (max-width: 768px) {
   .container {
-    width: 80%;
-    overflow: scroll;
-    align-items: center;
+    width: 100%;
     z-index: 15;
     position: fixed;
+  }
+
+  .content {
+    overflow: scroll;
+    background-color: var(--color-white);
+    display: flex;
+    width: 80%;
+    align-items: center;
+    box-shadow: var(--shadow-xl);
+    border-right: 1px solid #d8d8d8;
   }
 
   .searchbar {
@@ -100,11 +111,13 @@
   .close-button {
     align-self: end;
     display: flex;
-    width: 35px;
-    margin: 10px;
+    width: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
   }
 
   .menu {
+    margin: auto;
     display: flex;
     flex-grow: 1;
     flex-direction: column;

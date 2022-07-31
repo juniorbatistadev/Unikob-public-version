@@ -46,119 +46,122 @@ function SideBar({ setMenuOpen, className, ...props }) {
 
   return (
     <nav className={className}>
-      <ArrowIcon
-        className={styles["close-button"]}
-        alt="close"
-        onClick={() => {
-          setMenuOpen(false);
-        }}
-      />
-
-      {isMounted && currentUser && (
-        <FlexColumn alignItems={"center"}>
-          <Avatar
-            width="100px"
-            className={styles.avatar}
-            image={
-              currentUser.get("profilePicture") &&
-              currentUser.get("profilePicture").url()
-            }
+      <FlexColumn className={styles.content}>
+        <FlexColumn className={styles["close-button"]}>
+          <ArrowIcon
+            alt="close"
+            onClick={() => {
+              setMenuOpen(false);
+            }}
           />
-          <FlexRow>
-            <span className={styles.ad}>@</span>
-            <DisplayUsername user={currentUser} />
-          </FlexRow>
-          {/* <span className={styles.username}>
+        </FlexColumn>
+
+        {isMounted && currentUser && (
+          <FlexColumn alignItems={"center"}>
+            <Avatar
+              width="100px"
+              className={styles.avatar}
+              image={
+                currentUser.get("profilePicture") &&
+                currentUser.get("profilePicture").url()
+              }
+            />
+            <FlexRow>
+              <span className={styles.ad}>@</span>
+              <DisplayUsername user={currentUser} />
+            </FlexRow>
+            {/* <span className={styles.username}>
             @{currentUser.attributes.username}
           </span> */}
-        </FlexColumn>
-      )}
-      <SearchBar
-        className={styles.searchbar}
-        callBack={() => setMenuOpen(false)}
-      />
+          </FlexColumn>
+        )}
+        <SearchBar
+          className={styles.searchbar}
+          callBack={() => setMenuOpen(false)}
+        />
 
-      <ul className={styles.menu}>
-        <li
-          onClick={() => {
-            goTo(FEED_PATH);
-          }}
-        >
-          <HomeIcon alt="option" className={styles["menu-icon"]} />
-          <span>Feed</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(DISCOVER_PATH);
-          }}
-        >
-          <RocketIcon alt="option" className={styles["menu-icon"]} />
-          <span>Descubre</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(SAVED_PATH);
-          }}
-        >
-          <BookMarkIcon alt="option" className={styles["menu-icon"]} />
-          <span>Guardados</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(CHAT_PATH);
-          }}
-        >
-          <ChatIcon alt="option" className={styles["menu-icon"]} />
-          <span>Chat Global</span>
-        </li>
+        <ul className={styles.menu}>
+          <li
+            onClick={() => {
+              goTo(FEED_PATH);
+            }}
+          >
+            <HomeIcon alt="option" className={styles["menu-icon"]} />
+            <span>Feed</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(DISCOVER_PATH);
+            }}
+          >
+            <RocketIcon alt="option" className={styles["menu-icon"]} />
+            <span>Descubre</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(SAVED_PATH);
+            }}
+          >
+            <BookMarkIcon alt="option" className={styles["menu-icon"]} />
+            <span>Guardados</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(CHAT_PATH);
+            }}
+          >
+            <ChatIcon alt="option" className={styles["menu-icon"]} />
+            <span>Chat Global</span>
+          </li>
 
-        <li
-          onClick={() => {
-            goTo(SCHOOLS_PATH);
-          }}
-        >
-          <SchoolIcon alt="option" className={styles["menu-icon"]} />
-          <span>Escuelas</span>
-        </li>
+          <li
+            onClick={() => {
+              goTo(SCHOOLS_PATH);
+            }}
+          >
+            <SchoolIcon alt="option" className={styles["menu-icon"]} />
+            <span>Escuelas</span>
+          </li>
 
-        <li
-          onClick={() => {
-            goTo(CRUSHES_PATH);
-          }}
-        >
-          <LoveIcon alt="option" className={styles["menu-icon"]} />
+          <li
+            onClick={() => {
+              goTo(CRUSHES_PATH);
+            }}
+          >
+            <LoveIcon alt="option" className={styles["menu-icon"]} />
 
-          <span>Crushes</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(JOBS_PATH);
-          }}
-        >
-          <WorkIcon alt="option" className={styles["menu-icon"]} />
+            <span>Crushes</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(JOBS_PATH);
+            }}
+          >
+            <WorkIcon alt="option" className={styles["menu-icon"]} />
 
-          <span>Trabajos</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(SETTINGS_PATH);
-          }}
-        >
-          <SettingsIcon alt="option" className={styles["menu-icon"]} />
+            <span>Trabajos</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(SETTINGS_PATH);
+            }}
+          >
+            <SettingsIcon alt="option" className={styles["menu-icon"]} />
 
-          <span>Adjustes</span>
-        </li>
-        <li
-          onClick={() => {
-            goTo(SETTINGS_PATH);
-          }}
-        >
-          <SupportIcon alt="option" className={styles["menu-icon"]} />
-          <span>Contactanos</span>
-        </li>
-      </ul>
+            <span>Adjustes</span>
+          </li>
+          <li
+            onClick={() => {
+              goTo(SETTINGS_PATH);
+            }}
+          >
+            <SupportIcon alt="option" className={styles["menu-icon"]} />
+            <span>Contactanos</span>
+          </li>
+        </ul>
 
-      <div className={styles.footer}></div>
+        <div className={styles.footer}></div>
+      </FlexColumn>
     </nav>
   );
 }
