@@ -1,6 +1,7 @@
 import styles from "./index.module.css";
 import loadingCircle from "@assets/images/loading-circle.gif";
 import A from "@components/common/A";
+import { useEffect, useState } from "react";
 
 const ElementHTML = ({ children, as, ...rest }) => {
   return (
@@ -27,11 +28,28 @@ function Button({
   ...rest
 }) {
   const classNames = [styles.btn, styles[typeStyle], className].join(" ");
+  const [coords, setCoords] = useState({ x: -1, y: -1 });
+  const [isRippling, setIsRippling] = useState(false);
+
+  useEffect(() => {
+    if (coords.x !== -1 && coords.y !== -1) {
+      setIsRippling(true);
+      setTimeout(() => setIsRippling(false), 300);
+    } else setIsRippling(false);
+  }, [coords]);
+
+  useEffect(() => {
+    if (!isRippling) setCoords({ x: -1, y: -1 });
+  }, [isRippling]);
 
   return (
     <ElementHTML
       className={classNames}
-      onClick={onClick}
+      onClick={(e) => {
+        const rect = e.target.getBoundingClientRect();
+        setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+        onClick && onClick(e);
+      }}
       style={{
         width,
         padding,
@@ -48,7 +66,20 @@ function Button({
           <img src={loadingCircle.src} width="25" alt="loading" />
         </>
       ) : (
-        children
+        <>
+          {isRippling ? (
+            <span
+              className={styles.ripple}
+              style={{
+                left: coords.x,
+                top: coords.y,
+              }}
+            />
+          ) : (
+            ""
+          )}
+          <span className={styles.content}>{children}</span>
+        </>
       )}
     </ElementHTML>
   );

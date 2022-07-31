@@ -8,6 +8,7 @@ import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
 import RecentFeed from "./RecentFeed";
 import FollowingFeed from "./FollowingFeed";
+import PenIcon from "@assets/icons/pen.svg";
 
 function HomePage() {
   const { push } = useRouter();
@@ -32,9 +33,10 @@ function HomePage() {
 
         <Button
           className={styles.createPostButton}
-          onClick={() => push(CREATE_POST_PATH)}
+          onClick={async () => await push(CREATE_POST_PATH)}
         >
-          Crear Post
+          Escribir Post
+          <PenIcon className={styles.penIcon} />
         </Button>
       </FlexRow>
 

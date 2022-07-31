@@ -4,9 +4,10 @@ import Interweave from "interweave";
 const P = ({ element }) => {
   //make A links open in a new tab
   function transform(node, children) {
-    if (node.tagName === "A") {
+    if (node.tagName === "a") {
       return (
         <a
+          className={styles.link}
           href={node.getAttribute("href")}
           target="_blank"
           rel="noopener noreferrer nofollow"

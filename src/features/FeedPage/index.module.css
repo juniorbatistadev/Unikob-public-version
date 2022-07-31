@@ -3,6 +3,13 @@
   margin-right: 20px;
 }
 
+.penIcon {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+  margin-left: 5px;
+}
+
 /* Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
   Screen = B/w 320px to 767px
 */
