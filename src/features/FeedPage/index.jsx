@@ -14,7 +14,7 @@ function HomePage() {
 
   return (
     <FlexColumn>
-      <FlexRow margin={"20px 0px 0px 0px"}>
+      <FlexRow margin={"20px 0px 10px 0px"} alignItems="center">
         <TabsMenu
           typeStyle="clear"
           path={FEED_PATH}

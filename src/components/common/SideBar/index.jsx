@@ -57,23 +57,20 @@ function SideBar({ setMenuOpen, className, ...props }) {
         </FlexColumn>
 
         {isMounted && currentUser && (
-          <FlexColumn alignItems={"center"}>
+          <FlexRow className={styles.avatar}>
             <Avatar
-              width="100px"
-              className={styles.avatar}
+              linkToUser={currentUser.get("username")}
+              width="35px"
               image={
                 currentUser.get("profilePicture") &&
                 currentUser.get("profilePicture").url()
               }
             />
-            <FlexRow>
+            <FlexRow margin={"0px 0px 0px 10px"}>
               <span className={styles.ad}>@</span>
-              <DisplayUsername user={currentUser} />
+              <DisplayUsername user={currentUser} fontSize={"var(--text-xl)"} />
             </FlexRow>
-            {/* <span className={styles.username}>
-            @{currentUser.attributes.username}
-          </span> */}
-          </FlexColumn>
+          </FlexRow>
         )}
         <SearchBar
           className={styles.searchbar}
