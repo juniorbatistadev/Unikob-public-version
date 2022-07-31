@@ -19,8 +19,8 @@ const FollowingPage = ({ user }) => {
   );
 
   return (
-    <FlexColumn margin="10px" className={styles.container}>
-      <FlexRow alignItems="center">
+    <FlexColumn className={styles.container}>
+      <FlexRow alignItems="center" margin="10px">
         <GoBackButton />
         <Title text={`Seguidores (${count})`} />
       </FlexRow>

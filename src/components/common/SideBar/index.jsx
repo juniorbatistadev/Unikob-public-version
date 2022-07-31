@@ -26,6 +26,7 @@ import {
   CRUSHES_PATH,
   SAVED_PATH,
   DISCOVER_PATH,
+  CURRENT_USER_PROFILE_PATH,
 } from "src/paths";
 import DisplayUsername from "../DisplayUsername";
 import FlexRow from "../FlexRow";
@@ -57,9 +58,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
         </FlexColumn>
 
         {isMounted && currentUser && (
-          <FlexRow className={styles.avatar}>
+          <FlexRow
+            className={styles.avatar}
+            onClick={() => goTo(CURRENT_USER_PROFILE_PATH)}
+          >
             <Avatar
-              linkToUser={currentUser.get("username")}
               width="35px"
               image={
                 currentUser.get("profilePicture") &&
@@ -68,7 +71,11 @@ function SideBar({ setMenuOpen, className, ...props }) {
             />
             <FlexRow margin={"0px 0px 0px 10px"}>
               <span className={styles.ad}>@</span>
-              <DisplayUsername user={currentUser} fontSize={"var(--text-xl)"} />
+              <DisplayUsername
+                user={currentUser}
+                fontSize={"var(--text-xl)"}
+                link={false}
+              />
             </FlexRow>
           </FlexRow>
         )}

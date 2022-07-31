@@ -25,7 +25,7 @@ function NavBar() {
       <div className={styles["left-side"]}>
         <MenuButton />
 
-        <A href={FEED_PATH}>
+        <A href={FEED_PATH} className={styles.logoLink}>
           <div className={styles.logo} alignItems="center">
             <img src={Logo.src} />
             <span className={styles.logoTitle}>Unikob</span>

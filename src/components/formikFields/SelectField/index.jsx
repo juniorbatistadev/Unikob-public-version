@@ -28,6 +28,7 @@ function SelectFieldFormik({ options, className, multi, name, ...props }) {
 
   return (
     <Select
+      color="var(--primary)"
       options={options}
       onChange={handleChange}
       labelField="name"
@@ -37,6 +38,7 @@ function SelectFieldFormik({ options, className, multi, name, ...props }) {
       className={classNames}
       name={name}
       multi={multi}
+      dropdownPosition="auto"
       {...props}
     />
   );

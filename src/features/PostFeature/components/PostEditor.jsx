@@ -44,7 +44,7 @@ function PostEditor({ post, action, handleSubmit }) {
   }, [post]);
 
   return (
-    <FlexColumn margin="10px">
+    <FlexColumn>
       {initialData && (
         <Formik
           initialValues={{
@@ -69,7 +69,7 @@ function PostEditor({ post, action, handleSubmit }) {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <Form style={{ padding: 25, backgroundColor: "white" }}>
+            <Form style={{ padding: 20, backgroundColor: "#fff" }}>
               <TextArea
                 name="title"
                 placeholder="Escribe el titulo de tu post"

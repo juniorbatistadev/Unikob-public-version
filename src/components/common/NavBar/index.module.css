@@ -81,6 +81,10 @@
   }
 }
 
+.logoLink {
+  display: flex;
+}
+
 /* Device = Very Small Mobiles (Portrait) and Low Resolution tablets
   Screen = B/w 300px
 */
@@ -88,5 +92,10 @@
 @media (max-width: 300px) {
   .logo {
     display: none;
+  }
+
+  .logo img {
+    width: 25px;
+    height: 25px;
   }
 }

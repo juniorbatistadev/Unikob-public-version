@@ -40,7 +40,10 @@ const DeclareCrushForm = ({ toUser }) => {
                 />
                 <FlexRow margin={"5px 0px 5px 0px"}>
                   <CheckBox name="isSecret" />
-                  <Text text=" Anonimo" margin={"0px 0px 0px 5px"} />
+                  <Text
+                    text="Anonimo (tu perfil no sera incluido)"
+                    margin={"0px 0px 0px 5px"}
+                  />
                 </FlexRow>
                 <Button type="submit" loading={props.isSubmitting}>
                   Enviar
