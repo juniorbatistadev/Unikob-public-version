@@ -1,14 +1,15 @@
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
 import styles from "./NotificationBell.module.css";
-import BellImg from "@assets/icons/notification.svg";
-import BellWithCircleImg from "@assets/icons/notification-with-red-circle.svg";
+import Bell from "@assets/icons/notification.svg";
+import BellWithCircleImg from "@assets/icons/notification-with-circle.svg";
 import { getUnreadNumberOfNotifications } from "src/data/queryNotifications";
 import Toast from "@components/common/Toast";
 import { useRouter } from "next/router";
 import { NOTIFICATIONS_PATH } from "src/paths";
 import FlexColumn from "@components/common/FlexColumn";
 import getQuickToastText from "./getQuickToastText";
+import FlexRow from "../FlexRow";
 
 function NotificationBell() {
   const { currentUser } = useContext(AuthContext);
@@ -53,11 +54,16 @@ function NotificationBell() {
       onClick={() => {
         push(NOTIFICATIONS_PATH);
       }}
+      // justifyContent="center"
     >
       {notificationNumber > 0 ? (
         <BellWithCircleImg className={styles.bell} alt="Notifications" />
       ) : (
-        <BellImg className={styles.bell} alt="Notifications" />
+        <Bell
+          className={styles.bell}
+          alt="Notifications"
+          fill="var(--color-gray-500)"
+        />
       )}
     </FlexColumn>
   );

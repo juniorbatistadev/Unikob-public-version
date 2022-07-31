@@ -97,10 +97,7 @@ function CrushFeedItem({ crush, displayComments }) {
                   <DisplayUsername
                     type={"primary"}
                     className={styles.usernameText}
-                    username={
-                      toUser?.attributes.username ??
-                      crush.attributes.toUser?.attributes.username
-                    }
+                    user={toUser ?? crush.attributes.toUser}
                   />
                 </FlexRow>
               </FlexRow>

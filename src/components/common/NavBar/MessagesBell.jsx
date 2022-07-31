@@ -2,11 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import styles from "./MessagesBell.module.css";
 import MessageIcon from "@assets/icons/message.svg";
-import MessageWithCircleIcon from "@assets/icons/message-with-red-circle.svg";
+import MessageWithCircleIcon from "@assets/icons/message-with-circle.svg";
 import { MESSAGES_PATH } from "src/paths";
 import { getUnreadNumberOfMessages } from "src/data/queryMessages";
 import { AuthContext } from "src/contexts/AuthContext";
 import Toast from "@components/common/Toast";
+import FlexColumn from "../FlexColumn";
 
 function MessagesBell() {
   const { push, asPath } = useRouter();
@@ -48,13 +49,13 @@ function MessagesBell() {
   }, [currentUser, asPath, push]);
 
   return (
-    <div onClick={() => push(MESSAGES_PATH)}>
+    <FlexColumn onClick={() => push(MESSAGES_PATH)}>
       {messagesNumber > 0 ? (
         <MessageWithCircleIcon className={styles.message} />
       ) : (
         <MessageIcon className={styles.message} />
       )}
-    </div>
+    </FlexColumn>
   );
 }
 

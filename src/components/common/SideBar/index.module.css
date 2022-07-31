@@ -3,10 +3,10 @@
   flex-direction: column;
   background: #fff;
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   width: 200px;
-  box-shadow: 2px 0 5px 1px #a9a6a64d;
+  box-shadow: var(--shadow-xl);
 }
 
 .close-button {
@@ -29,16 +29,30 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  margin-left: 50px;
 }
 
 .menu-icon {
   width: 20px;
   height: 20px;
+  fill: var(--color-blue-700);
 }
 
+.ad {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.menu li:hover {
+  background-color: var(--color-gray-300);
+}
 .menu li {
   display: flex;
   padding: 10px 15px;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  cursor: pointer;
+  align-items: center;
 }
 
 .menu li span {
@@ -71,10 +85,10 @@
 
 @media (max-width: 768px) {
   .container {
-    width: 100%;
+    width: 80%;
     overflow: scroll;
     align-items: center;
-    z-index: 2;
+    z-index: 15;
     position: fixed;
   }
 
@@ -86,7 +100,7 @@
   .close-button {
     align-self: end;
     display: flex;
-    width: 25px;
+    width: 35px;
     margin: 10px;
   }
 

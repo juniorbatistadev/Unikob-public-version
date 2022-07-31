@@ -1,4 +1,3 @@
-import React from "react";
 import ArrowIcon from "@assets/icons/left-arrow.svg";
 import FlexRow from "@components/common/FlexRow";
 import styles from "./GoBackButton.module.css";
