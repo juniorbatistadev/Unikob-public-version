@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 import PostHeader from "../components/PostHeader";
 import CommentsSection from "@components/CommentsSection";
 import LikePostButton from "../components/LikePostButton";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@context/AuthContext";
 import FlexRow from "@components/common/FlexRow";
 import ShareButtons from "@components/ShareButtons";
@@ -16,11 +16,13 @@ import { useRouter } from "next/router";
 import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
 import { POST_COMMENT } from "@components/CommentsSection/commentsType";
 import SaveButton from "@components/SaveButton";
+import { getUserRoles } from "src/data/queryRoles";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
   const { isMounted } = useIsMounted();
   const { push } = useRouter();
+  const [userRoles, setUserRoles] = useState([]);
 
   const onDelete = async () => {
     const response = await Alert.fire({
@@ -32,13 +34,27 @@ function ReadPostPage({ post }) {
     });
 
     if (response.isConfirmed) {
-      await push(FEED_PATH);
       await deletePost(post.objectId);
+      await push(FEED_PATH);
     }
   };
 
   const onEdit = () => {
     push(EDIT_POST_PATH.replace(":slug", post.slug));
+  };
+
+  useEffect(() => {
+    getUserRoles(currentUser).then((roles) => {
+      const rolesNames = roles.map((role) => role.get("name"));
+      setUserRoles(rolesNames);
+    });
+  }, [currentUser]);
+
+  const canUserDelete = () => {
+    return (
+      currentUser?.id === post.createdBy.objectId ||
+      userRoles.some((role) => ["admin", "moderator"].includes(role))
+    );
   };
 
   return (
@@ -67,15 +83,14 @@ function ReadPostPage({ post }) {
             />
 
             {currentUser && currentUser.id === post.createdBy.objectId && (
-              <>
-                <Button typeStyle="secondary" onClick={onEdit}>
-                  Editar
-                </Button>
-
-                <Button typeStyle="secondary" onClick={onDelete}>
-                  Borrar
-                </Button>
-              </>
+              <Button typeStyle="secondary" onClick={onEdit}>
+                Editar
+              </Button>
+            )}
+            {canUserDelete() && (
+              <Button typeStyle="secondary" onClick={onDelete}>
+                Borrar
+              </Button>
             )}
           </FlexRow>
           <CommentsSection section={post.objectId} type={POST_COMMENT} />

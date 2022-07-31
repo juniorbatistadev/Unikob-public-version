@@ -38,6 +38,7 @@ export const CHAT_PATH = "/chat";
 
 export const SCHOOL_CREATE_PATH = "/school/create";
 export const SCHOOL_READ_PATH = "/school/:school";
+export const SCHOOL_EDIT_PATH = "/school/:school/edit";
 
 export const TEACHER_READ_PATH = "/teacher/:teacher";
 

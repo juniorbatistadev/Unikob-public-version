@@ -27,7 +27,6 @@ function EditPost() {
 
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
         router.push(FEED_PATH);
       }
     };

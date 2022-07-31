@@ -11,12 +11,14 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { deleteCrush, getCrushById } from "src/data/queryCrushes";
 import { CRUSHES_PATH, NO_FOUND_PATH } from "src/paths";
+import { getUserRoles } from "src/data/queryRoles";
 
 function ShowCrushPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [crush, setCrush] = useState();
   const { query, replace } = useRouter();
   const { currentUser } = useContext(AuthContext);
+  const [userRoles, setUserRoles] = useState([]);
 
   useEffect(() => {
     if (query.id !== undefined)
@@ -40,9 +42,23 @@ function ShowCrushPage() {
     });
 
     if (response.isConfirmed) {
-      await replace(CRUSHES_PATH);
       await deleteCrush(crush.id);
+      await replace(CRUSHES_PATH);
     }
+  };
+
+  useEffect(() => {
+    getUserRoles(currentUser).then((roles) => {
+      const rolesNames = roles.map((role) => role.get("name"));
+      setUserRoles(rolesNames);
+    });
+  }, [currentUser]);
+
+  const canUserDelete = () => {
+    return (
+      currentUser?.id === crush?.attributes.createdBy.id ||
+      userRoles.some((role) => ["admin", "moderator"].includes(role))
+    );
   };
 
   return (
@@ -52,7 +68,7 @@ function ShowCrushPage() {
         <FlexColumn>
           <CrushFeedItem crush={crush} displayComments={false} />
 
-          {currentUser && currentUser.id === crush.attributes.createdBy.id && (
+          {canUserDelete() && (
             <FlexRow margin={"30px 0px"}>
               <Button typeStyle="secondary" onClick={onDelete}>
                 Borrar

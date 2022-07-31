@@ -10,7 +10,7 @@ import DisplayUsername from "@components/common/DisplayUsername";
 import Tag from "@components/common/Tag";
 import PinIcon from "@assets/icons/pin.svg";
 import RenderHTML from "@components/RenderHTML";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@context/AuthContext";
 import ApplyToJobSection from "./components/ApplyToJobSection";
 import JobApplicationList from "./components/JobApplicationsList";
@@ -20,10 +20,12 @@ import { JOBS_PATH } from "src/paths";
 import { deleteJob } from "src/data/queryJobs";
 import { useRouter } from "next/router";
 import SaveButton from "@components/SaveButton";
+import { getUserRoles } from "src/data/queryRoles";
 
 function ShowJobPage({ data }) {
   const { currentUser } = useContext(AuthContext);
   const { replace } = useRouter();
+  const [userRoles, setUserRoles] = useState([]);
 
   const onDelete = async () => {
     const response = await Alert.fire({
@@ -35,9 +37,23 @@ function ShowJobPage({ data }) {
     });
 
     if (response.isConfirmed) {
-      await replace(JOBS_PATH);
       await deleteJob(data.objectId);
+      await replace(JOBS_PATH);
     }
+  };
+
+  useEffect(() => {
+    getUserRoles(currentUser).then((roles) => {
+      const rolesNames = roles.map((role) => role.get("name"));
+      setUserRoles(rolesNames);
+    });
+  }, [currentUser]);
+
+  const canUserDelete = () => {
+    return (
+      currentUser?.id === data.createdBy.objectId ||
+      userRoles.some((role) => ["admin", "moderator"].includes(role))
+    );
   };
 
   return (
@@ -97,7 +113,7 @@ function ShowJobPage({ data }) {
           />
         )}
 
-        {currentUser && currentUser.id === data.createdBy.objectId && (
+        {canUserDelete() && (
           <Button typeStyle="secondary" onClick={onDelete}>
             Borrar
           </Button>
