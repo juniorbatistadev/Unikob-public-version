@@ -4,3 +4,8 @@
   margin-bottom: 20px;
   font-size: 18px;
 }
+
+.link {
+  color: var(--color-blue-700);
+  text-decoration: underline;
+}
