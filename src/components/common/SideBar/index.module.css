@@ -4,12 +4,11 @@
   position: absolute;
   height: 100vh;
   top: 0;
-  /* width: 200px; */
   overflow: auto;
 }
 
 .content {
-  /* background: #fff; */
+  height: 100%;
 }
 
 .close-button {
