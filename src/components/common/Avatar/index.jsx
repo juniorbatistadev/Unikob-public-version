@@ -8,7 +8,7 @@ function Avatar({ image, width, linkToUser, ...props }) {
   const classNames = [styles.avatar, props.className].join(" ");
 
   return (
-    <div
+    <FlexColumn
       className={styles.container}
       style={{ width, minHeight: width }}
       {...props}
@@ -18,14 +18,13 @@ function Avatar({ image, width, linkToUser, ...props }) {
           style={{
             width,
             height: width,
-            cursor: linkToUser ? "pointer" : "auto",
           }}
           src={image ? (image?.src ? image.src : image) : defaultImage.src}
           className={classNames}
           alt="Profile Avatar"
         />
       </A>
-    </div>
+    </FlexColumn>
   );
 }
 

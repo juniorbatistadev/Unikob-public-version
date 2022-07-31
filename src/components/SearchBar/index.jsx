@@ -39,7 +39,12 @@ function SearchBar({ className, callBack }) {
             type="search"
           />
           <button className={styles.button} type="submit">
-            <SearchIcon alt="Search" width={15} className={styles.icon} />
+            <SearchIcon
+              alt="Search"
+              width={15}
+              className={styles.icon}
+              fill="var(--color-gray-600)"
+            />
           </button>
         </Form>
       </Formik>

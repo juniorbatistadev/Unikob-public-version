@@ -5,7 +5,7 @@
    viewBox="0 0 32 32"
    version="1.1"
    id="svg12"
-   sodipodi:docname="message.svg"
+   sodipodi:docname="message-with-circle.svg"
    xml:space="preserve"
    inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -25,7 +25,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="17.005918"
-     inkscape:cx="8.6734512"
+     inkscape:cx="9.3202848"
      inkscape:cy="9.2026787"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
@@ -69,4 +69,9 @@
        class="st0"
        d="M 11,4 C 6.6,4 3,7.6 3,12 v 12 5 0 c 3.7,-3.2 8.4,-5 13.3,-5 H 21 c 4.4,0 8,-3.6 8,-8 V 12 C 29,7.6 25.4,4 21,4 Z"
        id="path372"
-       style="stroke:#a0aec0;stroke-opacity:1;stroke-width:1.37337723;stroke-dasharray:none" /></g></svg>
+       style="stroke:#a0aec0;stroke-opacity:1;stroke-width:1.37337723;stroke-dasharray:none" /></g><circle
+     style="fill:#f56565;fill-opacity:1;stroke:#a0aec0;stroke-width:0;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:5.4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+     id="path14946"
+     cx="27.049404"
+     cy="4.4102292"
+     r="4.23382" /></svg>

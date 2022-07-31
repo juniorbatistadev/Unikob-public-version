@@ -12,6 +12,8 @@ import SchoolIcon from "@assets/icons/school.svg";
 import LoveIcon from "@assets/icons/love.svg";
 import WorkIcon from "@assets/icons/work.svg";
 import SettingsIcon from "@assets/icons/settings.svg";
+import BookMarkIcon from "@assets/icons/bookmark.svg";
+import SupportIcon from "@assets/icons/support.svg";
 
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
@@ -25,6 +27,9 @@ import {
   SAVED_PATH,
   DISCOVER_PATH,
 } from "src/paths";
+import DisplayUsername from "../DisplayUsername";
+import FlexRow from "../FlexRow";
+import FlexColumn from "../FlexColumn";
 
 function SideBar({ setMenuOpen, className, ...props }) {
   const { currentUser } = useContext(AuthContext);
@@ -50,7 +55,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
       />
 
       {isMounted && currentUser && (
-        <>
+        <FlexColumn alignItems={"center"}>
           <Avatar
             width="100px"
             className={styles.avatar}
@@ -59,10 +64,14 @@ function SideBar({ setMenuOpen, className, ...props }) {
               currentUser.get("profilePicture").url()
             }
           />
-          <span className={styles.username}>
+          <FlexRow>
+            <span className={styles.ad}>@</span>
+            <DisplayUsername user={currentUser} />
+          </FlexRow>
+          {/* <span className={styles.username}>
             @{currentUser.attributes.username}
-          </span>
-        </>
+          </span> */}
+        </FlexColumn>
       )}
       <SearchBar
         className={styles.searchbar}
@@ -88,6 +97,14 @@ function SideBar({ setMenuOpen, className, ...props }) {
         </li>
         <li
           onClick={() => {
+            goTo(SAVED_PATH);
+          }}
+        >
+          <BookMarkIcon alt="option" className={styles["menu-icon"]} />
+          <span>Guardados</span>
+        </li>
+        <li
+          onClick={() => {
             goTo(CHAT_PATH);
           }}
         >
@@ -103,22 +120,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
           <SchoolIcon alt="option" className={styles["menu-icon"]} />
           <span>Escuelas</span>
         </li>
-        <li
-          onClick={() => {
-            goTo(SAVED_PATH);
-          }}
-        >
-          📌
-          <span>Guardados</span>
-        </li>
-        {/* <li
-          onClick={() => {
-            goTo(QUESTIONS_PATH);
-          }}
-        >
-          <QuestionIcon alt="option" className={styles["menu-icon"]} />
-          <span>Pregunta</span>
-        </li> */}
+
         <li
           onClick={() => {
             goTo(CRUSHES_PATH);
@@ -137,20 +139,26 @@ function SideBar({ setMenuOpen, className, ...props }) {
 
           <span>Trabajos</span>
         </li>
-      </ul>
-
-      <div className={styles.footer}>
-        <div
-          className={styles["settingsOption"]}
+        <li
           onClick={() => {
             goTo(SETTINGS_PATH);
           }}
         >
           <SettingsIcon alt="option" className={styles["menu-icon"]} />
+
           <span>Adjustes</span>
-        </div>
-        <span>Contactanos!</span>
-      </div>
+        </li>
+        <li
+          onClick={() => {
+            goTo(SETTINGS_PATH);
+          }}
+        >
+          <SupportIcon alt="option" className={styles["menu-icon"]} />
+          <span>Contactanos</span>
+        </li>
+      </ul>
+
+      <div className={styles.footer}></div>
     </nav>
   );
 }

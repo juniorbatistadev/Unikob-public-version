@@ -1,29 +1,49 @@
-.form{
-    display: flex;
+.form {
+  display: flex;
 }
 
-.input{
-    border-radius: 7px 0px 0px 7px;
-    background-color: var(--color-white);
-    border: none;
+.input::placeholder {
+  color: var(--color-gray-600);
 }
 
-.icon{
-    width:15px;
-    margin-right: 10px;
+.input {
+  border-radius: 10px 0px 0px 10px;
+  background-color: var(--color-gray-200);
+  border: 1px solid var(--color-gray-400);
+  border-right: none;
+  width: 300px;
 }
 
-
-
-.button{
-    display: flex;
-    align-items: center;
-    background-color: var(--color-white);
-    border: none;
-    border-radius: 0px 7px 7px 0px;
-    padding: 5px;
+.input:focus {
+  outline: none;
 }
 
-.button:hover{
-    cursor: pointer;
+.icon {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background-color: none;
+  background-color: var(--color-gray-200);
+  border-radius: 0px 10px 7px 0px;
+  padding: 5px;
+  border: 1px solid var(--color-gray-400);
+  border-left: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+/* Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
+  Screen = B/w 320px to 767px
+*/
+
+@media (max-width: 768px) {
+  .input {
+    width: 100%;
+  }
 }

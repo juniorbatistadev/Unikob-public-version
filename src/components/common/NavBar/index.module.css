@@ -6,14 +6,17 @@
   align-items: center;
   width: 100%;
   height: 60px;
-  background-color: cornflowerblue;
+  background-color: var(--color-white);
   justify-content: space-between;
-  box-shadow: -3px -2px 5px 0px #33333308;
+  box-shadow: var(--box-shadow-lg);
   z-index: 10;
+  border-bottom: 1px solid var(--color-gray-300);
 }
 
 .left-side {
   flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .search-bar-container {
@@ -28,11 +31,36 @@
   margin-right: 10px;
 }
 
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+
+.logoTitle {
+  margin-left: 7px;
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-black);
+  color: var(--color-gray-800);
+}
+
+.avatar img {
+  cursor: pointer;
+}
+
 /* Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets
   Screen = B/w 320px to 767px
 */
 
 @media (max-width: 768px) {
+  .left-side {
+    justify-content: flex-start;
+  }
   .search-bar-container {
     display: none;
   }
