@@ -30,6 +30,19 @@ export const saveSchool = async ({
   }
 };
 
+export const updateSchool = async ({ values, school }) => {
+  const countryData = await queryCountries.get(values.country);
+
+  school.set("name", values.name);
+  school.set("country", countryData);
+  school.set("type", values.type);
+  school.set("website", values.website);
+  school.set("description", values.description);
+  const result = await school.save();
+
+  return result;
+};
+
 export const getSchoolById = async (id) => {
   const query = new Parse.Query(School);
   query.include("country");
@@ -124,6 +137,13 @@ export const getRecentSchoolsWithPagination = async ({
   const result = await query.find();
 
   return result;
+};
+
+export const deleteSchool = async (schoolId) => {
+  const query = new Parse.Query(School);
+  const result = await query.get(schoolId);
+
+  return result.destroy();
 };
 
 export default query;

@@ -8,6 +8,7 @@ import HeartSVG from "@assets/icons/heart.svg";
 import SendGiftForm from "./SendGiftForm";
 import Alert from "@components/common/Alert";
 import DeclareCrushForm from "./SendCrushForm";
+import ReportUserForm from "./ReportUserForm";
 // import DeclareCrushForm from "../../../components/DeclareCrushForm";
 
 const MenuProfile = ({ user }) => {
@@ -25,11 +26,19 @@ const MenuProfile = ({ user }) => {
     });
   };
 
+  const reportUser = () => {
+    Alert.fire({
+      html: <ReportUserForm />,
+      showConfirmButton: false,
+    });
+  };
+
   return (
     <PopupMenu
       options={[
         { label: "Enviar Regalo", icon: <GiftSVG />, onClick: sendGift },
         { label: "Declarar Crush", icon: <HeartSVG />, onClick: declareCrush },
+        { label: "Reportar ", icon: <>🛡️</>, onClick: reportUser },
       ]}
     >
       <DotsIcon width="20px" height="20px" />

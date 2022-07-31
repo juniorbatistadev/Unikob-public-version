@@ -7,7 +7,7 @@ import PinIcon from "@assets/icons/pin.svg";
 import FlexRow from "@components/common/FlexRow";
 import StudentIcon from "@assets/icons/student.svg";
 import ChainIcon from "@assets/icons/chain.svg";
-import { SCHOOL_READ_PATH } from "src/paths";
+import { SCHOOLS_PATH, SCHOOL_EDIT_PATH, SCHOOL_READ_PATH } from "src/paths";
 import TabsContent from "@components/TabsContent";
 import ReviewsSection from "./ReviewsSection";
 import MembersSection from "./MembersSection";
@@ -16,12 +16,48 @@ import CrushesSection from "./CrushesSection";
 import Parse from "parse";
 import AddSchoolToProfileButton from "@pages/SchoolFeature/components/AddSchoolToProfileButton";
 import FeedSection from "./FeedSection";
+import { getUserRoles } from "src/data/queryRoles";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@context/AuthContext";
+import Button from "@components/common/Button";
+import Alert from "@components/common/Alert";
+import { useRouter } from "next/router";
+import { deleteSchool } from "src/data/querySchools";
 
 const SchoolPage = ({ data }) => {
-  const School = Parse.Object.extend("School");
+  const [userRoles, setUserRoles] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+  const { replace, push } = useRouter();
 
+  const School = Parse.Object.extend("School");
   const schoolObject = new School();
   schoolObject.id = data.objectId;
+
+  const onDelete = async () => {
+    const response = await Alert.fire({
+      text: "¿Estas seguro que quieres borrar esta escuela?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (response.isConfirmed) {
+      await deleteSchool(data.objectId);
+      await replace(SCHOOLS_PATH);
+    }
+  };
+
+  useEffect(() => {
+    getUserRoles(currentUser).then((roles) => {
+      const rolesNames = roles.map((role) => role.get("name"));
+      setUserRoles(rolesNames);
+    });
+  }, [currentUser]);
+
+  const canUserDelete = () => {
+    return userRoles.some((role) => ["admin", "moderator"].includes(role));
+  };
 
   return (
     <FlexColumn className={styles.container}>
@@ -29,7 +65,25 @@ const SchoolPage = ({ data }) => {
         <HeaderSchool text={data.name} schoolId={data.id} />
 
         <FlexColumn padding="15px">
-          <AddSchoolToProfileButton school={schoolObject} />
+          <FlexRow gap={10}>
+            <AddSchoolToProfileButton school={schoolObject} />
+
+            {canUserDelete() && (
+              <>
+                <Button typeStyle="secondary" onClick={onDelete}>
+                  Borrar
+                </Button>
+                <Button
+                  onClick={() =>
+                    push(SCHOOL_EDIT_PATH.replace(":school", data.slug))
+                  }
+                  typeStyle="secondary"
+                >
+                  Editar
+                </Button>
+              </>
+            )}
+          </FlexRow>
 
           <Text text={data.description} />
           <ul className={styles.infoList}>

@@ -37,11 +37,16 @@ import ProfileCommentSection from "./ProfileCommentSection";
 import { useRouter } from "next/router";
 import GiftSection from "./GiftSection";
 import DisplaySchoolList from "./components/DisplaySchoolList";
+import { getUserRoles } from "src/data/queryRoles";
+import Button from "@components/common/Button";
+import { saveBan } from "src/data/queryBans";
+import Alert from "@components/common/Alert";
 
 export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
   const [Isloading, setIsLoading] = useState(true);
   const { push } = useRouter();
+  const [userRoles, setUserRoles] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -55,7 +60,7 @@ export default function ProfilePage({ username }) {
       //validate the user is not the same
       if (currentUser && currentUser.attributes.username == username) return;
 
-      //save user to list locally so another request to the server is not needed
+      //save user to list local ly so another request to the server is not needed
       localStorage.setItem(
         "usersSeen",
         JSON.stringify(
@@ -76,6 +81,26 @@ export default function ProfilePage({ username }) {
       }
     });
   }, [currentUser, username]);
+
+  useEffect(() => {
+    getUserRoles(currentUser).then((roles) => {
+      const rolesNames = roles.map((role) => role.get("name"));
+      setUserRoles(rolesNames);
+    });
+  }, [currentUser]);
+
+  const canUserBan = () => {
+    return userRoles.some((role) => ["admin"].includes(role));
+  };
+
+  const handleBan = async () => {
+    await saveBan(user);
+    Alert.fire({
+      title: "Usuario baneado",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  };
 
   return (
     <>
@@ -99,11 +124,19 @@ export default function ProfilePage({ username }) {
                   className={styles.username}
                 />
                 {currentUser?.id !== user.id && (
-                  <FlexRow className={styles.buttons}>
+                  <FlexRow className={styles.buttons} gap={5}>
                     <FollowButton userToFollow={user} />
 
                     <MessageButton toUser={user} />
-
+                    {canUserBan() && (
+                      <Button
+                        typeStyle="secondary"
+                        padding="5px 15px"
+                        onClick={handleBan}
+                      >
+                        Bannear
+                      </Button>
+                    )}
                     <MenuProfile user={user} />
                   </FlexRow>
                 )}

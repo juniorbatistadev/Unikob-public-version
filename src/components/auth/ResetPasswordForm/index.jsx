@@ -9,29 +9,36 @@ import FacebookLogin from "@components/auth/FacebookLogin";
 import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
 import { useRouter } from "next/router";
+import FlexColumn from "@components/common/FlexColumn";
+import { HOME_PATH } from "src/paths";
 
-function LoginForm({ setSectionOpen }) {
-  const { setCurrentUser } = useContext(AuthContext);
-  const router = useRouter();
-
-  const onSubmit = async (values) => {
-    try {
-      await Parse.User.logIn(values.email, values.password);
-      setCurrentUser(Parse.User.current());
-      router.push("/feed");
-    } catch (err) {
-      Alert.fire({
-        text: "Contraseña o Correo Incorrecto",
-        icon: "error",
+function ResetPasswordForm({ setSectionOpen }) {
+  const onSubmit = (values, actions) => {
+    actions.setSubmitting(true);
+    Parse.User.requestPasswordReset(values.email)
+      .then(() => {
+        Alert.fire({
+          icon: "success",
+          title: "Visita tu Correo",
+          text: "Haz click en link en el correo que te enviamos",
+        });
+      })
+      .catch((error) => {
+        Alert.fire({
+          icon: "error",
+          title: "Uh no!",
+          text: "Error: " + error.code + " " + error.message,
+        });
+      })
+      .finally(() => {
+        actions.setSubmitting(false);
+        actions.resetForm();
+        setSectionOpen("login");
       });
-    }
   };
 
   const schema = Yup.object({
     email: Yup.string().email("Correo invalido").required("Correo requerido"),
-    password: Yup.string()
-      .min(6, "Codigo secreto muy corto")
-      .required("Se te olvido tu codigo secreto"),
   });
 
   return (
@@ -39,7 +46,6 @@ function LoginForm({ setSectionOpen }) {
       <Formik
         initialValues={{
           email: "",
-          password: "",
         }}
         validationSchema={schema}
         onSubmit={onSubmit}
@@ -53,31 +59,16 @@ function LoginForm({ setSectionOpen }) {
               autoComplete="username"
             />
             <ErrorMessage name="email" />
-            <TextField
-              placeholder="Tu codigo secreto"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-            />
-            <ErrorMessage name="password" />
-            <span
-              className={styles.text}
-              onClick={() => {
-                setSectionOpen("password");
-              }}
-            >
-              ¿Olvidaste tu contraseña?
-            </span>
-            <div className={styles.btns_container}>
-              <FacebookLogin className={styles.facebook_button} />
+
+            <FlexColumn>
               <Button
                 className={styles.submit_button}
                 loading={props.isSubmitting}
                 type="submit"
               >
-                Iniciar
+                Recibir Correo
               </Button>
-            </div>
+            </FlexColumn>
           </Form>
         )}
       </Formik>
@@ -85,8 +76,8 @@ function LoginForm({ setSectionOpen }) {
   );
 }
 
-LoginForm.defaultProps = {
+ResetPasswordForm.defaultProps = {
   setSectionOpen: () => {},
 };
 
-export default LoginForm;
+export default ResetPasswordForm;

@@ -17,7 +17,6 @@ function DiscoverPage() {
       </FlexRow>
       <FlexColumn className={styles.content}>
         <NewUsersList />
-
         <FlexColumn margin={"25px 0px 0px 0px"}>
           <MostPopularUsersList />
         </FlexColumn>

@@ -13,7 +13,7 @@ const LikesPostContainer = ({ postId }) => {
       const PostObject = await getPostById(postId);
       setPost(PostObject);
     };
-    getPost();
+    getPost().catch((err) => console.log(err));
   }, [postId]);
 
   return (
