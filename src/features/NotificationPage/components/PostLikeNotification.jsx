@@ -24,9 +24,7 @@ const PostLikeNotification = ({ notification }) => {
                 <DisplayUsername
                   type={"primary"}
                   className={styles.username}
-                  username={
-                    notification.attributes.triggeredBy.attributes.username
-                  }
+                  user={notification.attributes.triggeredBy}
                 />
                 le gusto en tu{" "}
                 <A

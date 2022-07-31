@@ -37,11 +37,8 @@ const ResponseCommentNotification = ({ notification }) => {
             text={
               <>
                 <DisplayUsername
-                  type={"primary"}
                   className={styles.username}
-                  username={
-                    notification.attributes.triggeredBy.attributes.username
-                  }
+                  user={notification.attributes.triggeredBy}
                 />
                 respondio tu comentario
                 {link && (

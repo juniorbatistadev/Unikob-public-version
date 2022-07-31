@@ -52,11 +52,7 @@ function NewTeacherFeedItem({ teacher, displayComments }) {
                   }
                 />
                 <DisplayUsername
-                  type={"primary"}
-                  username={
-                    createdBy?.attributes.username ??
-                    teacher.attributes.createdBy.attributes.username
-                  }
+                  user={createdBy ?? teacher.attributes.createdBy}
                 />
                 <Text
                   text={" agrego un nuevo profesor"}

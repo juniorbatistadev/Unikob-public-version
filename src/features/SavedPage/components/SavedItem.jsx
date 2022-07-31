@@ -9,14 +9,18 @@ import A from "@components/common/A";
 function SavedItem({ item }) {
   const getHref = () => {
     if (item.attributes.type === "post") {
-      return READ_POST_PATH.replace(
-        ":slug",
-        item.attributes.post.attributes.slug
-      );
+      return item.attributes?.post?.attributes?.slug
+        ? READ_POST_PATH.replace(
+            ":slug",
+            item.attributes?.post?.attributes?.slug
+          )
+        : null;
     }
 
     if (item.attributes.type === "job") {
-      return JOB_READ_PATH.replace(":job", item.attributes.job.attributes.slug);
+      return item?.attributes?.job?.attributes.slug
+        ? JOB_READ_PATH.replace(":job", item?.attributes?.job?.attributes.slug)
+        : null;
     }
   };
 

@@ -52,10 +52,7 @@ function SchoolReviewFeedItem({ schoolReview }) {
                 />
                 <DisplayUsername
                   type={"primary"}
-                  username={
-                    createdBy?.attributes.username ??
-                    schoolReview.attributes.createdBy.attributes.username
-                  }
+                  username={createdBy ?? schoolReview.attributes.createdBy}
                 />
                 <Text text={" dejo un review"} margin="0px 0px 0px 5px" />
               </FlexRow>

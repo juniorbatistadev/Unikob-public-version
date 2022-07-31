@@ -59,7 +59,7 @@ const Comment = ({
           linkToUser={user.attributes.username}
         />
         <div className={styles.dataContainer}>
-          <DisplayUsername username={user.attributes.username} type="primary" />
+          <DisplayUsername user={user} />
 
           <div className={styles.text}>{text.trim()}</div>
           <FlexRow margin="10px 0px 0px 0px ">

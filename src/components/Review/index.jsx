@@ -22,7 +22,7 @@ const Review = ({ text, user, date, margin, rating }) => {
         linkToUser={user.attributes.username}
       />
       <div className={styles.dataContainer}>
-        <DisplayUsername username={user.attributes.username} type="primary" />
+        <DisplayUsername user={user} />
         <Rater disable={true} value={rating} size={15} />
         <Text text={text} />
         <Moment className={styles.date} fromNow locale="es">

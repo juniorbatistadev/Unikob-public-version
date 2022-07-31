@@ -49,10 +49,7 @@ function TeacherReviewFeedItem({ teacherReview }) {
                 />
                 <DisplayUsername
                   type={"primary"}
-                  username={
-                    createdBy?.attributes.username ??
-                    teacherReview.attributes.createdBy.attributes.username
-                  }
+                  username={createdBy ?? teacherReview.attributes.createdBy}
                 />
                 <Text
                   text={" dejo un review al profesor"}

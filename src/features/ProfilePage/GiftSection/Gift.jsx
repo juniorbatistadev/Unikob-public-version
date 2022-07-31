@@ -20,7 +20,7 @@ const Gift = ({ image, fromUser, message, name }) => {
         className={styles.avatar}
         linkToUser={fromUser.attributes.username}
       />
-      <DisplayUsername username={fromUser.attributes.username} />
+      <DisplayUsername user={fromUser} />
       {message && (
         <>
           <span className={styles.arrow} />

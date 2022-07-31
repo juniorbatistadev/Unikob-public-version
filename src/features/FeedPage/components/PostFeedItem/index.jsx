@@ -79,12 +79,10 @@ const PostCard = ({ post }) => {
                   }
                 />
                 <DisplayUsername
+                  user={createdBy}
                   className={styles.usernameText}
                   type={"primary"}
-                  username={
-                    createdBy?.attributes.username ??
-                    post.attributes.createdBy.attributes.username
-                  }
+                  username={createdBy ?? post.attributes.createdBy}
                 />
               </FlexRow>
             </FlexRow>

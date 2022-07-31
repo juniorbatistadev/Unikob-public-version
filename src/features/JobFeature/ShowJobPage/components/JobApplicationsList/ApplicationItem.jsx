@@ -37,11 +37,7 @@ function ApplicationItem({ application }) {
           image={application.attributes.createdBy.attributes.profilePicture?.url()}
         />
         <FlexColumn className={styles.content}>
-          <DisplayUsername
-            username={application.attributes.createdBy.attributes.username}
-            link={application.attributes.createdBy.attributes.username}
-            type={"primary"}
-          />
+          <DisplayUsername user={application.attributes.createdBy} />
           <Text text={application.attributes.message} />
           <FlexRow className={styles.buttons}>
             <Button

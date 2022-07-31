@@ -2,11 +2,14 @@
   color: #9d9d9d;
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .primary {
   color: var(--primary);
-
   font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }

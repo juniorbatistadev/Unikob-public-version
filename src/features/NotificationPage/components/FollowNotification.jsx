@@ -17,9 +17,8 @@ const FollowNotification = ({ notification }) => {
       <FlexColumn className={styles.content}>
         <FlexRow>
           <DisplayUsername
-            type={"primary"}
             className={styles.username}
-            username={notification.attributes.triggeredBy.attributes.username}
+            user={notification.attributes.triggeredBy}
           />
 
           <Text text="te empezo a seguir" />
