@@ -85,7 +85,7 @@ function TeacherReviewFeedItem({ teacherReview }) {
 
                 <Text
                   text={teacherReview.attributes.description}
-                  fontSize={18}
+                  fontSize={"var(--text-lg)"}
                 />
               </FlexColumn>
               <FlexRow alignItems="center">
@@ -93,7 +93,7 @@ function TeacherReviewFeedItem({ teacherReview }) {
                   className={styles.date}
                   fromNow
                   locale="es"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "var(--text-sm)" }}
                 >
                   {teacherReview.attributes.createdAt}
                 </Moment>

@@ -44,7 +44,7 @@ function NotificationPage() {
 
       {count < 1 && !isLoading && (
         <FlexColumn alignItems="center" margin="auto">
-          <Title text="No tienes notificaciones" fontSize="16px" />
+          <Title text="No tienes notificaciones" fontSize="var(--text-base)" />
           <EmptyIlustration width="200px" height="200px" />
         </FlexColumn>
       )}

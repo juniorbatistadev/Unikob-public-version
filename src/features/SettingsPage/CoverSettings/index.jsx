@@ -94,7 +94,7 @@ function CoverSettings() {
                     <Title
                       text={image.name}
                       typeStyle="secondary"
-                      fontSize="14px"
+                      fontSize="var(--text-sm)"
                       className={styles.text}
                     />
                   </RadioField>

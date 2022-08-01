@@ -12,8 +12,6 @@ export default function DisplayUsername({
 }) {
   const classNames = [styles[type], className].join(" ");
 
-  console.log(fontSize);
-
   return (
     <A
       href={

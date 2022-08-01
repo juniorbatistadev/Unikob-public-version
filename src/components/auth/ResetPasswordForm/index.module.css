@@ -29,7 +29,7 @@
 }
 
 .form_error_message {
-  color: red;
+  color: var(--error);
   font-size: 12px;
 }
 

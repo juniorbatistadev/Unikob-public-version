@@ -47,7 +47,7 @@ const Message = ({ message, withUsername }) => {
         <DisplayUsername user={message.attributes.createdBy} />
       )}
       <Text
-        fontSize="12px"
+        fontSize="var(--text-xs)"
         text={moment(message.attributes.createdAt).fromNow()}
       />
     </FlexColumn>

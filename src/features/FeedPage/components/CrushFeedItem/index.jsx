@@ -108,7 +108,7 @@ function CrushFeedItem({ crush, displayComments }) {
                   className={styles.date}
                   fromNow
                   locale="es"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "var(--text-sm)" }}
                 >
                   {crush.attributes.createdAt}
                 </Moment>
@@ -128,7 +128,7 @@ function CrushFeedItem({ crush, displayComments }) {
                         ? ` ${comments} comentario`
                         : ` ${comments} comentarios`
                     }
-                    fontSize={14}
+                    fontSize={"var(--text-sm)"}
                   />
                 </FlexRow>
               )}

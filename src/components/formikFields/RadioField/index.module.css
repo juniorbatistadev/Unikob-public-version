@@ -4,7 +4,7 @@
 
 .borderLines {
   transition: all 0.1s ease-in-out;
-  background-color: #fff;
+  background-color: var(--color-white);
   box-shadow: -2px 4px 7px 0px #c8c8c8;
 }
 

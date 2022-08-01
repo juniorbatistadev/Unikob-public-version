@@ -71,7 +71,7 @@ const ConversationPreview = ({ conversation }) => {
                   conversation.attributes.lastMessage.length > 30 ? "..." : ""
                 )}
               style={{
-                fontSize: 12,
+                fontSize: "var(--text-xs)",
                 fontWeight: messagesAmount > 0 ? "bold" : 0,
               }}
             />

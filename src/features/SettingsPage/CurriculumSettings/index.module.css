@@ -2,8 +2,8 @@
   margin: 20px 5px;
 }
 
-.container{
-  background-color: #fff;
+.container {
+  background-color: var(--color-white);
   padding: 10px;
 }
 
