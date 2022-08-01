@@ -3,7 +3,6 @@ import Avatar from "@components/common/Avatar";
 import styles from "./index.module.css";
 import Moment from "react-moment";
 import "moment/locale/es";
-import Title from "@components/common/Title";
 import { motion } from "framer-motion";
 import FlexRow from "@components/common/FlexRow";
 import AddCommentForm from "../AddCommentForm";
@@ -14,8 +13,6 @@ import {
 } from "src/data/queryComments";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import { AuthContext } from "@context/AuthContext";
-import A from "@components/common/A";
-import { PROFILE_PATH } from "src/paths";
 import { RESPONSE_COMMENT } from "@components/CommentsSection/commentsType";
 import DisplayUsername from "@components/common/DisplayUsername";
 

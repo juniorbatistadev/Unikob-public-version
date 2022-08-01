@@ -93,7 +93,9 @@ function ReadPostPage({ post }) {
               </Button>
             )}
           </FlexRow>
-          <CommentsSection section={post.objectId} type={POST_COMMENT} />
+          <FlexColumn margin={10}>
+            <CommentsSection section={post.objectId} type={POST_COMMENT} />
+          </FlexColumn>
         </FlexColumn>
       )}
     </FlexColumn>

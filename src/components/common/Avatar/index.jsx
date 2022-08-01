@@ -13,7 +13,10 @@ function Avatar({ image, width, linkToUser, ...props }) {
       style={{ width, minHeight: width }}
       {...props}
     >
-      <A href={linkToUser && PROFILE_PATH.replace(":user", linkToUser)}>
+      <A
+        href={linkToUser && PROFILE_PATH.replace(":user", linkToUser)}
+        className={styles.link}
+      >
         <img
           style={{
             width,

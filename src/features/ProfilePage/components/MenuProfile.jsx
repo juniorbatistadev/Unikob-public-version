@@ -36,9 +36,9 @@ const MenuProfile = ({ user }) => {
   return (
     <PopupMenu
       options={[
-        { label: "Enviar Regalo", icon: <GiftSVG />, onClick: sendGift },
-        { label: "Declarar Crush", icon: <HeartSVG />, onClick: declareCrush },
-        { label: "Reportar ", icon: <>🛡️</>, onClick: reportUser },
+        { label: "Enviar Regalo", onClick: sendGift },
+        { label: "Declarar Crush", onClick: declareCrush },
+        { label: "Reportar ", onClick: reportUser },
       ]}
     >
       <DotsIcon width="20px" height="20px" />

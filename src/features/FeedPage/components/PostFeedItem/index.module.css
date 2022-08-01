@@ -15,9 +15,6 @@
   margin-left: 5px;
   cursor: pointer;
 }
-.usernameText {
-  cursor: pointer;
-}
 
 .title {
   overflow-wrap: anywhere;
@@ -33,6 +30,6 @@
   width: 100%;
 }
 
-.usernameText{
+.usernameText {
   margin-left: 10px;
 }
