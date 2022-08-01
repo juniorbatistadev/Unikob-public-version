@@ -31,11 +31,6 @@ function NavBar() {
             <span className={styles.logoTitle}>Unikob</span>
           </div>
         </A>
-
-        {/* <div style={{ display: "flex", alignItems: "center", marginLeft: 5 }}>
-          <img src={Logo.src} width={20} height={20} />
-          <span className={styles.logoTitle}>Unikob</span>
-        </div> */}
       </div>
 
       <div className={styles["search-bar-container"]}>

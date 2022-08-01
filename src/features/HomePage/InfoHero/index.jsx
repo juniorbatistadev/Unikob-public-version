@@ -1,29 +1,37 @@
-import logo from "@assets/images/logo-text-white.png";
+import logo from "@assets/images/logo.png";
 import styles from "./index.module.css";
 import Button from "@components/common/Button";
+import CommunityIcon from "@assets/icons/community.svg";
+import FlexRow from "@components/common/FlexRow";
 
 function InfoHero() {
   return (
     <div className={styles.container}>
-      <img src={logo.src} alt="Logo" className={styles.logo} />
-      <h3 className={styles.title}>¡ Bienvenido !</h3>
+      <FlexRow alignItems={"center"}>
+        <img src={logo.src} alt="Logo" className={styles.logo} />
+        <span className={styles.logoText}>Unikob</span>
+      </FlexRow>
+
+      <CommunityIcon className={styles.illustration} />
       <p className={styles.paragraph}>
-        La red social para universitarios,
+        La comunidad de universitarios,
         <br />
         egresados y estudiantes mas
         <br />
-        completa de latinoamerica.
+        completa del internet.
       </p>
-      <div className={styles["btns-container"]}>
+      {/* <div className={styles["btns-container"]}>
         <Button
+          as={"a"}
           className={styles.call_to_action}
           typeStyle="transparent"
           width="200px"
           padding="15px"
+          href={"/a"}
         >
           Leer Mas
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

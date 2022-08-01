@@ -17,29 +17,41 @@
 }
 
 .text {
-  font-size: 12px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-blue-700);
+  cursor: pointer;
 }
 
-.btns_container {
+.or {
+  margin: 15px 0px 15px 0px;
+  color: var(--color-gray-500);
+  font-weight: 500;
   display: flex;
-  flex-direction: row;
-  margin-top: 30px;
-  align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.or::before {
+  margin-right: 10px;
+  content: "";
+  border-top: 1px solid var(--color-gray-400);
+  width: 100%;
+  position: relative;
+  top: 50%;
+}
+.or::after {
+  content: "";
+  margin-left: 10px;
+  border-top: 1px solid var(--color-gray-400);
+  width: 100%;
+  position: relative;
+  top: 50%;
 }
 
 .form_error_message {
   color: red;
   font-size: 12px;
-}
-
-.facebook_button {
-  flex: 3;
-  margin-right: 5px;
-}
-
-.submit_button {
-  flex: 2;
 }
 
 /* ##Device = Most of the Smartphones Mobiles (Portrait) and Low Resolution tablets

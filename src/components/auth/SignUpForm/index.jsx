@@ -8,6 +8,10 @@ import FacebookLogin from "@components/auth/FacebookLogin";
 import { CheckBox, TextField, ErrorMessage } from "@components/formikFields";
 import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
+import FlexColumn from "@components/common/FlexColumn";
+import FlexRow from "@components/common/FlexRow";
+import { FEED_PATH } from "src/paths";
+import A from "@components/common/A";
 
 function SignUpForm() {
   const { setCurrentUser } = useContext(AuthContext);
@@ -71,33 +75,41 @@ function SignUpForm() {
       >
         {(props) => (
           <Form className={styles.form}>
-            <TextField placeholder="Username" name="username" />
+            <TextField placeholder="Usuario" name="username" />
             <ErrorMessage name="username" />
-            <TextField placeholder="Tu correo" name="email" type="email" />
+            <TextField
+              placeholder="usuario@ejemplo.com"
+              name="email"
+              type="email"
+            />
             <ErrorMessage name="email" />
             <TextField
-              placeholder="Tu codigo secreto"
+              placeholder="Contraseña"
               name="password"
               type="password"
             />
             <ErrorMessage name="password" />
-            <CheckBox name="terms" className={styles.check_box}>
-              <span className={styles.terms_text}>
-                Acepto los terminos y condiciones
-              </span>
-            </CheckBox>
+            <FlexRow margin={"0px auto 0px 0px"}>
+              <CheckBox name="terms" className={styles.check_box}>
+                <span className={styles.terms_text}>
+                  Acepto los <A href={FEED_PATH}>terminos</A> y
+                  <A href={FEED_PATH}> condiciones</A>
+                </span>
+              </CheckBox>
+            </FlexRow>
             <ErrorMessage name="terms" />
-            <div className={styles.btns_container}>
-              <FacebookLogin className={styles.facebook_button} />
+
+            <FlexColumn margin={"10px 0px 0px 0px"} gap="10px">
               <Button
-                className={styles.submit_button}
                 loading={props.isSubmitting}
                 typeStyle="primary"
                 type="submit"
               >
-                Vamos
+                Registrar
               </Button>
-            </div>
+              <p className={styles.or}>O</p>
+              <FacebookLogin />
+            </FlexColumn>
           </Form>
         )}
       </Formik>

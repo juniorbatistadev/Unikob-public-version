@@ -1,11 +1,6 @@
 .facebook_button {
-  margin-left: 5px;
-}
-
-.facebook_button {
   padding: 10px;
   border-color: #4173b2;
-  flex: 3;
   display: flex;
   justify-content: center;
   align-items: center;

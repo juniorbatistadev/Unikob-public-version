@@ -63,7 +63,7 @@ function Button({
       {...rest}
     >
       {loading ? (
-        <FlexRow alignItems={"center"}>
+        <FlexRow alignItems={"center"} justifyContent={"center"}>
           <span>Cargando...</span>
           <Spinner width="15px" />
         </FlexRow>
