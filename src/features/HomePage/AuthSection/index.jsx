@@ -1,23 +1,24 @@
 import styles from "./index.module.css";
 import SignUpForm from "@components/auth/SignUpForm";
 import LoginForm from "@components/auth/LoginForm";
-import hello from "@assets/images/hello.png";
 import { useContext, useState } from "react";
 import Button from "@components/common/Button";
 import Title from "@components/common/Title";
 import { AuthContext } from "src/contexts/AuthContext";
 import WelcomeLoggedUser from "src/features/HomePage/WelcomeLoggedUser";
 import ResetPasswordForm from "@components/auth/ResetPasswordForm";
+import Text from "@components/common/Text";
 
 const LoginContainer = ({ setSectionOpen }) => {
   return (
     <>
       <Title fontSize="33px" text={"Inicia Sesion"} className={styles.title} />
       <LoginForm setSectionOpen={setSectionOpen} />
+
       <div className={styles.container_button}>
-        <p>¿Aun no tienes cuenta? ¡Registrate!</p>
-        <Button typeStyle="primary" onClick={() => setSectionOpen("signup")}>
-          Registrate
+        <Text text="¿Aun no tienes cuenta?" color={"var(--color-gray-700)"} />
+        <Button typeStyle="tertiary" onClick={() => setSectionOpen("signup")}>
+          ¡Registrate!
         </Button>
       </div>
     </>
@@ -30,8 +31,9 @@ const SignUpContainer = ({ setSectionOpen }) => {
       <Title fontSize="33px" text={"Registrate"} className={styles.title} />
       <SignUpForm />
       <div className={styles.container_button}>
-        <p>¿Ya tienes cuenta?</p>
-        <Button typeStyle="primary" onClick={() => setSectionOpen("login")}>
+        <Text text="¿Ya tienes cuenta?" color={"var(--color-gray-700)"} />
+
+        <Button typeStyle="tertiary" onClick={() => setSectionOpen("login")}>
           Inicia Sesion
         </Button>
       </div>
@@ -49,9 +51,8 @@ const PasswordContainer = ({ setSectionOpen }) => {
       />
       <ResetPasswordForm setSectionOpen={setSectionOpen} />
       <div className={styles.container_button}>
-        <p>¿Aun no tienes cuenta? ¡Registrate!</p>
-        <Button typeStyle="primary" onClick={() => setSectionOpen("signup")}>
-          Registrate
+        <Button typeStyle="tertiary" onClick={() => setSectionOpen("login")}>
+          Volver Atras
         </Button>
       </div>
     </>
@@ -81,10 +82,7 @@ function AuthSection() {
       {currentUser ? (
         <WelcomeLoggedUser username={currentUser.attributes.username} />
       ) : (
-        <>
-          {renderContent(sectionOpen)}
-          <img src={hello.src} alt="welcome" className={styles.hello} />
-        </>
+        <>{renderContent(sectionOpen)}</>
       )}
     </div>
   );

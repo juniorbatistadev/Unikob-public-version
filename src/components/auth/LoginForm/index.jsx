@@ -9,6 +9,7 @@ import FacebookLogin from "@components/auth/FacebookLogin";
 import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
 import { useRouter } from "next/router";
+import FlexColumn from "@components/common/FlexColumn";
 
 function LoginForm({ setSectionOpen }) {
   const { setCurrentUser } = useContext(AuthContext);
@@ -68,16 +69,13 @@ function LoginForm({ setSectionOpen }) {
             >
               ¿Olvidaste tu contraseña?
             </span>
-            <div className={styles.btns_container}>
-              <FacebookLogin className={styles.facebook_button} />
-              <Button
-                className={styles.submit_button}
-                loading={props.isSubmitting}
-                type="submit"
-              >
+            <FlexColumn margin={"10px 0px 0px 0px"} gap="10px">
+              <Button loading={props.isSubmitting} type="submit">
                 Iniciar
               </Button>
-            </div>
+              <p className={styles.or}>O</p>
+              <FacebookLogin className={styles.facebook_button} />
+            </FlexColumn>
           </Form>
         )}
       </Formik>

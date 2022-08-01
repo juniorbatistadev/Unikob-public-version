@@ -7,6 +7,7 @@ const FlexColumn = ({
   className,
   alignItems,
   justifyContent,
+  gap,
   ...props
 }) => {
   const classNames = [styles.flexColumn, className].join(" ");
@@ -15,7 +16,7 @@ const FlexColumn = ({
     <div
       className={classNames}
       {...props}
-      style={{ margin, padding, alignItems, justifyContent }}
+      style={{ margin, padding, alignItems, justifyContent, gap }}
     >
       {children}
     </div>
@@ -28,6 +29,7 @@ FlexColumn.defaultProps = {
   alignItems: null,
   justifyContent: null,
   padding: null,
+  gap: null,
 };
 
 export default FlexColumn;
