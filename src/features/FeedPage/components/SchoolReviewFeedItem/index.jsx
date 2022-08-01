@@ -8,7 +8,7 @@ import FeedBox from "../FeedBox";
 import DisplayUsername from "@components/common/DisplayUsername";
 import A from "@components/common/A";
 import { useEffect, useState } from "react";
-import { SCHOOL_READ_PATH, TEACHER_READ_PATH } from "src/paths";
+import { SCHOOL_READ_PATH } from "src/paths";
 import Rater from "@components/formikFields/Rater";
 
 function SchoolReviewFeedItem({ schoolReview }) {
@@ -52,7 +52,7 @@ function SchoolReviewFeedItem({ schoolReview }) {
                 />
                 <DisplayUsername
                   type={"primary"}
-                  username={createdBy ?? schoolReview.attributes.createdBy}
+                  user={createdBy ?? schoolReview.attributes.createdBy}
                 />
                 <Text text={" dejo un review"} margin="0px 0px 0px 5px" />
               </FlexRow>

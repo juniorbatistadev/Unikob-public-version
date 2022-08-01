@@ -19,7 +19,9 @@ function JobApplicationList({ jobId }) {
 
   return (
     <FlexColumn>
-      <Title text="Aplicaciones recibidas" margin={"10px 0px 10px 5px"} />
+      {count > 1 && (
+        <Title text="Aplicaciones recibidas" margin={"10px 0px 10px 5px"} />
+      )}
       {isLoading ? (
         <Spinner />
       ) : (

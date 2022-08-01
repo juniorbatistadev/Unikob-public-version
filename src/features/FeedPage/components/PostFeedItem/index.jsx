@@ -80,7 +80,6 @@ const PostCard = ({ post }) => {
                 />
                 <DisplayUsername
                   user={createdBy}
-                  className={styles.usernameText}
                   type={"primary"}
                   username={createdBy ?? post.attributes.createdBy}
                 />
