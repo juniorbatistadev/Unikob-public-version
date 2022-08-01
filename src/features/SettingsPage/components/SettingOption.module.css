@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 10px;
   border-bottom: 1px solid #e8e8e8;
   justify-content: center;
@@ -14,7 +14,7 @@
   height: 24px;
   margin-left: 20px;
   margin-right: 20px;
-  fill: var(--primary)
+  fill: var(--primary);
 }
 
 .texts {

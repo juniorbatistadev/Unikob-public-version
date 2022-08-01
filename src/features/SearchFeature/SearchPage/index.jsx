@@ -133,8 +133,14 @@ function SearchPage() {
             {!resultFound && (
               <FlexColumn alignItems={"center"} margin="20px 0px 0px 0px">
                 <EmptyIlustration width={200} height={200} />
-                <Title text="No pudimos encontrar nada." fontSize="16px" />
-                <Title text="Intenta con otras palabras" fontSize="16px" />
+                <Title
+                  text="No pudimos encontrar nada."
+                  fontSize="var(--text-base)"
+                />
+                <Title
+                  text="Intenta con otras palabras"
+                  fontSize="var(--text-base)"
+                />
               </FlexColumn>
             )}
           </>

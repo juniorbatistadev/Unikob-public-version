@@ -34,7 +34,7 @@ const TeacherListItem = ({ name, subjects, id }) => {
   return (
     <Link href={TEACHER_READ_PATH.replace(":teacher", id)}>
       <FlexColumn className={styles.container}>
-        <Title text={name} fontSize={18} />
+        <Title text={name} fontSize={"var(--text-lg)"} />
         <FlexRow>
           <Rater disable={true} value={avg} size={15} />
           <Text text={`(${reviews})`} />

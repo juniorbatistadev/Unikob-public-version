@@ -120,7 +120,7 @@ export default function ProfilePage({ username }) {
                 <Title
                   text={`@${user.attributes.username}`}
                   typeStyle="secondary"
-                  fontSize="18px"
+                  fontSize="var(--text-lg)"
                   className={styles.username}
                 />
                 {currentUser?.id !== user.id && (

@@ -76,7 +76,7 @@ function PostEditor({ post, action, handleSubmit }) {
                 className={styles.titleInput}
                 style={{
                   fontWeight: "bold",
-                  fontSize: "27px",
+                  fontSize: "var(--text-2xl)",
                   padding: "10px",
                   width: "100%",
                   borderTop: 0,

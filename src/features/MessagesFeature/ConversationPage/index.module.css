@@ -1,6 +1,5 @@
 .header {
-  /* box-shadow: -3px 2px 3px 2px #a5a5a581; */
-  background-color: #fff;
+  background-color: var(--color-white);
   z-index: 1;
   padding: 5px;
   border-bottom: 1px solid #cfcfcf;
@@ -8,7 +7,7 @@
 
 .container {
   height: calc(100vh - 60px);
-  background-color: #fff;
+  background-color: var(--color-white);
   width: 100%;
 }
 

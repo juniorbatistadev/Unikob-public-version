@@ -7,7 +7,7 @@ function Tag({ text, className, ...props }) {
 
   return (
     <FlexColumn className={classNames} {...props}>
-      <Text text={text} fontSize={14} color={"#5585c5"} />
+      <Text text={text} fontSize={"var(--text-sm)"} color={"#5585c5"} />
     </FlexColumn>
   );
 }

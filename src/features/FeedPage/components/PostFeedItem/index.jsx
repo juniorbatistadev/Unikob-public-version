@@ -50,7 +50,7 @@ const PostCard = ({ post }) => {
             <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
               <Title
                 text={post.attributes.title}
-                fontSize="25px"
+                fontSize="var(--text-2xl)"
                 className={styles.title}
               />
             </A>

@@ -63,7 +63,10 @@ function NewTeacherFeedItem({ teacher, displayComments }) {
 
             <A href={TEACHER_READ_PATH.replace(":teacher", teacher.id)}>
               <FlexColumn margin={"5px 0px 10px 0px"}>
-                <Title text={teacher.attributes.name} fontSize={18} />
+                <Title
+                  text={teacher.attributes.name}
+                  fontSize={"var(--text-lg)"}
+                />
                 <FlexRow>
                   {subjectsTags.map((subject) => (
                     <FlexRow margin="0px 5px 0px 0px">
@@ -77,7 +80,7 @@ function NewTeacherFeedItem({ teacher, displayComments }) {
                   className={styles.date}
                   fromNow
                   locale="es"
-                  style={{ fontSize: "14px" }}
+                  style={{ fontSize: "var(--text-sm)" }}
                 >
                   {teacher.attributes.createdAt}
                 </Moment>

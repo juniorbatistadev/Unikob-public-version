@@ -45,7 +45,7 @@ const PasswordContainer = ({ setSectionOpen }) => {
   return (
     <>
       <Title
-        fontSize="33px"
+        fontSize="var(--text-3xl)"
         text={"Olvidaste tu contraseña"}
         className={styles.title}
       />

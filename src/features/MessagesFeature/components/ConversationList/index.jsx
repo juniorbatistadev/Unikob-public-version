@@ -37,7 +37,7 @@ const ConversationList = () => {
       {count < 1 && !isLoading && (
         <FlexColumn alignItems="center" margin="auto">
           <EmptyIlustration width="200px" height="200px" />
-          <Text text="No tienes mensajes" fontSize="16px" />
+          <Text text="No tienes mensajes" fontSize="var(--text-base)" />
         </FlexColumn>
       )}
     </FlexColumn>

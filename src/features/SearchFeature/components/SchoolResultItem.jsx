@@ -10,7 +10,7 @@ function SchoolResultItem({ school }) {
   return (
     <FlexColumn className={styles.container}>
       <A href={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}>
-        <Title text={school.attributes.name} fontSize="18px" />
+        <Title text={school.attributes.name} fontSize="var(--text-lg)" />
       </A>
       <Text text={school.attributes.country.attributes.name} />
       <Text text={school.attributes.website} />

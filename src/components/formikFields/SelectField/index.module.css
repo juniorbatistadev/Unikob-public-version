@@ -2,7 +2,7 @@
   padding: 10px !important;
   border: none;
   border-radius: 7px;
-  background-color: #ffff;
+  background-color: var(--color-white);
   font-size: var(--text-sm);
   min-width: 100px;
   border-radius: 5px !important;

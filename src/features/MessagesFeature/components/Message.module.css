@@ -5,14 +5,14 @@
 
 .box {
   padding: 10px;
-  background-color: white;
+  background-color: var(--color-white);
   border-radius: 10px;
   overflow-wrap: anywhere;
 }
 
 .blue {
   background-color: #1d9bf0;
-  color: #fff;
+  color: var(--color-white);
   margin-left: auto;
 }
 

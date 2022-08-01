@@ -1,11 +1,11 @@
 .container {
   margin: 0px 10px 20px 10px;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: -3px 6px 5px 1px #e3e3e3;
+  box-shadow: var(--shadow-sm);
 }
 
-.container:hover{
+.container:hover {
   cursor: pointer;
 }

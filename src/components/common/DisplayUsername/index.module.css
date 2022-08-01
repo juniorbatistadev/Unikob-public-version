@@ -1,5 +1,5 @@
 .secondary {
-  color: #9d9d9d;
+  color: var(--color-gray-700);
   font-weight: bold;
   display: flex;
   align-items: center;

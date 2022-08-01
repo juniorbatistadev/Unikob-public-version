@@ -88,7 +88,7 @@ const SendGiftForm = ({ user }) => {
             <Title
               text="Solo puedes enviar 3 regalos por dia"
               typeStyle="secondary"
-              fontSize="14px"
+              fontSize="var(--text-sm)"
             />
             <FlexRow justifyContent="center" className={styles.gifts}>
               {isLoading ? (
@@ -107,7 +107,10 @@ const SendGiftForm = ({ user }) => {
                         alt={gift.attributes.name}
                         src={gift.attributes.image.url()}
                       />
-                      <Text text={gift.attributes.name} fontSize="12px" />
+                      <Text
+                        text={gift.attributes.name}
+                        fontSize="var(--text-sm)"
+                      />
                     </div>
                   </RadioField>
                 ))

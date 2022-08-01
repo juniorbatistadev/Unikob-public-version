@@ -39,8 +39,11 @@ function FollowingFeed() {
       {count < 1 && !isLoading && (
         <FlexColumn alignItems="center" margin="auto">
           <EmptyIlustration width="200px" height="200px" />
-          <Title text="Nada que mostrar aqui" fontSize="16px" />
-          <Title text="Empieza a seguir otros usuarios" fontSize="16px" />
+          <Title text="Nada que mostrar aqui" fontSize="var(--text-base)" />
+          <Title
+            text="Empieza a seguir otros usuarios"
+            fontSize="var(--text-base)"
+          />
         </FlexColumn>
       )}
     </FlexColumn>

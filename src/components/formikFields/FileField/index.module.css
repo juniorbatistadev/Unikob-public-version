@@ -9,17 +9,17 @@
 }
 
 .button {
-  border: solid #4173b2 1px;
-  color: #4173b2;
-  background: #ffffff;
+  border: solid var(--primary) 1px;
+  color: var(--primary);
+  background: var(--color-white);
   border-radius: 5px;
   padding: 7px;
 }
 
 .button:hover {
-  border: solid 1px #4173b2;
-  color: #ffffff;
-  box-shadow: 0px 0px 7px 4px #20202052;
+  border: solid 1px var(--primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
   background: rgb(0, 32, 73);
   cursor: pointer;
 }

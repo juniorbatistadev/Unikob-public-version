@@ -18,7 +18,7 @@ export default function PostHeader({ post, preview }) {
         <Title
           level={1}
           text={post.title}
-          fontSize="35px"
+          fontSize="var(--text-4xl)"
           margin="0px 0px 15px 0px"
           className={styles.title}
         />

@@ -13,7 +13,11 @@ const SchoolRating = ({ school, avg, number }) => {
     <FlexColumn margin="0px 0px 20px 0px">
       <FlexRow alignItems={"center"}>
         {number && (
-          <Text text={number} margin={"0px 10px 0px 0px"} fontSize={"17px"} />
+          <Text
+            text={number}
+            margin={"0px 10px 0px 0px"}
+            fontSize={"var(--text-base)"}
+          />
         )}
 
         <A href={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}>
@@ -22,7 +26,7 @@ const SchoolRating = ({ school, avg, number }) => {
       </FlexRow>
 
       <Title
-        fontSize="16px"
+        fontSize="var(--text-base)"
         typeStyle="secondary"
         text={school.attributes.country.attributes.name}
       />

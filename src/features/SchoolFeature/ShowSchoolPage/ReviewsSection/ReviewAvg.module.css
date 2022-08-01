@@ -1,11 +1,11 @@
 .box {
-  background-color: #fff;
+  background-color: var(--color-white);
   margin: auto;
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: -1px 4px 7px 2px rgb(125 125 125 / 12%);
+  box-shadow: var(--shadow-sm);
 }
 
 .container {
@@ -13,11 +13,11 @@
 }
 
 .avg {
-  color: grey;
+  color: var(--color-gray-600);
   font-size: 48px;
 }
 
 .text {
   font-size: 14px;
-  color: grey;
+  color: var(--color-gray-600);
 }
