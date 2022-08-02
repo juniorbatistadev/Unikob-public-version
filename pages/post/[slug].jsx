@@ -20,7 +20,7 @@ function ReadPost({ data }) {
       "@context": "https://schema.org/",
       "@type": "Article",
       "headline": "${data.title}",
-      ${firstImageUrl && `"image": "${firstImageUrl}",`}
+      ${firstImageUrl ? `"image": "${firstImageUrl}",` : ""}
       "datePublished": "${data.createdAt}",
       "dateModified": "${data.updatedAt}",
       "author": {
