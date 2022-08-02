@@ -32,7 +32,7 @@ function ReadPost({ data }) {
         "@type": "Organization",
         "name": "Unikob"
       },
-      "description": "${extractTextFromPost(data.content.blocks, 100)}"
+      "description": "${extractTextFromPost(data.content.blocks, 300)}"
     }
   `,
     };
