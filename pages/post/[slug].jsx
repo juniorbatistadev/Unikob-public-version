@@ -10,8 +10,6 @@ function ReadPost({ data }) {
   const firstImageUrl = extractFirstImageFromPost(data.content.blocks);
   const { asPath } = useRouter();
 
-  console.log(data);
-
   const defaultImage =
     "https://media.istockphoto.com/photos/young-woman-reading-the-news-on-a-modern-tablet-computer-while-in-picture-id1177502660?k=20&m=1177502660&s=612x612&w=0&h=ynHK8Q0kyZJ6xaAKBqtFBBzZw5pOkegYx3TLKIxEzKM=";
 
@@ -21,9 +19,7 @@ function ReadPost({ data }) {
       "@context": "https://schema.org/",
       "@type": "Article",
       "headline": "${data.title}",
-      "image": [
-        ${defaultImage}"
-       ],
+      "image": "${firstImageUrl || defaultImage}",
         
       "datePublished": "${data.createdAt}",
       "dateModified": "${data.updatedAt}",
