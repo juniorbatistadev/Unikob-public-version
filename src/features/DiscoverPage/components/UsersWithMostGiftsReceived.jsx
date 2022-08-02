@@ -21,6 +21,7 @@ function UsersWithMostGiftsReceived() {
         text="Los miembros mas bendecidos"
         fontSize={`var(--text-xl)`}
         margin={"0px 0px 15px 0px"}
+        className={styles.title}
       />
       <FlexRow className={styles.usersContainer}>
         {users &&

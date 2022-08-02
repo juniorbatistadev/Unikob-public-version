@@ -17,6 +17,10 @@
   padding-left: 40px;
 }
 
+.textarea::-webkit-scrollbar {
+  display: none;
+}
+
 .sendButton {
   background: var(--color-blue-600);
   border-radius: 100%;

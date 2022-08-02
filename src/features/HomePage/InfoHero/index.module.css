@@ -2,7 +2,6 @@
   background-color: var(--primary);
   height: 100vh;
   flex: 5;
-  /* background: url(../../../assets/images/bg-welcome.png); */
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -59,7 +58,7 @@
 
 @media (max-width: 767px) {
   .paragraph {
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px 30px 0px;
     text-align: center;
     font-size: 20px;
     color: white;

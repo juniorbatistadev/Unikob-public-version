@@ -66,7 +66,7 @@ function ShowCrushPage() {
       {isLoading && <Spinner />}
       {!isLoading && crush && (
         <FlexColumn>
-          <CrushFeedItem crush={crush} displayComments={false} />
+          <CrushFeedItem crush={crush} displayAsHeader={true} />
 
           {canUserDelete() && (
             <FlexRow margin={"30px 0px"}>

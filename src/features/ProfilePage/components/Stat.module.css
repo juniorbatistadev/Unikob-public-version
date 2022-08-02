@@ -4,11 +4,12 @@
 }
 
 .number {
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: var(--text-base);
+  color: var(--color-gray-800);
 }
 
 .name {
-  color: #6d6d6d;
-  font-size: 14px;
+  color: var(--color-gray-600);
+  font-size: var(--text-sm);
 }

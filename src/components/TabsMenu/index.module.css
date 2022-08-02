@@ -23,7 +23,7 @@
 }
 
 .default .menuOptionActive {
-  border-bottom: 2px solid #4173b2;
+  border-bottom: 2px solid var(--primary);
 }
 
 /* type clear styles */

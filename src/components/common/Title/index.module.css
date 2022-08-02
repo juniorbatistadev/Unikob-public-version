@@ -1,11 +1,11 @@
 .primary {
   font-size: 24px;
   color: var(--primary);
-  font-weight: normal;
+  font-weight: 600;
 }
 
 .secondary {
   font-size: 18px;
-  color: var(--color-gray-700);
-  font-weight: normal;
+  color: var(--color-gray-800);
+  font-weight: 600;
 }
