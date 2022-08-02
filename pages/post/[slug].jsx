@@ -11,9 +11,6 @@ function ReadPost({ data }) {
   const firstImageUrl = extractFirstImageFromPost(data.content.blocks);
   const { asPath } = useRouter();
 
-  const defaultImage =
-    "https://media.istockphoto.com/photos/young-woman-reading-the-news-on-a-modern-tablet-computer-while-in-picture-id1177502660?k=20&m=1177502660&s=612x612&w=0&h=ynHK8Q0kyZJ6xaAKBqtFBBzZw5pOkegYx3TLKIxEzKM=";
-
   function addPostJsonLd() {
     return {
       __html: `{

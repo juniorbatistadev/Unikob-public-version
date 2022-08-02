@@ -6,6 +6,27 @@ import extractTextFromPost from "src/helpers/extractTextFromPost";
 
 function ReadJob({ data }) {
   const { asPath } = useRouter();
+
+  function addPostJsonLd() {
+    return {
+      __html: `{
+      "@context": "https://schema.org/",
+      "@type": "JobPosting",
+      "title  ": "${data.title}",
+      "datePosted": "${data.createdAt}",
+      "hiringOrganization" : "confidential",
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        }
+      },
+      "description": "${extractTextFromPost(data.content.blocks, 100)}"
+    }
+  `,
+    };
+  }
   return (
     <>
       <Head>
@@ -35,6 +56,11 @@ function ReadJob({ data }) {
         <meta name="twitter:card" content="summary"></meta>
         <meta name="twitter:site" content="@unikob_app" />
         <meta name="twitter:creator" content="@unikob_app" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addJobJsonLd()}
+          key="-jsojobnld"
+        />
       </Head>
       <ShowJobPage data={data} />
     </>
