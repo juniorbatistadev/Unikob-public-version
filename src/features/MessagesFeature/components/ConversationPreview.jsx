@@ -8,9 +8,8 @@ import { getLastUnreadMessage } from "src/data/queryMessages";
 import FlexColumn from "@components/common/FlexColumn";
 import { useRouter } from "next/router";
 import { CONVERSATION_PATH } from "src/paths";
-// import DotsIcon from "@assets/icons/dot.svg";
-// import TrashIcon from "@assets/icons/trash.svg";
-// import PopupMenu from "@components/PopupMenu";
+import Moment from "react-moment";
+import "moment/locale/es";
 
 const ConversationPreview = ({ conversation }) => {
   const { currentUser } = useContext(AuthContext);
@@ -55,16 +54,20 @@ const ConversationPreview = ({ conversation }) => {
     >
       {!isLoading && (
         <>
-          <Avatar image={fromUser.attributes.profilePicture?.url()} />
-          <FlexColumn margin="0px 0px 0px 5px">
+          <Avatar
+            image={fromUser.attributes.profilePicture?.url()}
+            width={35}
+          />
+          <FlexColumn margin="0px 0px 0px 10px">
             <Text
               className={styles.username}
               text={fromUser.attributes.username}
               style={{
-                fontWeight: messagesAmount > 0 ? "bold" : 600,
+                fontWeight: messagesAmount > 0 ? "bold" : 700,
               }}
             />
             <Text
+              className={styles.lastMessage}
               text={conversation.attributes.lastMessage
                 .slice(0, 30)
                 .concat(
@@ -72,26 +75,21 @@ const ConversationPreview = ({ conversation }) => {
                 )}
               style={{
                 fontSize: "var(--text-xs)",
-                fontWeight: messagesAmount > 0 ? "bold" : 0,
+                fontWeight: messagesAmount > 0 ? 800 : 300,
               }}
             />
           </FlexColumn>
-          <FlexRow className={styles.icons}>
-            {messagesAmount > 0 && (
-              <p className={styles.circle}>{messagesAmount}</p>
-            )}
-            {/* <PopupMenu
-              options={[
-                {
-                  label: "Borrar",
-                  icon: <TrashIcon />,
-                  onClick: handleDelete,
-                },
-              ]}
-            >
-              <DotsIcon width={25} height={25} />
-            </PopupMenu> */}
-          </FlexRow>
+
+          <FlexColumn margin="auto 0px 0px auto">
+            <FlexRow className={styles.icons}>
+              {messagesAmount > 0 && (
+                <p className={styles.circle}>{messagesAmount}</p>
+              )}
+            </FlexRow>
+            <Moment className={styles.date} fromNow locale="es">
+              {conversation.get("updatedAt")}
+            </Moment>
+          </FlexColumn>
         </>
       )}
     </FlexRow>

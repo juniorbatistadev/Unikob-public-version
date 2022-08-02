@@ -1,8 +1,21 @@
 .header {
-  background-color: var(--color-white);
   z-index: 1;
-  padding: 5px;
-  border-bottom: 1px solid #cfcfcf;
+  background-color: var(--color-blue-600);
+  padding: 10px;
+  box-shadow: var(--shadow-xl);
+  z-index: 2;
+  align-items: center;
+}
+
+.chatHeaderTitle {
+  color: var(--color-white);
+  font-size: var(--text-xl);
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.avatar {
+  margin-left: 5px;
 }
 
 .container {

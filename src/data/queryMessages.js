@@ -48,6 +48,7 @@ export const subscribeToNewMessages = async ({ queryData }) => {
   const conversation = await queryConversation.get(queryData);
 
   query.equalTo("conversation", conversation);
+  query.includeAll();
 
   const subscrition = await query.subscribe();
 

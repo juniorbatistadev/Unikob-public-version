@@ -1,13 +1,21 @@
 import { Formik, Form } from "formik";
 import { ErrorMessage, TextArea } from "@components/formikFields";
-import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import FlexColumn from "@components/common/FlexColumn";
 import styles from "./SendMessageForm.module.css";
 import { saveMessage } from "src/data/queryMessages";
 import { saveChatMessage } from "src/data/queryChatMessage";
+import SendIcon from "@assets/icons/send.svg";
 
 const SendMessageForm = ({ conversation }) => {
+  const handleSubmit = (values, actions) => {
+    if (conversation) {
+      saveMessage(values);
+    } else {
+      saveChatMessage(values);
+    }
+    actions.resetForm();
+  };
   return (
     <FlexColumn className={styles.container}>
       <Formik
@@ -17,36 +25,39 @@ const SendMessageForm = ({ conversation }) => {
         }}
         validate={(values) => {
           if (values.message.length > 1000) {
-            return { message: "Demasiado Largo " };
+            return { message: "Muy Largo" };
+          }
+          if (values.message.length > 1000 || values.message.length === 0) {
+            return { message: "" };
           }
         }}
-        onSubmit={(values, actions) => {
-          if (conversation) {
-            saveMessage(values);
-          } else {
-            saveChatMessage(values);
-          }
-          actions.resetForm();
-        }}
+        onSubmit={handleSubmit}
       >
-        <Form>
-          <FlexRow margin="5px">
-            <FlexColumn className={styles.textareaContainer}>
-              <ErrorMessage name="message" />
+        {(props) => (
+          <Form>
+            <FlexRow margin="5px">
+              <FlexColumn className={styles.textareaContainer}>
+                <ErrorMessage name="message" />
 
-              <TextArea
-                name="message"
-                className={styles.textarea}
-                required
-                placeholder="Mensaje"
-              />
-            </FlexColumn>
+                <TextArea
+                  padding={"10px 0px 10px 20px"}
+                  name="message"
+                  className={styles.textarea}
+                  required
+                  placeholder="Mensaje"
+                />
+              </FlexColumn>
 
-            <Button type="submit" margin="auto 0px 0px 5px">
-              Enviar
-            </Button>
-          </FlexRow>
-        </Form>
+              <button
+                type="submit"
+                margin="auto 0px 0px 5px"
+                className={styles.sendButton}
+              >
+                <SendIcon className={styles.sendIcon} />
+              </button>
+            </FlexRow>
+          </Form>
+        )}
       </Formik>
     </FlexColumn>
   );
