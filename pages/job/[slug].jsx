@@ -7,7 +7,7 @@ import extractTextFromPost from "src/helpers/extractTextFromPost";
 function ReadJob({ data }) {
   const { asPath } = useRouter();
 
-  function addPostJsonLd() {
+  function addJobJsonLd() {
     return {
       __html: `{
       "@context": "https://schema.org/",
