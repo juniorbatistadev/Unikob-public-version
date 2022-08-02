@@ -19,7 +19,7 @@ function ReadJob({ data }) {
         "@type": "Place",
         "address": {
           "@type": "PostalAddress",
-          "addressCountry": "${data.country.code}",
+          "addressCountry": "${data.country.code}"
         }
       },
       "description": "${extractTextFromPost(data.content.blocks, 300)}"
