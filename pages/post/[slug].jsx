@@ -5,6 +5,7 @@ import { getPostBySlugServerSide } from "src/data/server/queryPostsFromServer";
 import extractTextFromPost from "src/helpers/extractTextFromPost";
 import extractFirstImageFromPost from "src/helpers/extractFirstImageFromPost";
 import { useRouter } from "next/router";
+import { PROFILE_PATH } from "src/paths";
 
 function ReadPost({ data }) {
   const firstImageUrl = extractFirstImageFromPost(data.content.blocks);
@@ -24,7 +25,11 @@ function ReadPost({ data }) {
       "dateModified": "${data.updatedAt}",
       "author": {
         "@type": "Person",
-        "name": "${data.createdBy.username}"
+        "name": "${data.createdBy.username}",
+        "url": "${process.env.NEXT_PUBLIC_APP_URL}${PROFILE_PATH.replace(
+        ":username",
+        data.createdBy.username
+      )}"
       },
       "publisher": {
         "@type": "Organization",
