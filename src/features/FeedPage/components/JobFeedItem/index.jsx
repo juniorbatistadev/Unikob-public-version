@@ -35,7 +35,7 @@ function JobFeedItem({ job }) {
   return (
     <>
       {job && (
-        <FeedBox color={"rgb(210 187 143)"}>
+        <FeedBox color={"var(--color-blue-800)"} text="✨Trabajo Publicado">
           <FlexColumn className={styles.header}>
             <A href={JOB_READ_PATH.replace(":job", job.attributes.slug)}>
               <Title text={job.attributes.title} className={styles.title} />

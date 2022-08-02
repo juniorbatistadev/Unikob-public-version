@@ -19,6 +19,7 @@ function NewUsersList() {
         text="Dale la bienvenida a estos nuevos miembros"
         fontSize={`var(--text-xl)`}
         margin={"0px 0px 15px 0px"}
+        className={styles.title}
       />
       <FlexRow className={styles.usersContainer}>
         {users &&

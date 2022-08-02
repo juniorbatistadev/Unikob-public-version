@@ -34,7 +34,7 @@ const PostCard = ({ post }) => {
   return (
     <>
       {!isLoading && (
-        <FeedBox color={"#308cb8"}>
+        <FeedBox>
           {coverImage && (
             <A href={READ_POST_PATH.replace(":slug", post.attributes.slug)}>
               <img

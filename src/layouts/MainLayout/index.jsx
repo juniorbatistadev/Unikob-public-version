@@ -26,8 +26,8 @@ function MainLayout({ children }) {
           <div className={styles.ad}>
             <h6>¡Unikob te necesita!</h6>
             <p>
-              Los costos para mantener Unikob en linea son cubiertos por unos
-              cuantos individuos apasionados por la comunidad.
+              Los costos para mantener Unikob en linea son cubiertos solo por
+              unos cuantos individuos apasionados por la comunidad.
             </p>
             <Button
               as="a"

@@ -11,7 +11,7 @@ import { CRUSH_READ_PATH } from "src/paths";
 import { getCommentsNumberBySectionId } from "src/data/queryComments";
 import { useEffect, useState } from "react";
 
-function CrushFeedItem({ crush, displayComments }) {
+function CrushFeedItem({ crush, displayAsHeader }) {
   const [comments, setComments] = useState(0);
   const [createdBy, setCreatedBy] = useState(null);
   const [toUser, setToUser] = useState(null);
@@ -30,14 +30,17 @@ function CrushFeedItem({ crush, displayComments }) {
 
     getData().finally(() => setIsLoading(false));
 
-    if (displayComments)
+    if (!displayAsHeader)
       getCommentsNumberBySectionId(crush?.id).then((data) => setComments(data));
   }, [crush]);
 
   return (
     <>
       {!isLoading && crush && (
-        <FeedBox color={"rgb(210 143 143)"}>
+        <FeedBox
+          color={displayAsHeader ? null : "var(--color-red-800)"}
+          text="✨ Nuevo Crush"
+        >
           <FlexColumn padding={15}>
             {crush.attributes.isSecret ? (
               <FlexRow className={styles.title}>
@@ -116,7 +119,7 @@ function CrushFeedItem({ crush, displayComments }) {
               <FlexRow>
                 <Text text={crush.attributes.text} />
               </FlexRow>
-              {displayComments && (
+              {!displayAsHeader && (
                 <FlexRow>
                   <span role="img" aria-label="comment">
                     {/* 📣 */}
@@ -141,7 +144,7 @@ function CrushFeedItem({ crush, displayComments }) {
 }
 
 CrushFeedItem.defaultProps = {
-  displayComments: true,
+  displayAsHeader: false,
 };
 
 export default CrushFeedItem;

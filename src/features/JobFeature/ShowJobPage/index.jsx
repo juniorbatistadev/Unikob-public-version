@@ -59,7 +59,7 @@ function ShowJobPage({ data }) {
   return (
     <FlexColumn>
       <FlexColumn margin={"15px 0px 0px 0px"}>
-        <FeedBox color={"rgb(210 187 143)"}>
+        <FeedBox>
           <FlexColumn className={styles.header} padding={15}>
             <Title text={data.title} className={styles.title} />
 

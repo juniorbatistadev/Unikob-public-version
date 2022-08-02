@@ -1,6 +1,5 @@
 .containerLogged {
   margin: auto;
-  padding: 100px;
   justify-content: center;
   gap: 20px;
   align-items: center;
@@ -10,4 +9,10 @@
 
 .title {
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .containerLogged {
+    margin: 50px auto;
+  }
 }
