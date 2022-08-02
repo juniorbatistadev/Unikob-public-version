@@ -20,7 +20,6 @@ function ReadPost({ data }) {
       "@type": "Article",
       "headline": "${data.title}",
       "image": "${firstImageUrl || defaultImage}",
-        
       "datePublished": "${data.createdAt}",
       "dateModified": "${data.updatedAt}",
       "author": {
@@ -29,10 +28,9 @@ function ReadPost({ data }) {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Unikob",
+        "name": "Unikob"
       },
       "description": "${extractTextFromPost(data.content.blocks, 60)}",
-
     }
   `,
     };
