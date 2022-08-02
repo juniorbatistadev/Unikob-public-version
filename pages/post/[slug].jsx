@@ -10,10 +10,42 @@ function ReadPost({ data }) {
   const firstImageUrl = extractFirstImageFromPost(data.content.blocks);
   const { asPath } = useRouter();
 
+  console.log(data);
+
+  const defaultImage =
+    "https://media.istockphoto.com/photos/young-woman-reading-the-news-on-a-modern-tablet-computer-while-in-picture-id1177502660?k=20&m=1177502660&s=612x612&w=0&h=ynHK8Q0kyZJ6xaAKBqtFBBzZw5pOkegYx3TLKIxEzKM=";
+
+  function addPostJsonLd() {
+    return {
+      __html: `{
+      "@context": "https://schema.org/",
+      "@type": "Article",
+      "headline": "${data.title}",
+      "image": [
+        ${defaultImage}"
+       ],
+        
+      "datePublished": "${data.createdAt}",
+      "dateModified": "${data.updatedAt}",
+      "author": {
+        "@type": "Person",
+        "name": "${data.createdBy.username}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Unikob",
+      },
+      "description": "${extractTextFromPost(data.content.blocks, 60)}",
+
+    }
+  `,
+    };
+  }
+
   return (
     <>
       <Head>
-        <title>{`${data.title} - GenteUni`}</title>
+        <title>{`${data.title} - Unikob`}</title>
         <meta
           name="description"
           content={extractTextFromPost(data.content.blocks, 60)}
@@ -33,13 +65,18 @@ function ReadPost({ data }) {
         />
         <meta
           property="og:url"
-          content={`https://genteuni-next.vercel.app${asPath}`}
+          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}${asPath}`}
         />
         {firstImageUrl && <meta property="og:image" content={firstImageUrl} />}
 
         <meta name="twitter:card" content="summary"></meta>
-        <meta name="twitter:site" content="@genteuniapp" />
-        <meta name="twitter:creator" content="@genteuniapp" />
+        <meta name="twitter:site" content="@unikob_app" />
+        <meta name="twitter:creator" content="@unikon_app" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addPostJsonLd()}
+          key="post-jsonld"
+        />
       </Head>
       <ReadPostPage post={data} />
     </>
