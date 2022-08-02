@@ -5,7 +5,6 @@ import Spinner from "../Spinner";
 import FlexRow from "../FlexRow";
 
 const ElementHTML = ({ children, as, ...rest }) => {
-  console.log(rest);
   return (
     <>
       {as === "a" && <A {...rest}>{children}</A>}

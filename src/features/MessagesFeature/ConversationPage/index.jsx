@@ -41,8 +41,8 @@ const ConversationPage = ({ conversation }) => {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
-      block: "nearest",
-      inline: "center",
+      block: "start",
+      inline: "end",
       behavior: "smooth",
       alignToTop: false,
     });
@@ -100,14 +100,18 @@ const ConversationPage = ({ conversation }) => {
   return (
     <FlexColumn className={styles.container}>
       <FlexRow alignItems="center" className={styles.header}>
-        <GoBackButton width="25px" />
+        <GoBackButton fill={"var(--color-gray-100)"} margin={0} />
+
         {!isLoading && (
           <>
             <Avatar
+              width={40}
+              className={styles.avatar}
               image={fromUser.attributes.profilePicture?.url()}
               linkToUser={fromUser.attributes.username}
             />
             <Title
+              className={styles.chatHeaderTitle}
               margin="0px 0px 0px 10px"
               text={fromUser.attributes.username}
               onClick={() =>

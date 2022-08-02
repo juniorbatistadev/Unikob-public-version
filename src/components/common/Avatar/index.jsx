@@ -10,7 +10,7 @@ function Avatar({ image, width, linkToUser, ...props }) {
   return (
     <FlexColumn
       className={styles.container}
-      style={{ width, minHeight: width }}
+      style={{ minHeight: width, minWidth: width }}
       {...props}
     >
       <A

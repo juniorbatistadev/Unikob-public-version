@@ -1,6 +1,9 @@
 .container {
   width: 100%;
-  background: #fff;
+  background: var(--color-gray-300);
+  padding: 5px;
+  border-radius: 0px 0px 7px 7px;
+  box-shadow: inset 0px -10px 8px 0px #b2d1cd38;
 }
 
 .textareaContainer {
@@ -8,6 +11,29 @@
 }
 
 .textarea {
+  border-radius: 20px;
   width: 100%;
   max-height: 150px;
+  padding-left: 40px;
+}
+
+.sendButton {
+  background: var(--color-blue-600);
+  border-radius: 100%;
+  border: none;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.sendIcon {
+  width: 40px;
+  height: 17px;
+  fill: var(--color-white);
 }

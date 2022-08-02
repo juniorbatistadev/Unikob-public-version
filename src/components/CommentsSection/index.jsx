@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
-import Text from "@components/common/Text";
 import AddCommentForm from "./components/AddCommentForm";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import { getCommentsWithPagination } from "src/data/queryComments";

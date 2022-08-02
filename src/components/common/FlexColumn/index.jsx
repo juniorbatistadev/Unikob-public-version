@@ -16,7 +16,14 @@ const FlexColumn = ({
     <div
       className={classNames}
       {...props}
-      style={{ margin, padding, alignItems, justifyContent, gap }}
+      style={{
+        margin,
+        padding,
+        alignItems,
+        justifyContent,
+        gap,
+        ...props.style,
+      }}
     >
       {children}
     </div>

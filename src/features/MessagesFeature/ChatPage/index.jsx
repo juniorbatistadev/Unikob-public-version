@@ -7,11 +7,12 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import Message from "../components/Message";
 import SendMessageForm from "../components/SendMessageForm";
-
 import styles from "./index.module.css";
 import FlexColumn from "@components/common/FlexColumn";
 import Spinner from "@components/common/Spinner";
 import Text from "@components/common/Text";
+import FlexRow from "@components/common/FlexRow";
+import GoBackButton from "@components/common/GoBackButton";
 
 export default function ChatPage() {
   //get Messages
@@ -37,8 +38,9 @@ export default function ChatPage() {
     const handleNewMessages = async () => {
       const sub = await subscribeToNewChatMessages();
 
-      sub.on("create", (message) => {
-        addItemToStart(message);
+      sub.on("create", async (message) => {
+        const fetched = await message.fetch();
+        addItemToStart(fetched);
         scrollToBottom();
       });
     };
@@ -48,6 +50,12 @@ export default function ChatPage() {
 
   return (
     <FlexColumn className={styles.container}>
+      <FlexRow className={styles.chatHeader}>
+        <GoBackButton fill={"var(--color-gray-100)"} margin={0} />
+        <div className={styles.onlineDot}></div>
+
+        <Text className={styles.chatHeaderTitle} text="Chat Global" />
+      </FlexRow>
       {isLoading ? (
         <FlexColumn className={styles.loader} alignItems="center">
           <Text text="Cargando chat..." />
@@ -72,7 +80,7 @@ export default function ChatPage() {
               ))}
             </InfiniteScroll>
           </div>
-          <FlexColumn className={styles.chatFormContainer}>
+          <FlexColumn>
             <SendMessageForm />
           </FlexColumn>
         </>
