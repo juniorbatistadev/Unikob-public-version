@@ -16,8 +16,6 @@ function HomePage() {
   const { push } = useRouter();
   const { currentUser } = useContext(AuthContext);
 
-  console.log(currentUser);
-
   return (
     <FlexColumn>
       <FlexColumn>

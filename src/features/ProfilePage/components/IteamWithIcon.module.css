@@ -6,4 +6,5 @@
   width: 15px;
   height: 15px;
   margin-right: 10px;
+  fill: var(--color-blue-800);
 }

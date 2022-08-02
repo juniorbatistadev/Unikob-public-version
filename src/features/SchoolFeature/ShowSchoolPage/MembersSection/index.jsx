@@ -1,10 +1,10 @@
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
-import { getSchoolMembersWithPagination } from "src/data/querySchools";
 import InfiniteScroll from "react-infinite-scroll-component";
 import UserListItem from "@components/UserListItem";
 import EmptyIlustration from "@assets/icons/empty.svg";
+import { getSchoolMembersWithPagination } from "src/data/querySchoolMembers";
 
 const MembersSection = ({ school }) => {
   const { items, startFrom, count, nextPage, isLoading } = useInfiniteScrolling(
@@ -27,7 +27,7 @@ const MembersSection = ({ school }) => {
           next={nextPage}
         >
           {items.map((item) => (
-            <UserListItem key={item.id} user={item} />
+            <UserListItem key={item.id} user={item.get("user")} />
           ))}
         </InfiniteScroll>
       </FlexColumn>
