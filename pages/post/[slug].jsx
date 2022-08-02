@@ -20,14 +20,14 @@ function ReadPost({ data }) {
       "@context": "https://schema.org/",
       "@type": "Article",
       "headline": "${data.title}",
-      "image": "${firstImageUrl || defaultImage}",
+      ${firstImageUrl && `"image": "${firstImageUrl}",`}
       "datePublished": "${data.createdAt}",
       "dateModified": "${data.updatedAt}",
       "author": {
         "@type": "Person",
         "name": "${data.createdBy.username}",
-        "url": "${process.env.NEXT_PUBLIC_APP_URL}${PROFILE_PATH.replace(
-        ":username",
+        "url": "${process.env.NEXT_PUBLIC_APP_SITE_URL}${PROFILE_PATH.replace(
+        ":user",
         data.createdBy.username
       )}"
       },
@@ -35,7 +35,7 @@ function ReadPost({ data }) {
         "@type": "Organization",
         "name": "Unikob"
       },
-      "description": "${extractTextFromPost(data.content.blocks, 60)}"
+      "description": "${extractTextFromPost(data.content.blocks, 100)}"
     }
   `,
     };
