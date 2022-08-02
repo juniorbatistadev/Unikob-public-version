@@ -11,6 +11,18 @@ import { SEARCH_PATH } from "src/paths";
 function SearchBar({ className, callBack }) {
   const { push } = useRouter();
 
+  const handleSubmit = (values, actions) => {
+    push({
+      pathname: SEARCH_PATH,
+      query: {
+        s: values.search,
+      },
+    });
+    actions.resetForm();
+
+    callBack();
+  };
+
   return (
     <FlexColumn className={className}>
       <Formik
@@ -20,15 +32,7 @@ function SearchBar({ className, callBack }) {
         validationSchema={Yup.object({
           search: Yup.string().required("Requerido"),
         })}
-        onSubmit={async ({ search }) => {
-          push({
-            pathname: SEARCH_PATH,
-            query: {
-              s: search,
-            },
-          });
-          callBack();
-        }}
+        onSubmit={handleSubmit}
       >
         <Form className={styles.form}>
           <TextField

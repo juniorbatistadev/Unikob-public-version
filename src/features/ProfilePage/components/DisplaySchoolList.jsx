@@ -1,12 +1,12 @@
 import FlexColumn from "@components/common/FlexColumn";
 import { useEffect, useState } from "react";
-import { getSchoolsByMember } from "src/data/querySchools";
 import StudentIcon from "@assets/icons/student.svg";
 import ItemWithIcon from "./ItemWithIcon";
 import Text from "@components/common/Text";
 import Link from "next/link";
 import { SCHOOL_READ_PATH } from "src/paths";
 import A from "@components/common/A";
+import { getSchoolsByMember } from "src/data/querySchoolMembers";
 
 function DisplaySchoolList({ user, ...props }) {
   const [schools, setSchools] = useState([]);
@@ -27,9 +27,17 @@ function DisplaySchoolList({ user, ...props }) {
 
   return (
     <FlexColumn {...props}>
-      {schools.map((school) => (
-        <A href={SCHOOL_READ_PATH.replace(":school", school.attributes.slug)}>
-          <ItemWithIcon IconSVG={StudentIcon} text={school.attributes.name} />
+      {schools.map((member) => (
+        <A
+          href={SCHOOL_READ_PATH.replace(
+            ":school",
+            member.attributes.school.attributes.slug
+          )}
+        >
+          <ItemWithIcon
+            IconSVG={StudentIcon}
+            text={member.attributes.school.attributes.name}
+          />
         </A>
       ))}
       {schoolsOverLimit > 0 && (

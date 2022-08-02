@@ -80,9 +80,9 @@ const TeachersSection = ({ school }) => {
         hasMore={startFrom < count}
         next={nextPage}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <TeacherListItem
-            key={item.id}
+            key={index}
             id={item.id}
             name={item.attributes.name}
             subjects={item.attributes.subjects}

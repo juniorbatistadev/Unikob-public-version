@@ -4,6 +4,12 @@ import PlusIcon from "@assets/icons/plus.svg";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@context/AuthContext";
 import Spinner from "@components/common/Spinner";
+import {
+  isMemberOfSchool,
+  saveSchoolMember,
+  unjoinSchool,
+} from "src/data/querySchoolMembers";
+import Alert from "@components/common/Alert";
 
 function AddSchoolToProfileButton({ school }) {
   const [alreadyAdded, setAlreadyAdded] = useState();
@@ -11,28 +17,25 @@ function AddSchoolToProfileButton({ school }) {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    const getData = async () => {
-      const result = await school
-        .relation("members")
-        .query()
-        .get(currentUser.id)
-        .catch((err) => console.log(err));
-
-      setAlreadyAdded(result ? true : false);
-    };
-
-    if (currentUser) getData().finally(() => setIsLoading(false));
+    if (currentUser)
+      isMemberOfSchool(currentUser, school)
+        .then((result) => setAlreadyAdded(result))
+        .finally(() => setIsLoading(false));
   }, [currentUser]);
 
   const handleClick = async () => {
     if (alreadyAdded) {
-      school.relation("members").remove(currentUser);
-      school.save();
+      unjoinSchool(currentUser, school);
       setAlreadyAdded(false);
     } else {
-      setAlreadyAdded(true);
-      school.relation("members").add(currentUser);
-      school.save();
+      await saveSchoolMember(school)
+        .then(() => setAlreadyAdded(true))
+        .catch((err) =>
+          Alert.fire({
+            icon: "error",
+            text: err?.message,
+          })
+        );
     }
   };
 
