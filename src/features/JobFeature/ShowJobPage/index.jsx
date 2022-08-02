@@ -99,7 +99,7 @@ function ShowJobPage({ data }) {
       <FlexColumn className={styles.content}>
         <RenderHTML json={data.content} />
       </FlexColumn>
-      <FlexRow margin={"10px 0px 0px 0px"} gap={10}>
+      <FlexRow margin={"10px 0px 0px 10px"} gap={10}>
         {currentUser && (
           <SaveButton
             title={data.title}

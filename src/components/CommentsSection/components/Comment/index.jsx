@@ -60,19 +60,21 @@ const Comment = ({
 
           <div className={styles.text}>{text.trim()}</div>
           <FlexRow margin="10px 0px 0px 0px ">
-            <FlexRow className={styles.actions}>
-              {!parentComment && (
-                <span onClick={() => setIsResponseFormOpen((prev) => !prev)}>
-                  {isRespondFormOpen ? "Cerrar" : "Responder"}
-                </span>
-              )}
+            {currentUser && (
+              <FlexRow className={styles.actions}>
+                {!parentComment && (
+                  <span onClick={() => setIsResponseFormOpen((prev) => !prev)}>
+                    {isRespondFormOpen ? "Cerrar" : "Responder"}
+                  </span>
+                )}
 
-              {currentUser.id === user.id && (
-                <span onClick={onDeleteComment} className={styles.delete}>
-                  Borrar
-                </span>
-              )}
-            </FlexRow>
+                {currentUser?.id === user.id && (
+                  <span onClick={onDeleteComment} className={styles.delete}>
+                    Borrar
+                  </span>
+                )}
+              </FlexRow>
+            )}
             <Moment className={styles.date} fromNow locale="es">
               {createdAt}
             </Moment>
@@ -100,7 +102,7 @@ const Comment = ({
                 section={section}
                 commentId={item.id}
                 key={item.id}
-                margin="10px 5px 10px 0px"
+                margin="0px 5px 10px 0px"
                 date={item.attributes.createdAt}
                 user={item.attributes.createdBy}
                 text={item.attributes.text}

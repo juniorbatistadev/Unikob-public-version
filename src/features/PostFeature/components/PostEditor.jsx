@@ -69,7 +69,9 @@ function PostEditor({ post, action, handleSubmit }) {
           onSubmit={handleSubmit}
         >
           {(props) => (
-            <Form style={{ padding: 20, backgroundColor: "#fff" }}>
+            <Form
+              style={{ padding: 20, backgroundColor: "var(--color-white)" }}
+            >
               <TextArea
                 name="title"
                 placeholder="Escribe el titulo de tu post"

@@ -37,16 +37,16 @@ import ProfileCommentSection from "./ProfileCommentSection";
 import { useRouter } from "next/router";
 import GiftSection from "./GiftSection";
 import DisplaySchoolList from "./components/DisplaySchoolList";
-import { getUserRoles } from "src/data/queryRoles";
+
 import Button from "@components/common/Button";
-import { saveBan } from "src/data/queryBans";
+
 import Alert from "@components/common/Alert";
+import BanUserButton from "@components/auth/BanUserButton";
 
 export default function ProfilePage({ username }) {
   const [user, setUser] = useState();
   const [Isloading, setIsLoading] = useState(true);
   const { push } = useRouter();
-  const [userRoles, setUserRoles] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -82,26 +82,6 @@ export default function ProfilePage({ username }) {
     });
   }, [currentUser, username]);
 
-  useEffect(() => {
-    getUserRoles(currentUser).then((roles) => {
-      const rolesNames = roles.map((role) => role.get("name"));
-      setUserRoles(rolesNames);
-    });
-  }, [currentUser]);
-
-  const canUserBan = () => {
-    return userRoles.some((role) => ["admin"].includes(role));
-  };
-
-  const handleBan = async () => {
-    await saveBan(user);
-    Alert.fire({
-      title: "Usuario baneado",
-      timer: 2000,
-      showConfirmButton: false,
-    });
-  };
-
   return (
     <>
       {Isloading ? (
@@ -123,20 +103,13 @@ export default function ProfilePage({ username }) {
                   fontSize="var(--text-lg)"
                   className={styles.username}
                 />
-                {currentUser?.id !== user.id && (
+                {currentUser && currentUser?.id !== user.id && (
                   <FlexRow className={styles.buttons} gap={5}>
                     <FollowButton userToFollow={user} />
 
                     <MessageButton toUser={user} />
-                    {canUserBan() && (
-                      <Button
-                        typeStyle="secondary"
-                        padding="5px 15px"
-                        onClick={handleBan}
-                      >
-                        Bannear
-                      </Button>
-                    )}
+                    <BanUserButton user={user} />
+
                     <MenuProfile user={user} />
                   </FlexRow>
                 )}
@@ -147,7 +120,7 @@ export default function ProfilePage({ username }) {
                 <Views user={user} />
                 <A
                   href={
-                    currentUser.attributes.username === username
+                    currentUser?.attributes.username === username
                       ? `${CURRENT_USER_PROFILE_PATH}/followers`
                       : `${PROFILE_PATH}/followers`.replace(":user", username)
                   }
@@ -156,7 +129,7 @@ export default function ProfilePage({ username }) {
                 </A>
                 <A
                   href={
-                    currentUser.attributes.username === username
+                    currentUser?.attributes.username === username
                       ? `${CURRENT_USER_PROFILE_PATH}/following`
                       : `${PROFILE_PATH}/following`.replace(":user", username)
                   }
@@ -181,7 +154,7 @@ export default function ProfilePage({ username }) {
 
           <TabsMenu
             path={
-              currentUser.attributes.username === username
+              currentUser?.attributes.username === username
                 ? `${CURRENT_USER_PROFILE_PATH}`
                 : `${PROFILE_PATH}`.replace(":user", username)
             }

@@ -15,7 +15,7 @@ function SendGiftButton({ text, toUser, ...props }) {
 
   return (
     <>
-      {currentUser.id !== toUser.id && (
+      {currentUser && currentUser?.id !== toUser.id && (
         <Button onClick={sendGift} padding="5px 15px" {...props}>
           {text}
         </Button>

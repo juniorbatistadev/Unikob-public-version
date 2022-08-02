@@ -15,7 +15,7 @@ const FollowNotification = ({ notification }) => {
         linkToUser={notification.attributes.triggeredBy.username}
       />
       <FlexColumn className={styles.content}>
-        <FlexRow>
+        <FlexRow className={styles.info}>
           <DisplayUsername
             className={styles.username}
             user={notification.attributes.triggeredBy}

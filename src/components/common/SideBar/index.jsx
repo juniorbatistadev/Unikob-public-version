@@ -27,6 +27,7 @@ import {
   SAVED_PATH,
   DISCOVER_PATH,
   CURRENT_USER_PROFILE_PATH,
+  CONTACT_PATH,
 } from "src/paths";
 import DisplayUsername from "../DisplayUsername";
 import FlexRow from "../FlexRow";
@@ -46,7 +47,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
   };
 
   return (
-    <nav className={className}>
+    <aside className={className}>
       <FlexColumn className={styles.content}>
         <FlexColumn className={styles["close-button"]}>
           <ArrowIcon
@@ -101,22 +102,27 @@ function SideBar({ setMenuOpen, className, ...props }) {
             <RocketIcon alt="option" className={styles["menu-icon"]} />
             <span>Descubre</span>
           </li>
-          <li
-            onClick={() => {
-              goTo(SAVED_PATH);
-            }}
-          >
-            <BookMarkIcon alt="option" className={styles["menu-icon"]} />
-            <span>Guardados</span>
-          </li>
-          <li
-            onClick={() => {
-              goTo(CHAT_PATH);
-            }}
-          >
-            <ChatIcon alt="option" className={styles["menu-icon"]} />
-            <span>Chat Global</span>
-          </li>
+          {isMounted && currentUser && (
+            <li
+              onClick={() => {
+                goTo(SAVED_PATH);
+              }}
+            >
+              <BookMarkIcon alt="option" className={styles["menu-icon"]} />
+              <span>Guardados</span>
+            </li>
+          )}
+
+          {isMounted && currentUser && (
+            <li
+              onClick={() => {
+                goTo(CHAT_PATH);
+              }}
+            >
+              <ChatIcon alt="option" className={styles["menu-icon"]} />
+              <span>Chat Global</span>
+            </li>
+          )}
 
           <li
             onClick={() => {
@@ -145,18 +151,20 @@ function SideBar({ setMenuOpen, className, ...props }) {
 
             <span>Trabajos</span>
           </li>
-          <li
-            onClick={() => {
-              goTo(SETTINGS_PATH);
-            }}
-          >
-            <SettingsIcon alt="option" className={styles["menu-icon"]} />
+          {isMounted && currentUser && (
+            <li
+              onClick={() => {
+                goTo(SETTINGS_PATH);
+              }}
+            >
+              <SettingsIcon alt="option" className={styles["menu-icon"]} />
 
-            <span>Adjustes</span>
-          </li>
+              <span>Adjustes</span>
+            </li>
+          )}
           <li
             onClick={() => {
-              goTo(SETTINGS_PATH);
+              goTo(CONTACT_PATH);
             }}
           >
             <SupportIcon alt="option" className={styles["menu-icon"]} />
@@ -166,7 +174,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
 
         <div className={styles.footer}></div>
       </FlexColumn>
-    </nav>
+    </aside>
   );
 }
 

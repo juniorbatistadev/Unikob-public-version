@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Parse from "parse";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -12,9 +12,11 @@ import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
 import { FEED_PATH } from "src/paths";
 import A from "@components/common/A";
+import { useRouter } from "next/router";
 
 function SignUpForm() {
   const { setCurrentUser } = useContext(AuthContext);
+  const { push } = useRouter();
 
   const onSubmit = async (values) => {
     const user = new Parse.User();
@@ -24,11 +26,7 @@ function SignUpForm() {
     try {
       await user.signUp();
       setCurrentUser(Parse.User.current());
-      Alert.fire({
-        title: "Bienvenido",
-        text: "Te enviamos un correo para verificar tu cuenta",
-        icon: "success",
-      });
+      push(FEED_PATH);
     } catch (error) {
       // Show the error message  and let the user try again.
       var message;

@@ -1,13 +1,15 @@
 import styles from "./index.module.css";
 import SignUpForm from "@components/auth/SignUpForm";
 import LoginForm from "@components/auth/LoginForm";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "@components/common/Button";
 import Title from "@components/common/Title";
 import { AuthContext } from "src/contexts/AuthContext";
 import WelcomeLoggedUser from "src/features/HomePage/WelcomeLoggedUser";
 import ResetPasswordForm from "@components/auth/ResetPasswordForm";
 import Text from "@components/common/Text";
+import { useRouter } from "next/router";
+import { FEED_PATH } from "src/paths";
 
 const LoginContainer = ({ setSectionOpen }) => {
   return (
@@ -62,15 +64,22 @@ const PasswordContainer = ({ setSectionOpen }) => {
 function AuthSection() {
   const [sectionOpen, setSectionOpen] = useState("login");
   const { currentUser } = useContext(AuthContext);
+  const { replace } = useRouter();
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     replace(FEED_PATH);
+  //   }
+  // }, [currentUser]);
 
   const renderContent = (section) => {
     switch (section) {
-      case "login":
-        return <LoginContainer setSectionOpen={setSectionOpen} />;
       case "signup":
         return <SignUpContainer setSectionOpen={setSectionOpen} />;
       case "password":
         return <PasswordContainer setSectionOpen={setSectionOpen} />;
+      case "login":
+        return <LoginContainer setSectionOpen={setSectionOpen} />;
 
       default:
         return <LoginContainer setSectionOpen={setSectionOpen} />;
@@ -78,7 +87,7 @@ function AuthSection() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.authContainer}>
       {currentUser ? (
         <WelcomeLoggedUser username={currentUser.attributes.username} />
       ) : (

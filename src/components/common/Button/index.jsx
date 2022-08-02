@@ -1,11 +1,11 @@
 import styles from "./index.module.css";
-import loadingCircle from "@assets/images/loading-circle.gif";
 import A from "@components/common/A";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
 import FlexRow from "../FlexRow";
 
 const ElementHTML = ({ children, as, ...rest }) => {
+  console.log(rest);
   return (
     <>
       {as === "a" && <A {...rest}>{children}</A>}

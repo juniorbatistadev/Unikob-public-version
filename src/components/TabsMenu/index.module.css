@@ -2,7 +2,7 @@
 .default {
   background-color: var(--color-white);
   position: sticky;
-  top: 60px;
+  top: var(--nav-height);
   justify-content: center;
   box-shadow: var(--shadow-sm);
   z-index: 2;
@@ -38,12 +38,16 @@
 }
 
 .clear .menuOption {
-  padding: 15px;
+  padding: 12px;
   font-size: var(--text-lg);
   color: var(--color-gray-600);
   text-decoration: none;
   cursor: pointer;
   font-weight: 600;
+  border-radius: 10px;
+}
+.clear .menuOption:hover {
+  background-color: var(--color-gray-300);
 }
 
 .clear .menuOptionActive {

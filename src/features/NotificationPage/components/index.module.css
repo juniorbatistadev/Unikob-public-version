@@ -1,15 +1,19 @@
 .notification {
   background-color: #fff;
-  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-   box-shadow: var(--shadow);
+  box-shadow: var(--shadow);
   width: 100%;
 }
 
 .content {
   margin-left: 10px;
   width: 100%;
+  flex-wrap: wrap;
+}
+
+.info {
+  flex-wrap: wrap;
 }
 
 .date {

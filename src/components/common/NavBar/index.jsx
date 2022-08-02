@@ -21,12 +21,12 @@ function NavBar() {
   const { isMounted } = useIsMounted();
 
   return (
-    <div className={styles.container}>
+    <nav className={styles.container}>
       <div className={styles["left-side"]}>
         <MenuButton />
 
         <A href={FEED_PATH} className={styles.logoLink}>
-          <div className={styles.logo} alignItems="center">
+          <div className={styles.logo}>
             <img src={Logo.src} />
             <span className={styles.logoTitle}>Unikob</span>
           </div>
@@ -58,7 +58,7 @@ function NavBar() {
           )}
         </div>
       )}
-    </div>
+    </nav>
   );
 }
 
