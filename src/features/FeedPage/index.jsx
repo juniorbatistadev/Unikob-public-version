@@ -9,44 +9,61 @@ import FlexColumn from "@components/common/FlexColumn";
 import RecentFeed from "./RecentFeed";
 import FollowingFeed from "./FollowingFeed";
 import PenIcon from "@assets/icons/pen.svg";
+import { useContext } from "react";
+import { AuthContext } from "@context/AuthContext";
 
 function HomePage() {
   const { push } = useRouter();
+  const { currentUser } = useContext(AuthContext);
+
+  console.log(currentUser);
 
   return (
     <FlexColumn>
-      <FlexRow margin={"20px 0px 10px 0px"} alignItems="center">
-        <TabsMenu
-          typeStyle="clear"
-          path={FEED_PATH}
-          slug="section"
-          options={[
-            { name: "Feed", query: {} },
+      <FlexColumn>
+        {currentUser && (
+          <>
+            <FlexRow margin={"20px 0px 10px 0px"} alignItems="center">
+              <TabsMenu
+                typeStyle="clear"
+                path={FEED_PATH}
+                slug="section"
+                options={[
+                  { name: "Feed", query: {} },
 
-            {
-              link: "following",
-              name: "Seguidos",
-              query: { section: "following" },
-            },
-          ]}
-        />
+                  {
+                    link: "following",
+                    name: "Seguidos",
+                    query: { section: "following" },
+                  },
+                ]}
+              />
 
-        <Button
-          className={styles.createPostButton}
-          onClick={async () => await push(CREATE_POST_PATH)}
-        >
-          Escribir Post
-          <PenIcon className={styles.penIcon} />
-        </Button>
-      </FlexRow>
+              <Button
+                className={styles.createPostButton}
+                onClick={async () => await push(CREATE_POST_PATH)}
+                padding={10}
+              >
+                Escribir Post
+                <PenIcon className={styles.penIcon} />
+              </Button>
+            </FlexRow>
 
-      <TabsContent
-        slug={"section"}
-        tabs={{
-          default: <RecentFeed />,
-          following: <FollowingFeed />,
-        }}
-      />
+            <TabsContent
+              slug={"section"}
+              tabs={{
+                default: <RecentFeed />,
+                following: <FollowingFeed />,
+              }}
+            />
+          </>
+        )}
+      </FlexColumn>
+      {!currentUser && (
+        <FlexColumn margin={"20px 0px 0px 0px"}>
+          <RecentFeed />
+        </FlexColumn>
+      )}
     </FlexColumn>
   );
 }

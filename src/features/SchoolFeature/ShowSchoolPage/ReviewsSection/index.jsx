@@ -29,7 +29,7 @@ const ReviewsSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <Title text="Reviews" />
+      <Title text="Reviews" margin={"0px 0px 0px 10px"} />
       <FlexRow className={styles.topHeader}>
         <FlexColumn className={styles.avgContainer}>
           <ReviewAvg school={school} />

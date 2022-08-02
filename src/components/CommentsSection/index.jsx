@@ -10,6 +10,7 @@ import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Comment from "./components/Comment";
 import Spinner from "@components/common/Spinner";
+import LoginToAccess from "@components/LoginToAccess";
 
 const CommentSection = ({ section, type }) => {
   const { currentUser } = useContext(AuthContext);
@@ -26,7 +27,9 @@ const CommentSection = ({ section, type }) => {
       {currentUser ? (
         <AddCommentForm section={section} reloadData={reloadData} type={type} />
       ) : (
-        <Text text="Inicia Sesion o Registrate para poder comentar" />
+        <FlexColumn margin="0px 0px 20px 0px">
+          <LoginToAccess text="Inicia Sesion para poder comentar" />
+        </FlexColumn>
       )}
       <FlexColumn>
         {isLoading ? (
@@ -43,7 +46,7 @@ const CommentSection = ({ section, type }) => {
                 section={section}
                 commentId={item.id}
                 key={item.id}
-                margin="10px 5px "
+                margin="0px 5px 10px 0px "
                 date={item.attributes.createdAt}
                 user={item.attributes.createdBy}
                 text={item.attributes.text}
@@ -55,7 +58,7 @@ const CommentSection = ({ section, type }) => {
         {count < 1 && !isLoading && (
           <FlexColumn margin="auto" alignItems="center">
             <EmptyIlustration width="200px" height="200px" />
-            <Title text="No hay comentarios" fontSize="16px" />
+            <Title text="No hay comentarios" fontSize="var(--text-base)" />
           </FlexColumn>
         )}
       </FlexColumn>

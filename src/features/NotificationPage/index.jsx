@@ -6,10 +6,10 @@ import { getUserNotificationsWithPagination } from "src/data/queryNotifications"
 import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Notification from "./Notification";
-import Text from "@components/common/Text";
 import Parse from "parse";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import styles from "./index.module.css";
+import Spinner from "@components/common/Spinner";
 
 function NotificationPage() {
   const { currentUser } = useContext(AuthContext);
@@ -25,21 +25,25 @@ function NotificationPage() {
     Parse.Cloud.run("readAllNotifications", null);
   }, []);
 
+  console.log(items);
+
   return (
     <FlexColumn margin="10px" className={styles.container}>
       <Title text="Notificaciones" />
       {isLoading ? (
-        <Text text="Cargando.." />
+        <Spinner />
       ) : (
-        <InfiniteScroll
-          dataLength={items.length}
-          next={nextPage}
-          hasMore={startFrom < count}
-        >
-          {items.map((item) => (
-            <Notification key={item.id} notification={item} />
-          ))}
-        </InfiniteScroll>
+        <FlexColumn margin={"20px 0px 0px 0px"}>
+          <InfiniteScroll
+            dataLength={items.length}
+            next={nextPage}
+            hasMore={startFrom < count}
+          >
+            {items.map((item) => (
+              <Notification key={item.id} notification={item} />
+            ))}
+          </InfiniteScroll>
+        </FlexColumn>
       )}
 
       {count < 1 && !isLoading && (

@@ -6,7 +6,7 @@
 }
 
 .container {
-  height: calc(100vh - 60px);
+  height: calc(100vh - var(--nav-height));
   background-color: var(--color-white);
   width: 100%;
 }

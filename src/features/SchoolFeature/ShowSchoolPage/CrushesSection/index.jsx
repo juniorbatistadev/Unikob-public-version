@@ -17,7 +17,7 @@ const CrushesSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <Title text="Crushes" />
+      <Title text="Crushes" margin={"0px 0px 20px 10px"} />
       <InfiniteScroll
         dataLength={items.length}
         loader={"Cargando"}
@@ -25,7 +25,7 @@ const CrushesSection = ({ school }) => {
         next={nextPage}
       >
         {items.map((item) => (
-          <FlexColumn margin={"10px"}>
+          <FlexColumn>
             <CrushFeedItem crush={item} />
           </FlexColumn>
         ))}

@@ -2,6 +2,8 @@ import styles from "./index.module.css";
 import NavBar from "@components/common/NavBar";
 import SideBar from "@components/common/SideBar";
 import Head from "next/head";
+import Button from "@components/common/Button";
+import { CONTACT_PATH } from "src/paths";
 
 function MainLayout({ children }) {
   return (
@@ -14,15 +16,30 @@ function MainLayout({ children }) {
         <SideBar className={styles["sidebar"]} />
 
         <main className={styles["content"]}>{children}</main>
-        <aside className={styles["right-side-bar"]}>
-          {/* <p style={{ marginTop: 10 }}> Ads </p> */}
-          <img
-            alt="Ad"
-            style={{ marginTop: 20, marginLeft: 10 }}
-            width="200"
-            src="https://i.pinimg.com/236x/6a/34/49/6a344987abc2e298780b4afed3df0795--google-banner-banners.jpg"
-          />
-        </aside>
+        <section className={styles["right-side-bar"]}>
+          <div className={styles.ad}>
+            <h6>¡Tu negocio puede estar aqui!</h6>
+            <Button as="a" href={CONTACT_PATH}>
+              Escribenos
+            </Button>
+          </div>
+          <div className={styles.ad}>
+            <h6>¡Unikob te necesita!</h6>
+            <p>
+              Los costos para mantener Unikob en linea son cubiertos por unos
+              cuantos individuos apasionados por la comunidad.
+            </p>
+            <Button
+              as="a"
+              target="_blank"
+              href={
+                "https://www.paypal.com/donate/?hosted_button_id=P8743QK8AL2SA"
+              }
+            >
+              Donar 💖
+            </Button>
+          </div>
+        </section>
       </div>
     </div>
   );

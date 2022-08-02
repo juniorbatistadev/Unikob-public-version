@@ -36,7 +36,7 @@ function LoginForm({ setSectionOpen }) {
   });
 
   return (
-    <div className={styles.container}>
+    <FlexColumn>
       <Formik
         initialValues={{
           email: "",
@@ -79,7 +79,7 @@ function LoginForm({ setSectionOpen }) {
           </Form>
         )}
       </Formik>
-    </div>
+    </FlexColumn>
   );
 }
 

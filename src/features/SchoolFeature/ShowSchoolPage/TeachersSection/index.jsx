@@ -30,7 +30,7 @@ const TeachersSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <FlexRow>
+      <FlexRow margin={"0px 10px"}>
         <Title text="Profesores" />
         <FlexRow className={styles.addTeacherButton}>
           {currentUser ? (
@@ -57,17 +57,19 @@ const TeachersSection = ({ school }) => {
 
       <Formik initialValues={{ subject: "" }}>
         <Form>
-          <FlexRow alignItems="center" margin="10px 0px">
+          <FlexRow alignItems="center" margin="10px ">
             <Text text="Mostrar por asignatura:" />
-            <SelectSubject
-              className={styles.selectSubject}
-              onChange={(value) => {
-                if (value.length > 0) setSubject(value[0].id);
-              }}
-              name="subject"
-              placeholder="Mostrar todas"
-              firstOption={{ name: "Mostrar todas", id: "" }}
-            />
+            <FlexRow margin={"0px 10px 0px auto"}>
+              <SelectSubject
+                className={styles.selectSubject}
+                onChange={(value) => {
+                  if (value.length > 0) setSubject(value[0].id);
+                }}
+                name="subject"
+                placeholder="Mostrar todas"
+                firstOption={{ name: "Mostrar todas", id: "" }}
+              />
+            </FlexRow>
           </FlexRow>
         </Form>
       </Formik>

@@ -19,7 +19,7 @@ const PostCommentNotification = ({ notification }) => {
             linkToUser={notification.attributes.triggeredBy.username}
           />
           <FlexColumn className={styles.content}>
-            <FlexRow>
+            <FlexRow className={styles.info}>
               <Text
                 text={
                   <>

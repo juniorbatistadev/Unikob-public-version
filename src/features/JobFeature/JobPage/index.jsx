@@ -10,16 +10,19 @@ import useInfiniteScrolling from "@hooks/useInfinteScrolling";
 import JobFeedItem from "@pages/FeedPage/components/JobFeedItem";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getJobsWithPagination } from "src/data/queryJobs";
 import { JOB_CREATE_PATH } from "src/paths";
 import EmptyIlustration from "@assets/icons/empty.svg";
+import styles from "./index.module.css";
+import { AuthContext } from "@context/AuthContext";
 
 function JobPage() {
   const [subject, setSubject] = useState("");
   const [country, setCountry] = useState("");
   const { push } = useRouter();
+  const { currentUser } = useContext(AuthContext);
 
   const { startFrom, isLoading, items, count, nextPage, reloadData } =
     useInfiniteScrolling({
@@ -29,24 +32,25 @@ function JobPage() {
       user: subject,
     });
 
-  console.log("rendered 2");
   return (
     <FlexColumn margin="10px">
       <FlexRow alignItems={"center"}>
         <GoBackButton />
         <Title text="Trabajos" />
-        <Button
-          margin={"0px 10px 0px auto"}
-          onClick={() => push(JOB_CREATE_PATH)}
-        >
-          Publicar un Trabajo
-        </Button>
+        {currentUser && (
+          <Button
+            margin={"0px 10px 0px auto"}
+            onClick={() => push(JOB_CREATE_PATH)}
+          >
+            Publicar un Trabajo
+          </Button>
+        )}
       </FlexRow>
 
       <Formik initialValues={{ country: "", subject: "" }}>
         <Form>
           <FlexRow alignItems="center" margin="10px 0px">
-            <Text text={"Filtrar:"} />
+            <Text text={"Filtrar:"} className={styles.filter} />
             <FlexColumn margin={"0px 0px 0px 10px"}>
               <SelectCountry
                 onChange={(value) => {

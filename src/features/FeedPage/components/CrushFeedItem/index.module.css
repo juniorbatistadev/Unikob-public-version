@@ -1,28 +1,21 @@
-.container {
-    background: #fff;
-    border-radius: 7px;
-    padding: 10px;
-    margin: 10px;
-  }
-  
-  .date {
-    color: grey;
-    margin-right: 10px;
-  }
-  
-  .avatar {
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  .usernameText {
-    cursor: pointer;
-  }
-  
-  .text {
-    color: rgb(36, 36, 36);
-    margin: 0px 5px;
-  }
-  
-  .title {
-    flex-wrap: wrap;
-  }
+.date {
+  color: grey;
+  margin-right: 10px;
+}
+
+.avatar {
+  margin-right: 5px;
+  cursor: pointer;
+}
+.usernameText {
+  cursor: pointer;
+}
+
+.text {
+  color: rgb(36, 36, 36);
+  margin: 0px 5px;
+}
+
+.title {
+  flex-wrap: wrap;
+}

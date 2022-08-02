@@ -17,7 +17,7 @@ const MembersSection = ({ school }) => {
 
   return (
     <FlexColumn>
-      <Title text={`Miembros (${count})`} />
+      <Title text={`Miembros (${count})`} margin={"0px 0px 0px 10px"} />
 
       <FlexColumn margin={"15px 0px 0px 0px"}>
         <InfiniteScroll
