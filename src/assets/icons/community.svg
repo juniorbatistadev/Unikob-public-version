@@ -6,12 +6,8 @@
    viewBox="0 0 809.34183 600"
    version="1.1"
    id="svg138"
-   sodipodi:docname="community.svg"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
+  
+   >
   <defs
      id="defs142" />
   <sodipodi:namedview
@@ -19,20 +15,9 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
+   
      showgrid="false"
-     inkscape:zoom="1.5272857"
-     inkscape:cx="397.10973"
-     inkscape:cy="243.89674"
-     inkscape:window-width="1920"
-     inkscape:window-height="1051"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg138" />
+    />
   <path
      d="m 168.01903,332.30988 c -36.59171,-36.02189 -52.04631,-73.60177 -43.51812,-105.81608 10.94436,-41.34026 59.56474,-69.92355 133.39432,-78.42081 l 0.27268,2.37135 c -72.8018,8.37841 -120.68047,36.32021 -131.35973,76.66007 -8.29975,31.35084 6.93053,68.10978 42.88542,103.50533 z"
      fill="#f0f0f0"

@@ -10,6 +10,7 @@ import ResetPasswordForm from "@components/auth/ResetPasswordForm";
 import Text from "@components/common/Text";
 import { useRouter } from "next/router";
 import { FEED_PATH } from "src/paths";
+import useIsMounted from "@hooks/useIsMounted";
 
 const LoginContainer = ({ setSectionOpen }) => {
   return (
@@ -65,6 +66,7 @@ function AuthSection() {
   const [sectionOpen, setSectionOpen] = useState("login");
   const { currentUser } = useContext(AuthContext);
   const { replace } = useRouter();
+  const { isMounted } = useIsMounted();
 
   // useEffect(() => {
   //   if (currentUser) {
@@ -88,7 +90,7 @@ function AuthSection() {
 
   return (
     <div className={styles.authContainer}>
-      {currentUser ? (
+      {isMounted && currentUser ? (
         <WelcomeLoggedUser username={currentUser.attributes.username} />
       ) : (
         <>{renderContent(sectionOpen)}</>
