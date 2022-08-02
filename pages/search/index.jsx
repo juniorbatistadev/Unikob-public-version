@@ -1,4 +1,5 @@
 import SearchPage from "@pages/SearchFeature/SearchPage";
+import Head from "next/head";
 
 function Search() {
   return (
