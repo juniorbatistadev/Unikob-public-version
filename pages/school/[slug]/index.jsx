@@ -8,7 +8,7 @@ function ShowSchool({ data }) {
   return (
     <>
       <Head>
-        <title>{`${data.name} - GenteUni`}</title>
+        <title>{`${data.name} - Unikob`}</title>
         <meta name="description" content={data.description} />
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="es_ES" />
@@ -20,15 +20,14 @@ function ShowSchool({ data }) {
         <meta property="og:description" content={data.description} />
         <meta
           property="og:url"
-          content={`https://genteuni-next.vercel.app${asPath}`}
+          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}${asPath}`}
         />
-        {/* <meta property="og:image" content={firstImageUrl} /> */}
 
         <meta name="twitter:card" content="summary"></meta>
-        <meta name="twitter:site" content="@genteuniapp" />
-        <meta name="twitter:creator" content="@genteuniapp" />
+        <meta name="twitter:site" content="@unikob_app" />
+        <meta name="twitter:creator" content="@unikob_app" />
       </Head>
-      <ShowSchoolPage data={data} />{" "}
+      <ShowSchoolPage data={data} />
     </>
   );
 }

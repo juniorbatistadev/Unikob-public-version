@@ -1,4 +1,3 @@
-import JobFeedItem from "@pages/FeedPage/components/JobFeedItem";
 import ShowJobPage from "@pages/JobFeature/ShowJobPage";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -10,7 +9,7 @@ function ReadJob({ data }) {
   return (
     <>
       <Head>
-        <title>{`${data.title} - GenteUni`}</title>
+        <title>{`${data.title} - Unikob`}</title>
         <meta
           name="description"
           content={extractTextFromPost(data.content.blocks, 60)}
@@ -30,12 +29,12 @@ function ReadJob({ data }) {
         />
         <meta
           property="og:url"
-          content={`https://genteuni-next.vercel.app${asPath}`}
+          content={`${process.env.NEXT_PUBLIC_APP_URL}${asPath}`}
         />
 
         <meta name="twitter:card" content="summary"></meta>
-        <meta name="twitter:site" content="@genteuniapp" />
-        <meta name="twitter:creator" content="@genteuniapp" />
+        <meta name="twitter:site" content="@unikob_app" />
+        <meta name="twitter:creator" content="@unikob_app" />
       </Head>
       <ShowJobPage data={data} />
     </>

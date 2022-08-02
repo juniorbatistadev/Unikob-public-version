@@ -1,13 +1,18 @@
 import ChatPage from "@pages/MessagesFeature/ChatPage";
+import Head from "next/head";
 import withAuth from "src/helpers/withAuth";
-import EmptyLayout from "src/layouts/EmptyLayout";
 
 function Chat() {
-  return <ChatPage />;
+  return (
+    <>
+      <Head>
+        <title>Chat - Unikob</title>
+      </Head>
+      <ChatPage />
+    </>
+  );
 }
 
 const WithAuthChat = withAuth(Chat);
-
-// WithAuthChat.layout = EmptyLayout;
 
 export default WithAuthChat;

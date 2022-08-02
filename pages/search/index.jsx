@@ -1,7 +1,14 @@
 import SearchPage from "@pages/SearchFeature/SearchPage";
 
 function Search() {
-  return <SearchPage />;
+  return (
+    <>
+      <Head>
+        <title>Busquedas - Unikob</title>
+      </Head>
+      <SearchPage />
+    </>
+  );
 }
 
 export default Search;
