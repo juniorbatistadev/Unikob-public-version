@@ -1,6 +1,5 @@
 import logo from "@assets/images/logo.png";
 import styles from "./index.module.css";
-import Button from "@components/common/Button";
 import CommunityIcon from "@assets/icons/community.svg";
 import FlexRow from "@components/common/FlexRow";
 
@@ -8,7 +7,13 @@ function InfoHero() {
   return (
     <div className={styles.container}>
       <FlexRow alignItems={"center"}>
-        <img src={logo.src} alt="Logo" className={styles.logo} />
+        <img
+          src={logo.src}
+          alt="Logo"
+          className={styles.logo}
+          width={42}
+          height={42}
+        />
         <span className={styles.logoText}>Unikob</span>
       </FlexRow>
 
