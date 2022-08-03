@@ -19,7 +19,7 @@ function BanUserButton({ user }) {
         isUserBanned(user).then((isBanned) => setIsBanned(isBanned));
       }
     });
-  }, [currentUser]);
+  }, [currentUser, user]);
 
   const canUserBan = (roles) => {
     return roles.some((role) => ["admin"].includes(role));

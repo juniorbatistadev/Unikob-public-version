@@ -39,7 +39,7 @@ function EditSchool() {
     if (slug) {
       getData();
     }
-  }, [slug, currentUser?.id, router]);
+  }, [slug, currentUser, router]);
 
   return isLoading ? <Spinner /> : <EditSchoolPage school={school} />;
 }
