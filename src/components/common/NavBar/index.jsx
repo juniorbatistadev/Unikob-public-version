@@ -24,10 +24,9 @@ function NavBar() {
     <nav className={styles.container}>
       <div className={styles["left-side"]}>
         <MenuButton />
-
         <A href={FEED_PATH} className={styles.logoLink}>
           <div className={styles.logo}>
-            <img src={Logo.src} />
+            <img src={Logo.src} alt="logo" width={42} height={42} />
             <span className={styles.logoTitle}>Unikob</span>
           </div>
         </A>

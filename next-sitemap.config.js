@@ -15,6 +15,9 @@ module.exports = {
     "/notifications",
     "/post/preview",
     "/school/create",
+    `${siteUrl}/sitemap.xml`,
+    `${siteUrl}/posts-sitemap.xml`,
+    `${siteUrl}/jobs-sitemap.xml`,
   ],
   generateRobotsTxt: true,
   robotsTxtOptions: {
