@@ -27,6 +27,10 @@ function NotificationSettings() {
 
         const token = await getToken(messaging);
         console.log(token);
+        messaging.onMessage((payload) => {
+          console.log("Message received. ", payload);
+          // ...
+        });
       }
     });
   };
