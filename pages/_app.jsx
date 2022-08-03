@@ -3,6 +3,7 @@ import Parse from "parse";
 import AuthContextProvider from "src/contexts/AuthContext";
 import MainLayout from "src/layouts/MainLayout";
 import Head from "next/head";
+import { initFirebase } from "../initFirebase";
 
 function App({ Component, pageProps }) {
   //checking if env is browser
@@ -18,6 +19,8 @@ function App({ Component, pageProps }) {
 
   const DefaultLayout = MainLayout;
   const Layout = Component.layout || DefaultLayout;
+
+  initFirebase();
 
   return (
     <AuthContextProvider>

@@ -7,15 +7,29 @@ import GoBackButton from "@components/common/GoBackButton";
 import Text from "@components/common/Text";
 import FlexColumn from "@components/common/FlexColumn";
 import Alert from "@components/common/Alert";
-
 import ManageNotificationsForm from "./ManageNotificationsForm";
+import * as firebase from "firebase/app";
+import { getMessaging, getToken } from "firebase/messaging";
+import { initFirebase } from "initFirebase";
 
 // import usePushNotifications from "@hooks/usePushNotification";
 
 function NotificationSettings() {
   // const askForPermissioToReceiveNotifications = usePushNotifications();
 
-  const askForPermissioToReceiveNotifications = async () => {};
+  const askForPermissioToReceiveNotifications = async () => {
+    console.log("Requesting permission...");
+    Notification.requestPermission().then(async (permission) => {
+      if (permission === "granted") {
+        console.log("Notification permission granted.");
+        const app = await initFirebase();
+        const messaging = getMessaging(app);
+
+        const token = await getToken(messaging);
+        console.log(token);
+      }
+    });
+  };
 
   const handleClick = () => {
     askForPermissioToReceiveNotifications()
@@ -61,9 +75,9 @@ function NotificationSettings() {
         />
 
         {/* <Text text="Las notificaciones se activan en el ultimo dispostivos que hizo login." />
-        <Text text="Para activarlas en este dispositivo presiona 'Activar en este dispositivo'  " />
+        <Text text="Para activarlas en este dispositivo presiona 'Activar en este dispositivo'  " /> */}
 
-        <Button onClick={handleClick}>Activar en este dispositivo</Button> */}
+        <Button onClick={handleClick}>Activar en este dispositivo</Button>
       </FlexColumn>
     </motion.div>
   );
