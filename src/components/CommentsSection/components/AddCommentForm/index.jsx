@@ -67,6 +67,7 @@ const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
                       <ErrorMessage name="text" className={styles.error} />
 
                       <Button
+                        type="submit"
                         loading={props.isSubmitting}
                         disabled={props.isSubmitting}
                       >

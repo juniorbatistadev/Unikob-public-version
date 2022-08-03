@@ -6,14 +6,14 @@ import Title from "@components/common/Title";
 import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
-import { getSchoolsByMember } from "src/data/querySchools";
+import { getSchoolsByMember } from "src/data/querySchoolMembers";
 import FlexColumn from "@components/common/FlexColumn";
 import Text from "@components/common/Text";
 import AddSchoolToProfileButton from "@pages/SchoolFeature/components/AddSchoolToProfileButton";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import Spinner from "@components/common/Spinner";
 import { useRouter } from "next/router";
-import { SEARCH_PATH, SEARCH_SCHOOL_PATH } from "src/paths";
+import { SEARCH_PATH } from "src/paths";
 
 function PasswordSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -57,9 +57,9 @@ function PasswordSettings() {
       ) : schools.length > 0 ? (
         <FlexColumn>
           {schools.map((school) => (
-            <FlexRow key={school.id} className={styles.schoolRow}>
-              <Text text={school.attributes.name} />
-              <AddSchoolToProfileButton school={school} />
+            <FlexRow key={school.get("school").id} className={styles.schoolRow}>
+              <Text text={school.get("school").attributes.name} />
+              <AddSchoolToProfileButton school={school.get("school")} />
             </FlexRow>
           ))}
         </FlexColumn>

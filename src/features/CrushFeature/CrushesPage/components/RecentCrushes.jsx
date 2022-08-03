@@ -14,7 +14,7 @@ const RecentCrushes = () => {
   );
 
   return (
-    <FlexColumn>
+    <FlexColumn margin={"10px 0px"}>
       <InfiniteScroll
         dataLength={items.length}
         loader={"Cargando"}

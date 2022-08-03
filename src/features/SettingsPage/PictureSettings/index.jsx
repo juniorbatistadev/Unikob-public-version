@@ -4,6 +4,7 @@ import Title from "@components/common/Title";
 import PictureForm from "./PictureForm.jsx";
 import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
+import FlexColumn from "@components/common/FlexColumn";
 
 function PictureSetting() {
   return (
@@ -16,7 +17,9 @@ function PictureSetting() {
         <GoBackButton />
         <Title text="Tu Perfil" className={styles.title} />
       </FlexRow>
-      <PictureForm />
+      <FlexColumn margin={"0px 10px"}>
+        <PictureForm />
+      </FlexColumn>
     </motion.div>
   );
 }

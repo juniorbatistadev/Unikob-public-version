@@ -8,6 +8,7 @@ import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
 import Alert from "@components/common/Alert";
+import FlexColumn from "@components/common/FlexColumn";
 
 function PasswordSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -44,14 +45,16 @@ function PasswordSettings() {
         <Title text="Contraseña" className={styles.title} />
       </FlexRow>
 
-      <Title
-        text="Recibir correo para cambiar la contraseña"
-        typeStyle="secondary"
-      />
+      <FlexColumn margin={"0px 10px"}>
+        <Title
+          text="Recibir correo para cambiar la contraseña"
+          typeStyle="secondary"
+        />
 
-      <Button onClick={resetPassword} loading={isLoading}>
-        Cambiar Contraseña
-      </Button>
+        <Button onClick={resetPassword} loading={isLoading}>
+          Cambiar Contraseña
+        </Button>
+      </FlexColumn>
     </motion.div>
   );
 }

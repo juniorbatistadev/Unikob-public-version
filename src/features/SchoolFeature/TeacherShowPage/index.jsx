@@ -60,8 +60,8 @@ const ShowTeacher = () => {
             </FlexColumn>
           </FlexRow>
           <FlexColumn>
-            <FlexRow>
-              <SchoolIcon width="25px" height="25px" />
+            <FlexRow margin={"0px 0px 0px 10px"}>
+              <SchoolIcon width="25px" height="25px" fill="var(--primary)" />
               <A
                 href={SCHOOL_READ_PATH.replace(
                   ":school",
@@ -75,7 +75,7 @@ const ShowTeacher = () => {
                 />
               </A>
             </FlexRow>
-            <FlexRow margin={"15px 0px 0px 0px"}>
+            <FlexRow margin={"15px 0px 0px 10px"}>
               {subjectsTags.map((subject) => (
                 <FlexRow margin="0px 5px 0px 0px">
                   <Tag key={subject.id} text={subject.attributes.name} />

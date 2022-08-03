@@ -9,6 +9,7 @@ import initFacebook from "src/helpers/initFacebook";
 import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
 import Alert from "@components/common/Alert";
+import FlexColumn from "@components/common/FlexColumn";
 
 function FacebookSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -80,21 +81,23 @@ function FacebookSettings() {
         <Title text="Facebook Login" className={styles.title} />
       </FlexRow>
 
-      <Title
-        text={
-          isUserLinked
-            ? "Puedes desvincular tu cuenta de Facebook"
-            : "Puedes vincular tu cuenta para iniciar sesion con Facebook"
-        }
-        typeStyle="secondary"
-      />
-      <Button
-        loading={isLoading}
-        onClick={isUserLinked ? unlinkUser : linkUser}
-        typeStyle={isUserLinked ? "secondary" : "primary"}
-      >
-        {isUserLinked ? "Desvincular de Facebook" : "Vincular con Facebook"}
-      </Button>
+      <FlexColumn margin={"0px 10px"}>
+        <Title
+          text={
+            isUserLinked
+              ? "Puedes desvincular tu cuenta de Facebook"
+              : "Puedes vincular tu cuenta para iniciar sesion con Facebook"
+          }
+          typeStyle="secondary"
+        />
+        <Button
+          loading={isLoading}
+          onClick={isUserLinked ? unlinkUser : linkUser}
+          typeStyle={isUserLinked ? "secondary" : "primary"}
+        >
+          {isUserLinked ? "Desvincular de Facebook" : "Vincular con Facebook"}
+        </Button>
+      </FlexColumn>
     </motion.div>
   );
 }
