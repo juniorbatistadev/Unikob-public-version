@@ -1,6 +1,6 @@
 .cover {
   background-size: cover;
   background-position: center;
-  width: 150px;
+  width: 100%;
   height: 100px;
 }

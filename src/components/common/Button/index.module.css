@@ -28,7 +28,7 @@
 }
 .btn:disabled:hover {
   text-decoration: line-through;
-  background-color: #f8f8f8;
+  background-color: var(--color-gray-400);
   box-shadow: none;
   cursor: default;
 }
@@ -77,8 +77,8 @@
 }
 
 .transparent:hover {
-  border: solid 1px #4173b2;
-  color: #245592;
+  border: solid 1px var(--primary);
+  color: var(--primary);
   background: var(--color-white);
 }
 

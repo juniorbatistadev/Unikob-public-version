@@ -21,11 +21,14 @@ import { deleteJob } from "src/data/queryJobs";
 import { useRouter } from "next/router";
 import SaveButton from "@components/SaveButton";
 import { getUserRoles } from "src/data/queryRoles";
+import ShareButtons from "@components/ShareButtons";
+import useIsMounted from "@hooks/useIsMounted";
 
 function ShowJobPage({ data }) {
   const { currentUser } = useContext(AuthContext);
   const { replace } = useRouter();
   const [userRoles, setUserRoles] = useState([]);
+  const { isMounted } = useIsMounted();
 
   const onDelete = async () => {
     const response = await Alert.fire({
@@ -106,6 +109,12 @@ function ShowJobPage({ data }) {
             type="job"
             itemId={data.objectId}
             typeClass="Job"
+          />
+        )}
+        {isMounted && (
+          <ShareButtons
+            title={data.title}
+            text="Mire lo que encontré en Unikob.com "
           />
         )}
 

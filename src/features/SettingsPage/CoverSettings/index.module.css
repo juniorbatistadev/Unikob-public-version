@@ -3,9 +3,10 @@
 }
 
 .images {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 10px;
+  grid-gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .form {
@@ -14,8 +15,7 @@
 }
 
 .image {
-  width: 150px;
-  margin: 10px;
+  width: 100%;
 }
 
 .text {

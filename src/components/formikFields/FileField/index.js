@@ -18,9 +18,9 @@ function FileField({ setFieldValue, onChangeCallBack, ...props }) {
 
   return (
     <label className={styles.container}>
-      <span className={styles.button}>Seleciona el Archivo</span>
+      <span className={styles.button}>Buscar archivo</span>
       <Text
-        text={fileName ? fileName : "Ningun archivo selecionado todavia"}
+        text={fileName ? fileName : "Seleciona un archivo"}
         margin="0px 0px 0px 5px"
       />
 

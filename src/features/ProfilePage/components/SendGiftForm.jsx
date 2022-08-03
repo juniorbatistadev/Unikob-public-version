@@ -56,7 +56,7 @@ const SendGiftForm = ({ user }) => {
   return (
     <div>
       {wasSent ? (
-        <Title text="Tu Regalo fue enviado!" typeStyle="secondary" />
+        <Title text="¡Tu Regalo fue enviado!" typeStyle="secondary" />
       ) : (
         <Formik
           initialValues={{

@@ -8,6 +8,7 @@ import { AuthContext } from "src/contexts/AuthContext";
 import Avatar from "@components/common/Avatar";
 import Alert from "@components/common/Alert";
 import defaultAvatar from "@assets/images/default-avatar.jpg";
+import FlexColumn from "@components/common/FlexColumn";
 
 function PictureForm() {
   const { currentUser } = useContext(AuthContext);
@@ -66,12 +67,14 @@ function PictureForm() {
       >
         {(props) => (
           <Form className={styles.form}>
-            <FileField
-              name="file"
-              onChangeCallBack={onChange}
-              setFieldValue={props.setFieldValue}
-            />
-            <ErrorMessage name="file" />
+            <FlexColumn margin={"10px 0px 0px 0px"}>
+              <FileField
+                name="file"
+                onChangeCallBack={onChange}
+                setFieldValue={props.setFieldValue}
+              />
+              <ErrorMessage name="file" />
+            </FlexColumn>
             <Button
               type="submit"
               className={styles.button}
