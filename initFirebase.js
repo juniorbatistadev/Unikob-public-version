@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getMessaging } from "firebase/messaging";
+import { getMessaging, getToken } from "firebase/messaging";
 
 export const initFirebase = () => {
   const firebaseConfig = {
@@ -14,4 +14,8 @@ export const initFirebase = () => {
 
   // Initialize Firebase
   return initializeApp(firebaseConfig);
+};
+
+export const getMessagingToken = () => {
+  return getToken(getMessaging(initFirebase()));
 };

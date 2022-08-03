@@ -98,7 +98,7 @@ const PostCard = ({ post }) => {
               margin="10px"
             >
               <FlexRow alignItems="center">
-                <ViewsPost postInfoId={post.attributes.postInfo.id} />
+                <ViewsPost postInfoId={post.attributes.postInfo?.id} />
               </FlexRow>
               <FlexRow alignItems="center">
                 <LikesPost postId={post.id} />

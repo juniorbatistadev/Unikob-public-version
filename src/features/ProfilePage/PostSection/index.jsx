@@ -5,11 +5,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import PostFeedItem from "@pages/FeedPage/components/PostFeedItem";
 import Spinner from "@components/common/Spinner";
+import { getUserFeedItemsWithPagination } from "src/data/queryFeed";
+import FeedItem from "@pages/FeedPage/FeedItem";
 
 const PostSection = ({ user }) => {
   const { startFrom, count, items, isLoading, nextPage } = useInfiniteScrolling(
     {
-      query: getPostsWithPagination,
+      query: getUserFeedItemsWithPagination,
       user: user,
       perPage: 10,
     }
@@ -28,8 +30,8 @@ const PostSection = ({ user }) => {
           loader={"Cargando"}
         >
           {items.map((item) => (
-            <FlexColumn margin={"0px 0px 15px 0px"}>
-              <PostFeedItem key={item.id} post={item} />
+            <FlexColumn>
+              <FeedItem key={item.id} feedItem={item} />
             </FlexColumn>
           ))}
         </InfiniteScroll>

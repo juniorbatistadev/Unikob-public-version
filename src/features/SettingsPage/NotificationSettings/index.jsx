@@ -4,39 +4,40 @@ import Title from "@components/common/Title";
 import Button from "@components/common/Button";
 import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
-import Text from "@components/common/Text";
 import FlexColumn from "@components/common/FlexColumn";
 import Alert from "@components/common/Alert";
 import ManageNotificationsForm from "./ManageNotificationsForm";
-import * as firebase from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
-import { initFirebase } from "initFirebase";
-
-// import usePushNotifications from "@hooks/usePushNotification";
+import { useEffect, useState } from "react";
+import PushIllustration from "@assets/icons/push-notification.svg";
+import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemissionToReceiveNotifications";
 
 function NotificationSettings() {
-  // const askForPermissioToReceiveNotifications = usePushNotifications();
+  const [isNotificationEnabled, setIsNotificationEnabled] = useState();
 
-  const askForPermissioToReceiveNotifications = async () => {
-    console.log("Requesting permission...");
-    Notification.requestPermission().then(async (permission) => {
-      if (permission === "granted") {
-        console.log("Notification permission granted.");
-        const app = await initFirebase();
-        const messaging = getMessaging(app);
+  useEffect(() => {
+    setIsNotificationEnabled(Notification.permission === "granted");
+  }, []);
 
-        const token = await getToken(messaging);
-        console.log(token);
-        messaging.onMessage((payload) => {
-          console.log("Message received. ", payload);
-          // ...
-        });
-      }
-    });
-  };
+  // const askForPermissioToReceiveNotifications = async () => {
+  //   await Notification.requestPermission().then(async (permission) => {
+  //     if (permission === "granted") {
+  //       const token = await getMessagingToken();
+
+  //       const deviceDetector = new DeviceDetector();
+  //       const device = deviceDetector.parse(navigator.userAgent);
+
+  //       await savePushToken({
+  //         token,
+  //         device: `${device.os.name} ${device.device.type} ${device.client.type}`,
+  //       });
+  //     } else {
+  //       throw "Permiso no otorgado, por favor intente nuevamente";
+  //     }
+  //   });
+  // };
 
   const handleClick = () => {
-    askForPermissioToReceiveNotifications()
+    askForPermissionToReceiveNotifications()
       .then(() => {
         Alert.fire({
           icon: "success",
@@ -64,6 +65,22 @@ function NotificationSettings() {
         <Title text="Notificaciones" className={styles.title} />
       </FlexRow>
 
+      {!isNotificationEnabled && (
+        <FlexColumn margin="0px 10px 20px 10px">
+          <Title
+            typeStyle="secondary"
+            text="Activas las notificaciones en este dispositivo para que no pierdas ninguna."
+            margin="10px 0px 10px 0px"
+          />
+          <PushIllustration
+            width={"80%"}
+            height={"100%"}
+            style={{ margin: "30px auto 40px auto" }}
+          />
+          <Button onClick={handleClick}>Recibir Notificaciones</Button>
+        </FlexColumn>
+      )}
+
       <FlexColumn margin="10px">
         <Title
           typeStyle="secondary"
@@ -72,16 +89,8 @@ function NotificationSettings() {
         />
         <ManageNotificationsForm />
 
-        <Title
-          typeStyle="secondary"
-          text="Dispositivos"
-          margin="10px 0px 10px 0px"
-        />
-
         {/* <Text text="Las notificaciones se activan en el ultimo dispostivos que hizo login." />
         <Text text="Para activarlas en este dispositivo presiona 'Activar en este dispositivo'  " /> */}
-
-        <Button onClick={handleClick}>Activar en este dispositivo</Button>
       </FlexColumn>
     </motion.div>
   );
