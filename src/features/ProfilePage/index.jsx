@@ -37,10 +37,6 @@ import ProfileCommentSection from "./ProfileCommentSection";
 import { useRouter } from "next/router";
 import GiftSection from "./GiftSection";
 import DisplaySchoolList from "./components/DisplaySchoolList";
-
-import Button from "@components/common/Button";
-
-import Alert from "@components/common/Alert";
 import BanUserButton from "@components/auth/BanUserButton";
 
 export default function ProfilePage({ username }) {

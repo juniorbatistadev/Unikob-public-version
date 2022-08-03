@@ -66,4 +66,23 @@ export const getSchoolFeedItemsWithPagination = async ({
   return result;
 };
 
+export const getUserFeedItemsWithPagination = async ({
+  startFrom,
+  perPage,
+  user,
+}) => {
+  const query = new Parse.Query(Feed);
+
+  query.equalTo("createdBy", user);
+  query.skip(startFrom);
+  query.descending("createdAt");
+  query.limit(perPage);
+  query.includeAll();
+  query.withCount();
+
+  const result = await query.find();
+
+  return result;
+};
+
 export default query;

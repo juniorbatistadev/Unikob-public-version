@@ -9,12 +9,18 @@ import FlexColumn from "@components/common/FlexColumn";
 import RecentFeed from "./RecentFeed";
 import FollowingFeed from "./FollowingFeed";
 import PenIcon from "@assets/icons/pen.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "@context/AuthContext";
 
 function HomePage() {
   const { push } = useRouter();
   const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    Notification.requestPermission().then((permission) => {
+      console.log(permission);
+    });
+  }, []);
 
   return (
     <FlexColumn>
