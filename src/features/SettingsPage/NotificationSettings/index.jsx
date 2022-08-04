@@ -18,30 +18,12 @@ function NotificationSettings() {
     setIsNotificationEnabled(Notification.permission === "granted");
   }, []);
 
-  // const askForPermissioToReceiveNotifications = async () => {
-  //   await Notification.requestPermission().then(async (permission) => {
-  //     if (permission === "granted") {
-  //       const token = await getMessagingToken();
-
-  //       const deviceDetector = new DeviceDetector();
-  //       const device = deviceDetector.parse(navigator.userAgent);
-
-  //       await savePushToken({
-  //         token,
-  //         device: `${device.os.name} ${device.device.type} ${device.client.type}`,
-  //       });
-  //     } else {
-  //       throw "Permiso no otorgado, por favor intente nuevamente";
-  //     }
-  //   });
-  // };
-
   const handleClick = () => {
     askForPermissionToReceiveNotifications()
       .then(() => {
         Alert.fire({
           icon: "success",
-          text: "Dipostivio Registrado",
+          text: "Dipositivo Registrado",
           timer: 2000,
           showConfirmButton: false,
         });

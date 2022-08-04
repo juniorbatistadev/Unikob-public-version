@@ -11,15 +11,31 @@ import FollowingFeed from "./FollowingFeed";
 import PenIcon from "@assets/icons/pen.svg";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "@context/AuthContext";
+import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemissionToReceiveNotifications";
+import Alert from "@components/common/Alert";
 
 function HomePage() {
   const { push } = useRouter();
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    Notification.requestPermission().then((permission) => {
-      console.log(permission);
-    });
+    if (Notification.permission !== "granted") {
+      askForPermissionToReceiveNotifications()
+        .then(() => {
+          Alert.fire({
+            icon: "success",
+            text: "Dipositivo Registrado",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        })
+        .catch((error) => {
+          Alert.fire({
+            icon: "error",
+            text: `${error}`,
+          });
+        });
+    }
   }, []);
 
   return (
