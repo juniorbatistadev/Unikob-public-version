@@ -4,6 +4,7 @@ import AuthContextProvider from "src/contexts/AuthContext";
 import MainLayout from "src/layouts/MainLayout";
 import Head from "next/head";
 import { initFirebase } from "../initFirebase";
+import Script from "next/script";
 
 function App({ Component, pageProps }) {
   //checking if env is browser
@@ -28,6 +29,22 @@ function App({ Component, pageProps }) {
         <title>Unikob</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Script
+        id="google-analytics"
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+
+      <Script strategy="lazyOnload" id="gtag">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+        page_path: window.location.pathname,
+        });
+    `}
+      </Script>
       <Layout>
         <Component {...pageProps} />
       </Layout>
