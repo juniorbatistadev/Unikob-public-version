@@ -1,16 +1,25 @@
 const withReactSvg = require("next-react-svg");
 const path = require("path");
+const withPWA = require("next-pwa");
 
-module.exports = withReactSvg({
-  include: path.resolve(__dirname, "src/assets/icons"),
-  webpack(config, options) {
-    return config;
-  },
+module.exports = withPWA(
+  withReactSvg({
+    include: path.resolve(__dirname, "src/assets/icons"),
+    webpack(config, options) {
+      return config;
+    },
 
-  // i18n: {
-  //   locales: ["es", "en"],
-  //   defaultLocale: "es",
-  // },
+    pwa: {
+      dest: "public",
+      register: true,
+      skipWaiting: true,
+    },
 
-  reactStrictMode: true,
-});
+    // i18n: {
+    //   locales: ["es", "en"],
+    //   defaultLocale: "es",
+    // },
+
+    reactStrictMode: true,
+  })
+);
