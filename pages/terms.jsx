@@ -366,7 +366,7 @@ function Terms() {
         <p>
           Como parte de la funcionalidad del Sitio, puede vincular su cuenta con
           cuentas en línea que tenga con proveedores de servicios de terceros
-          (cada una de esas cuentas, una "Cuenta de terceros") al: (1)
+          (cada una de esas cuentas, una Cuenta de terceros) al: (1)
           proporcionar su Cuenta de terceros información de inicio de sesión a
           través del Sitio; o (2) permitiéndonos acceder a su Cuenta de
           terceros, según lo permitan los términos y condiciones aplicables que
