@@ -3,7 +3,7 @@ import Parse from "parse";
 function initFacebook() {
   window.fbAsyncInit = function () {
     Parse.FacebookUtils.init({
-      appId: "954266884973298", // Facebook App ID
+      appId: process.env.NEXT_PUBLIC_APP_FACEBOOK_APP_ID, // Facebook App ID
       cookie: true, // enable cookies to allow Parse to access the session
       xfbml: true, // initialize Facebook social plugins on the page
       version: "v13.0", // point to the latest Facebook Graph API version

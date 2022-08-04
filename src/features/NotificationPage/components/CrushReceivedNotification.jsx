@@ -10,7 +10,6 @@ import A from "@components/common/A";
 import { CRUSH_READ_PATH } from "src/paths";
 
 const CrushReceivedNotification = ({ notification }) => {
-  // console.log("asd");
   return (
     <>
       {/* {notification.attributes.crush && ( */}
@@ -73,7 +72,7 @@ const CrushReceivedNotification = ({ notification }) => {
             )}
             {notification.attributes.crush && (
               <Text
-                text={`"${notification.attributes.crush?.attributes.text}"`}
+                text={`"${notification.attributes.data}"`}
                 margin={"0px 0px 0px 5px"}
               />
             )}

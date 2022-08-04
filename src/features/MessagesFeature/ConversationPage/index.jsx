@@ -102,7 +102,9 @@ const ConversationPage = ({ conversation }) => {
       <FlexRow alignItems="center" className={styles.header}>
         <GoBackButton fill={"var(--color-gray-100)"} margin={0} />
 
-        {!isLoading && (
+        {isLoading ? (
+          <Spinner />
+        ) : (
           <>
             <Avatar
               width={40}

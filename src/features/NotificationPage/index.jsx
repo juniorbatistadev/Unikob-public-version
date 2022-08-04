@@ -10,6 +10,7 @@ import Parse from "parse";
 import EmptyIlustration from "@assets/icons/empty.svg";
 import styles from "./index.module.css";
 import Spinner from "@components/common/Spinner";
+import Text from "@components/common/Text";
 
 function NotificationPage() {
   const { currentUser } = useContext(AuthContext);
@@ -48,8 +49,8 @@ function NotificationPage() {
 
       {count < 1 && !isLoading && (
         <FlexColumn alignItems="center" margin="auto">
-          <Title text="No tienes notificaciones" fontSize="var(--text-base)" />
           <EmptyIlustration width="200px" height="200px" />
+          <Text text="No tienes notificaciones" />
         </FlexColumn>
       )}
     </FlexColumn>
