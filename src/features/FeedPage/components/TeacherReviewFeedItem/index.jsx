@@ -31,7 +31,7 @@ function TeacherReviewFeedItem({ teacherReview }) {
   return (
     <>
       {!isLoading && teacherReview && (
-        <FeedBox color={"var(--color-indigo-400)"}>
+        <FeedBox>
           <FlexColumn padding={15}>
             <FlexRow className={styles.title}>
               <FlexRow>

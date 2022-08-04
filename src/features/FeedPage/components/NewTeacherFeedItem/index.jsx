@@ -12,7 +12,7 @@ import { TEACHER_READ_PATH } from "src/paths";
 import Title from "@components/common/Title";
 import Tag from "@components/common/Tag";
 
-function NewTeacherFeedItem({ teacher, displayComments }) {
+function NewTeacherFeedItem({ teacher }) {
   const [createdBy, setCreatedBy] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [subjectsTags, setSubjectsTags] = useState([]);
@@ -35,7 +35,7 @@ function NewTeacherFeedItem({ teacher, displayComments }) {
   return (
     <>
       {!isLoading && teacher && (
-        <FeedBox color={"var(--color-indigo-400)"}>
+        <FeedBox>
           <FlexColumn padding={15}>
             <FlexRow className={styles.title}>
               <FlexRow>

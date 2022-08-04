@@ -34,7 +34,10 @@ function SchoolReviewFeedItem({ schoolReview }) {
   return (
     <>
       {!isLoading && schoolReview && (
-        <FeedBox color={"var(--color-indigo-400)"}>
+        <FeedBox
+          color={"var(--color-indigo-400)"}
+          text={"🎒 " + school.get("name")}
+        >
           <FlexColumn padding={15}>
             <FlexRow className={styles.title}>
               <FlexRow>
