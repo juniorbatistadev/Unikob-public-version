@@ -25,6 +25,7 @@ function HomePage() {
   return (
     <FlexColumn>
       <FlexColumn>
+        <p>Dev</p>
         {currentUser && (
           <>
             <FlexRow margin={"20px 0px 10px 0px"} alignItems="center">
