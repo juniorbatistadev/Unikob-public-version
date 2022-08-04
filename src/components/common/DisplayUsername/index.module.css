@@ -3,6 +3,7 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  word-break: break-all;
 }
 
 .primary {
@@ -10,4 +11,5 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  word-break: break-all;
 }
