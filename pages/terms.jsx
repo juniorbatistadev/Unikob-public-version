@@ -13,15 +13,15 @@ function Terms() {
         <p>
           Estos Términos de uso constituyen un acuerdo legalmente vinculante
           realizado entre usted, ya sea personalmente o en nombre de una entidad
-          ("usted") y Unikob ("Compañía", "nosotros", "nos" o "nuestro"), con
-          respecto a su acceso y el uso del sitio web https://www.unikob.com,
-          así como cualquier otra forma de medios, canal de medios, sitio web
-          móvil o aplicación móvil relacionada, vinculada o conectada de otro
-          modo (colectivamente, el "Sitio"). Usted acepta que al acceder al
-          Sitio, ha leído, entendido y aceptado estar sujeto a todos estos
-          Términos de uso. SI NO ESTÁ DE ACUERDO CON TODOS ESTOS TÉRMINOS DE
-          USO, ENTONCES SE LE PROHÍBE EXPRESAMENTE UTILIZAR EL SITIO Y DEBE
-          DEJAR DE UTILIZARLO INMEDIATAMENTE.
+          (usted) y Unikob (Compañía, nosotros, nos o nuestro), con respecto a
+          su acceso y el uso del sitio web https://www.unikob.com, así como
+          cualquier otra forma de medios, canal de medios, sitio web móvil o
+          aplicación móvil relacionada, vinculada o conectada de otro modo
+          (colectivamente, el Sitio). Usted acepta que al acceder al Sitio, ha
+          leído, entendido y aceptado estar sujeto a todos estos Términos de
+          uso. SI NO ESTÁ DE ACUERDO CON TODOS ESTOS TÉRMINOS DE USO, ENTONCES
+          SE LE PROHÍBE EXPRESAMENTE UTILIZAR EL SITIO Y DEBE DEJAR DE
+          UTILIZARLO INMEDIATAMENTE.
         </p>
         <p style={{ marginTop: 10 }}>
           Los términos y condiciones complementarios o los documentos que pueden
@@ -29,7 +29,7 @@ function Terms() {
           aquí como referencia. Nos reservamos el derecho, a nuestro exclusivo
           criterio, de realizar cambios o modificaciones a estos Términos de uso
           de vez en cuando. Le avisaremos sobre cualquier cambio actualizando la
-          fecha de "Última actualización" de estos Términos de uso, y usted
+          fecha de Última actualización de estos Términos de uso, y usted
           renuncia a cualquier derecho a recibir un aviso específico de cada
           cambio. Asegúrese de verificar los Términos aplicables cada vez que
           use nuestro Sitio para que comprenda qué Términos se aplican. Usted
@@ -68,14 +68,14 @@ function Terms() {
           propiedad y todo el código fuente, las bases de datos, la
           funcionalidad, el software, los diseños de sitios web, el audio, el
           video, el texto, las fotografías y los gráficos del Sitio
-          (colectivamente, el "Contenido") y las marcas registradas, el servicio
-          las marcas y los logotipos que contiene (las "Marcas") son de nuestra
+          (colectivamente, el Contenido) y las marcas registradas, el servicio
+          las marcas y los logotipos que contiene (las Marcas) son de nuestra
           propiedad o están controlados por nosotros o están autorizados por
           nosotros, y están protegidos por las leyes de derechos de autor y
           marcas registradas y varios otros derechos de propiedad intelectual y
           leyes de competencia desleal de los Estados Unidos, las leyes
           internacionales de derechos de autor, y convenciones internacionales.
-          El Contenido y las Marcas se proporcionan en el Sitio "TAL CUAL" solo
+          El Contenido y las Marcas se proporcionan en el Sitio TAL CUAL solo
           para su información y uso personal. Salvo que se indique expresamente
           en estos Términos de uso, ninguna parte del Sitio y ningún Contenido o
           Marcas pueden ser copiados, reproducidos, agregados, republicados,
@@ -157,32 +157,32 @@ function Terms() {
           intentar cargar o transmitir) cualquier material que actúe como un
           mecanismo de transmisión o recopilación de información pasiva o
           activa, incluidos, entre otros, formatos de intercambio de gráficos
-          claros ("gif"), 1 × 1 píxeles, web bugs, cookies , u otros
-          dispositivos similares (a veces denominados "spyware" o "mecanismos de
-          recopilación pasiva" o "pcms"). Interferir, interrumpir o crear una
-          carga indebida en el Sitio o las redes o servicios conectados al
-          Sitio. Acosar, molestar, intimidar o amenazar a cualquiera de nuestros
-          empleados o agentes que se dedican a proporcionarle cualquier parte
-          del Sitio. Intentar eludir cualquier medida del Sitio diseñada para
-          prevenir o restringir el acceso al Sitio, o cualquier parte del Sitio.
-          Copie o adapte el software del Sitio, incluidos, entre otros, Flash,
-          PHP, HTML, JavaScript u otro código. Salvo que lo permita la ley
-          aplicable, descifrar, descompilar, desensamblar o realizar ingeniería
-          inversa del software que comprende o de alguna manera forma parte del
-          Sitio. Salvo que pueda ser el resultado del uso de un motor de
-          búsqueda estándar o un navegador de Internet, use, inicie, desarrolle
-          o distribuya cualquier sistema automatizado, incluidos, entre otros,
-          cualquier araña, robot, utilidad de trampa, raspador o lector fuera de
-          línea que acceda al Sitio, o usar o ejecutar cualquier script u otro
-          software no autorizado. Utilice un agente de compras o un agente de
-          compras para realizar compras en el Sitio. Hacer cualquier uso no
-          autorizado del Sitio, incluida la recopilación de nombres de usuario
-          y/o direcciones de correo electrónico de los usuarios por medios
-          electrónicos o de otro tipo con el fin de enviar correos electrónicos
-          no solicitados o crear cuentas de usuario por medios automatizados o
-          bajo pretextos falsos. Usar el Sitio como parte de cualquier esfuerzo
-          para competir con nosotros o usar el Sitio y/o el Contenido para
-          cualquier esfuerzo de generación de ingresos o empresa comercial.
+          claros (gif), 1 × 1 píxeles, web bugs, cookies , u otros dispositivos
+          similares (a veces denominados spyware o mecanismos de recopilación
+          pasiva o pcms). Interferir, interrumpir o crear una carga indebida en
+          el Sitio o las redes o servicios conectados al Sitio. Acosar,
+          molestar, intimidar o amenazar a cualquiera de nuestros empleados o
+          agentes que se dedican a proporcionarle cualquier parte del Sitio.
+          Intentar eludir cualquier medida del Sitio diseñada para prevenir o
+          restringir el acceso al Sitio, o cualquier parte del Sitio. Copie o
+          adapte el software del Sitio, incluidos, entre otros, Flash, PHP,
+          HTML, JavaScript u otro código. Salvo que lo permita la ley aplicable,
+          descifrar, descompilar, desensamblar o realizar ingeniería inversa del
+          software que comprende o de alguna manera forma parte del Sitio. Salvo
+          que pueda ser el resultado del uso de un motor de búsqueda estándar o
+          un navegador de Internet, use, inicie, desarrolle o distribuya
+          cualquier sistema automatizado, incluidos, entre otros, cualquier
+          araña, robot, utilidad de trampa, raspador o lector fuera de línea que
+          acceda al Sitio, o usar o ejecutar cualquier script u otro software no
+          autorizado. Utilice un agente de compras o un agente de compras para
+          realizar compras en el Sitio. Hacer cualquier uso no autorizado del
+          Sitio, incluida la recopilación de nombres de usuario y/o direcciones
+          de correo electrónico de los usuarios por medios electrónicos o de
+          otro tipo con el fin de enviar correos electrónicos no solicitados o
+          crear cuentas de usuario por medios automatizados o bajo pretextos
+          falsos. Usar el Sitio como parte de cualquier esfuerzo para competir
+          con nosotros o usar el Sitio y/o el Contenido para cualquier esfuerzo
+          de generación de ingresos o empresa comercial.
         </p>
         <Title
           text="6. CONTRIBUCIONES GENERADAS POR USUARIOS"
@@ -196,7 +196,7 @@ function Terms() {
           materiales a nosotros o en el Sitio, incluidos, entre otros, texto,
           escritos, video, audio, fotografías, gráficos, comentarios,
           sugerencias o información personal u otro material (colectivamente,
-          "Contribuciones"). Las contribuciones pueden ser visibles para otros
+          Contribuciones). Las contribuciones pueden ser visibles para otros
           usuarios del Sitio y a través de sitios web de terceros. Como tal,
           cualquier Contribución que transmita puede ser tratada como no
           confidencial y no propietaria. Cuando crea o pone a disposición
@@ -325,8 +325,8 @@ function Terms() {
         </p>
         <p>
           Los siguientes términos se aplican cuando utiliza una aplicación móvil
-          obtenida de Apple Store o Google Play (cada uno un "Distribuidor de
-          aplicaciones") para acceder al Sitio: (1) la licencia que se le otorga
+          obtenida de Apple Store o Google Play (cada uno un Distribuidor de
+          aplicaciones) para acceder al Sitio: (1) la licencia que se le otorga
           para nuestra aplicación móvil se limita a un no- licencia transferible
           para usar la aplicación en un dispositivo que utiliza los sistemas
           operativos Apple iOS o Android, según corresponda, y de acuerdo con
@@ -348,7 +348,7 @@ function Terms() {
           respecto a la aplicación móvil; (4) declara y garantiza que (i) no se
           encuentra en un país que esté sujeto a un embargo del gobierno de los
           EE. UU., o que haya sido designado por el gobierno de los EE. UU. como
-          un país que "apoya el terrorismo" y (ii) no está incluido en cualquier
+          un país que apoya el terrorismo y (ii) no está incluido en cualquier
           lista del gobierno de los EE. UU. de partes prohibidas o restringidas;
           (5) debe cumplir con los términos de acuerdo de terceros aplicables al
           usar la aplicación móvil, por ejemplo, si tiene una aplicación de
@@ -380,7 +380,7 @@ function Terms() {
           de terceros. Al otorgarnos acceso a cualquier Cuenta de terceros,
           usted comprende que (1) podemos acceder, poner a disposición y
           almacenar (si corresponde) cualquier contenido que haya proporcionado
-          y almacenado en su Cuenta de terceros (la "Red social Contenido”) para
+          y almacenado en su Cuenta de terceros (la Red social Contenido”) para
           que esté disponible en y a través del Sitio a través de su cuenta,
           incluidas, entre otras, listas de amigos y (2) podemos enviar y
           recibir de su Cuenta de terceros información adicional en la medida en
@@ -418,7 +418,7 @@ function Terms() {
         <p>
           Usted reconoce y acepta que cualquier pregunta, comentario,
           sugerencia, idea, retroalimentación u otra información relacionada con
-          el Sitio ("Envíos") que nos proporcione no son confidenciales y se
+          el Sitio (Envíos) que nos proporcione no son confidenciales y se
           convertirán en nuestra propiedad exclusiva. Seremos propietarios de
           los derechos exclusivos, incluidos todos los derechos de propiedad
           intelectual, y tendremos derecho al uso y la difusión sin
@@ -437,21 +437,21 @@ function Terms() {
         />
         <p>
           El Sitio puede contener (o se le puede enviar a través del Sitio)
-          enlaces a otros sitios web ("Sitios web de terceros"), así como
+          enlaces a otros sitios web (Sitios web de terceros), así como
           artículos, fotografías, texto, gráficos, imágenes, diseños, música,
           sonido, video, información, aplicaciones , software y otro contenido o
-          elementos que pertenezcan a terceros o se originen en ellos
-          ("Contenido de terceros"). Dichos sitios web de terceros y contenido
-          de terceros no son investigados, monitoreados o verificados por
-          nuestra precisión, idoneidad o integridad, y no somos responsables de
-          ningún sitio web de terceros al que se acceda a través del sitio o
-          cualquier contenido de terceros publicado. en, disponible a través de,
-          o instalado desde el Sitio, incluido el contenido, la precisión, lo
-          ofensivo, las opiniones, la confiabilidad, las prácticas de privacidad
-          u otras políticas de o contenidas en los Sitios web de terceros o el
-          Contenido de terceros. La inclusión, el enlace o el permiso para el
-          uso o la instalación de sitios web de terceros o cualquier contenido
-          de terceros no implica su aprobación o respaldo por nuestra parte. Si
+          elementos que pertenezcan a terceros o se originen en ellos (Contenido
+          de terceros). Dichos sitios web de terceros y contenido de terceros no
+          son investigados, monitoreados o verificados por nuestra precisión,
+          idoneidad o integridad, y no somos responsables de ningún sitio web de
+          terceros al que se acceda a través del sitio o cualquier contenido de
+          terceros publicado. en, disponible a través de, o instalado desde el
+          Sitio, incluido el contenido, la precisión, lo ofensivo, las
+          opiniones, la confiabilidad, las prácticas de privacidad u otras
+          políticas de o contenidas en los Sitios web de terceros o el Contenido
+          de terceros. La inclusión, el enlace o el permiso para el uso o la
+          instalación de sitios web de terceros o cualquier contenido de
+          terceros no implica su aprobación o respaldo por nuestra parte. Si
           decide abandonar el Sitio y acceder a los Sitios web de terceros o
           usar o instalar cualquier Contenido de terceros, lo hace bajo su
           propio riesgo y debe tener en cuenta que estos Términos de uso ya no
@@ -533,7 +533,7 @@ function Terms() {
           cualquier material disponible en el Sitio o a través de él infringe
           cualquier derecho de autor que posea o controle, notifíquenos de
           inmediato utilizando la información de contacto que se proporciona a
-          continuación (una "Notificación"). Se enviará una copia de su
+          continuación (una Notificación). Se enviará una copia de su
           Notificación a la persona que publicó o almacenó el material al que se
           refiere la Notificación. Tenga en cuenta que, de conformidad con la
           ley aplicable, puede ser considerado responsable de los daños y
