@@ -1,11 +1,13 @@
 import { AsyncSelectField } from "@components/formikFields";
 import Parse from "parse";
+import { getCountry } from "country-list-spanish";
 
 export default function SelectCountry(props) {
   const getData = async () => {
     const list = [];
     const queryCountries = new Parse.Query(Parse.Object.extend("Country"));
-    queryCountries.limit(500);
+    queryCountries.limit(1000);
+    queryCountries.ascending("name");
     const data = await queryCountries.find();
     if (props.firstOption) {
       list[0] = {
@@ -15,7 +17,7 @@ export default function SelectCountry(props) {
     }
     await data.forEach((country) => {
       list.push({
-        name: country.attributes.name,
+        name: getCountry(country.attributes.code),
         id: country.id,
       });
     });
