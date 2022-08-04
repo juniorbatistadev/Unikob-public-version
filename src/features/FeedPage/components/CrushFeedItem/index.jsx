@@ -59,7 +59,7 @@ function CrushFeedItem({ crush, displayAsHeader }) {
                   />
                   <DisplayUsername user={toUser ?? crush.attributes.toUser} />
                   <Text
-                    text={" recibio un Crush secreto "}
+                    text={" recibio un crush secreto "}
                     margin="0px 0px 0px 5px"
                   />
                 </FlexRow>

@@ -10,6 +10,7 @@ export const HOME_PATH = "/";
 export const SEARCH_PATH = "/search";
 export const SAVED_PATH = "/saved";
 export const CONTACT_PATH = "/contact";
+export const TERMS_PATH = "/terms";
 
 export const READ_POST_PATH = "/post/:slug";
 export const CREATE_POST_PATH = "/post/create";

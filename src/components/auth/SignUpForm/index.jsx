@@ -10,7 +10,7 @@ import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
 import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
-import { FEED_PATH } from "src/paths";
+import { FEED_PATH, TERMS_PATH } from "src/paths";
 import A from "@components/common/A";
 import { useRouter } from "next/router";
 
@@ -90,8 +90,8 @@ function SignUpForm() {
             <FlexRow margin={"0px auto 0px 0px"}>
               <CheckBox name="terms" className={styles.check_box}>
                 <span className={styles.terms_text}>
-                  Acepto los <A href={FEED_PATH}>terminos</A> y
-                  <A href={FEED_PATH}> condiciones</A>
+                  Acepto los <A href={TERMS_PATH}>terminos</A> y
+                  <A href={TERMS_PATH}> condiciones</A>
                 </span>
               </CheckBox>
             </FlexRow>
