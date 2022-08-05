@@ -48,10 +48,12 @@ function FacebookLogin({ className }) {
         //if user existed login them in
         setCurrentUser(Parse.User.current());
       }
-    } catch (err) {
+    } catch (error) {
       setLoading(false);
       Alert.fire({
-        text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
+        text: `Hubo un error. ${
+          error.code ? errorMessages[error.code] : error
+        }`,
         icon: "error",
       });
     }

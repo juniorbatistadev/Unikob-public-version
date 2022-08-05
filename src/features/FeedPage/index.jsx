@@ -20,7 +20,7 @@ function HomePage() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    if (Notification.permission !== "granted") {
+    if (Notification.permission === "default") {
       askForPermissionToReceiveNotifications()
         .then(() => {
           Alert.fire({
@@ -31,9 +31,12 @@ function HomePage() {
           });
         })
         .catch((error) => {
+          console.log(error.code);
           Alert.fire({
             icon: "error",
-            text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
+            text: `Hubo un error. ${
+              error.code ? errorMessages[error.code] : error
+            }`,
           });
         });
     }
