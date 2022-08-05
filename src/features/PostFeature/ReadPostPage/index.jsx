@@ -34,6 +34,7 @@ function ReadPostPage({ post }) {
     });
 
     if (response.isConfirmed) {
+      console.log(post, "post");
       await deletePost(post.objectId);
       await push(FEED_PATH);
     }

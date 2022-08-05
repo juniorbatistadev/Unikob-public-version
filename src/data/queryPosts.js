@@ -47,6 +47,8 @@ export const deletePost = async (postId) => {
   const query = new Parse.Query(Post);
   const result = await query.get(postId);
 
+  console.log(result, postId);
+
   return result.destroy();
 };
 
