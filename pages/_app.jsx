@@ -5,8 +5,11 @@ import MainLayout from "src/layouts/MainLayout";
 import Head from "next/head";
 import { initFirebase } from "../initFirebase";
 import Script from "next/script";
+import { useRouter } from "next/router";
 
 function App({ Component, pageProps }) {
+  const { asPath } = useRouter();
+
   //checking if env is browser
   if (typeof window !== "undefined") {
     Parse.initialize(
