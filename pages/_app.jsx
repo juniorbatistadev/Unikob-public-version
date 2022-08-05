@@ -28,8 +28,13 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Unikob</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link
+          href="/icon-192x192.png"
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+        />
         <meta name="theme-color" content="#2b6cb0" />
       </Head>
       <Script
