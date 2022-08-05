@@ -11,14 +11,13 @@ const TabsMenu = ({ options, router, slug, path, typeStyle }) => {
       <ul>
         {options.map((option, index) => (
           <li
+            key={index}
             className={[
               styles.menuOption,
               query[slug] === option.link ? styles.menuOptionActive : " ",
             ].join(" ")}
           >
-            <A key={index} href={{ pathname: path, query: option.query }}>
-              {option.name}
-            </A>
+            <A href={{ pathname: path, query: option.query }}>{option.name}</A>
           </li>
         ))}
       </ul>
