@@ -2,7 +2,7 @@
     "theme_color": "#2b6cb0",
     "background_color": "#2b6cb0",
     "display": "standalone",
-    "scope": ".",
+    "scope": "/",
     "start_url": "/",
     "name": "Unikob",
     "short_name": "Unikob",
