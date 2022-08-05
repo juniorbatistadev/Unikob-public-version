@@ -10,6 +10,10 @@ const nextConfig = {
     dest: "public",
     register: true,
     skipWaiting: true,
+    dynamicStartUrlRedirect: true,
+    fallbacks: {
+      image: "/images/fallback.png",
+    },
     disable: process.env.NODE_ENV === "development",
   },
 

@@ -79,7 +79,7 @@ function ReadPostPage({ post }) {
             )}
             <ShareButtons
               title={post.title}
-              text="Mire lo que encontré en Unikob.com "
+              text="Mire lo que encontré en Unikob "
             />
 
             {currentUser && currentUser.id === post.createdBy.objectId && (

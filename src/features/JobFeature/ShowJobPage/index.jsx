@@ -114,7 +114,7 @@ function ShowJobPage({ data }) {
         {isMounted && (
           <ShareButtons
             title={data.title}
-            text="Mire lo que encontré en Unikob.com "
+            text="Mire lo que encontré en Unikob "
           />
         )}
 
