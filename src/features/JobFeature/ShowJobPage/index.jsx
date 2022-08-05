@@ -40,8 +40,7 @@ function ShowJobPage({ data }) {
     });
 
     if (response.isConfirmed) {
-      await deleteJob(data.objectId);
-      await replace(JOBS_PATH);
+      await deleteJob(data.objectId).finally(() => replace(JOBS_PATH));
     }
   };
 
