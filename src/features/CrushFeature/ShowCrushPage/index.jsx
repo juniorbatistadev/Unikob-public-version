@@ -42,8 +42,7 @@ function ShowCrushPage() {
     });
 
     if (response.isConfirmed) {
-      await deleteCrush(crush.id);
-      await replace(CRUSHES_PATH);
+      await deleteCrush(crush.id).finally(() => replace(CRUSHES_PATH));
     }
   };
 

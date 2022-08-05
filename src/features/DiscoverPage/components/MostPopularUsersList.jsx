@@ -2,7 +2,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
 import Title from "@components/common/Title";
 import UserListItem from "@components/UserListItem";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import styles from "./MostPopularUsersList.module.css";
 import Parse from "parse";
 
@@ -25,13 +25,18 @@ function MostPopularUsersList() {
       />
       <FlexRow className={styles.usersContainer}>
         {users &&
-          users.map((user) => (
-            <UserListItem
-              text={`Views (${user.info.total})`}
-              user={user.user}
-              withGiftButton={true}
-              typeStyle="box"
-            />
+          users.map((user, index) => (
+            <Fragment key={index}>
+              {user.user && (
+                <UserListItem
+                  key={index}
+                  text={`Views (${user.info.total})`}
+                  user={user.user}
+                  withGiftButton={true}
+                  typeStyle="box"
+                />
+              )}
+            </Fragment>
           ))}
       </FlexRow>
     </FlexColumn>
