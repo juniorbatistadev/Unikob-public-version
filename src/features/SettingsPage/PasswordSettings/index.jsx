@@ -9,6 +9,7 @@ import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
 import Alert from "@components/common/Alert";
 import FlexColumn from "@components/common/FlexColumn";
+import errorMessages from "src/parseErrorMessages";
 
 function PasswordSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -28,7 +29,8 @@ function PasswordSettings() {
         Alert.fire({
           icon: "error",
           title: "Uh no!",
-          text: "Error: " + error.code + " " + error.message,
+
+          text: `Hubo un error ${error.code && errorMessages[error.code]}`,
         });
       })
       .finally(() => setIsLoading(false));

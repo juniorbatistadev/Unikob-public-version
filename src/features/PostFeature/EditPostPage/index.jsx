@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { READ_POST_PATH } from "src/paths";
 import Alert from "@components/common/Alert";
 import { updatePost } from "src/data/queryPosts";
+import errorMessages from "src/parseErrorMessages";
 
 function EditPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -25,7 +26,7 @@ function EditPostPage({ post }) {
     } catch (error) {
       Alert.fire({
         icon: "error",
-        text: `Hubo un error: ${error}`,
+        text: `Hubo un error ${error.code && errorMessages[error.code]}`,
       });
     }
   };

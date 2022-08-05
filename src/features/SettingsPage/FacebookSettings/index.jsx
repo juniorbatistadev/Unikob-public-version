@@ -10,6 +10,7 @@ import FlexRow from "@components/common/FlexRow";
 import GoBackButton from "@components/common/GoBackButton";
 import Alert from "@components/common/Alert";
 import FlexColumn from "@components/common/FlexColumn";
+import errorMessages from "src/parseErrorMessages";
 
 function FacebookSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -33,11 +34,11 @@ function FacebookSettings() {
           showConfirmButton: false,
         });
       })
-      .catch((err) =>
+      .catch((error) =>
         Alert.fire({
           icon: "error",
           title: "Uh no",
-          text: "Intento fallido, error:" + err,
+          text: `Hubo un error ${error.code && errorMessages[error.code]}`,
         })
       )
       .finally(() => {
@@ -61,7 +62,8 @@ function FacebookSettings() {
         Alert.fire({
           icon: "error",
           title: "Uh no",
-          text: "Intento fallido, error:" + err,
+
+          text: `Hubo un error ${error.code && errorMessages[error.code]}`,
         })
       )
       .finally(() => {

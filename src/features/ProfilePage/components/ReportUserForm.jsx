@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Formik, Form } from "formik";
-import { TextArea, CheckBox, ErrorMessage } from "@components/formikFields";
+import { TextArea, ErrorMessage } from "@components/formikFields";
 import Button from "@components/common/Button";
 import FlexColumn from "@components/common/FlexColumn";
 import Title from "@components/common/Title";
-import FlexRow from "@components/common/FlexRow";
 import Text from "@components/common/Text";
-import { saveCrush } from "src/data/queryCrushes";
 import Alert from "@components/common/Alert";
 import { saveUserReport } from "src/data/queryUserReports";
+import errorMessages from "src/parseErrorMessages";
 
 const ReportUserForm = ({ toUser }) => {
   const [wasSent, setWasSent] = useState(false);
@@ -25,8 +24,14 @@ const ReportUserForm = ({ toUser }) => {
             try {
               await saveUserReport(values);
               setWasSent(true);
-            } catch (err) {
-              Alert.fire({ icon: "error", text: err.message });
+            } catch (error) {
+              Alert.fire({
+                icon: "error",
+
+                text: `Hubo un error. ${
+                  error.code && errorMessages[error.code]
+                }`,
+              });
             }
           }}
           validate={(values) => {

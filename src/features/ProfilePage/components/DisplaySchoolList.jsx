@@ -28,17 +28,21 @@ function DisplaySchoolList({ user, ...props }) {
   return (
     <FlexColumn {...props}>
       {schools.map((member) => (
-        <A
-          href={SCHOOL_READ_PATH.replace(
-            ":school",
-            member.attributes.school.attributes.slug
+        <>
+          {member.attributes.school && (
+            <A
+              href={SCHOOL_READ_PATH.replace(
+                ":school",
+                member.attributes.school?.attributes.slug
+              )}
+            >
+              <ItemWithIcon
+                IconSVG={StudentIcon}
+                text={member.attributes.school?.attributes.name}
+              />
+            </A>
           )}
-        >
-          <ItemWithIcon
-            IconSVG={StudentIcon}
-            text={member.attributes.school.attributes.name}
-          />
-        </A>
+        </>
       ))}
       {schoolsOverLimit > 0 && (
         <Text

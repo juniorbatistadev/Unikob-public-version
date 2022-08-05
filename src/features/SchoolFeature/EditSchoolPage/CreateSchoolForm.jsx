@@ -16,7 +16,7 @@ import Alert from "@components/common/Alert";
 import { useRouter } from "next/router";
 import { SCHOOL_READ_PATH } from "src/paths";
 import FlexColumn from "@components/common/FlexColumn";
-import school from "pages/settings/school";
+import errorMessages from "src/parseErrorMessages";
 
 const CreateSchoolForm = ({ school }) => {
   const { push } = useRouter();
@@ -34,12 +34,12 @@ const CreateSchoolForm = ({ school }) => {
       }).then(() =>
         push(SCHOOL_READ_PATH.replace(":school", schoolObj.get("slug")))
       );
-    } catch (err) {
+    } catch (error) {
       actions.setSubmitting(false);
       Alert.fire({
         icon: "error",
         title: "Uh no!",
-        text: `${err.message ? err.message : error}`,
+        text: `Hubo un error ${error.code && errorMessages[error.code]}`,
       });
     }
   };

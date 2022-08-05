@@ -1,16 +1,12 @@
-import { useContext } from "react";
 import Parse from "parse";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { TextField, ErrorMessage } from "@components/formikFields";
 import styles from "./index.module.css";
 import Button from "@components/common/Button";
-import FacebookLogin from "@components/auth/FacebookLogin";
-import { AuthContext } from "src/contexts/AuthContext";
 import Alert from "@components/common/Alert";
-import { useRouter } from "next/router";
 import FlexColumn from "@components/common/FlexColumn";
-import { HOME_PATH } from "src/paths";
+import errorMessages from "src/parseErrorMessages";
 
 function ResetPasswordForm({ setSectionOpen }) {
   const onSubmit = (values, actions) => {
@@ -27,7 +23,7 @@ function ResetPasswordForm({ setSectionOpen }) {
         Alert.fire({
           icon: "error",
           title: "Uh no!",
-          text: "Error: " + error.code + " " + error.message,
+          text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
         });
       })
       .finally(() => {

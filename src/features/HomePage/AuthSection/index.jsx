@@ -68,11 +68,11 @@ function AuthSection() {
   const { replace } = useRouter();
   const { isMounted } = useIsMounted();
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     replace(FEED_PATH);
-  //   }
-  // }, [currentUser]);
+  useEffect(() => {
+    if (currentUser) {
+      replace(FEED_PATH);
+    }
+  }, [currentUser]);
 
   const renderContent = (section) => {
     switch (section) {

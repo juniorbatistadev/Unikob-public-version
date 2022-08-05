@@ -10,6 +10,7 @@ import ManageNotificationsForm from "./ManageNotificationsForm";
 import { useEffect, useState } from "react";
 import PushIllustration from "@assets/icons/push-notification.svg";
 import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemissionToReceiveNotifications";
+import errorMessages from "src/parseErrorMessages";
 
 function NotificationSettings() {
   const [isNotificationEnabled, setIsNotificationEnabled] = useState();
@@ -31,7 +32,8 @@ function NotificationSettings() {
       .catch((error) => {
         Alert.fire({
           icon: "error",
-          text: `${error}`,
+
+          text: `Hubo un error ${error.code && errorMessages[error.code]}`,
         });
       });
   };
