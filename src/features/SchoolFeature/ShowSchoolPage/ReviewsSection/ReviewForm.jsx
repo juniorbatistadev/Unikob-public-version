@@ -40,8 +40,12 @@ const ReviewForm = ({ school, reloadData }) => {
       setAlredyReviewed(response);
       actions.resetForm();
       if (reloadData) reloadData();
-    } catch (err) {
-      Alert.fire({ icon: "error", text: `${err.message}` });
+    } catch (error) {
+      Alert.fire({
+        icon: "error",
+
+        text: `Hubo un error ${error.code && errorMessages[error.code]}`,
+      });
     }
   };
 

@@ -18,6 +18,7 @@ import {
 } from "src/data/queryUserSettings";
 import Alert from "@components/common/Alert";
 import { ErrorMessage } from "@components/formikFields";
+import errorMessages from "src/parseErrorMessages";
 
 function CurriculumSettings() {
   const { currentUser } = useContext(AuthContext);
@@ -38,7 +39,7 @@ function CurriculumSettings() {
     } catch (error) {
       Alert.fire({
         icon: "error",
-        text: `Hubo un error: ${error}`,
+        text: `Hubo un error ${error.code && errorMessages[error.code]}`,
       });
     }
   };
