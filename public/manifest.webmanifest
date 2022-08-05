@@ -3,7 +3,7 @@
     "background_color": "#2b6cb0",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/",
+    "start_url": ".",
     "name": "Unikob",
     "short_name": "Unikob",
     "description": "La comunidad de universitarios, egresados y estudiantes mas completa del internet.",
