@@ -8,6 +8,7 @@ import FlexRow from "@components/common/FlexRow";
 import Text from "@components/common/Text";
 import { saveCrush } from "src/data/queryCrushes";
 import Alert from "@components/common/Alert";
+import errorMessages from "src/parseErrorMessages";
 
 const DeclareCrushForm = ({ toUser }) => {
   const [wasSent, setWasSent] = useState(false);
@@ -24,8 +25,14 @@ const DeclareCrushForm = ({ toUser }) => {
             try {
               await saveCrush(values);
               setWasSent(true);
-            } catch (err) {
-              Alert.fire({ icon: "error", text: err.message });
+            } catch (error) {
+              Alert.fire({
+                icon: "error",
+
+                text: `Hubo un error ${
+                  error.code && errorMessages[error.code]
+                }`,
+              });
             }
           }}
         >

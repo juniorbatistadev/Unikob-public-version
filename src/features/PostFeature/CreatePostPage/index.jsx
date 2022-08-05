@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "src/contexts/AuthContext";
 import { useRouter } from "next/router";
 import { READ_POST_PATH } from "src/paths";
+import errorMessages from "src/parseErrorMessages";
 
 function CreatePostPage() {
   const { currentUser } = useContext(AuthContext);
@@ -24,7 +25,7 @@ function CreatePostPage() {
     } catch (error) {
       Alert.fire({
         icon: "error",
-        text: `Hubo un error: ${error}`,
+        text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
       });
     }
   };

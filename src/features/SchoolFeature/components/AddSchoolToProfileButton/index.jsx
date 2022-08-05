@@ -10,6 +10,7 @@ import {
   unjoinSchool,
 } from "src/data/querySchoolMembers";
 import Alert from "@components/common/Alert";
+import errorMessages from "src/parseErrorMessages";
 
 function AddSchoolToProfileButton({ school }) {
   const [alreadyAdded, setAlreadyAdded] = useState();
@@ -30,10 +31,10 @@ function AddSchoolToProfileButton({ school }) {
     } else {
       await saveSchoolMember(school)
         .then(() => setAlreadyAdded(true))
-        .catch((err) =>
+        .catch((error) =>
           Alert.fire({
             icon: "error",
-            text: err?.message,
+            text: `Hubo un error ${error.code && errorMessages[error.code]}`,
           })
         );
     }

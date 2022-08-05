@@ -14,6 +14,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import RichTextEditor from "@components/formikFields/RichTextEditor";
 import { saveJob } from "src/data/queryJobs";
 import { JOB_READ_PATH } from "src/paths";
+import errorMessages from "src/parseErrorMessages";
 
 const CreateSchoolForm = () => {
   const { push } = useRouter();
@@ -31,7 +32,7 @@ const CreateSchoolForm = () => {
     } catch (error) {
       Alert.fire({
         icon: "error",
-        text: `Hubo un error: ${error}`,
+        text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
       });
     }
   };

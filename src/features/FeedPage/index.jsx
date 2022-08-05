@@ -13,6 +13,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "@context/AuthContext";
 import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemissionToReceiveNotifications";
 import Alert from "@components/common/Alert";
+import errorMessages from "src/parseErrorMessages";
 
 function HomePage() {
   const { push } = useRouter();
@@ -32,7 +33,7 @@ function HomePage() {
         .catch((error) => {
           Alert.fire({
             icon: "error",
-            text: `${error}`,
+            text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
           });
         });
     }
