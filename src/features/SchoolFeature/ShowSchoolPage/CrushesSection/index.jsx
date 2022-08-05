@@ -25,7 +25,7 @@ const CrushesSection = ({ school }) => {
         next={nextPage}
       >
         {items.map((item) => (
-          <FlexColumn>
+          <FlexColumn margin={"0px 0px 10px 0px"}>
             <CrushFeedItem crush={item} />
           </FlexColumn>
         ))}
