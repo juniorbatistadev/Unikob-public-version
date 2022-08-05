@@ -69,7 +69,7 @@ const ConversationPreview = ({ conversation }) => {
             <Text
               className={styles.lastMessage}
               text={conversation.attributes.lastMessage
-                .slice(0, 30)
+                ?.slice(0, 30)
                 .concat(
                   conversation.attributes.lastMessage.length > 30 ? "..." : ""
                 )}
