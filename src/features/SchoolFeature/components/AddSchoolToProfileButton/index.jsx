@@ -34,7 +34,9 @@ function AddSchoolToProfileButton({ school }) {
         .catch((error) =>
           Alert.fire({
             icon: "error",
-            text: `Hubo un error ${error.code && errorMessages[error.code]}`,
+            text: `Hubo un error. ${
+              error.code ? errorMessages[error.code] : error
+            }`,
           })
         );
     }
