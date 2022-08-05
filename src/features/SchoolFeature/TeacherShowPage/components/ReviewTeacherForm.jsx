@@ -14,6 +14,7 @@ import Spinner from "@components/common/Spinner";
 import { AuthContext } from "@context/AuthContext";
 import Alert from "@components/common/Alert";
 import Text from "@components/common/Text";
+import errorMessages from "src/parseErrorMessages";
 
 const ReviewTeacherForm = ({ teacher, reloadData }) => {
   const [alredyReviewed, setAlredyReviewed] = useState();
@@ -84,8 +85,14 @@ const ReviewTeacherForm = ({ teacher, reloadData }) => {
               actions.resetForm();
               if (reloadData) reloadData();
               setAlredyReviewed(review);
-            } catch (err) {
-              Alert.fire({ icon: "error", text: `${err.message}` });
+            } catch (error) {
+              Alert.fire({
+                icon: "error",
+
+                text: `Hubo un error ${
+                  error.code && errorMessages[error.code]
+                }`,
+              });
             }
           }}
         >

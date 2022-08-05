@@ -8,6 +8,7 @@ import { AuthContext } from "src/contexts/AuthContext";
 import { useRouter } from "next/router";
 import { FEED_PATH } from "src/paths";
 import Alert from "@components/common/Alert";
+import errorMessages from "src/parseErrorMessages";
 
 function FacebookLogin({ className }) {
   const [isLoading, setLoading] = useState(false);
@@ -49,7 +50,10 @@ function FacebookLogin({ className }) {
       }
     } catch (err) {
       setLoading(false);
-      Alert.fire({ text: err, icon: "error" });
+      Alert.fire({
+        text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
+        icon: "error",
+      });
     }
   };
 

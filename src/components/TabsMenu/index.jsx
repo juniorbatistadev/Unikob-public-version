@@ -10,16 +10,15 @@ const TabsMenu = ({ options, router, slug, path, typeStyle }) => {
     <FlexRow className={styles[typeStyle]}>
       <ul>
         {options.map((option, index) => (
-          <A key={index} href={{ pathname: path, query: option.query }}>
-            <li
-              className={[
-                styles.menuOption,
-                query[slug] === option.link ? styles.menuOptionActive : " ",
-              ].join(" ")}
-            >
-              {option.name}
-            </li>
-          </A>
+          <li
+            key={index}
+            className={[
+              styles.menuOption,
+              query[slug] === option.link ? styles.menuOptionActive : " ",
+            ].join(" ")}
+          >
+            <A href={{ pathname: path, query: option.query }}>{option.name}</A>
+          </li>
         ))}
       </ul>
     </FlexRow>
