@@ -11,7 +11,6 @@ import GoBackButton from "@components/common/GoBackButton";
 import Alert from "@components/common/Alert";
 import FlexColumn from "@components/common/FlexColumn";
 import errorMessages from "src/parseErrorMessages";
-import errorMessages from "src/parseErrorMessages";
 
 function FacebookSettings() {
   const { currentUser } = useContext(AuthContext);
