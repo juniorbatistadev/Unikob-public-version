@@ -1,21 +1,13 @@
 {
- 
-    "compilerOptions": {
-      "baseUrl": "./",
-      "paths": {
-        "@components/*": ["src/components/*"],
-        "@assets/*": ["src/assets/*"],
-        "@context/*": ["src/contexts/*"],
-        "@hooks/*": ["src/hooks/*"],
-        "@public/*": ["public/*"],
-        "@pages/*": ["src/features/*"]
-      }
-      
-    },
-
-    "json.schemas": [
-      { 
-        "$schema": "https://json.schemastore.org/jsconfig" 
-      }
-    ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@context/*": ["src/contexts/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@public/*": ["public/*"],
+      "@pages/*": ["src/features/*"]
+    }
+  }
 }

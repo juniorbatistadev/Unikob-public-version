@@ -3,10 +3,7 @@ const path = require("path");
 const withPWA = require("next-pwa");
 
 const nextConfig = {
-  include: path.resolve(__dirname, "src/assets/icons"),
-  webpack(config, options) {
-    return config;
-  },
+  reactStrictMode: true,
 
   pwa: {
     dest: "public",
@@ -14,12 +11,15 @@ const nextConfig = {
     skipWaiting: true,
   },
 
+  include: path.resolve(__dirname, "src/assets/icons"),
+  webpack(config, options) {
+    return config;
+  },
+
   // i18n: {
   //   locales: ["es", "en"],
   //   defaultLocale: "es",
   // },
-
-  reactStrictMode: true,
 };
 
 module.exports = withReactSvg(withPWA(nextConfig));
