@@ -63,7 +63,8 @@ const SendGiftForm = ({ user }) => {
             gift: "",
             message: "",
           }}
-          onSubmit={async (values, { setErrors }) => {
+          onSubmit={async (values, { setErrors, setSubmitting }) => {
+            setSubmitting(true);
             const giftOption = await queryGiftOptions.get(values.gift);
             saveGift(user, giftOption, values.message)
               .then(() => setWasSent(true))
@@ -83,79 +84,85 @@ const SendGiftForm = ({ user }) => {
               };
           }}
         >
-          <Form className={styles.form}>
-            <Title text="Elige el regalo" />
-            <Title
-              text="Solo puedes enviar 3 regalos por dia"
-              typeStyle="secondary"
-              fontSize="var(--text-sm)"
-            />
-            <FlexRow justifyContent="center" className={styles.gifts}>
-              {isLoading ? (
-                <Spinner />
-              ) : (
-                gifts.map((gift, index) => (
-                  <RadioField
-                    name="gift"
-                    typeStyle="borderLines"
-                    value={gift.id}
-                    key={index}
-                    className={styles.giftPreview}
-                  >
-                    <div>
-                      <img
-                        alt={gift.attributes.name}
-                        src={gift.attributes.image.url()}
-                      />
-                      <Text
-                        text={gift.attributes.name}
-                        fontSize="var(--text-sm)"
-                      />
-                    </div>
-                  </RadioField>
-                ))
-              )}
-            </FlexRow>
-            <ErrorMessage name="gift" />
-            <FlexColumn
-              justifyContent="center"
-              alignItems="center"
-              margin="15px 0px"
-            >
-              <TextField
-                name="message"
-                placeholder="Deja una notita con tu regalo"
+          {(props) => (
+            <Form className={styles.form}>
+              <Title text="Elige el regalo" />
+              <Title
+                text="Solo puedes enviar 3 regalos por dia"
+                typeStyle="secondary"
+                fontSize="var(--text-sm)"
               />
-              <ErrorMessage name="message" />
-            </FlexColumn>
-
-            <FlexRow justifyContent="space-around">
-              <Button
-                onClick={lastPage}
-                disabled={startFrom - perPage < -1}
-                typeStyle="secondary"
+              <FlexRow justifyContent="center" className={styles.gifts}>
+                {isLoading ? (
+                  <Spinner />
+                ) : (
+                  gifts.map((gift, index) => (
+                    <RadioField
+                      name="gift"
+                      typeStyle="borderLines"
+                      value={gift.id}
+                      key={index}
+                      className={styles.giftPreview}
+                    >
+                      <div>
+                        <img
+                          alt={gift.attributes.name}
+                          src={gift.attributes.image.url()}
+                        />
+                        <Text
+                          text={gift.attributes.name}
+                          fontSize="var(--text-sm)"
+                        />
+                      </div>
+                    </RadioField>
+                  ))
+                )}
+              </FlexRow>
+              <ErrorMessage name="gift" />
+              <FlexColumn
+                justifyContent="center"
+                alignItems="center"
+                margin="15px 0px"
               >
-                Anterior
-              </Button>
-              {!isLoading && (
-                <Text
-                  text={`${calculateCurrentPage()} de ${Math.ceil(
-                    count / perPage
-                  )} paginas`}
+                <TextField
+                  name="message"
+                  placeholder="Deja una notita con tu regalo"
                 />
-              )}
+                <ErrorMessage name="message" />
+              </FlexColumn>
+
+              <FlexRow justifyContent="space-around">
+                <Button
+                  onClick={lastPage}
+                  disabled={startFrom - perPage < -1}
+                  typeStyle="secondary"
+                >
+                  Anterior
+                </Button>
+                {!isLoading && (
+                  <Text
+                    text={`${calculateCurrentPage()} de ${Math.ceil(
+                      count / perPage
+                    )} paginas`}
+                  />
+                )}
+                <Button
+                  onClick={nextPage}
+                  disabled={startFrom + perPage > count}
+                  typeStyle="secondary"
+                >
+                  Siguiente
+                </Button>
+              </FlexRow>
               <Button
-                onClick={nextPage}
-                disabled={startFrom + perPage > count}
-                typeStyle="secondary"
+                type="submit"
+                className={styles.submitButton}
+                loading={props.isSubmitting}
               >
-                Siguiente
+                Enviar
               </Button>
-            </FlexRow>
-            <Button type="submit" className={styles.submitButton}>
-              Enviar
-            </Button>
-          </Form>
+            </Form>
+          )}
         </Formik>
       )}
     </div>

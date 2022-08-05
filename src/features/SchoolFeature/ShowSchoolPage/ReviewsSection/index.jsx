@@ -2,7 +2,6 @@ import { useContext } from "react";
 import Title from "@components/common/Title";
 import FlexColumn from "@components/common/FlexColumn";
 import FlexRow from "@components/common/FlexRow";
-import Button from "@components/common/Button";
 import ReviewForm from "./ReviewForm";
 import ReviewAvg from "./ReviewAvg";
 import { getReviewsWithPagination } from "src/data/querySchoolReview";
