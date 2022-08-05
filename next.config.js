@@ -4,6 +4,7 @@ const withPWA = require("next-pwa");
 
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: true,
 
   pwa: {
     dest: "public",
@@ -17,10 +18,10 @@ const nextConfig = {
     return config;
   },
 
-  // i18n: {
-  //   locales: ["es", "en"],
-  //   defaultLocale: "es",
-  // },
+  i18n: {
+    locales: ["es"],
+    defaultLocale: "es",
+  },
 };
 
 module.exports = withReactSvg(withPWA(nextConfig));
