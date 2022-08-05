@@ -48,6 +48,10 @@ const ReviewTeacherForm = ({ teacher, reloadData }) => {
       await deleteTeacherReview(alredyReviewed.id);
       setAlredyReviewed(null);
       if (reloadData) reloadData();
+      Alert.fire({
+        icon: "success",
+        text: "Se ha borrado el review",
+      });
     }
   };
 
@@ -98,19 +102,23 @@ const ReviewTeacherForm = ({ teacher, reloadData }) => {
         >
           {(props) => (
             <Form>
-              <Title text="Deja tu rating" typeStyle="secondary" />
-              <Rater
-                name="rating"
-                setValue={props.setFieldValue}
-                value={props.values.rating}
-              />
-              <ErrorMessage name="rating" />
-              <Title text="Describe porque" typeStyle="secondary" />
-              <TextArea name="description" width="-webkit-fill-available" />
-              <ErrorMessage name="description" />
-              <Button loading={props.isSubmitting} type="submit">
-                Enviar
-              </Button>
+              <FlexColumn>
+                <Title text="Deja tu rating" typeStyle="secondary" />
+                <Rater
+                  name="rating"
+                  setValue={props.setFieldValue}
+                  value={props.values.rating}
+                />
+                <ErrorMessage name="rating" />
+                <Title text="Describe porque" typeStyle="secondary" />
+                <TextArea name="description" width="-webkit-fill-available" />
+                <ErrorMessage name="description" />
+                <FlexColumn margin={"10px 0px 0px 0px"} alignItems="flex-end">
+                  <Button loading={props.isSubmitting} type="submit">
+                    Enviar
+                  </Button>
+                </FlexColumn>
+              </FlexColumn>
             </Form>
           )}
         </Formik>

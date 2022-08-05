@@ -30,7 +30,7 @@ const DeclareCrushForm = ({ toUser }) => {
                 icon: "error",
 
                 text: `Hubo un error ${
-                  error.code && errorMessages[error.code]
+                  error.code ? errorMessages[error.code] : error
                 }`,
               });
             }

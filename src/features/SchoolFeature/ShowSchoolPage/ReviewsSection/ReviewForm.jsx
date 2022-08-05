@@ -65,6 +65,10 @@ const ReviewForm = ({ school, reloadData }) => {
       await deleteSchoolReview(alredyReviewed.id);
       setAlredyReviewed(null);
       if (reloadData) reloadData();
+      Alert.fire({
+        icon: "success",
+        text: "Borrado correctamente",
+      });
     }
   };
 
