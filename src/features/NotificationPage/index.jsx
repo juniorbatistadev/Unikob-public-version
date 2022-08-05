@@ -26,8 +26,6 @@ function NotificationPage() {
     Parse.Cloud.run("readAllNotifications", null);
   }, []);
 
-  console.log(items);
-
   return (
     <FlexColumn margin="10px" className={styles.container}>
       <Title text="Notificaciones" />
