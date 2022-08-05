@@ -44,7 +44,9 @@ const CreateSchoolForm = () => {
           icon: "error",
           title: "Uh no!",
 
-          text: `Hubo un error ${error.code && errorMessages[error.code]}`,
+          text: `Hubo un error. ${
+            error.code ? errorMessages[error.code] : error
+          }`,
         });
       });
   };
