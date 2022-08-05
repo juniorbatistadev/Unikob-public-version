@@ -29,12 +29,8 @@ function App({ Component, pageProps }) {
         <title>Unikob</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link
-          href="/icon-192x192.png"
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-        />
+        <link rel="apple-touch-icon" href="/filled-logo-192x192.png" />
+
         <meta name="theme-color" content="#2b6cb0" />
       </Head>
       <Script

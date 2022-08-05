@@ -53,7 +53,7 @@ function NavBar() {
               />
             </FlexRow>
           ) : (
-            <LoginToAccess />
+            <LoginToAccess text={"Inicia o Registrate"} />
           )}
         </div>
       )}
