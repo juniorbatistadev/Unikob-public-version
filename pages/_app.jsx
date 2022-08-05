@@ -27,12 +27,42 @@ function App({ Component, pageProps }) {
     <AuthContextProvider>
       <Head>
         <title>Unikob</title>
+        {/* pwa */}
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/filled-logo-192x192.png" />
-
         <meta name="theme-color" content="#2b6cb0" />
+
+        {/* seo */}
+        <meta
+          name="description"
+          content="Unikob es la comunidad de universitarios, docentes, egresados y estudiantes mas completa del internet."
+        />
+        <meta property="og:title" content="Unikob" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_ES" />
+        <meta
+          property="fb:app_id"
+          content={process.env.NEXT_PUBLIC_APP_FACEBOOK_APP_ID}
+        />
+        <meta
+          property="og:description"
+          content="Unikob es la comunidad de universitarios, docentes, egresados y estudiantes mas completa del internet."
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}${asPath}`}
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}/icon-512x512.png`}
+        />
+
+        <meta name="twitter:card" content="summary"></meta>
+        <meta name="twitter:site" content="@unikob_app" />
+        <meta name="twitter:creator" content="@unikon_app" />
       </Head>
+
       <Script
         id="google-analytics"
         strategy="lazyOnload"
