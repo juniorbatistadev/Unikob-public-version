@@ -30,10 +30,12 @@ function PostEditor({ post, action, handleSubmit }) {
 
   useEffect(() => {
     if (action === "edit") {
-      setInitialData({
-        title: post.attributes.title,
-        content: post.attributes.content,
-      });
+      localStorage.getItem("editorSave")
+        ? setInitialData(JSON.parse(localStorage.getItem("editorSave")))
+        : setInitialData({
+            title: post.attributes.title,
+            content: post.attributes.content,
+          });
     }
 
     if (action === "create") {
