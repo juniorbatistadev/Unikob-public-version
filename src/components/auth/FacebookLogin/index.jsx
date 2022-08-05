@@ -37,11 +37,16 @@ function FacebookLogin({ className }) {
             user.set("email", response.email);
             user.set("gender", response.gender);
             user.set("profilePicture", facebookImage);
-            user.save().then(() => {
-              setCurrentUser(Parse.User.current());
-              setLoading(false);
-              push(FEED_PATH);
-            });
+            await user
+              .save()
+              .then(() => {
+                setCurrentUser(Parse.User.current());
+                setLoading(false);
+                push(FEED_PATH);
+              })
+              .catch((error) =>
+                Alert.fire({ icon: "error", text: error.message })
+              );
           }
         );
       } else {

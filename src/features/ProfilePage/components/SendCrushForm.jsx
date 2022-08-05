@@ -26,11 +26,12 @@ const DeclareCrushForm = ({ toUser }) => {
               await saveCrush(values);
               setWasSent(true);
             } catch (error) {
+              console.error(error);
               Alert.fire({
                 icon: "error",
 
                 text: `Hubo un error ${
-                  error.code && errorMessages[error.code]
+                  error.code ? errorMessages[error.code] : error
                 }`,
               });
             }
