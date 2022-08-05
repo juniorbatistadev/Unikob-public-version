@@ -5,6 +5,7 @@ import { getViewsNumberByPostId } from "src/data/queryPostInfo";
 
 const ViewsPost = ({ postInfoId }) => {
   const [views, setViews] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,7 +14,7 @@ const ViewsPost = ({ postInfoId }) => {
       setViews(data);
     };
 
-    getData();
+    getData().finally(() => setLoading(false));
   }, [postInfoId]);
 
   return (
@@ -21,7 +22,7 @@ const ViewsPost = ({ postInfoId }) => {
       <span role="img" aria-label="Eyes">
         👀
       </span>
-      {views && <Text text={`Views (${views ?? 0})`} />}
+      {!loading && <Text text={`Views (${views ?? 0})`} />}
     </FlexRow>
   );
 };
