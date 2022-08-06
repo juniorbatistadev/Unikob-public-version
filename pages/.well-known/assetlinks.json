@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "com.unikob.www.twa",
+                     "sha256_cert_fingerprints": ["B7:FB:4F:DC:98:DA:3E:7F:CE:36:78:FD:C2:14:71:6B:9E:1C:CB:CA:C3:DE:C6:F0:2D:DA:EC:AE:63:E6:63:B9"] }
+      }
+]
