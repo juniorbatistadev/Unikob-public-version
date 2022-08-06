@@ -24,6 +24,7 @@ function EditPostPage({ post }) {
       localStorage.removeItem("editorSave");
       await push(READ_POST_PATH.replace(":slug", result.attributes.slug));
     } catch (error) {
+      console.log(error.code);
       Alert.fire({
         icon: "error",
         text: `Hubo un error. ${
