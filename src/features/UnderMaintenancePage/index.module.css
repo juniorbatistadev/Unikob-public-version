@@ -1,0 +1,10 @@
+.container {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-gray-200);
+}
+
+.text {
+  text-align: center;
+}
