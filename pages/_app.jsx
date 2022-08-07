@@ -6,6 +6,7 @@ import Head from "next/head";
 import { initFirebase } from "../initFirebase";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import UnderMaintenancePage from "@pages/UnderMaintenancePage";
 
 function App({ Component, pageProps }) {
   const { asPath } = useRouter();
@@ -25,6 +26,10 @@ function App({ Component, pageProps }) {
   const Layout = Component.layout || DefaultLayout;
 
   initFirebase();
+
+  if (process.env.NEXT_PUBLIC_UNDER_MAINTENANCE === "true") {
+    return <UnderMaintenancePage />;
+  }
 
   return (
     <AuthContextProvider>
