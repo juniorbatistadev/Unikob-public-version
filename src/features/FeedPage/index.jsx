@@ -42,8 +42,6 @@ function HomePage() {
   //   }
   // }, []);
 
-  console.log("AAA");
-
   return (
     <FlexColumn>
       <FlexColumn>
