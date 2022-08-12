@@ -37,8 +37,8 @@ function NewTeacherFeedItem({ teacher }) {
       {!isLoading && teacher && (
         <FeedBox>
           <FlexColumn padding={15}>
-            <FlexRow className={styles.title}>
-              <FlexRow>
+            <FlexRow>
+              <FlexRow className={styles.title}>
                 <Avatar
                   linkToUser={
                     createdBy?.attributes.username ??
