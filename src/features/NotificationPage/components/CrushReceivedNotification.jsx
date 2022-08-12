@@ -22,7 +22,7 @@ const CrushReceivedNotification = ({ notification }) => {
         )}
 
         <FlexColumn className={styles.content}>
-          <FlexRow>
+          <FlexRow className={styles.info}>
             {notification.attributes.triggeredBy ? (
               <>
                 <DisplayUsername

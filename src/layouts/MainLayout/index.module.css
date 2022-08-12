@@ -24,7 +24,7 @@
 /* Side Bar Menu for desktop*/
 
 .content {
-  max-width: 70%;
+  max-width: 50%;
   flex-wrap: wrap;
   flex: 3;
   min-height: calc(100vh - var(--nav-height));
