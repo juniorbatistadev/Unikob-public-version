@@ -19,28 +19,28 @@ function HomePage() {
   const { push } = useRouter();
   const { currentUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (Notification.permission === "default") {
-      askForPermissionToReceiveNotifications()
-        .then(() => {
-          Alert.fire({
-            icon: "success",
-            text: "Dipositivo Registrado",
-            timer: 2000,
-            showConfirmButton: false,
-          });
-        })
-        .catch((error) => {
-          console.log(error.code);
-          Alert.fire({
-            icon: "error",
-            text: `Hubo un error. ${
-              error.code ? errorMessages[error.code] : error
-            }`,
-          });
-        });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Notification.permission === "default") {
+  //     askForPermissionToReceiveNotifications()
+  //       .then(() => {
+  //         Alert.fire({
+  //           icon: "success",
+  //           text: "Dipositivo Registrado",
+  //           timer: 2000,
+  //           showConfirmButton: false,
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         console.log(error.code);
+  //         Alert.fire({
+  //           icon: "error",
+  //           text: `Hubo un error. ${
+  //             error.code ? errorMessages[error.code] : error
+  //           }`,
+  //         });
+  //       });
+  //   }
+  // }, []);
 
   return (
     <FlexColumn>
