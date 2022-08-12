@@ -695,7 +695,7 @@ function Terms() {
           <a href="https://www.unikob.com/privacy.html">
             Haga click aqui para leer nuestra política de privacidad.
           </a>
-          <p> unikob_app@gmail.com</p>
+          <p> unikob.app@gmail.com</p>
         </p>
       </FlexColumn>
     </FlexColumn>
