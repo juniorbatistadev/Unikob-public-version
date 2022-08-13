@@ -1,9 +1,7 @@
 import FlexColumn from "@components/common/FlexColumn";
-import { getPostsWithPagination } from "src/data/queryPosts";
 import useInfiniteScrolling from "src/hooks/useInfinteScrolling";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmptyIlustration from "@assets/icons/empty.svg";
-import PostFeedItem from "@pages/FeedPage/components/PostFeedItem";
 import Spinner from "@components/common/Spinner";
 import { getUserFeedItemsWithPagination } from "src/data/queryFeed";
 import FeedItem from "@pages/FeedPage/FeedItem";
@@ -29,8 +27,8 @@ const PostSection = ({ user }) => {
           hasMore={startFrom < count}
           loader={"Cargando"}
         >
-          {items.map((item) => (
-            <FlexColumn>
+          {items.map((item, index) => (
+            <FlexColumn key={index}>
               <FeedItem key={item.id} feedItem={item} />
             </FlexColumn>
           ))}

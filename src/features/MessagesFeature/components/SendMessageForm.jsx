@@ -6,16 +6,24 @@ import styles from "./SendMessageForm.module.css";
 import { saveMessage } from "src/data/queryMessages";
 import { saveChatMessage } from "src/data/queryChatMessage";
 import SendIcon from "@assets/icons/send.svg";
+import Alert from "@components/common/Alert";
+import errorMessages from "src/parseErrorMessages";
 
 const SendMessageForm = ({ conversation }) => {
   const handleSubmit = (values, actions) => {
     if (conversation) {
-      saveMessage(values);
+      saveMessage(values).catch((error) => {
+        Alert.fire({
+          icon: "error",
+          text: `Hubo un error. ${error.code && errorMessages[error.code]}`,
+        });
+      });
     } else {
       saveChatMessage(values);
     }
     actions.resetForm();
   };
+
   return (
     <FlexColumn className={styles.container}>
       <Formik
