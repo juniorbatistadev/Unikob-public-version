@@ -24,7 +24,7 @@ const SendFirstMessageForm = ({ toUser }) => {
                 showConfirmButton: false,
               })
             )
-            .catch((err) => Alert.fire({ html: err, icon: "success" }))
+            .catch((err) => Alert.fire({ html: err, icon: "error" }))
         }
         validate={(values) => {
           const errors = {};
