@@ -26,7 +26,7 @@ const PostLikeNotification = ({ notification }) => {
                   className={styles.username}
                   user={notification.attributes.triggeredBy}
                 />
-                le gusto en tu{" "}
+                le gusto tu{" "}
                 <A
                   href={READ_POST_PATH.replace(
                     ":slug",

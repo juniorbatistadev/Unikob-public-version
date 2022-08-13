@@ -63,7 +63,7 @@ function App({ Component, pageProps }) {
         />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}/icon-512x512.png`}
+          content={`${process.env.NEXT_PUBLIC_APP_SITE_URL}/maskable_icon.png`}
         />
 
         <meta name="twitter:card" content="summary"></meta>
