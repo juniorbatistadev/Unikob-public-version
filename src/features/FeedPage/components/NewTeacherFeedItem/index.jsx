@@ -68,8 +68,8 @@ function NewTeacherFeedItem({ teacher }) {
                   fontSize={"var(--text-lg)"}
                 />
                 <FlexRow>
-                  {subjectsTags.map((subject) => (
-                    <FlexRow margin="0px 5px 0px 0px">
+                  {subjectsTags.map((subject, index) => (
+                    <FlexRow margin="0px 5px 0px 0px" key={index}>
                       <Tag key={subject.id} text={subject.attributes.name} />
                     </FlexRow>
                   ))}

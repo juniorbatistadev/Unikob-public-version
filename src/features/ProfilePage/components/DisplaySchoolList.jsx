@@ -1,5 +1,5 @@
 import FlexColumn from "@components/common/FlexColumn";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import StudentIcon from "@assets/icons/student.svg";
 import ItemWithIcon from "./ItemWithIcon";
 import Text from "@components/common/Text";
@@ -27,8 +27,8 @@ function DisplaySchoolList({ user, ...props }) {
 
   return (
     <FlexColumn {...props}>
-      {schools.map((member) => (
-        <>
+      {schools.map((member, index) => (
+        <Fragment key={index}>
           {member.attributes.school && (
             <A
               href={SCHOOL_READ_PATH.replace(
@@ -42,7 +42,7 @@ function DisplaySchoolList({ user, ...props }) {
               />
             </A>
           )}
-        </>
+        </Fragment>
       ))}
       {schoolsOverLimit > 0 && (
         <Text

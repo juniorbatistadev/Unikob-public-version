@@ -11,6 +11,7 @@ import FlexColumn from "@components/common/FlexColumn";
 import Avatar from "@components/common/Avatar";
 import { POST_COMMENT } from "@components/CommentsSection/commentsType";
 import Parse from "parse";
+import Alert from "@components/common/Alert";
 
 const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
   const { currentUser } = useContext(AuthContext);
@@ -25,22 +26,29 @@ const AddCommentForm = ({ section, reloadData, parentComment, type }) => {
           text: Yup.string().max(260, "Demasido Largo").required("Requerido"),
         })}
         onSubmit={async (values, actions) => {
-          let parentCommentObj;
-          if (parentComment) {
-            const Comment = Parse.Object.extend("Comment");
-            parentCommentObj = new Comment();
-            parentCommentObj.id = parentComment;
-          }
+          try {
+            let parentCommentObj;
+            if (parentComment) {
+              const Comment = Parse.Object.extend("Comment");
+              parentCommentObj = new Comment();
+              parentCommentObj.id = parentComment;
+            }
 
-          await saveComment({
-            text: values.text,
-            createdBy: currentUser,
-            section,
-            parentComment: parentCommentObj,
-            type,
-          });
-          reloadData();
-          actions.resetForm();
+            await saveComment({
+              text: values.text,
+              createdBy: currentUser,
+              section,
+              parentComment: parentCommentObj,
+              type,
+            });
+            reloadData();
+            actions.resetForm();
+          } catch (error) {
+            Alert.fire({
+              icon: "error",
+              text: `Hubo un error. ${error && error}`,
+            });
+          }
         }}
       >
         {(props) => (
