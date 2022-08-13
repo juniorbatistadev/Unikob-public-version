@@ -26,7 +26,7 @@ const ProfileCommentNotification = ({ notification }) => {
                   className={styles.username}
                   user={notification.attributes.triggeredBy}
                 />
-                dejo un comentario en tu
+                dejo un comentario en tu{" "}
                 <A href={CURRENT_USER_PROFILE_COMMENTS_PATH}>
                   <span className={styles.link}> perfil: </span>
                 </A>
