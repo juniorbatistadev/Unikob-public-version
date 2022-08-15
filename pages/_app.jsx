@@ -69,6 +69,8 @@ function App({ Component, pageProps }) {
         <meta name="twitter:card" content="summary"></meta>
         <meta name="twitter:site" content="@unikob_app" />
         <meta name="twitter:creator" content="@unikon_app" />
+
+        <meta name="google-site-verification" content="CG1Y6SGofkZAuvr07axvMOmezHRD4FLpAKN66Sy5vis" />
       </Head>
 
       <Script
