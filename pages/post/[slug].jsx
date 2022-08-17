@@ -38,6 +38,8 @@ function ReadPost({ data }) {
     };
   }
 
+  console.log(firstImageUrl);
+
   return (
     <>
       <Head>

@@ -159,7 +159,7 @@ function SideBar({ setMenuOpen, className, ...props }) {
             >
               <SettingsIcon alt="option" className={styles["menu-icon"]} />
 
-              <span>Adjustes</span>
+              <span>Ajustes</span>
             </li>
           )}
           <li
