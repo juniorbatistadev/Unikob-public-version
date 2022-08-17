@@ -38,7 +38,7 @@ function SettingsMenu() {
 
   return (
     <div className={styles.container}>
-      <Title className={styles.title} text="Adjustes" />
+      <Title className={styles.title} text="Ajustes" />
 
       <Title
         className={styles["secondary-title"]}
