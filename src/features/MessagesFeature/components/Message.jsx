@@ -8,6 +8,10 @@ import Text from "@components/common/Text";
 import Avatar from "@components/common/Avatar";
 import FlexRow from "@components/common/FlexRow";
 import DisplayUsername from "@components/common/DisplayUsername";
+import DotsIcon from "@assets/icons/dot.svg";
+import PopupMenu from "@components/PopupMenu";
+import Alert from "@components/common/Alert";
+import ReportForm from "@pages/ProfilePage/components/ReportForm";
 
 const Message = ({ message, withUsername }) => {
   const { currentUser } = useContext(AuthContext);
@@ -26,9 +30,21 @@ const Message = ({ message, withUsername }) => {
       : styles.white,
   ].join(" ");
 
+  const onReportMessage = ({ toUser }) => {
+    Alert.fire({
+      html: (
+        <ReportForm
+          content={`Message: ${message.attributes.message}`}
+          toUser={toUser}
+        />
+      ),
+      showConfirmButton: false,
+    });
+  };
+
   return (
     <FlexColumn className={classnamesContainer}>
-      <FlexRow>
+      <FlexRow alignItems={"center"}>
         {message.attributes.createdBy.id !== currentUser.id && (
           <FlexRow margin="0px 5px 0px 0px">
             <Avatar
@@ -42,6 +58,21 @@ const Message = ({ message, withUsername }) => {
         <div className={classnamesBox}>
           <p>{message.attributes.message}</p>
         </div>
+        {message.attributes.createdBy.id !== currentUser.id && (
+          <PopupMenu
+            options={[
+              {
+                label: "Reportar",
+                onClick: () =>
+                  onReportMessage({ toUser: message.attributes.createdBy }),
+              },
+            ]}
+          >
+            <FlexRow margin={"0px 0px 0px 5px"}>
+              <DotsIcon width="20px" height="20px" />
+            </FlexRow>
+          </PopupMenu>
+        )}
       </FlexRow>
       {withUsername && message.attributes.createdBy.id !== currentUser.id && (
         <DisplayUsername user={message.attributes.createdBy} />

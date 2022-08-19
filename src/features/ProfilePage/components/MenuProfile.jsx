@@ -2,17 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import DotsIcon from "@assets/icons/dot.svg";
 import styles from "./MenuProfile.module.css";
 import PopupMenu from "@components/PopupMenu";
-import GiftSVG from "@assets/icons/gift.svg";
-import HeartSVG from "@assets/icons/heart.svg";
-// import swal from "@sweetalert/with-react";
 import SendGiftForm from "./SendGiftForm";
 import Alert from "@components/common/Alert";
 import DeclareCrushForm from "./SendCrushForm";
-import ReportUserForm from "./ReportUserForm";
+import ReportUserForm from "./ReportForm";
 import BlockUserForm from "./BlockUserForm";
 import { isBlocked } from "src/data/queryUserBlocks";
 import { AuthContext } from "@context/AuthContext";
-// import DeclareCrushForm from "../../../components/DeclareCrushForm";
 
 const MenuProfile = ({ user }) => {
   const { currentUser } = useContext(AuthContext);
