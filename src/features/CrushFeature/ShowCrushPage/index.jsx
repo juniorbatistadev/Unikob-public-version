@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { deleteCrush, getCrushById } from "src/data/queryCrushes";
 import { CRUSHES_PATH, NO_FOUND_PATH } from "src/paths";
 import { getUserRoles } from "src/data/queryRoles";
+import ReportButton from "@components/ReportButton";
 
 function ShowCrushPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +75,15 @@ function ShowCrushPage() {
               </Button>
             </FlexRow>
           )}
+
+          {currentUser && (
+            <FlexRow margin={"20px 10px"}>
+              <ReportButton
+                content={`Crush: ${crush?.attributes.text} ${crush.id}`}
+              />
+            </FlexRow>
+          )}
+
           <FlexColumn margin={"20px 0px 0px 0px"}>
             <CommentSection section={crush.id} type={CRUSH_COMMENT} />
           </FlexColumn>
