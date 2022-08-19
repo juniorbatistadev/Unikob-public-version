@@ -23,6 +23,7 @@ import SaveButton from "@components/SaveButton";
 import { getUserRoles } from "src/data/queryRoles";
 import ShareButtons from "@components/ShareButtons";
 import useIsMounted from "@hooks/useIsMounted";
+import ReportButton from "@components/ReportButton";
 
 function ShowJobPage({ data }) {
   const { currentUser } = useContext(AuthContext);
@@ -103,12 +104,15 @@ function ShowJobPage({ data }) {
       </FlexColumn>
       <FlexRow margin={"10px 0px 0px 10px"} gap={10}>
         {currentUser && (
-          <SaveButton
-            title={data.title}
-            type="job"
-            itemId={data.objectId}
-            typeClass="Job"
-          />
+          <>
+            <SaveButton
+              title={data.title}
+              type="job"
+              itemId={data.objectId}
+              typeClass="Job"
+            />
+            <ReportButton content={`Job: ${data.title} ${data.objectId}`} />
+          </>
         )}
         {isMounted && (
           <ShareButtons

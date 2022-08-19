@@ -9,17 +9,17 @@ import Alert from "@components/common/Alert";
 import { saveUserReport } from "src/data/queryUserReports";
 import errorMessages from "src/parseErrorMessages";
 
-const ReportUserForm = ({ toUser }) => {
+const ReportForm = ({ toUser, content }) => {
   const [wasSent, setWasSent] = useState(false);
 
   return (
     <FlexColumn alignItems="center">
-      <Title text="Reportar Usuario" />
+      <Title text="Reportar" />
       {wasSent ? (
-        <Text text="Usario reportado" />
+        <Text text="Reporte Enviado" />
       ) : (
         <Formik
-          initialValues={{ text: "", toUser }}
+          initialValues={{ text: "", toUser, content }}
           onSubmit={async (values) => {
             try {
               await saveUserReport(values);
@@ -48,7 +48,7 @@ const ReportUserForm = ({ toUser }) => {
                   <TextArea
                     minRows={1}
                     name="text"
-                    placeholder="Describe la razón por la cual reportas este usuario"
+                    placeholder="Describe la razón del reporte"
                     width="-webkit-fill-available"
                   />
                   <ErrorMessage name="text" />
@@ -66,4 +66,4 @@ const ReportUserForm = ({ toUser }) => {
   );
 };
 
-export default ReportUserForm;
+export default ReportForm;
