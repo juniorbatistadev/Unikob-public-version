@@ -17,6 +17,7 @@ import { EDIT_POST_PATH, FEED_PATH } from "src/paths";
 import { POST_COMMENT } from "@components/CommentsSection/commentsType";
 import SaveButton from "@components/SaveButton";
 import { getUserRoles } from "src/data/queryRoles";
+import ReportButton from "@components/ReportButton";
 
 function ReadPostPage({ post }) {
   const { currentUser } = useContext(AuthContext);
@@ -73,6 +74,9 @@ function ReadPostPage({ post }) {
                   type="post"
                   itemId={post.objectId}
                   typeClass="Post"
+                />
+                <ReportButton
+                  content={`Post: ${post.title} ${post.objectId}`}
                 />
               </>
             )}
