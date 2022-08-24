@@ -13,10 +13,12 @@ import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemiss
 import errorMessages from "src/parseErrorMessages";
 
 function NotificationSettings() {
-  const [isNotificationEnabled, setIsNotificationEnabled] = useState();
+  const [isNotificationEnabled, setIsNotificationEnabled] = useState(false);
 
   useEffect(() => {
-    setIsNotificationEnabled(Notification.permission === "granted");
+    if ("Notification" in window) {
+      setIsNotificationEnabled(Notification.permission === "granted");
+    }
   }, []);
 
   const handleClick = () => {
