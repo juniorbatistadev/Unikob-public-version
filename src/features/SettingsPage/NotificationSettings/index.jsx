@@ -13,11 +13,13 @@ import { askForPermissionToReceiveNotifications } from "src/helpers/askForPemiss
 import errorMessages from "src/parseErrorMessages";
 
 function NotificationSettings() {
-  const [isNotificationEnabled, setIsNotificationEnabled] = useState(false);
+  const [canNotificationBeEnabled, setCanNotificationBeEnabled] = useState(
+    "Notification" in window
+  );
 
   useEffect(() => {
     if ("Notification" in window) {
-      setIsNotificationEnabled(Notification.permission === "granted");
+      setCanNotificationBeEnabled(Notification.permission === "granted");
     }
   }, []);
 
@@ -53,7 +55,7 @@ function NotificationSettings() {
         <Title text="Notificaciones" className={styles.title} />
       </FlexRow>
 
-      {!isNotificationEnabled && (
+      {!canNotificationBeEnabled && (
         <FlexColumn margin="0px 10px 20px 10px">
           <Title
             typeStyle="secondary"
