@@ -55,7 +55,7 @@ function NotificationSettings() {
         <Title text="Notificaciones" className={styles.title} />
       </FlexRow>
 
-      {!canNotificationBeEnabled && (
+      {canNotificationBeEnabled && (
         <FlexColumn margin="0px 10px 20px 10px">
           <Title
             typeStyle="secondary"
