@@ -19,7 +19,7 @@ function NotificationSettings() {
 
   useEffect(() => {
     if ("Notification" in window) {
-      setCanNotificationBeEnabled(Notification.permission === "granted");
+      setCanNotificationBeEnabled(Notification.permission !== "granted");
     }
   }, []);
 
